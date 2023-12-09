@@ -1,0 +1,82 @@
+stages:
+  - train
+  - clean_up
+
+train-model:
+  stage: train
+  script:
+    - echo "## Training...."
+    - echo "$CI_PROJECT_PATH"
+    - echo "$CI_COMMIT_BRANCH" 
+    - echo "$CI_PROJECT_DIR" 
+    - echo "$CI_BUILDS_DIR" 
+    # - raise error
+    
+    - Invoke-WebRequest -URI "https://avc-api.azurewebsites.net/api/model/$CI_COMMIT_BRANCH/trainning" -UseBasicParsing -Method Put
+
+    #Unzip
+    - tar -xf traindata.zip
+    - cd labels 
+    - move *.txt ..\imgs 
+    - cd ..
+
+    - cd D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\x64\data
+    - if( Test-Path -Path imgs) {rm -r -Force imgs}
+
+    - move $CI_PROJECT_DIR/imgs imgs
+    - cd ..
+
+    #Create_train_test_file
+    - conda run -n yolo2keras_env python create_train_test.py -tp 0.2
+    #get_applying_id
+    - $APPLYING_ID = (Invoke-WebRequest -URI https://avc-api.azurewebsites.net/api/model/applyingid -UseBasicParsing).Content
+
+    #Train_model
+    - cp D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\models\$APPLYING_ID.weights .
+    # - Start-Process -NoNewWindow -Wait -FilePath "C:\Program Files\Docker\Docker\Docker Desktop.exe" 
+    - Start-Process -NoNewWindow -Wait -FilePath "D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\x64\darknet.exe" -ArgumentList "detector train data/custom.data coco-tiny-v3-relu.cfg $APPLYING_ID.weights -map -clear > file_log_name.log"
+    - cp chart.png $CI_PROJECT_DIR
+    # - cd backup
+    # - Rename-Item -Path "coco-tiny-v3-relu_best.weights" -NewName "$CI_COMMIT_BRANCH.weights" -Force
+    # - cd ..\..
+    # - Move-Item -Path x64\backup\$CI_COMMIT_BRANCH.weights -Destination models -Force
+    - Move-Item -Path backup\coco-tiny-v3-relu_best.weights -Destination D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\models\$CI_COMMIT_BRANCH.weights -Force
+    - cd ..\keras-yolo3
+    - conda run -n yolo2keras_env python convert.py coco-tiny-v3-relu.cfg ..\models\$CI_COMMIT_BRANCH.weights avc.h5
+
+    #Convert_tflite
+    - conda run -n tflite_env python keras_to_tflite_quant.py avc.h5 ..\avc_model.tflite
+
+    - cd ..
+    - docker run --rm -v ${pwd}:/home/edgetpu edgetpu-compiler-avc edgetpu_compiler avc_model.tflite
+    # - Rename-Item -Path "avc_model_edgetpu.tflite" -NewName "$CI_COMMIT_BRANCH.tflite"
+    # - Move-Item -Path "$CI_COMMIT_BRANCH.tflite" -Destination "$CI_PROJECT_DIR" -Force
+    - Move-Item -Path "avc_model_edgetpu.tflite" -Destination "$CI_PROJECT_DIR\$CI_COMMIT_BRANCH.tflite" -Force
+    # - Remove-Item avc_model.tflite
+    - if( Test-Path -Path D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\avc_model.tflite) {Remove-Item -Path D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\avc_model.tflite}
+    - if( Test-Path -Path D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\x64\$APPLYING_ID.weights) {Remove-Item -Path D:\Docker\AVC-EdgeTPU-Compiler\edgetpu-compiler\x64\$APPLYING_ID.weights}
+
+    # Push new model back to the repository.
+    - cd $CI_PROJECT_DIR
+    - python send_success_model.py $CI_COMMIT_BRANCH
+  tags:
+    - worker
+  except:
+    - default
+    - master
+
+
+
+handle_error:
+  stage: clean_up
+  script:
+    - echo "Clear máy cho Sang"
+    - Invoke-WebRequest -URI "https://avc-api.azurewebsites.net/api/model/$CI_COMMIT_BRANCH/failure" -UseBasicParsing -Method Put
+  when: on_failure
+  tags:
+    - worker
+  except:
+    - default
+    - master
+
+  

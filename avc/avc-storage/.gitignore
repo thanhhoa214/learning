@@ -1,0 +1,9 @@
+# ignore all logs
+*.log
+logs/
+imgs/
+labels/
+
+# ignore unknown file in MacOS
+**/.DS_Store
+temp/
