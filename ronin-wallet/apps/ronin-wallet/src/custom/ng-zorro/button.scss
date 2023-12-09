@@ -1,0 +1,19 @@
+.ant-btn {
+  @apply font-semibold;
+}
+
+.ant-btn-primary {
+  @apply border-none bg-ronin-gradient;
+}
+
+.ant-btn-text {
+  @apply bg-slate-100;
+}
+
+.ant-btn .anticon-loading {
+  vertical-align: 0.13rem;
+}
+
+.icon-large .anticon {
+  @apply scale-150;
+}

@@ -1,0 +1,173 @@
+<header class="py-4 mb-1 text-center shadow-sm relative">
+  <i
+    nz-icon
+    nzType="icons:chevron-left"
+    class="text-gray-800 text-2xl leading-5 absolute left-4 top-1/2 -translate-y-1/2"
+    routerLink="/"
+  ></i>
+  <strong class="font-semibold">Send Assets</strong>
+</header>
+
+<main class="max-w-sm mx-auto p-5">
+  <form
+    *ngIf="user"
+    nz-form
+    nzLayout="vertical"
+    [formGroup]="form"
+    class="mb-6"
+    (ngSubmit)="onSubmit()"
+  >
+    <nz-form-item>
+      <nz-form-label nzFor="my-address">From</nz-form-label>
+      <nz-form-control>
+        <nz-input-group [nzPrefix]="myWalletPrefix" nzSize="large">
+          <input
+            nz-input
+            id="my-address"
+            value=" ({{ user.walletAddress | roninAddressTruncate }})"
+            disabled
+          />
+          <ng-template #myWalletPrefix>
+            <strong class="font-semibold text-sm">My Wallet</strong>
+          </ng-template>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzFor="receiver-address">To</nz-form-label>
+      <nz-form-control [nzErrorTip]="receiverTemplate">
+        <nz-input-group nzPrefix=" " nzSize="large">
+          <input
+            formControlName="to"
+            nz-input
+            id="receiver-address"
+            nzSize="large"
+            placeholder="Receiver wallet address"
+            mask="0000 0000 0000 0000"
+          />
+        </nz-input-group>
+        <ng-template #receiverTemplate let-control>
+          <div class="text-xs pl-2 mt-0.5">
+            <p *ngIf="control.hasError('required')">
+              Wallet address is required
+            </p>
+            <p *ngIf="control.hasError('minlength')">
+              Wallet address must be exact <strong>16 characters </strong>long
+            </p>
+          </div>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzFor="currency">Asset</nz-form-label>
+      <nz-form-control>
+        <nz-input-group
+          [nzPrefix]="imageTemplate"
+          [nzSuffix]="stackIconTemplate"
+          nzSize="large"
+          (click)="onOpenCurrencySelect()"
+        >
+          <input
+            readonly
+            nz-input
+            id="currency"
+            [value]="currency?.currency?.code"
+          />
+
+          <ng-template #imageTemplate>
+            <img
+              src="assets/images/currencies/{{
+                currency?.currency?.code | lowercase
+              }}.png"
+              alt="{{ currency?.currency?.code }} currency"
+              class="w-8 h-8 mr-2"
+            />
+          </ng-template>
+
+          <ng-template #stackIconTemplate>
+            <i
+              nz-icon
+              nzType="icons:stack"
+              class="text-2xl leading-4 text-gray-600"
+            ></i>
+          </ng-template>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="relative">
+      <nz-form-label nzFor="amount"> Amount </nz-form-label>
+      <span
+        class="text-gray-900 font-semibold text-xxs leading-5 uppercase absolute right-2"
+        >Available: {{ currency?.balance | number: '1.0-2':'en-US' }}
+        {{ currency?.currency?.code }}</span
+      >
+      <nz-form-control [nzErrorTip]="amountTemplate">
+        <nz-input-group [nzSuffix]="maxButtonTemplate" nzSize="large">
+          <input
+            formControlName="amount"
+            nz-input
+            type="text"
+            id="amount"
+            placeholder="Enter transfer amount"
+            mask="separator.4"
+            thousandSeparator=","
+          />
+
+          <ng-template #maxButtonTemplate>
+            <button
+              nz-button
+              nzType="text"
+              nzSize="small"
+              type="button"
+              class="rounded-lg text-xs font-semibold text-gray-500"
+              (click)="form.get('amount')?.setValue(currency?.balance)"
+            >
+              MAX
+            </button>
+          </ng-template>
+
+          <ng-template #amountTemplate let-control>
+            <div class="text-xs pl-2 mt-0.5">
+              <p *ngIf="control.hasError('required')">
+                Transfer amount is required
+              </p>
+              <p *ngIf="control.hasError('max')">
+                You only has
+                <strong
+                  >{{ currency?.balance | number: '1.0-2':'en-US' }}
+                  {{ currency?.currency?.code }}</strong
+                >
+                in your balance
+              </p>
+            </div>
+          </ng-template>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  <footer class="flex justify-center gap-4">
+    <button
+      routerLink="/"
+      nz-button
+      nzType="text"
+      nzSize="large"
+      class="w-1/2 text-primary-500 hover:text-primary-400"
+    >
+      Cancel
+    </button>
+    <button
+      nz-button
+      [nzLoading]="isSending"
+      nzType="primary"
+      nzSize="large"
+      class="w-1/2 bg-ronin-gradient"
+      (click)="onSubmit()"
+    >
+      Send
+    </button>
+  </footer>
+</main>

@@ -1,0 +1,4 @@
+// Workaround for prevent the width of entire document to be too small, due to scrollStrategy of material/overlay/cdk
+.cdk-global-scrollblock {
+  position: static;
+}

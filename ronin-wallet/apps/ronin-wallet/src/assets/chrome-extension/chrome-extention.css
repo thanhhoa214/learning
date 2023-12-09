@@ -1,0 +1,11 @@
+html {
+  position: relative;
+  min-height: 450px;
+}
+
+body {
+  margin: 0;
+  width: 375px;
+  height: 450px !important;
+  overflow-y: scroll;
+}
