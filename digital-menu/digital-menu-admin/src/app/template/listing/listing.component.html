@@ -1,0 +1,51 @@
+<h1 class="d-flex align-items-center ml-3 mt-2 mat-display-1">
+  <mat-icon>web</mat-icon>
+  <span class="ml-3"> {{ isPicked ? "Choose New " : "Your " }}Templates</span>
+</h1>
+<app-create-button
+  [goTo]="account?.roleId === 1 ? 'pick' : 'create'"
+></app-create-button>
+<div class="container-fluid">
+  <form>
+    <div class="row d-flex justify-content-center mx-2">
+      <mat-form-field class="flex-fill">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          placeholder="Find your template ..."
+          [formControl]="search"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="gallery" id="gallery">
+    <div
+      class="mb-3 px-2 py-3 shadow pics animation all"
+      *ngFor="let template of templates?.result; index as templateIndex"
+    >
+      <div class="d-flex justify-content-between mb-1">
+        <h2>{{ template.name }}</h2>
+        <button
+          mat-raised-button
+          color="primary"
+          class="mb-2"
+          (click)="
+            openDialog(
+              template.id,
+              template.name,
+              template.src || sampleData[templateIndex % 6].src
+            )
+          "
+        >
+          Preview
+        </button>
+      </div>
+      <img
+        class="img-fluid rounded-lg"
+        [src]="template.src || sampleData[templateIndex % 6].src"
+        alt="Card image cap"
+      />
+    </div>
+  </div>
+</div>

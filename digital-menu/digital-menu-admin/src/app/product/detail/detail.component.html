@@ -1,0 +1,41 @@
+<div class="container mt-2">
+  <h1 class="d-flex align-items-center ml-3 mt-2 mb-3 mat-display-1">
+    <mat-icon style="zoom: 1.5">view_list</mat-icon>
+    <span class="ml-3">Update Product</span>
+  </h1>
+  <div class="row mx-0">
+    <div class="col-10 col-md-8 col-lg-6">
+      <!-- Form -->
+      <form class="form" [formGroup]="formGroup" (submit)="update()">
+        <!-- product name  -->
+        <div class="form-group">
+          <label for="product-name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="product-name"
+            placeholder="Fill your product name"
+            formControlName="title"
+          />
+        </div>
+        <!-- End product name  -->
+        <!-- product price  -->
+        <div class="form-group">
+          <label for="product-price">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="product-price"
+            placeholder="Fill your product price"
+            formControlName="price"
+          />
+        </div>
+        <!-- product price  -->
+
+        <!-- End Available -->
+
+        <button mat-raised-button color="primary" class="w-100">Update</button>
+      </form>
+    </div>
+  </div>
+</div>

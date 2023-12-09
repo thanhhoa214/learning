@@ -1,0 +1,22 @@
+.mat-display-1 mat-icon {
+  transform: scale(1.5);
+}
+
+table tbody {
+  max-height: 5rem;
+  overflow-y: auto;
+}
+
+.img-wrapper {
+  width: 5rem;
+  height: 5rem;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.table-wrapper {
+  height: 70vh;
+  overflow-y: auto;
+}

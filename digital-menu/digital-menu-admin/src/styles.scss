@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/bootstrap-utilities/bootstrap-utilities";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.main-container {
+  min-height: 91.5vh;
+  min-width: 333px;
+  overflow-x: scroll;
+}
+.mat-snack-bar-container {
+  margin-top: 8vh !important;
+}
+.mat-snack-bar-failed {
+  color: white;
+  background-color: rgb(224, 44, 44);
+}
+
+.mat-snack-bar-warn {
+  color: rgb(31, 31, 31);
+  background-color: rgb(223, 196, 45);
+}
+.mat-snack-bar-success {
+  color: white;
+  background-color: rgb(62, 163, 62);
+}
+::ng-deep mat-form-field .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}

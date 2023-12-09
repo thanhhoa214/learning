@@ -1,0 +1,45 @@
+<mat-toolbar
+  color="primary"
+  class="position-sticky flex-center-center justify-content-between"
+>
+  <div>
+    <button mat-icon-button (click)="toggleSidebar.emit()" class="ml-n2">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button [routerLink]="isLoggedIn ? ['/'] : []" mat-button>
+      Digital Menu Dashboard
+    </button>
+  </div>
+
+  <div class="flex-center-center justify-content-around" *ngIf="isLoggedIn">
+    <button
+      mat-icon-button
+      class="mx-2 flex-center-center"
+      [matMenuTriggerFor]="profileMenu"
+      aria-label="Show Profile Menu"
+    >
+      <div class="avatar">
+        <img [src]="'assets/images/avatar.jpg'" />
+      </div>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #profileMenu="matMenu">
+  <mat-card [class.mat-elevation-z0]="true">
+    <mat-card-header>
+      <mat-card-title>{{ user?.username }} </mat-card-title>
+      <mat-card-subtitle>{{ user?.roleName }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      class="px-4 rounded-circle"
+      src="assets/images/avatar.jpg"
+    />
+    <mat-card-actions class="d-flex justify-content-end">
+      <button mat-raised-button color="primary" (click)="logout()">
+        Logout
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-menu>

@@ -1,0 +1,38 @@
+<div class="mt-4"></div>
+<div *ngFor="let node of treeData">
+  <button
+    mat-button
+    class="d-block w-100 text-left py-1"
+    (click)="setSelectedNode(node)"
+    [routerLink]="node.route"
+    routerLinkActive="mat-raised-button mat-primary"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon> {{ node.icon }} </mat-icon>
+    <span class="pl-3">{{ node.name }}</span>
+  </button>
+  <!-- <div
+    class="visible-animation"
+    [class.tree-visible]="
+      node.children && selectedNode.route.includes(node.route)
+    "
+  >
+    <button
+      mat-button
+      class="d-block w-100 text-left pl-5"
+      *ngFor="let childNode of node.children"
+      (click)="setSelectedNode(childNode)"
+      [routerLink]="childNode.route"
+      routerLinkActive="selected-child-node"
+    >
+      <mat-icon>{{ childNode.icon }}</mat-icon>
+      <span class="pl-3">{{ childNode.name }}</span>
+    </button>
+  </div> -->
+</div>
+<div>
+  <button mat-button class="d-block w-100 text-left py-1" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span class="pl-3">Logout</span>
+  </button>
+</div>

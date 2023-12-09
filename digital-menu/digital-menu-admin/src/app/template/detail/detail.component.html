@@ -1,0 +1,65 @@
+<h1 class="d-flex align-items-center ml-3 mt-2 mat-display-1">
+  <mat-icon style="zoom: 1.5">web</mat-icon>
+  <span class="ml-3">Templates</span>
+</h1>
+<form (submit)="create()">
+  <div class="container-fluid row">
+    <div
+      class="col-12 col-md-5 mb-3 ml-3 cursor-pointer border"
+      id="file-upload-wrapper"
+      (click)="inputFile.click()"
+    >
+      <input
+        type="file"
+        class="d-none"
+        #inputFile
+        (change)="onFileChange($event.target.files[0])"
+      />
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        *ngIf="!inputFile.value"
+      >
+        <mat-icon style="zoom: 10" color="primary">backup</mat-icon>
+        <button mat-raised-button color="primary">Choose a file</button>
+        <span class="mt-1 text-muted">or drag and drop to upload</span>
+      </div>
+
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        *ngIf="inputFile.value"
+      >
+        <mat-icon style="zoom: 10" color="primary">text_snippet</mat-icon>
+        <div class="w-50"><b>File size:</b> {{ file.size }}</div>
+        <div class="w-50"><b>File name:</b> {{ file.name }}</div>
+        <div class="w-50"><b>File type:</b> {{ file.type }}</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <h1>Create New Template</h1>
+
+      <!-- Title  -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Enter title"
+          name="title"
+        />
+      </div>
+      <!-- End Title  -->
+
+      <!-- Data structure as JSON -->
+      <div class="form-group">
+        <label for="user-des">Data structure as JSON</label>
+        <textarea class="form-control" rows="5"></textarea>
+      </div>
+      <!-- End Data structure as JSON -->
+
+      <button type="submit" mat-raised-button color="primary" class="w-100">
+        Create New Template
+      </button>
+    </div>
+  </div>
+</form>

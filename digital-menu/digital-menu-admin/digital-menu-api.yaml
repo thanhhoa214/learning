@@ -1,0 +1,1374 @@
+openapi: 3.0.1
+info:
+  title: AVC System
+  version: v1
+paths:
+  /api/accounts/staffs:
+    get:
+      tags:
+        - Accounts
+      summary: Get list of staff
+      parameters:
+        - name: IsAvailable
+          in: query
+          schema:
+            type: boolean
+        - name: Page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: Limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: SearchValue
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountReadDtoPagingResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDtoPagingResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDtoPagingResponseDto'
+  /api/accounts/managers:
+    get:
+      tags:
+        - Accounts
+      summary: Get List of Manager
+      parameters:
+        - name: IsAvailable
+          in: query
+          schema:
+            type: boolean
+        - name: Page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: Limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: SearchValue
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDtoPagingResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDtoPagingResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDtoPagingResponseDto'
+  '/api/accounts/manager/{id}':
+    get:
+      tags:
+        - Accounts
+      summary: Get Specific Account
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountManagerDetailReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountManagerDetailReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountManagerDetailReadDto'
+  '/api/accounts/staff/{id}':
+    get:
+      tags:
+        - Accounts
+      summary: Get Specific Account
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountStaffDetailReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStaffDetailReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountStaffDetailReadDto'
+  /api/accounts/manager:
+    post:
+      tags:
+        - Accounts
+      summary: Create new Account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - Email
+                - FirstName
+                - LastName
+                - Password
+              type: object
+              properties:
+                AvatarImage:
+                  type: string
+                  format: binary
+                Email:
+                  maxLength: 255
+                  type: string
+                  format: email
+                Password:
+                  type: string
+                FirstName:
+                  type: string
+                LastName:
+                  type: string
+                Phone:
+                  type: string
+                  format: tel
+            encoding:
+              AvatarImage:
+                style: form
+              Email:
+                style: form
+              Password:
+                style: form
+              FirstName:
+                style: form
+              LastName:
+                style: form
+              Phone:
+                style: form
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotManagedByReadDto'
+  /api/accounts/staff:
+    post:
+      tags:
+        - Accounts
+      summary: Create new Account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - Email
+                - FirstName
+                - LastName
+                - Password
+              type: object
+              properties:
+                AvatarImage:
+                  type: string
+                  format: binary
+                Email:
+                  maxLength: 255
+                  type: string
+                  format: email
+                Password:
+                  type: string
+                FirstName:
+                  type: string
+                LastName:
+                  type: string
+                Phone:
+                  type: string
+                  format: tel
+                ManagedBy:
+                  type: integer
+                  format: int32
+            encoding:
+              AvatarImage:
+                style: form
+              Email:
+                style: form
+              Password:
+                style: form
+              FirstName:
+                style: form
+              LastName:
+                style: form
+              Phone:
+                style: form
+              ManagedBy:
+                style: form
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+  '/api/accounts/{id}/activation':
+    put:
+      tags:
+        - Accounts
+      summary: Activate or Deactivate account
+      parameters:
+        - name: id
+          in: path
+          description: Id of Account
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: 'IsAvailable: True for activate, false for deactivate'
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountActivationDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountActivationDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountActivationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountActivationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountActivationDto'
+      responses:
+        '200':
+          description: Success
+  /api/accounts/managedby:
+    put:
+      tags:
+        - Accounts
+      summary: Assign/UnAssign Staff for Manager
+      requestBody:
+        description: activate true or false
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountManagedByUpdateDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountManagedByUpdateDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountManagedByUpdateDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountManagedByUpdateDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountManagedByUpdateDto'
+      responses:
+        '200':
+          description: Success
+  '/api/accounts/{id}':
+    patch:
+      tags:
+        - Accounts
+      summary: Partitle update account
+      parameters:
+        - name: id
+          in: path
+          description: id of account
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: update dto
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdateDto'
+      responses:
+        '200':
+          description: Success
+  /api/authentication:
+    post:
+      tags:
+        - Authentication
+      summary: Login
+      requestBody:
+        description: username and password
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationPostDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationPostDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationPostDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationPostDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationPostDto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AuthenticationReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationReadDto'
+  /api/authentication/reset:
+    post:
+      tags:
+        - Authentication
+      summary: Request to send the reset password
+      parameters:
+        - name: email
+          in: query
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /api/authentication/new-password:
+    post:
+      tags:
+        - Authentication
+      summary: Change password for owner account
+      requestBody:
+        description: ''
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewPasswordDto'
+      responses:
+        '200':
+          description: Success
+  /api/cars:
+    get:
+      tags:
+        - Cars
+      parameters:
+        - name: IsAvailable
+          in: query
+          schema:
+            type: boolean
+        - name: IsApproved
+          in: query
+          schema:
+            type: boolean
+        - name: Page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: Limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: SearchValue
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CarListReadDtoPagingResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarListReadDtoPagingResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CarListReadDtoPagingResponseDto'
+    post:
+      tags:
+        - Cars
+      parameters:
+        - name: deviceId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  '/api/cars/{id}':
+    get:
+      tags:
+        - Cars
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CarReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CarReadDto'
+  /api/cars/managedby:
+    put:
+      tags:
+        - Cars
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/CarManagedByUpdateDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CarManagedByUpdateDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarManagedByUpdateDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CarManagedByUpdateDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CarManagedByUpdateDto'
+      responses:
+        '200':
+          description: Success
+  '/api/cars/{id}/activation':
+    put:
+      tags:
+        - Cars
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/CarActivationDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CarActivationDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarActivationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CarActivationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CarActivationDto'
+      responses:
+        '200':
+          description: Success
+  '/api/cars/{id}/approvement':
+    put:
+      tags:
+        - Cars
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - IsApproved
+              type: object
+              properties:
+                IsApproved:
+                  type: boolean
+                ImageFile:
+                  type: string
+                  format: binary
+                Name:
+                  type: string
+                ConfigFile:
+                  type: string
+                  format: binary
+                ManagedBy:
+                  type: integer
+                  format: int32
+            encoding:
+              IsApproved:
+                style: form
+              ImageFile:
+                style: form
+              Name:
+                style: form
+              ConfigFile:
+                style: form
+              ManagedBy:
+                style: form
+      responses:
+        '200':
+          description: Success
+  /api/check:
+    get:
+      tags:
+        - Check
+      responses:
+        '200':
+          description: Success
+  /api/issue:
+    get:
+      tags:
+        - Issue
+      parameters:
+        - name: CarId
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: TypeId
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: Page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: Limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: SearchValue
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IssueReadDtoPagingResponseDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDtoPagingResponseDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDtoPagingResponseDto'
+    post:
+      tags:
+        - Issue
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                TypeId:
+                  type: integer
+                  format: int32
+                CarId:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                Location:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+            encoding:
+              TypeId:
+                style: form
+              CarId:
+                style: form
+              Description:
+                style: form
+              Location:
+                style: form
+              image:
+                style: form
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+  '/api/issue/{id}':
+    get:
+      tags:
+        - Issue
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IssueReadDto'
+    patch:
+      tags:
+        - Issue
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/IssueCreateDto'
+      responses:
+        '200':
+          description: Success
+  /api/issuetypes:
+    get:
+      tags:
+        - IssueTypes
+      summary: Get all Type of System
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TypeReadDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TypeReadDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TypeReadDto'
+  /api/profile/password:
+    put:
+      tags:
+        - Profile
+      summary: Change password for owner account
+      requestBody:
+        description: ''
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProfilePasswordUpdateDto'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ProfilePasswordUpdateDto'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfilePasswordUpdateDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProfilePasswordUpdateDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProfilePasswordUpdateDto'
+      responses:
+        '200':
+          description: Success
+  /api/profile:
+    get:
+      tags:
+        - Profile
+      summary: Get personal Profile Infomation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountReadDto'
+    put:
+      tags:
+        - Profile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Phone:
+                  type: string
+                AvatarImage:
+                  type: string
+                  format: binary
+            encoding:
+              Phone:
+                style: form
+              AvatarImage:
+                style: form
+      responses:
+        '200':
+          description: Success
+  /api/roles:
+    get:
+      tags:
+        - Roles
+      summary: Get all Role of System
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleReadDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleReadDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleReadDto'
+components:
+  schemas:
+    AccountActivationDto:
+      required:
+        - isAvailable
+      type: object
+      properties:
+        isAvailable:
+          type: boolean
+      additionalProperties: false
+    AccountManagedByUpdateDto:
+      type: object
+      properties:
+        managerId:
+          type: integer
+          format: int32
+          nullable: true
+        staffId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AccountManagerDetailReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        assignedStaffs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountNotManagedByReadDto'
+          nullable: true
+        assignedCars:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarAssignedReadDto'
+          nullable: true
+      additionalProperties: false
+    AccountNotManagedByReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        isAvailable:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    AccountNotManagedByReadDtoPagingResponseDto:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountNotManagedByReadDto'
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        nextPage:
+          type: string
+          nullable: true
+        previousPage:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AccountReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        managedBy:
+          $ref: '#/components/schemas/AccountNotManagedByReadDto'
+      additionalProperties: false
+    AccountReadDtoPagingResponseDto:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountReadDto'
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        nextPage:
+          type: string
+          nullable: true
+        previousPage:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AccountStaffAssignToReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+      additionalProperties: false
+    AccountStaffDetailReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        avatar:
+          type: string
+          nullable: true
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        managedBy:
+          $ref: '#/components/schemas/AccountNotManagedByReadDto'
+        assignedCars:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarAssignedReadDto'
+          nullable: true
+      additionalProperties: false
+    AccountUpdateDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        roleId:
+          type: integer
+          format: int32
+        phone:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AuthenticationPostDto:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    AuthenticationReadDto:
+      type: object
+      properties:
+        token:
+          type: string
+          nullable: true
+        account:
+          $ref: '#/components/schemas/AccountReadDto'
+      additionalProperties: false
+    CarActivationDto:
+      required:
+        - isAvailable
+      type: object
+      properties:
+        isAvailable:
+          type: boolean
+      additionalProperties: false
+    CarAssignedReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        image:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        isConnecting:
+          type: boolean
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+        deviceId:
+          type: string
+          nullable: true
+        configUrl:
+          type: string
+          nullable: true
+        isApproved:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    CarListReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        isConnecting:
+          type: boolean
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+        isRunning:
+          type: boolean
+        deviceId:
+          type: string
+          nullable: true
+        isApproved:
+          type: boolean
+          nullable: true
+        managedBy:
+          $ref: '#/components/schemas/AccountNotManagedByReadDto'
+        assignTo:
+          $ref: '#/components/schemas/AccountStaffAssignToReadDto'
+      additionalProperties: false
+    CarListReadDtoPagingResponseDto:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarListReadDto'
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        nextPage:
+          type: string
+          nullable: true
+        previousPage:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CarManagedByUpdateDto:
+      type: object
+      properties:
+        carId:
+          type: integer
+          format: int32
+        managerId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CarReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        image:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        isConnecting:
+          type: boolean
+        isAvailable:
+          type: boolean
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+        deviceId:
+          type: string
+          nullable: true
+        configUrl:
+          type: string
+          nullable: true
+        isApproved:
+          type: boolean
+          nullable: true
+        managedBy:
+          $ref: '#/components/schemas/AccountNotManagedByReadDto'
+        assignTo:
+          $ref: '#/components/schemas/AccountStaffAssignToReadDto'
+        issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueReadDto'
+          nullable: true
+      additionalProperties: false
+    IContractResolver:
+      type: object
+      additionalProperties: false
+    IssueCreateDto:
+      type: object
+      properties:
+        typeId:
+          type: integer
+          format: int32
+        carId:
+          type: integer
+          format: int32
+        description:
+          type: string
+          nullable: true
+        location:
+          type: string
+          nullable: true
+      additionalProperties: false
+    IssueReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        type:
+          type: string
+          nullable: true
+        carId:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        image:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        isAvailable:
+          type: boolean
+          nullable: true
+        location:
+          type: string
+          nullable: true
+      additionalProperties: false
+    IssueReadDtoPagingResponseDto:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueReadDto'
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        nextPage:
+          type: string
+          nullable: true
+        previousPage:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NewPasswordDto:
+      required:
+        - email
+        - securityKey
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+          nullable: true
+        securityKey:
+          type: string
+        salt:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    OperationType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      type: integer
+      format: int32
+    ProfilePasswordUpdateDto:
+      type: object
+      properties:
+        newPassword:
+          type: string
+          nullable: true
+        oldPassword:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RoleReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TypeReadDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Please insert JWT with Bearer into field
+      name: Authorization
+      in: header
+security:
+  - Bearer: [ ]

@@ -1,0 +1,59 @@
+<div class="container mt-2">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+      <!-- Form -->
+      <form class="form" [formGroup]="form">
+        <h1>Create Display</h1>
+        <!-- screen name  -->
+        <!-- <div class="form-group">
+          <label for="screen-name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="screen-name"
+            placeholder="Fill your screen name"
+            name="screen-name"
+          />
+        </div> -->
+        <!-- End screen name  -->
+
+        <!-- Store name  -->
+        <div class="form-group">
+          <label for="template-name">Screen Name</label>
+          <mat-select class="form-control" formControlName="screenId">
+            <mat-option
+              *ngFor="let screen of (screens$ | async)?.result"
+              [value]="screen.id"
+            >
+              {{ screen.uid }}
+            </mat-option>
+          </mat-select>
+        </div>
+        <!-- End Srore name  -->
+
+        <!-- Template name  -->
+        <div class="form-group">
+          <label for="template-name">Template Name</label>
+          <mat-select class="form-control" formControlName="templateId">
+            <mat-option
+              *ngFor="let item of (templates$ | async)?.result"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="w-100"
+          (click)="create()"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

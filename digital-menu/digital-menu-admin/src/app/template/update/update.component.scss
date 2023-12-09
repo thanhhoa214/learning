@@ -1,0 +1,39 @@
+// mat-card {
+//   position: relative !important;
+//   float: left;
+//   width: 99%;
+//   overflow: hidden;
+// }
+// mat-card:before {
+//   content: "";
+//   float: left;
+//   padding-top: 57%;
+// }
+// .content {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+// }
+mat-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+}
+mat-drawer {
+  min-width: 22vw;
+}
+button {
+  width: 10rem;
+}
+
+mat-selection-list {
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.main-container {
+  padding-bottom: 5rem;
+}

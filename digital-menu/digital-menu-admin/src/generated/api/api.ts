@@ -1,0 +1,17 @@
+export * from './accounts.service';
+import { AccountsService } from './accounts.service';
+export * from './authentication.service';
+import { AuthenticationService } from './authentication.service';
+export * from './cars.service';
+import { CarsService } from './cars.service';
+export * from './check.service';
+import { CheckService } from './check.service';
+export * from './issue.service';
+import { IssueService } from './issue.service';
+export * from './issueTypes.service';
+import { IssueTypesService } from './issueTypes.service';
+export * from './profile.service';
+import { ProfileService } from './profile.service';
+export * from './roles.service';
+import { RolesService } from './roles.service';
+export const APIS = [AccountsService, AuthenticationService, CarsService, CheckService, IssueService, IssueTypesService, ProfileService, RolesService];

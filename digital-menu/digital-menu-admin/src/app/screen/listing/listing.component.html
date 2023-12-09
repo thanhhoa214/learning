@@ -1,0 +1,63 @@
+<div class="main-container container-fluid py-2 d-flex flex-column">
+  <h1 class="d-flex align-items-center ml-3 mt-2 mb-3 mat-display-1">
+    <mat-icon style="zoom: 1.5">cast</mat-icon>
+    <span class="ml-3">Screens</span>
+  </h1>
+  <app-create-button></app-create-button>
+  <ng-container
+    ><div class="p-3 table-wrapper">
+      <table class="table table-hover w-100">
+        <thead>
+          <tr class="bg-dark text-light text-center">
+            <th scope="col">ID</th>
+            <th scope="col" *ngIf="account.roleId === 3">Store Name</th>
+            <th scope="col">UDID</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let screen of screenResponse?.result">
+            <th scope="row">{{ screen.id }}</th>
+            <td *ngIf="account.roleId === 3">{{ screen.storeName }}</td>
+            <td>{{ screen.uid }}</td>
+            <td>
+              <mat-icon color="warn" (click)="removeScreen($event, screen.id)"
+                >close</mat-icon
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mr-auto mt-1">
+      <ul class="pagination">
+        <li class="page-item" [class.invisible]="!screenResponse?.previousPage">
+          <a
+            class="btn page-link mr-1"
+            (click)="loadScreens(pagingOptions.currentPage - 1)"
+            aria-label="Previous"
+          >
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let _ of getPagingArray(screenResponse?.count); index as i"
+          [class.active]="i + 1 === pagingOptions.currentPage"
+        >
+          <a class="btn page-link mr-1" (click)="loadScreens(i + 1)">{{
+            i + 1
+          }}</a>
+        </li>
+        <li class="page-item" [class.invisible]="!screenResponse?.nextPage">
+          <a
+            class="btn page-link mr-1"
+            (click)="loadScreens(pagingOptions.currentPage + 1)"
+          >
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,187 @@
+<div
+  class="position-fixed fixed-top w-100 h-100 {{
+    loading ? 'd-flex' : 'd-none'
+  }} flex-column justify-content-center align-items-center"
+  style="background-color: rgba(0, 0, 0, 0.6)"
+>
+  <div
+    class="rounded-circle overflow-hidden"
+    style="width: 20rem; height: 20rem"
+  >
+    <img
+      src="assets/images/loading.gif"
+      class="w-100 h-100"
+      style="object-fit: cover"
+    />
+  </div>
+  <b class="text-light text-uppercase" style="margin-top: -5rem"
+    >Your image is uploading</b
+  >
+  <span class="text-light h1 mt-n4">.....</span>
+</div>
+<mat-drawer-container autosize>
+  <mat-drawer-content class="main-container">
+    <mat-card class="m-1 bg-dark">
+      <div class="d-flex justify-content-center align-items-center content">
+        <h2 class="text-light" *ngIf="!templateData">Loading ...</h2>
+        <swd-root-template
+          class="w-100 border border-light rounded overflow-hidden"
+          id="template-root"
+          [attr.template]="getTemplateDataForUI()"
+          admin="true"
+        ></swd-root-template>
+      </div>
+    </mat-card>
+  </mat-drawer-content>
+  <mat-drawer mode="side" [(opened)]="isConfigurationShow" position="end">
+    <ng-container *ngIf="configuration.boxType">
+      <div class="container my-2 d-flex flex-column justify-content-between">
+        <h2 class="d-flex justify-content-between align-items-center">
+          <span>Box</span>
+          <button mat-stroked-button color="accent" (click)="resetBox()">
+            Reset
+          </button>
+        </h2>
+        <form [formGroup]="form">
+          <div class="form-group" *ngIf="configuration.headerTitle">
+            <label for="header-title"><b>Header Title</b></label>
+            <input
+              class="form-control"
+              #headerTitle
+              id="header-title"
+              placeholder="Enter Header Title"
+              formControlName="headerTitle"
+            />
+          </div>
+          <div class="form-group" *ngIf="configuration.headerSrc">
+            <b>Header Image</b>
+            <input
+              #headerSrcFileInput
+              type="file"
+              accept="image/png,image/jpeg"
+              placeholder="Enter Header Image"
+              class="d-none"
+              (change)="headerImageInputChange($event)"
+            />
+            <div class="d-flex">
+              <input
+                readonly
+                class="form-control"
+                #headerSrcInput
+                [value]="form.get('headerSrc').value | slice: -30"
+              />
+              <button
+                mat-stroked-button
+                size="small"
+                color="primary"
+                class="mx-1"
+                (click)="headerSrcFileInput.click()"
+              >
+                Upload
+              </button>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="configuration.footerTitle">
+            <label for="footer-title"><b>Footer Title</b></label>
+            <input
+              class="form-control"
+              id="footer-title"
+              placeholder="Enter Footer Title"
+              formControlName="footerTitle"
+            />
+          </div>
+          <div
+            class="form-group border-bottom pb-4"
+            *ngIf="configuration.footerSrc"
+          >
+            <b>Footer Image</b>
+            <input
+              #footerSrcFileInput
+              type="file"
+              accept="image/png,image/jpeg"
+              class="d-none"
+              (change)="footerImageInputChange($event)"
+            />
+            <div class="d-flex">
+              <input
+                readonly
+                class="form-control"
+                #footerSrcInput
+                [value]="form.get('footerSrc').value | slice: -30"
+              />
+              <button
+                mat-stroked-button
+                size="small"
+                color="primary"
+                class="mx-1"
+                (click)="footerSrcFileInput.click()"
+              >
+                Upload
+              </button>
+            </div>
+          </div>
+          <div
+            *ngFor="
+              let productList of configuration?.productLists;
+              index as indexOfProductList
+            "
+          >
+            <h3 class="d-flex justify-content-between align-items-center">
+              <b>Product List {{ indexOfProductList + 1 }}</b>
+              <div class="badge badge-success ml-1">
+                {{ productListElement?.selectedOptions.selected.length }}
+              </div>
+            </h3>
+            <mat-form-field class="w-100">
+              <mat-label>Title</mat-label>
+              <input
+                matInput
+                placeholder="Enter product list title"
+                [value]="productList.title"
+                (change)="updateProductListTitle($event, productList.id)"
+              />
+            </mat-form-field>
+            <b>Products</b>
+            <mat-selection-list
+              #productListElement
+              (selectionChange)="productListChange($event, productList.id)"
+              class="mb-5"
+            >
+              <mat-list-option
+                #productElement
+                *ngFor="let product of products"
+                [value]="product.id"
+                [selected]="isIncludes(productList.products, product.id)"
+                [disabled]="
+                  productListElement?.selectedOptions.selected.length >=
+                    productList.maxSize && !productElement.selected
+                "
+              >
+                {{ product.title }}
+              </mat-list-option>
+            </mat-selection-list>
+            <div class="border-bottom pb-4"></div>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+  </mat-drawer>
+</mat-drawer-container>
+<mat-toolbar
+  class="border border-top d-flex justify-content-between align-items-center"
+>
+  <span>{{ templateData?.name }}</span>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mx-2"
+      (click)="updateTemplate()"
+    >
+      Update
+    </button>
+    <button mat-stroked-button color="primary" (click)="goBack()">
+      Cancel
+    </button>
+  </div>
+</mat-toolbar>

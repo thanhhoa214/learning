@@ -1,0 +1,14 @@
+.tree-visible {
+  max-height: 10rem !important;
+  transition: max-height 0.25s ease-in;
+}
+.visible-animation {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+}
+
+.selected-child-node {
+  background-color: #eeeeee;
+  color: var(--blue);
+}

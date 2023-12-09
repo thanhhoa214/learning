@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between justify-items-center my-1">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <button mat-raised-button color="primary" (click)="goToTemplate(data.id)">
+    Choose
+  </button>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="w-100 overflow-hidden">
+    <img
+      [src]="data.src"
+      [alt]="data.title"
+      class="w-100 h-100"
+      style="object-fit: cover"
+    />
+  </div>
+</mat-dialog-content>

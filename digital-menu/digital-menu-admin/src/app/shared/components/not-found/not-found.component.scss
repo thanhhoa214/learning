@@ -1,0 +1,14 @@
+#main-content {
+  height: 90vh;
+  background: url(/assets/images/404notfound.jpg) no-repeat center center;
+}
+@media (min-width: 768px) {
+  #main-content button {
+    font-size: 3rem;
+  }
+  #main-content button mat-icon {
+    width: 5rem;
+    height: 5rem;
+    font-size: 5rem;
+  }
+}
