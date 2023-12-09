@@ -1,0 +1,81 @@
+<nav
+  class="bg-gray-100 dark:bg-gray-800 dark:text-gray-50 py-2 flex items-center justify-between"
+  *ngIf="language$ | async as language"
+>
+  <div class="flex items-center">
+    <img
+      class="h-12 pl-5 flex-shrink-0 cursor-pointer"
+      src="assets/images/logo.png"
+      alt="PI EXCHANGE"
+      routerLink="/"
+    />
+    <b class="text-lg hidden sm:inline-block">PI.EXCHANGE</b>
+    <a
+      class="mx-2 sm:mx-4 text-blue-500 hover:text-blue-700 dark:text-gray-50"
+      href="https://linkedin.com/in/thanhhoa214"
+      target="_blank"
+      [tuiHint]="'navbar.viewMyGithub' | transloco"
+    >
+      <tui-svg src="assets/navbar/images/linkedin.svg" class="w-8 h-8"></tui-svg>
+    </a>
+    <a
+      class="mr-2 sm:mr-4 text-gray-600 hover:text-gray-900 dark:text-gray-50"
+      href="https://github.com/thanhhoa214"
+      target="_blank"
+      [tuiHint]="'navbar.viewMyGithub' | transloco"
+    >
+      <tui-svg src="assets/navbar/images/github.svg" class="w-8 h-8"></tui-svg>
+    </a>
+    <a
+      class="text-gray-600 hover:text-gray-900 dark:text-gray-50 cursor-pointer"
+      (click)="openCV()"
+      [tuiHint]="'navbar.viewMyResume' | transloco"
+    >
+      <tui-svg src="tuiIconAttachLarge" class="w-8 h-8"></tui-svg>
+    </a>
+  </div>
+  <div class="flex items-center justify-end px-4 space-x-2">
+    <ng-container *ngIf="mode$ | async as mode">
+      <span class="hidden sm:inline-block">{{ 'navbar.mode.' + mode | transloco }}</span>
+      <tui-svg
+        src="assets/dark-mode/icons/{{ mode === 'dark' ? 'moon' : 'sunny' }}.svg"
+        class="text-yellow-500 cursor-pointer"
+        (click)="toggleMode(mode)"
+      ></tui-svg>
+    </ng-container>
+    <span class="hidden sm:inline-block">{{ 'navbar.language' | transloco }}</span>
+    <img
+      src="assets/navbar/images/vietnam-flag.svg"
+      alt="Viet Nam Flag"
+      class="flag"
+      [class.active]="language === 'vi'"
+      (click)="changeLanguage('vi')"
+      title="Sử dụng Tiếng Việt"
+    />
+    <img
+      src="assets/navbar/images/uk-flag.svg"
+      alt="Viet Nam Flag"
+      class="flag"
+      [class.active]="language === 'en'"
+      (click)="changeLanguage('en')"
+      title="Using English"
+    />
+  </div>
+</nav>
+
+<ng-template #pdfViewer let-data="data">
+  <div class="p-4">
+    <h2 class="text-3xl mb-4"><strong>Hoa Nguyen (Rin) Resumé</strong></h2>
+    <ngx-extended-pdf-viewer
+      [src]="data"
+      [useBrowserLocale]="true"
+      [textLayer]="true"
+      height="90vh"
+      [delayFirstView]="1000"
+      backgroundColor="#1F2937"
+      [enableDragAndDrop]="false"
+      [showBookmarkButton]="false"
+      [showOpenFileButton]="false"
+    ></ngx-extended-pdf-viewer>
+  </div>
+</ng-template>

@@ -1,0 +1,10 @@
+{
+  "language": "Language",
+  "viewMyResume": "View my resumé",
+  "mode": {
+    "dark": "Dark Mode",
+    "light": "Light Mode"
+  },
+  "viewMyLinkedin": "View my Linkedin",
+  "viewMyGithub": "View my Github"
+}

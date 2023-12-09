@@ -1,0 +1,10 @@
+{
+  "language": "Ngôn ngữ",
+  "viewMyResume": "Xem CV của tôi",
+  "mode": {
+    "dark": "Chế độ tối",
+    "light": "Chế độ sáng"
+  },
+  "viewMyLinkedin": "Linkedin của tôi",
+  "viewMyGithub": "Github của tôi"
+}
