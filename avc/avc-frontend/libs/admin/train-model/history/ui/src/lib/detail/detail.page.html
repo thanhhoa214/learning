@@ -1,0 +1,118 @@
+<aside class="relative">
+  <ng-container *ngIf="selectedModel$ | async as model; else loading">
+    <div class="top-right">
+      <tui-svg
+        class="mx-1 cursor-pointer text-red-500 hover:text-red-700"
+        src="tuiIconRemoveLarge"
+        routerLink=".."
+      ></tui-svg>
+    </div>
+    <main>
+      <h1>Model Detail</h1>
+
+      <b class="text-gray-600">Name </b>
+      <h2 class="mt-0">{{ model.name }}</h2>
+
+      <b class="text-gray-600">Trained Images Count</b>
+      <h3 class="mt-0 mb-3">{{ model.imageCount }}</h3>
+
+      <b class="text-gray-600">Statistic</b>
+      <h3 class="mt-0 mb-3">
+        <a
+          class="openable"
+          *ngIf="model.statisticUrl; else notHasStatisticUrl"
+          (click)="openImage(template)"
+          >Click to view statistic
+        </a>
+        <ng-template #notHasStatisticUrl> None </ng-template>
+      </h3>
+
+      <b class="text-gray-600">Created at</b>
+      <h3 class="mt-0 mb-3">{{ model.createdAt | date }}</h3>
+
+      <ng-container *ngIf="model.modelStatus !== MODEL_STATUS.Queued">
+        <b class="text-gray-600 mb-1"> Training Logs: </b>
+        <h3 class="mt-0 mb-3">
+          <a class="openable" (click)="openLog(logTemplate)"
+            >Click to open
+            <tui-svg src="tuiIconOutdentLarge" class="ml-1"></tui-svg>
+          </a>
+        </h3>
+
+        <b class="text-gray-600 mb-1"> Training Images: </b>
+        <h3 class="mt-0 mb-3">
+          <a class="openable" (click)="downloadImages()"
+            >Click to download
+            <tui-svg
+              src="assets/adc/icons/cloud-download-outline.svg#cloud-download-outline"
+              class="ml-1"
+            ></tui-svg>
+          </a>
+        </h3>
+      </ng-container>
+
+      <b class="text-gray-600 mb-1" *ngIf="model.modelStatus !== MODEL_STATUS.Queued"
+        >Training Status:
+      </b>
+      <tui-badge
+        *ngIf="model.modelStatus"
+        size="l"
+        [value]="model.modelStatus"
+        [status]="model.modelStatus | tuiMapper: modelStatusMapper"
+        class="self-start mb-2"
+      ></tui-badge>
+
+      <b class="text-gray-600 mb-1">Applying Status: </b>
+      <tui-badge
+        size="l"
+        [value]="model.isApplying ? 'Applying': 'None'"
+        [status]="model.isApplying ? TUI_STATUS.SUCCESS : TUI_STATUS.ERROR"
+        class="self-start mb-3"
+      ></tui-badge>
+
+      <button
+        tuiButton
+        size="m"
+        appearance="primary"
+        type="button"
+        *ngIf="!model.isApplying"
+        (click)="clickApply$.next()"
+        [disabled]="model.modelStatus !== MODEL_STATUS.Succeeded"
+      >
+        Apply for all
+      </button>
+    </main>
+
+    <ng-template #template>
+      <h2 class="bold mt-0">{{model.name}}</h2>
+      <div class="w-full flex justify-center mb-2 min-h-[45rem]">
+        <img [src]="model.statisticUrl" alt="" class="rounded w-full" />
+      </div>
+    </ng-template>
+  </ng-container>
+</aside>
+
+<ng-template #logTemplate let-observer>
+  <section class="w-full min-h-screen bg-gray-800 text-gray-100 text-left pl-6 pr-10 pt-4 pb-40">
+    <h1 class="flex items-center">
+      <tui-svg src="tuiIconOutdentLarge" class="size-m"></tui-svg><b>Training Logs</b>
+      <tui-marker-icon
+        src="tuiIconArrowDownLarge"
+        size="s"
+        [mode]="TUI_MARKER_SUCCESS"
+        (click)="downloadLog()"
+        title="Click to download logs"
+      ></tui-marker-icon>
+    </h1>
+    <div
+      class="w-full flex flex-col"
+      *ngIf="selectedModelLog$ | async as log; else loading"
+      [innerHTML]="log"
+    ></div></section
+></ng-template>
+
+<ng-template #loading
+  ><div class="flex flex-col items-center">
+    <tui-loader class="w-10 h-10"></tui-loader> <span class="animate-pulse">Loading...</span>
+  </div></ng-template
+>

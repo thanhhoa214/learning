@@ -1,0 +1,34 @@
+<main class="flex">
+  <section class="flex-grow">
+    <div class="flex justify-between items-center">
+      <h1>
+        <tui-svg src="assets/adc/icons/ribbon.svg#ribbon" class="size-m"></tui-svg> Manage Managers
+      </h1>
+      <button tuiButton type="button" size="m" icon="tuiIconPlusCircleLarge" routerLink="create">
+        Create new
+      </button>
+    </div>
+    <section class="w-100 flex flex-col items-stretch">
+      <section class="flex">
+        <tui-input tuiTextfieldSize="l" [formControl]="searchControl" class="flex-grow pr-4 mb-4">
+          Search by manager name ...
+        </tui-input>
+        <adca-available-filter
+          class="w-44"
+          (valueChange)="changeIsAvailable$.next($event)"
+        ></adca-available-filter>
+      </section>
+      <ng-container *ngIf="(managers$ | async) as managerResponse">
+        <adc-frontend-dynamic-table
+          [columns]="DYNAMIC_COLUMNS"
+          [response]="managerResponse"
+          [paginable]="true"
+          [selectable]="true"
+          (selectRow)="selectRow$.next($event)"
+          (loadPage)="loadPage$.next($event)"
+        ></adc-frontend-dynamic-table>
+      </ng-container>
+    </section>
+  </section>
+  <div class="pl-4"><router-outlet></router-outlet></div>
+</main>

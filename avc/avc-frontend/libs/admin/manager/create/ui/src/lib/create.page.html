@@ -1,0 +1,146 @@
+<aside class="flex-grow flex-shrink-0 relative">
+  <tui-svg
+    class="top-right cursor-pointer hover:text-red-400"
+    src="tuiIconRemoveLarge"
+    routerLink="/manager"
+  ></tui-svg>
+  <form class="p-5 flex flex-col" [formGroup]="form">
+    <h2>Create Manager</h2>
+
+    <div class="p-4 flex justify-center items-center relative">
+      <tui-input-file
+        link="Choose an avatar"
+        accept="image/*"
+        formControlName="avatarImage"
+        *ngIf="!form.value.avatarImage"
+      >
+      </tui-input-file>
+      <div class="relative" *ngIf="form.value.avatarImage">
+        <adc-frontend-avatar
+          [url]=" form.value.avatarImage | dataUrl | async"
+          size="xxl"
+        ></adc-frontend-avatar>
+        <input
+          type="file"
+          accept="image/*"
+          class="hidden"
+          (change)="clickChangeAvatar$.next($event)"
+          #inputAvatar
+        />
+        <tui-marker-icon
+          [mode]="MARKER_LINK"
+          src="tuiIconUpload"
+          size="s"
+          class="bottom-right border border-solid border-primary"
+          (click)="inputAvatar.click()"
+        ></tui-marker-icon>
+      </div>
+    </div>
+    <div class="flex flex-col mb-3">
+      <label>First name <span class="text-red-500">*</span> </label>
+      <tui-input
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        [tuiHintContent]="firstNameHint"
+        tuiTextfieldExampleText="First name here..."
+        formControlName="firstName"
+      >
+        <span class="text-gray-300">
+          First name here
+          <tui-svg src="tuiIconEdit"></tui-svg>
+        </span>
+      </tui-input>
+    </div>
+    <div class="flex flex-col mb-3">
+      <label>Last name <span class="text-red-500">*</span></label>
+      <tui-input
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        [tuiHintContent]="lastNameHint"
+        tuiTextfieldExampleText="Last name here..."
+        formControlName="lastName"
+      >
+        <span class="text-gray-300">
+          Last name here
+          <tui-svg src="tuiIconEdit"></tui-svg>
+        </span>
+      </tui-input>
+    </div>
+
+    <div class="flex flex-col mb-3">
+      <label>Email <span class="text-red-500">*</span></label>
+      <tui-input
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        [tuiTextfieldType]="TUI_INPUT_EMAIL"
+        [tuiHintContent]="emailHint"
+        tuiTextfieldExampleText="Email here..."
+        formControlName="email"
+      >
+        <span class="text-gray-300">
+          Email here
+          <tui-svg src="tuiIconEdit"></tui-svg>
+        </span>
+      </tui-input>
+    </div>
+
+    <div class="flex flex-col mb-3">
+      <label>Phone</label>
+      <tui-input-phone
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        countryCode="+84"
+        phoneMaskAfterCountryCode="### ###-###"
+        formControlName="phone"
+      >
+        <span class="text-gray-300">
+          Phone here
+          <tui-svg src="tuiIconEdit"></tui-svg>
+        </span>
+      </tui-input-phone>
+    </div>
+
+    <tui-checkbox-labeled formControlName="clearWhenSuccess" size="m" class="mb-3">
+      Clear when creating succeeded.
+    </tui-checkbox-labeled>
+
+    <button
+      tuiButton
+      (click)="clickCreate$.next()"
+      size="m"
+      [disabled]="form.invalid"
+      [showLoader]="(loading$ | async) || false"
+    >
+      Create
+    </button>
+  </form>
+  <ng-template #loading> Loading </ng-template>
+</aside>
+
+<ng-template #firstNameHint>
+  <adc-frontend-error-hint
+    name="First name"
+    [errors]="this.form.get('firstName')?.errors"
+    [errorChecks]="{required: true}"
+  ></adc-frontend-error-hint>
+</ng-template>
+
+<ng-template #lastNameHint>
+  <adc-frontend-error-hint
+    name="Last name"
+    [errors]="this.form.get('lastName')?.errors"
+    [errorChecks]="{required: true}"
+  ></adc-frontend-error-hint>
+</ng-template>
+
+<ng-template #emailHint>
+  <adc-frontend-error-hint
+    name="Email"
+    [errors]="this.form.get('email')?.errors"
+    [errorChecks]="{required: true, email: true}"
+  ></adc-frontend-error-hint>
+</ng-template>

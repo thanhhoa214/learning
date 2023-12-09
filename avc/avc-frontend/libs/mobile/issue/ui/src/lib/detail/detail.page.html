@@ -1,0 +1,48 @@
+<ng-container *ngIf="selectedIssue$ | async as issue; else loading">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="car"></ion-back-button>
+      </ion-buttons>
+      <ion-title collapse="condense"> {{issue.type || 'Detail Issue'}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen="true">
+    <main class="px-4 flex flex-col">
+      <ion-img
+        [src]="issue.image || 'assets/adc/icons/warning-outline.svg#warning-outline'"
+        class="-mx-4"
+      ></ion-img>
+      <div class="flex flex-col mt-4">
+        <span class="text-sm text-gray-500">Type </span>
+        <h3>{{ issue.type }}</h3>
+
+        <span class="text-sm text-gray-500">Created at</span>
+        <h3>{{ issue.createdAt | date:'h:mm:ss a, MMM dd, yyyy' }}</h3>
+
+        <span class="text-sm text-gray-500">Description</span>
+        <h3>{{ issue.description }}</h3>
+
+        <!-- <ng-container *ngIf="selectedCar$ | async as car">
+          <span class="text-sm text-gray-500">Occured by car</span>
+          <ion-item
+            button
+            detail
+            lines="none"
+            [routerLink]="['..','car',car.id]"
+            class="rounded-md"
+          >
+            <ion-avatar slot="start">
+              <img [src]="car.image || 'assets/adc/icons/car-sport-outline.svg'" />
+            </ion-avatar>
+            <ion-label>
+              <h3 class="!mb-0">{{car.name}}</h3>
+              <h4 class="text-gray-600">Device ID: {{car.deviceId}}</h4>
+            </ion-label>
+          </ion-item>
+        </ng-container> -->
+      </div>
+    </main>
+  </ion-content>
+</ng-container>
+<ng-template #loading> <tui-loader></tui-loader> </ng-template>

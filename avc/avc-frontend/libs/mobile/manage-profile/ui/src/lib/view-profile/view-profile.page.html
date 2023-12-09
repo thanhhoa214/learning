@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> My Profile</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="change-password">
+        <ion-icon name="finger-print-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="max-w-xl">
+  <adc-frontend-view-profile
+    class="mt-4 px-4"
+    [showChangePasswordButton]="false"
+  ></adc-frontend-view-profile>
+  <section class="px-4">
+    <button
+      tuiButton
+      size="m"
+      appearance="primary"
+      type="button"
+      (click)="clickLogout$.next()"
+      class="w-full danger"
+    >
+      Log out
+    </button>
+  </section>
+</ion-content>

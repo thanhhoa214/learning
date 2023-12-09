@@ -1,0 +1,59 @@
+<main class="flex">
+  <section class="flex-grow">
+    <section class="flex justify-between items-center">
+      <h1>
+        <tui-svg src="assets/adc/icons/car-sport.svg#car-sport" class="size-m"></tui-svg>
+        Manage Cars
+      </h1>
+      <div>
+        <button
+          tuiButton
+          type="button"
+          size="m"
+          appearance="outline"
+          icon="assets/adc/icons/wall-clock.svg#wall-clock"
+          routerLink="unapproved"
+          *ngIf="isAdmin$ | async"
+        >
+          Unapproved Cars ({{unapprovedCarsCount$ | async}})
+        </button>
+        <button
+          tuiButton
+          type="button"
+          size="m"
+          appearance="outline"
+          icon="tuiIconEditLarge"
+          routerLink="edit-default-config"
+          class="ml-2"
+          *ngIf="isAdmin$ | async"
+        >
+          Edit Default Config
+        </button>
+      </div>
+    </section>
+
+    <section class="w-100 flex flex-col items-stretch">
+      <section class="flex">
+        <tui-input tuiTextfieldSize="l" [formControl]="searchControl" class="flex-grow pr-4 mb-4">
+          Search by car name ...
+        </tui-input>
+        <adca-available-filter
+          [class.w-44]="(isAdmin$ | async)"
+          (valueChange)="changeIsAvailable$.next($event)"
+        ></adca-available-filter>
+      </section>
+      <ng-container *ngIf="(approvedCars$ | async) as carResponse">
+        <adc-frontend-dynamic-table
+          [columns]="DYNAMIC_COLUMNS"
+          [response]="carResponse"
+          [paginable]="true"
+          [selectable]="true"
+          (selectRow)="selectRow$.next($event)"
+          (loadPage)="loadPage$.next($event)"
+        >
+        </adc-frontend-dynamic-table>
+      </ng-container>
+    </section>
+  </section>
+  <div class="pl-4"><router-outlet></router-outlet></div>
+</main>

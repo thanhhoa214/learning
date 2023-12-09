@@ -1,0 +1,30 @@
+:host {
+  @apply block;
+}
+
+aside {
+  @apply bg-gray-100 w-full rounded-lg;
+  min-width: 20rem;
+  width: 20rem;
+  max-width: 24rem;
+  main {
+    @apply flex flex-col flex-wrap p-5;
+
+    h1 {
+      @apply text-xl w-full -mt-2;
+    }
+  }
+}
+
+.top-right {
+  @apply absolute top-3 right-3;
+}
+
+.openable {
+  @apply cursor-pointer text-gray-800 hover:text-primary-hover no-underline;
+}
+
+tui-marker-icon {
+  @apply ml-4 cursor-pointer;
+  @apply hover:bg-green-600 hover:bg-opacity-50;
+}

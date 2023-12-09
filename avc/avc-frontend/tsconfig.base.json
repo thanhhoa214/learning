@@ -1,0 +1,155 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": {
+      "@shared/language": ["libs/shared/language/src/index.ts"],
+      "@shared/state-management": ["libs/shared/state-management/src/index.ts"],
+      "@shared/app-config": ["libs/shared/app-config/src/index.ts"],
+      "@admin/core/ui": ["libs/admin/core/ui/src/index.ts"],
+      "@admin/auth/login/ui": ["libs/admin/auth/login/ui/src/index.ts"],
+      "@shared/auth/login/ui": ["libs/shared/auth/login/ui/src/index.ts"],
+      "@shared/auth/forgot-password/ui": ["libs/shared/auth/forgot-password/ui/src/index.ts"],
+      "@shared/auth/reset-password/ui": ["libs/shared/auth/reset-password/ui/src/index.ts"],
+      "@admin/auth/login/feature": ["libs/admin/auth/login/feature/src/index.ts"],
+      "@admin/core/feature": ["libs/admin/core/feature/src/index.ts"],
+      "@shared/api": ["libs/shared/api/src/index.ts"],
+      "@shared/util": ["libs/shared/util/src/index.ts"],
+      "@admin/auth/forgot-password/ui": ["libs/admin/auth/forgot-password/ui/src/index.ts"],
+      "@admin/auth/reset-password/ui": ["libs/admin/auth/reset-password/ui/src/index.ts"],
+      "@admin/auth/reset-password/feature": ["libs/admin/auth/reset-password/feature/src/index.ts"],
+      "@admin/auth/forgot-password/feature": [
+        "libs/admin/auth/forgot-password/feature/src/index.ts"
+      ],
+      "@shared/auth/login/data-access": ["libs/shared/auth/login/data-access/src/index.ts"],
+      "@shared/auth/util": ["libs/shared/auth/util/src/index.ts"],
+      "@shared/auth/logout/data-access": ["libs/shared/auth/logout/data-access/src/index.ts"],
+      "@shared/features/staff/data-access": ["libs/shared/features/staff/data-access/src/index.ts"],
+      "@shared/features/car/data-access": ["libs/shared/features/car/data-access/src/index.ts"],
+      "@admin/train-model/history/feature": ["libs/admin/train-model/history/feature/src/index.ts"],
+      "@admin/train-model/history/ui": ["libs/admin/train-model/history/ui/src/index.ts"],
+      "@admin/train-model/history/data-access": [
+        "libs/admin/train-model/history/data-access/src/index.ts"
+      ],
+      "@admin/train-model/routes": ["libs/admin/train-model/routes.ts"],
+      "@admin/staff/routes": ["libs/admin/staff/routes.ts"],
+      "@admin/auth/routes": ["libs/admin/auth/routes.ts"],
+      "@admin/staff/listing/feature": ["libs/admin/staff/listing/feature/src/index.ts"],
+      "@admin/staff/listing/ui": ["libs/admin/staff/listing/ui/src/index.ts"],
+      "@admin/staff/detail/feature": ["libs/admin/staff/detail/feature/src/index.ts"],
+      "@admin/staff/detail/ui": ["libs/admin/staff/detail/ui/src/index.ts"],
+      "@shared/ui/avatar": ["libs/shared/ui/avatar/src/index.ts"],
+      "@shared/features/manager/data-access": [
+        "libs/shared/features/manager/data-access/src/index.ts"
+      ],
+      "@admin/manager/listing/ui": ["libs/admin/manager/listing/ui/src/index.ts"],
+      "@admin/manager/detail/ui": ["libs/admin/manager/detail/ui/src/index.ts"],
+      "@admin/manager/detail/feature": ["libs/admin/manager/detail/feature/src/index.ts"],
+      "@admin/manager/listing/feature": ["libs/admin/manager/listing/feature/src/index.ts"],
+      "@admin/manager/routes": ["libs/admin/manager/routes.ts"],
+      "@admin/car/listing/feature": ["libs/admin/car/listing/feature/src/index.ts"],
+      "@admin/car/listing/ui": ["libs/admin/car/listing/ui/src/index.ts"],
+      "@admin/car/detail/ui": ["libs/admin/car/detail/ui/src/index.ts"],
+      "@admin/car/detail/feature": ["libs/admin/car/detail/feature/src/index.ts"],
+      "@shared/features/account/data-access": [
+        "libs/shared/features/account/data-access/src/index.ts"
+      ],
+      "@admin/staff/create/feature": ["libs/admin/staff/create/feature/src/index.ts"],
+      "@admin/staff/create/ui": ["libs/admin/staff/create/ui/src/index.ts"],
+      "@admin/core/util": ["libs/admin/core/util/src/index.ts"],
+      "@admin/staff/update/ui": ["libs/admin/staff/update/ui/src/index.ts"],
+      "@admin/staff/update/feature": ["libs/admin/staff/update/feature/src/index.ts"],
+      "@shared/features/issue/data-access": ["libs/shared/features/issue/data-access/src/index.ts"],
+      "@admin/issue/listing/ui": ["libs/admin/issue/listing/ui/src/index.ts"],
+      "@admin/issue/listing/feature": ["libs/admin/issue/listing/feature/src/index.ts"],
+      "@admin/issue/routes": ["libs/admin/issue/routes.ts"],
+      "@shared/ui/dynamic-table": ["libs/shared/ui/dynamic-table/src/index.ts"],
+      "@admin/manager/update/feature": ["libs/admin/manager/update/feature/src/index.ts"],
+      "@admin/manager/create/feature": ["libs/admin/manager/create/feature/src/index.ts"],
+      "@admin/manager/create/ui": ["libs/admin/manager/create/ui/src/index.ts"],
+      "@admin/manager/update/ui": ["libs/admin/manager/update/ui/src/index.ts"],
+      "@admin/car/update/feature": ["libs/admin/car/update/feature/src/index.ts"],
+      "@admin/car/update/ui": ["libs/admin/car/update/ui/src/index.ts"],
+      "@admin/issue/detail/ui": ["libs/admin/issue/detail/ui/src/index.ts"],
+      "@admin/issue/detail/feature": ["libs/admin/issue/detail/feature/src/index.ts"],
+      "@admin/dashboard/feature": ["libs/admin/dashboard/feature/src/index.ts"],
+      "@admin/dashboard/ui": ["libs/admin/dashboard/ui/src/index.ts"],
+      "@admin/dashboard/routes": ["libs/admin/dashboard/routes.ts"],
+      "@admin/car/unapproved-listing/ui": ["libs/admin/car/unapproved-listing/ui/src/index.ts"],
+      "@admin/car/unapproved-listing/feature": [
+        "libs/admin/car/unapproved-listing/feature/src/index.ts"
+      ],
+      "@shared/auth/forgot-password/data-access": [
+        "libs/shared/auth/forgot-password/data-access/src/index.ts"
+      ],
+      "@shared/auth/reset-password/data-access": [
+        "libs/shared/auth/reset-password/data-access/src/index.ts"
+      ],
+      "@shared/ui/confirm-dialog": ["libs/shared/ui/confirm-dialog/src/index.ts"],
+      "@shared/features/manage-profile/data-access": [
+        "libs/shared/features/manage-profile/data-access/src/index.ts"
+      ],
+      "@shared/features/manage-profile/ui": ["libs/shared/features/manage-profile/ui/src/index.ts"],
+      "@shared/features/manage-profile/feature": [
+        "libs/shared/features/manage-profile/feature/src/index.ts"
+      ],
+      "@mobile/auth/feature": ["libs/mobile/auth/feature/src/index.ts"],
+      "@mobile/auth/ui": ["libs/mobile/auth/ui/src/index.ts"],
+      "@mobile/core/ui": ["libs/mobile/core/ui/src/index.ts"],
+      "@mobile/car/ui": ["libs/mobile/car/ui/src/index.ts"],
+      "@mobile/car/feature": ["libs/mobile/car/feature/src/index.ts"],
+      "@mobile/manage-profile/feature": ["libs/mobile/manage-profile/feature/src/index.ts"],
+      "@mobile/manage-profile/ui": ["libs/mobile/manage-profile/ui/src/index.ts"],
+      "@mobile/issue/ui": ["libs/mobile/issue/ui/src/index.ts"],
+      "@mobile/issue/feature": ["libs/mobile/issue/feature/src/index.ts"],
+      "@mobile/manager/feature": ["libs/mobile/manager/feature/src/index.ts"],
+      "@mobile/manager/ui": ["libs/mobile/manager/ui/src/index.ts"],
+      "@admin/manage-profile/feature": ["libs/admin/manage-profile/feature/src/index.ts"],
+      "@admin/manage-profile/ui": ["libs/admin/manage-profile/ui/src/index.ts"],
+      "@admin/car/ui": ["libs/admin/car/ui/src/index.ts"],
+      "@admin/car/feature": ["libs/admin/car/feature/src/index.ts"],
+      "@shared/features/signalr/data-access": [
+        "libs/shared/features/signalr/data-access/src/index.ts"
+      ],
+      "@admin/train-model/train-by-images/data-access": [
+        "libs/admin/train-model/train-by-images/data-access/src/index.ts"
+      ],
+      "@admin/train-model/train-by-images/util": [
+        "libs/admin/train-model/train-by-images/util/src/index.ts"
+      ],
+      "@admin/train-model/train-by-images/ui": [
+        "libs/admin/train-model/train-by-images/ui/src/index.ts"
+      ],
+      "@admin/train-model/train-by-images/feature": [
+        "libs/admin/train-model/train-by-images/feature/src/index.ts"
+      ],
+      "@admin/train-model/train-by-zip/data-access": [
+        "libs/admin/train-model/train-by-zip/data-access/src/index.ts"
+      ],
+      "@admin/train-model/train-by-zip/feature": [
+        "libs/admin/train-model/train-by-zip/feature/src/index.ts"
+      ],
+      "@admin/train-model/train-by-zip/ui": ["libs/admin/train-model/train-by-zip/ui/src/index.ts"],
+      "@shared/ui/error-hint": ["libs/shared/ui/error-hint/src/index.ts"],
+      "@mobile/notification/ui": ["libs/mobile/notification/ui/src/index.ts"],
+      "@mobile/notification/feature": ["libs/mobile/notification/feature/src/index.ts"],
+      "@shared/timeago": ["libs/shared/timeago/src/index.ts"],
+      "@shared/ui/progress-dialog": ["libs/shared/ui/progress-dialog/src/index.ts"],
+      "@admin/dashboard/data-access": ["libs/admin/dashboard/data-access/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

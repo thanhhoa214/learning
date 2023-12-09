@@ -1,0 +1,9 @@
+<tui-avatar
+  *ngIf="url; else noAvatar"
+  [avatarUrl]="url"
+  [size]="size"
+  [rounded]="true"
+></tui-avatar>
+<ng-template #noAvatar>
+  <tui-svg [src]="placeholderImageAsset" [class]="placeholderClass + ' size-' + size"></tui-svg>
+</ng-template>

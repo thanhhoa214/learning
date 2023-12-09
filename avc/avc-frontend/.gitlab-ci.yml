@@ -1,0 +1,138 @@
+image: node:latest
+stages:
+  - install
+  - build
+  - deploy
+# - test
+
+variables:
+  LC_ALL: 'en_US.UTF-8'
+  LANG: 'en_US.UTF-8'
+  GIT_STRATEGY: fetch
+  API_URL: 'https://avc-api.azurewebsites.net'
+  PRODUCTION: 1
+  MESSAGE_ANDROID: "*[AVC Mobile]*\n*API_URL*: $API_URL\n*Android* has been built successfully: $CI_COMMIT_MESSAGE.\nClick to download *APK* file <http://gitlab.com/adc/adc-frontend/-/jobs/$CI_JOB_ID/artifacts/download|here>"
+  # MESSAGE_IOS: "[*AVC Mobile*]\n*API_URL*: $API_URL\n*iOS* has been built & upload to *TestFlight* successfully: \"$CI_COMMIT_MESSAGE\" Hey <users/104121422729815117160>! Please update & help me test it."
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm/
+
+#########################
+##### Install Stage #####
+#########################
+
+install:
+  stage: install
+  script:
+    - npm ci --cache .npm --prefer-offline
+  only:
+    - develop
+    - master
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 24 hrs
+
+#########################
+###### Build Stage ######
+#########################
+# build_admin:
+#   stage: build
+#   script:
+#     - npm run build:prod -- --project=admin
+#   only:
+#     - develop
+#     - master
+#   artifacts:
+#     paths:
+#       - www/apps/admin
+#     expire_in: 24 hrs
+
+build_mobile:
+  stage: build
+  script:
+    - npm run build:prod -- --project=mobile
+  only:
+    - develop
+    - master
+  artifacts:
+    paths:
+      - www/apps/mobile
+    expire_in: 24 hrs
+
+#########################
+###### Test Stage ######
+#########################
+
+# test:
+#   stage: test
+#   script:
+#     - npm run test:ci
+#   tags:
+#     - nng-ios
+#   variables:
+#     GIT_STRATEGY: none
+#   artifacts:
+#     paths:
+#       - coverage
+#     expire_in: 1 month
+
+#########################
+###### Deploy Stage ######
+#########################
+
+# pages:
+#   stage: deploy
+#   script:
+#     - echo "----------------------------------------------------------------"
+#     - echo "Deploy admin site to Gitlab Pages"
+#     - ls .
+#     - cp -r www/apps/admin public
+#   only:
+#     - develop
+#     - master
+#   artifacts:
+#     paths:
+#       - public
+#     expire_in: 1 hrs
+# upload_to_testflight:
+#   stage: deploy
+#   script:
+#     - echo "----------------------------------------------------------------"
+#     - echo "Upload to TestFlight by " $FASTLANE_USER
+#     - npm run sync -- ios
+#     - npm run deploy:ios
+#   variables:
+#     GIT_STRATEGY: none
+#   retry: 2
+#   only:
+#     - develop
+#     - master
+#   tags:
+#     - nng-ios
+
+build_apk:
+  stage: deploy
+  script:
+    - echo "----------------------------------------------------------------"
+    - echo "Build Android app to APK by "
+    - npm run nx -- run mobile:sync:android
+    - npm run mobile:deploy:android
+    - cp apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk $PWD/adc.apk
+    - |
+      curl -X POST  \
+      -H "Content-Type: application/json"  \
+      --data '{"text": "*[AVC Mobile]*\n*API_URL*: ${API_URL}\n*Android* has been built successfully: ${CI_COMMIT_MESSAGE}.\nClick to download *APK* file <http://gitlab.com/adc/adc-frontend/-/jobs/$CI_JOB_ID/artifacts/download|here>"}'  \
+      https://hooks.slack.com/services/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
+
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - develop
+    - master
+  artifacts:
+    paths:
+      - adc.apk
+    expire_in: 1 week

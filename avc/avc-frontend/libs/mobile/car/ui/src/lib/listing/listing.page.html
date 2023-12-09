@@ -1,0 +1,80 @@
+<ion-header>
+  <!-- <ion-toolbar></ion-toolbar> -->
+  <ion-toolbar>
+    <div class="h-14 w-full"></div>
+    <ion-title size="large" class="leading-10"> Assigned Cars</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      showCancelButton="focus"
+      animated
+      placeholder="Find your car by name"
+      [formControl]="searchControl"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  <ion-list>
+    <ion-list-header class="leading-8"> Connecting </ion-list-header>
+    <ng-container *ngIf="(connectingCars$ |async) || [] as connectingCars;else loading">
+      <ng-container *ngIf="connectingCars.length > 0; else noConnectingCar">
+        <ion-item
+          *ngFor="let car of connectingCars; trackBy:trackById"
+          button
+          detail
+          lines="none"
+          [routerLink]="[car.id]"
+        >
+          <ion-avatar slot="start">
+            <img [src]="car.image || 'assets/adc/icons/car-sport-outline.svg'" />
+          </ion-avatar>
+          <ion-label>
+            <h2 class="!font-bold">{{car.name}}</h2>
+            <h3>Device ID: {{car.deviceId}}</h3>
+            <p>Managed by: {{car.managedBy?.firstName}} {{car.managedBy?.lastName}}</p>
+          </ion-label>
+          <ion-icon name="radio-button-on-outline" slot="end" color="success"></ion-icon>
+        </ion-item>
+      </ng-container>
+      <ng-template #noConnectingCar>
+        <ion-item lines="none">
+          <ion-label>
+            <h2>No car in connecting state</h2>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </ng-container>
+
+    <ion-list-header class="leading-8"> Disconnected </ion-list-header>
+
+    <ng-container *ngIf="(notConnectingCars$ |async) || [] as notConnectingCars;else loading">
+      <ng-container *ngIf="notConnectingCars.length > 0; else noWaitingCar">
+        <ion-item
+          *ngFor="let car of notConnectingCars; trackBy:trackById"
+          button
+          detail
+          lines="none"
+          [routerLink]="[car.id]"
+        >
+          <ion-avatar slot="start">
+            <img [src]="car.image || 'assets/adc/icons/car-sport-outline.svg'" />
+          </ion-avatar>
+          <ion-label>
+            <h2 class="!font-semibold text-gray-700">{{car.name}}</h2>
+            <h3 class="text-gray-600">Device ID: {{car.deviceId}}</h3>
+            <p>Managed by: {{car.managedBy?.firstName}} {{car.managedBy?.lastName}}</p>
+          </ion-label>
+          <ion-icon name="radio-button-on-outline" slot="end" color="danger"></ion-icon>
+        </ion-item>
+      </ng-container>
+      <ng-template #noWaitingCar>
+        <ion-item lines="none">
+          <ion-label>
+            <h2>No car in disconnected state</h2>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </ng-container>
+  </ion-list>
+</ion-content>
+<ng-template #loading><tui-loader></tui-loader></ng-template>

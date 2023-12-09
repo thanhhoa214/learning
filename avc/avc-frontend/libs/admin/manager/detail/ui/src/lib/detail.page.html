@@ -1,0 +1,121 @@
+<aside class="relative" [class.fullpage]="isFullPage$ | async">
+  <main *ngIf="selectedManager$ | async as manager; else loading">
+    <div class="top-right">
+      <tui-svg
+        class="mx-1 cursor-pointer text-green-600 hover:text-green-800"
+        src="tuiIconExternalLarge"
+        [routerLink]="'/manager/detail/'+manager.id"
+      ></tui-svg>
+      <tui-svg
+        class="mx-1 cursor-pointer text-yellow-400 hover:text-yellow-500"
+        src="tuiIconEditLarge"
+        [routerLink]="'/manager/update/'+manager.id"
+        *ngIf="manager.isAvailable"
+      ></tui-svg>
+      <tui-svg
+        class="mx-1 cursor-pointer text-red-500 hover:text-red-700"
+        src="tuiIconRemoveLarge"
+        routerLink="/manager"
+      ></tui-svg>
+    </div>
+    <h1 class="text-xl w-full">
+      <tui-svg src="assets/adc/icons/ribbon.svg#ribbon" class="size-m"></tui-svg>
+      Manager Detail
+    </h1>
+    <section class="manager__information">
+      <label>Full name</label>
+      <h2 class="bold my-0">{{ manager.firstName }} {{ manager.lastName }}</h2>
+      <adc-frontend-avatar
+        class="my-4"
+        [url]="manager.avatar || ''"
+        size="xxl"
+      ></adc-frontend-avatar>
+
+      <label>Email</label>
+      <h3 class="bold mt-0">{{ manager.email }}</h3>
+
+      <label>Phone</label>
+      <h3 class="bold mt-0">
+        {{ manager.phone ? (manager.phone | tuiFormatPhone:'+84':'### ###-###') : 'None' }}
+      </h3>
+
+      <b class="text-gray-600 text-sm mb-1">Activation Status</b>
+      <div class="self-start mb-3">
+        <tui-badge
+          size="l"
+          [value]="manager.isAvailable ? 'Active' : 'Inactive'"
+          [status]="manager.isAvailable ? TUI_STATUS.SUCCESS : TUI_STATUS.ERROR"
+          class="mr-2"
+        ></tui-badge>
+        <button
+          tuiButton
+          size="s"
+          appearance="outline"
+          type="button"
+          (click)="clickActivate$.next()"
+          [class.deactivate]="manager.isAvailable"
+        >
+          {{manager.isAvailable ? 'Deactivate': 'Reactivate'}}
+        </button>
+      </div>
+
+      <section *ngIf="(isFullPage$ | async) === (false || null || undefined)">
+        <label>Assigned Cars ({{manager.assignedCars?.length}})</label>
+        <ul class="text-sm mb-3">
+          <li class="!ml-3" *ngFor="let car of manager.assignedCars">
+            <a tuiLink [routerLink]="'/car/'+ car.id">{{car.name}}</a>
+          </li>
+        </ul>
+
+        <label>Assigned Staffs ({{manager.assignedStaffs?.length}})</label>
+        <ul class="text-sm mb-3">
+          <li class="!ml-3" *ngFor="let staff of manager.assignedStaffs">
+            <a tuiLink [routerLink]="'/staff/'+ staff.id">{{staff.firstName}} {{staff.lastName}}</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="manager__information-extend" *ngIf="(isFullPage$ | async)">
+      <label>Assigned Cars ({{manager.assignedCars?.length}})</label>
+      <ng-container *ngIf="manager.assignedCars && manager.assignedCars.length > 0; else noCar">
+        <adc-frontend-dynamic-table
+          class="mt-1 mb-3"
+          [columns]="CAR_DYNAMIC_COLUMNS"
+          [array]="manager.assignedCars || []"
+          [selectable]="true"
+          [paginable]="true"
+          (selectRow)="selectCar$.next($event)"
+        ></adc-frontend-dynamic-table>
+      </ng-container>
+      <ng-template #noCar>
+        <h3 class="mt-0 mb-3">This manager has no car yet.</h3>
+      </ng-template>
+
+      <label>Assigned Staffs ({{manager.assignedStaffs?.length}})</label>
+      <ng-container
+        *ngIf="manager.assignedStaffs && manager.assignedStaffs.length > 0; else noStaff"
+      >
+        <adc-frontend-dynamic-table
+          [columns]="STAFF_DYNAMIC_COLUMNS"
+          [array]="manager.assignedStaffs || []"
+          [selectable]="true"
+          [paginable]="true"
+          (selectRow)="selectStaff$.next($event)"
+          class="mt-1 mb-3"
+        ></adc-frontend-dynamic-table>
+      </ng-container>
+      <ng-template #noStaff>
+        <h3 class="mt-0 mb-3">This manager has no staffs yet.</h3>
+      </ng-template>
+    </section>
+
+    <div class="px-4 md:w-1/4">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <ng-template #loading
+    ><div class="h-full flex justify-center items-center"><tui-loader></tui-loader></div>
+  </ng-template>
+</aside>

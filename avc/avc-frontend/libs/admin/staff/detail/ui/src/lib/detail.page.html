@@ -1,0 +1,100 @@
+<aside class="relative" [class.fullpage]="isFullPage$ | async">
+  <main *ngIf="selectedStaff$ | async as staff; else loading">
+    <div class="top-right">
+      <tui-svg
+        class="mx-1 cursor-pointer text-green-600 hover:text-green-800"
+        src="tuiIconExternalLarge"
+        [routerLink]="'/staff/detail/'+staff.id"
+      ></tui-svg>
+      <tui-svg
+        class="mx-1 cursor-pointer text-yellow-400 hover:text-yellow-500"
+        src="tuiIconEditLarge"
+        [routerLink]="'/staff/update/'+staff.id"
+        *ngIf="(isAdmin$ | async) && staff.isAvailable"
+      ></tui-svg>
+      <tui-svg
+        class="mx-1 cursor-pointer text-red-500 hover:text-red-700"
+        src="tuiIconRemoveLarge"
+        [routerLink]="(backTo$ | async) || '/staff'"
+      ></tui-svg>
+    </div>
+    <h1>
+      <tui-svg src="assets/adc/icons/people.svg#people" class="size-m"></tui-svg>
+      Staff Detail
+    </h1>
+    <section class="staff__information">
+      <label>Full name</label>
+      <h2 class="bold my-0">{{ staff.firstName }} {{ staff.lastName }}</h2>
+      <adc-frontend-avatar class="my-4" [url]="staff.avatar || ''" size="xxl"></adc-frontend-avatar>
+      <!-- <h2 class="bold mt-0">{{ staff.role }}</h2> -->
+      <label>Email</label>
+      <h3 class="bold mt-0">{{ staff.email }}</h3>
+      <label>Phone</label>
+      <h3 class="bold mt-0">
+        {{ staff.phone ? (staff.phone | tuiFormatPhone:'+84':'### ###-###'): 'None'}}
+      </h3>
+      <label>Managed by</label>
+      <h3 class="bold mt-0">
+        <ng-container *ngIf="staff.managedBy; else notHasManagedBy">
+          {{ staff.managedBy?.firstName }} {{ staff.managedBy?.lastName }}
+        </ng-container>
+        <ng-template #notHasManagedBy> None </ng-template>
+      </h3>
+
+      <ng-container *ngIf="isAdmin$ | async">
+        <b class="text-gray-600 mb-1">Activation Status</b>
+        <div class="self-start mb-3">
+          <tui-badge
+            size="l"
+            [value]="staff.isAvailable ? 'Active' : 'Inactive'"
+            [status]="staff.isAvailable ? TUI_STATUS.SUCCESS : TUI_STATUS.ERROR"
+            class="mr-2"
+          ></tui-badge>
+          <button
+            tuiButton
+            size="s"
+            appearance="outline"
+            type="button"
+            (click)="this.clickActivate$.next()"
+            [class.deactivate]="staff.isAvailable"
+          >
+            {{staff.isAvailable ? 'Deactivate': 'Reactivate'}}
+          </button>
+        </div>
+      </ng-container>
+
+      <section *ngIf="(isFullPage$ | async) === undefined">
+        <label>Assigned Cars ({{staff.assignedCars?.length}})</label>
+        <ul class="text-sm mb-3">
+          <li class="!ml-3" *ngFor="let car of staff.assignedCars">
+            <a tuiLink [routerLink]="'/car/'+ car.id">{{car.name}}</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="staff__information-extend" *ngIf="(isFullPage$ | async)">
+      <label>Assigned Cars ({{staff.assignedCars?.length}})</label>
+      <ng-container *ngIf="staff.assignedCars && staff.assignedCars.length > 0; else noCar">
+        <adc-frontend-dynamic-table
+          class="mt-1 mb-3"
+          [columns]="CAR_DYNAMIC_COLUMNS"
+          [array]="staff.assignedCars || []"
+          [selectable]="true"
+          [paginable]="true"
+          (selectRow)="selectCar$.next($event)"
+        ></adc-frontend-dynamic-table>
+      </ng-container>
+      <ng-template #noCar>
+        <h3 class="mt-0 mb-3">This staff has no car yet.</h3>
+      </ng-template>
+    </section>
+
+    <div class="px-4 md:w-1/4">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <ng-template #loading>
+    <div class="h-full flex justify-center items-center"><tui-loader></tui-loader></div>
+  </ng-template>
+</aside>

@@ -1,0 +1,31 @@
+adc-frontend-view-profile {
+  --align-items: center;
+  --input-phone-text-align: center;
+}
+
+ion-content {
+  --padding-bottom: 2rem;
+}
+
+:host ::ng-deep button {
+  &.danger {
+    tui-wrapper[data-appearance='primary'] {
+      @apply bg-accent;
+      &:after {
+        @apply border-accent;
+      }
+
+      &[data-state='hovered'] {
+        @apply text-red-50;
+      }
+
+      &[data-state='pressed'] {
+        @apply bg-accent-active bg-white;
+      }
+    }
+  }
+}
+
+ion-button:focus {
+  outline: none !important;
+}

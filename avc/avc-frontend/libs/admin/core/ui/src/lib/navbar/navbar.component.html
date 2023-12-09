@@ -1,0 +1,81 @@
+<ng-container
+  *ngIf="{
+    me: me$ | async,
+    notifications: notifications$ | async,
+    unreadCount: unreadCount$ | async
+  } as view"
+>
+  <nav class="bg-gray-900 text-gray-50">
+    <div class="max-w-7xl mx-auto px-2">
+      <div class="relative flex items-center justify-between h-topbar">
+        <img
+          class="block h-12 w-auto px-3 flex-shrink-0 cursor-pointer"
+          src="assets/images/logo.svg"
+          alt="Workflow"
+          routerLink="/"
+        />
+        <div class="flex items-center pr-2 space-x-6">
+          <div class="border-2 rounded-full p-1 relative" [class.border-solid]="view.unreadCount">
+            <tui-svg
+              src="tuiIconBellLarge"
+              class="cursor-pointer"
+              (click)="toggleNotifications()"
+              [tuiDropdownContent]="dropdownContent"
+              [tuiDropdown]="opened"
+              tuiDropdownAlign="right"
+              tuiDropdownDirection="bottom"
+            >
+            </tui-svg>
+            <tui-badge class="!absolute -top-3 -right-3 !bg-red-600" *ngIf="view.unreadCount"
+              ><b class="text-white">{{ view.unreadCount }}</b></tui-badge
+            >
+          </div>
+          <ng-container *ngIf="view.me; else notAuthen">
+            <div class="ml-3 relative">
+              <adca-navbar-avatar-dropdown></adca-navbar-avatar-dropdown>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #notAuthen>
+    <button tuiButton type="button" size="m" appearance="outline" routerLink="/login" class="ml-3">
+      <span class="text-gray-50">Login</span>
+    </button>
+  </ng-template>
+
+  <ng-template #dropdownContent>
+    <cdk-virtual-scroll-viewport
+      tuiScrollable
+      [itemSize]="view.notifications?.result?.length"
+      class="h-60 w-80 tui-zero-scrollbar"
+      (scrolledIndexChange)="handler($event)"
+    >
+      <tui-data-list #list *ngIf="view.notifications?.result?.length; else whenNoNoti">
+        <ng-container *cdkVirtualFor="let item of view.notifications?.result">
+          <button tuiOption [value]="item.type" size="s" class="space-x-2 !py-2">
+            <div class="max-w-18rem flex justify-between items-center">
+              <img
+                *ngIf="item | notificationIcon as iconSrc"
+                [src]="iconSrc"
+                class="w-8 h-8 p-1 -ml-1 mr-2 border border-solid border-primary rounded-full"
+                [class.border-red-500]="iconSrc.includes('error')"
+                [class.border-green-500]="iconSrc.includes('success')"
+              />
+              <section class="flex-grow flex flex-col">
+                <span class="text-sm">{{ item.message }}</span>
+                <span class="text-xs text-gray-500">{{ item.createdAt | timeago }}</span>
+              </section>
+              <tui-svg src="tuiIconCommentLarge" *ngIf="!item.isRead"></tui-svg>
+            </div>
+          </button>
+        </ng-container>
+      </tui-data-list>
+    </cdk-virtual-scroll-viewport>
+    <ng-template #whenNoNoti>
+      <section class="p-4">You don't have any notification</section>
+    </ng-template>
+  </ng-template>
+</ng-container>

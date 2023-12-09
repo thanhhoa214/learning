@@ -1,0 +1,17 @@
+.tab-selected {
+  @apply text-primary;
+  ion-label {
+    @apply font-bold;
+  }
+}
+ion-tab-bar {
+  min-height: 3.2rem;
+}
+ion-tab-button {
+  @apply text-gray-500;
+  --color-selected: var(--tui-primary) !important;
+}
+
+.selected {
+  @apply text-primary;
+}
