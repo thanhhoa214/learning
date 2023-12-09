@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "name": "Spring",
+    "capacity": 10
+  },
+
+  {
+    "id": "2",
+    "name": "Summer",
+    "capacity": 20
+  },
+  {
+    "id": "3",
+    "name": "Winter",
+    "capacity": 30
+  }
+]
