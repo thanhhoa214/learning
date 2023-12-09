@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="style4highequation.css">
+   <script src="action.js"></script>
+   <script src="classExpression.js"></script>  
+</head>
+
+<body>
+   <div class="container margin">
+      <h1>Welcome to Solving High Expression</h1>
+      <div class="container margin-top">
+         <input type="text" class="form-control text-muted" name="text-input" 
+               id="data" placeholder="3 9 -6 represent for 3x² + 9x - 6">
+         <button type="button" class="btn btn-success" onclick="showResult()">OK</button>
+         <h4 id='status'></h4>
+      </div>
+      <div class="jumbotron">
+         <p id='show'>Waiting for result...</p>
+      </div>
+   </div>
+</body>
+
+</html>

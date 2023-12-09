@@ -1,0 +1,16 @@
+.margin{
+   margin-top: 3rem;
+}
+.margin-top button{
+   margin-top: 1rem;
+}
+.jumbotron {
+   padding: 2rem 2rem;
+}
+#show pre{
+   font-size: 1.75vw;
+   text-indent: 2rem;
+}
+#show h2 {
+   font-size: 2.5vw;
+}

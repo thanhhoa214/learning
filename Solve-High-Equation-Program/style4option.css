@@ -1,0 +1,29 @@
+body {
+   background-color: rgb(188, 218, 245);
+}
+.container {
+   margin-top: 30%;
+}
+.list-group a:hover{
+   color: black;
+   background-color: rgba(164, 236, 104, 0.904);
+}
+.list-group a {
+   color: black;
+   background-color: rgb(204, 236, 252);
+}
+.copyright {
+   position: absolute;
+   left: -5px;
+   bottom: 10px;
+   width: 100%;
+   text-align: center;
+}
+.copyright i {
+   font-size: 25px;
+   color: rgb(146, 143, 143);
+   margin-left: 0.5rem;
+}
+.copyright i:hover {
+   color: black;
+}

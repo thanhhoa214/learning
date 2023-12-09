@@ -1,0 +1,25 @@
+body {
+   margin: 0;
+}
+#btnCollect {
+   position: absolute;
+   left: 17%;
+   top: 0.5rem;
+   border: none;
+   background-color: inherit;
+   font-size: 25px;
+}
+#frameLeft {
+   position: absolute;
+   left: 0;
+   max-width: 20%;
+   height: 100%;
+   background-color: aquamarine;
+}
+#frameRight {
+   position: absolute;
+   right: 0;
+   width: 80%;
+   height: 100%;
+   background-color: rgb(147, 156, 153);
+}
