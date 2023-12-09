@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Slider3D.css">
+    <link rel="stylesheet" href="../css/oxford.css">
+    <link rel="stylesheet" href="../css/coviet.css">
+    <title>Testing Ielts by yourself</title>
+    <style>
+        body {
+            background-color: rgb(209, 209, 209);
+            height: 100vh;
+        }
+
+        h1#cateTitle {
+            display: inline-block;
+            padding: 0.5% 5%;
+            background-color: rgb(150, 210, 212);
+            color: rgb(248, 248, 248);
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow:
+                -1px 1px 2px rgba(0, 0, 0, 0.9),
+                1px 1px 2px rgba(0, 0, 0, 0.9),
+                1px -1px 0 rgba(0, 0, 0, 0.9),
+                -1px -1px 0 rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, .37);
+        }
+
+        .card.text-center.text-dark {
+            background-color: inherit;
+            border: none;
+        }
+
+        .modal-dialog {
+            max-width: 60%;
+        }
+
+        .modal-content {
+            background-image: linear-gradient(rgb(255, 152, 152), rgb(255, 255, 68));
+        }
+
+        .modal-header {
+            background-color: rgb(255, 247, 138);
+        }
+
+        .modal-title {
+            font-size: 25px;
+        }
+
+        .blur {
+            background: rgba(255, 255, 255, 0.178);
+        }
+
+        #wordEng {
+            font-size: 2.5vw;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        img#wordImg {
+            max-height: 22vw;
+        }
+
+        .meaning {
+            display: block;
+            padding: 0.2rem;
+            margin: 0 0.5rem 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.205);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.767);
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container pb-1 mb-3 text-center">
+        <h1 id="cateTitle"></h1>
+    </div>
+    <section id="slider" class="d-block">
+        <input type="radio" name="slider" id="s1">
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3" checked>
+        <input type="radio" name="slider" id="s4">
+        <input type="radio" name="slider" id="s5">
+        <label for="s1" id="slide1" class="row" onclick="loadSlide('slide1')"></label>
+        <label for="s2" id="slide2" class="row" onclick="loadSlide('slide2')"></label>
+        <label for="s3" id="slide3" class="row" onclick="loadSlide('slide3')"></label>
+        <label for="s4" id="slide4" class="row" onclick="loadSlide('slide4')"></label>
+        <label for="s5" id="slide5" class="row" onclick="loadSlide('slide5')"></label>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="meaningModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="meaningModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/testing.js"></script>
+<script src="../js/modal-customise.js"></script>
+
+</html>
