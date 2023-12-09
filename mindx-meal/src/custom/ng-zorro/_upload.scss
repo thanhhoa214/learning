@@ -1,0 +1,11 @@
+nz-upload-list.ant-upload-list {
+    @apply block mt-2;
+}
+
+.ant-upload-list-picture .ant-upload-list-item-error, .ant-upload-list-picture-card .ant-upload-list-item-error {
+    @apply border-gray-300;
+}
+
+.ant-upload.ant-upload-drag {
+    @apply h-auto;
+}

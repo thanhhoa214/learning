@@ -1,0 +1,35 @@
+<nz-layout class="min-h-screen">
+  <nz-header class="p-0 w-full z-50 sticky top-0 left-0" nzTheme="light">
+    <div class="flex justify-between items-center gap-20 h-16 w-full px-6">
+      <a routerLink="/" class="space-x-2 flex items-center">
+        <img src="assets/shopeefoodvn.png" alt="Shopee logo" class="h-6" />
+      </a>
+      <div class="flex items-end h-full">
+        <nz-tabset nzSize="large" nzLinkRouter>
+          <nz-tab>
+            <a *nzTabLink nz-tab-link routerLink="/food"> Food </a>
+          </nz-tab>
+          <nz-tab>
+            <a *nzTabLink nz-tab-link routerLink="/category"> Category </a>
+          </nz-tab>
+          <nz-tab>
+            <a *nzTabLink nz-tab-link routerLink="/area"> Area </a>
+          </nz-tab>
+        </nz-tabset>
+      </div>
+      <nz-input-group nzSize="large" [nzSuffix]="searchIconTemplate" class="ml-auto">
+        <input type="text" nz-input placeholder="Find your delicious lunch..." />
+      </nz-input-group>
+      <button nz-button nzType="primary" nzSize="large">Đăng nhập</button>
+    </div>
+  </nz-header>
+  <nz-content class="overflow-auto">
+    <main class="p-6 bg-white min-h-main">
+      <router-outlet></router-outlet>
+    </main>
+  </nz-content>
+</nz-layout>
+
+<ng-template #searchIconTemplate>
+  <i nz-icon nzType="ionicons:search-outline" class="text-2xl leading-3 text-gray-400"></i>
+</ng-template>

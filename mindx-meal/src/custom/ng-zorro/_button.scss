@@ -1,0 +1,18 @@
+[nz-button] {
+  [nz-icon]:not([nztype='loading']) {
+    @apply text-xl;
+    vertical-align: -0.275em;
+  }
+
+  &[nzSize='large'] {
+    > [nz-icon]:not([nztype='loading']) + span,
+    > span + [nz-icon]:not([nztype='loading']) {
+      @apply ml-1;
+    }
+
+    [nz-icon]:not([nztype='loading']) {
+      @apply text-2xl;
+      vertical-align: -0.29em;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<ng-container *ngIf="meal$ | async as meal">
+  <div class="h-96"><img [src]="meal.strMealThumb" class="w-full h-full object-cover" /></div>
+  <div class="py-3 px-5">
+    <p class="font-bold mb-0">{{ meal.strMeal }}</p>
+    <p class="mb-0 text-xs">Gradients: {{ meal.strIngredient1 }}, {{ meal.strIngredient2 }}, ...</p>
+    <p class="mb-0 text-xs">
+      Category: <nz-tag nzColor="blue"> {{ meal.strCategory }}</nz-tag>
+    </p>
+  </div>
+</ng-container>

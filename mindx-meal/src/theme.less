@@ -1,0 +1,59 @@
+// Reflect with custom/mindx/theme.scss but only use for custom ng-zorro
+@mindx-primary: #ee4d2d;
+// @mindx-secondary: #d14a43;
+
+@mindx-primary-50: #ff7f5f;
+@mindx-primary-100: #ff7555;
+@mindx-primary-200: #ff6b4b;
+@mindx-primary-300: #ff6141;
+@mindx-primary-400: #f85737;
+@mindx-primary-500: @mindx-primary;
+@mindx-primary-600: #e44323;
+@mindx-primary-700: #da3919;
+@mindx-primary-800: #d02f0f;
+@mindx-primary-900: #c62505;
+
+@mindx-font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+// Custom Theming for NG-ZORRO
+// For more information: https://ng.ant.design/docs/customize-theme/en
+@import '../node_modules/ng-zorro-antd/ng-zorro-antd.less';
+
+// Override less variables to here
+// View all variables: https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/style/themes/default.less
+
+
+@ant-prefix: ant;
+
+@font-family: @mindx-font-family;
+// -------- Colors -----------
+@primary-color: @mindx-primary;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+@primary-1: @mindx-primary-50;
+@primary-2: @mindx-primary-100;
+@primary-3: @mindx-primary-200;
+@primary-4: @mindx-primary-300;
+@primary-5: @mindx-primary-400;
+@primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
+@primary-7: @mindx-primary-500;
+@primary-8: @mindx-primary-600;
+@primary-9: @mindx-primary-700;
+@primary-10: @mindx-primary-800;
+
+@layout-header-background: @layout-body-background;
+@layout-sider-background: @layout-body-background;
+
+@border-radius-base: 6px;
+
+// Button
+@btn-font-weight: 600;
+
+// Table
+@table-row-hover-bg: @primary-1;
+
+// Dropdown
+@dropdown-font-size: 1rem;
+@dropdown-vertical-padding: 0.5rem;
+@dropdown-edge-child-vertical-padding: 0.5rem;

@@ -1,0 +1,45 @@
+<main class="w-full flex items-start gap-8 px-4">
+  <section class="min-w-[40rem] w-[40rem] max-w-[40rem]">
+    <h2 class="text-white">Food on the go 🍖</h2>
+
+    <div class="flex items-center gap-6">
+      <nz-input-group nzSize="large" [nzSuffix]="searchIconTemplate" class="ml-auto">
+        <input type="text" [formControl]="searchControl" nz-input placeholder="Find your delicious lunch..." />
+      </nz-input-group>
+      <nz-select nzSize="large" class="w-60" nzPlaceHolder="Choose your area">
+        <nz-option *ngFor="let area of areas$ | async" [nzValue]="area" [nzLabel]="area"></nz-option>
+      </nz-select>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mt-4">
+      <button
+        *ngFor="let category of categories$ | async"
+        nz-button
+        (click)="searchControl.setValue(category)"
+        nzType="text"
+        class="text-gray-200 hover:text-white hover:border hover:border-white focus:text-gray-800 focus:bg-white">
+        {{ category }}
+      </button>
+    </div>
+  </section>
+
+  <section class="flex-grow flex flex-wrap gap-4 items-start">
+    <div
+      *ngFor="let meal of meals$ | async"
+      class="bg-white bg-opacity-90 w-60 flex-grow hover:shadow-xl rounded-md overflow-hidden cursor-pointer"
+      [routerLink]="meal.idMeal">
+      <div class="h-40"><img [src]="meal.strMealThumb" class="w-full h-full object-cover" /></div>
+      <div class="py-3 px-5">
+        <p class="font-bold mb-0">{{ meal.strMeal }}</p>
+        <p class="mb-0 text-xs">Gradients: {{ meal.strIngredient1 }}, {{ meal.strIngredient2 }}, ...</p>
+        <p class="mb-0 text-xs">
+          Category: <nz-tag nzColor="blue"> {{ meal.strCategory }}</nz-tag>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<ng-template #searchIconTemplate>
+  <i nz-icon nzType="ionicons:search-outline" class="text-2xl leading-3 text-gray-400"></i>
+</ng-template>

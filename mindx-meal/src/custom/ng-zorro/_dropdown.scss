@@ -1,0 +1,12 @@
+ul[nz-menu].dropdown-menu li[nz-menu-item] {
+  @apply pl-4 pr-5;
+
+  i[nz-icon] {
+    @apply text-2xl mr-3;
+    line-height: 0;
+  }
+
+  span {
+    @apply align-bottom leading-6;
+  }
+}

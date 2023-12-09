@@ -1,0 +1,12 @@
+.kps-header {
+  @apply flex justify-between items-start;
+}
+
+.detail-image-wrapper {
+  @apply w-40 h-40 rounded-md overflow-hidden;
+}
+
+.rounded-icon {
+  @apply text-[1.2rem] rounded-full p-1.5 bg-white bg-opacity-70;
+  @apply hover:bg-opacity-100
+}
