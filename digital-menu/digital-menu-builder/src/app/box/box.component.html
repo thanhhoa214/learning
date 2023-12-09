@@ -1,0 +1,22 @@
+<ng-container *ngIf="box">
+  <div class="mb-2 media-box" *ngIf="box.headerSrc">
+    <img
+      [src]="box.headerSrc"
+      class="w-100 img-fluid"
+      [alt]="box.headerTitle"
+    />
+  </div>
+  <app-product-list
+    *ngFor="let productList of box.productLists"
+    [id]="'product-list-' + productList.location"
+    [productList]="productList"
+  ></app-product-list>
+
+  <div class="mb-2 media-box" *ngIf="box.footerSrc">
+    <img
+      [src]="box.footerSrc"
+      class="w-100 img-fluid"
+      [alt]="box.footerTitle"
+    />
+  </div>
+</ng-container>

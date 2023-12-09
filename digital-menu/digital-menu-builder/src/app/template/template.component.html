@@ -1,0 +1,5 @@
+<div class="row mx-0" *ngIf="template$ | async as template">
+  <div class="col-4 px-0" *ngFor="let box of template.boxes">
+    <app-box [box]="box" [id]="'box-' + box.location"></app-box>
+  </div>
+</div>

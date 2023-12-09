@@ -1,0 +1,37 @@
+{
+  "appId": "fpt.swd.digitalmenu",
+  "appName": "Digital Menu",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/digital-menu-builder",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {},
+  "server": {
+    "iosScheme": "ionic",
+    "androidScheme": "http",
+    "allowNavigation": [
+      "http://*/*",
+      "https://*/*",
+      "tel:*",
+      "sms:*",
+      "mailto:*",
+      "geo:*"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  },
+  "ios": {
+    "contentInset": "always",
+    "cordovaSwiftVersion": "4.2",
+    "minVersion": "12.4",
+    "cordovaLinkerFlags": ["-ObjC"],
+    "allowsLinkPreview": false
+  }
+}
