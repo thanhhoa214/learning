@@ -1,0 +1,114 @@
+[
+    {
+        "kanji": "市",
+        "hira": "し",
+        "hanviet": "Thị",
+        "vnese": "Thành phố",
+        "eng": "city"
+    },
+    {
+        "kanji": "東",
+        "hira": "ひがし",
+        "hanviet": "Đông",
+        "eng": "east",
+        "vnese": "Đông"
+    },
+    {
+        "kanji": "本",
+        "hira": "ほん",
+        "hanviet": "bản",
+        "eng": "Book",
+        "vnese": "Sách"
+    },
+    {
+        "kanji": "人",
+        "hira": "ひと",
+        "hanviet": "Nhân",
+        "eng": "Man",
+        "vnese": "Người"
+    },
+    {
+        "kanji": "寺",
+        "hira": "おてら",
+        "hanviet": "Tự",
+        "eng": "temple",
+        "vnese": "Đền"
+    },
+    {
+        "kanji": "国",
+        "hira": "くに",
+        "hanviet": "quốc",
+        "eng": "Country",
+        "vnese": "Đất nước"
+    },
+    {
+        "kanji": "語",
+        "hira": "ご",
+        "hanviet": "ngữ",
+        "eng": "word",
+        "vnese": "Lời"
+    },
+    {
+        "kanji": "大学",
+        "hira": "だいがく",
+        "hanviet": "đại học",
+        "eng": "University",
+        "vnese": "Đại học"
+    },
+    {
+        "kanji": "今",
+        "hira": "いま",
+        "hanviet": "hiện tại",
+        "eng": "now",
+        "vnese": "Bây giờ"
+    },
+    {
+        "kanji": "区",
+        "hira": "く",
+        "hanviet": "khu",
+        "eng": "Ward",
+        "vnese": "Phường"
+    },
+    {
+        "kanji": "明日",
+        "hira": "あした",
+        "hanviet": "ngày mai",
+        "eng": "tomorrow",
+        "vnese": "Ngày mai"
+    },
+    {
+        "kanji": "年",
+        "hira": "ねん",
+        "hanviet": "năm",
+        "eng": "Year",
+        "vnese": "Năm"
+    },
+    {
+        "kanji": "昨日",
+        "hira": "きのう",
+        "hanviet": "hôm qua",
+        "eng": "yesterday",
+        "vnese": "Hôm qua"
+    },
+    {
+        "kanji": "町",
+        "hira": "まち",
+        "hanviet": "thành phố, thị trấn",
+        "eng": "town",
+        "vnese": "Thị trấn"
+    },
+    {
+        "kanji": "山",
+        "hira": "やま",
+        "hanviet": "sơn",
+        "eng": "Mountain",
+        "vnese": "Núi"
+    },
+    {
+        "kanji": "川",
+        "hira": "かわ",
+        "hanviet": "sông",
+        "eng": "river",
+        "vnese": "Sông"
+    }
+]

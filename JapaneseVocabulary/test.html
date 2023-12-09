@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>日本語</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .modal-content {
+            font-size: 1.5rem;
+        }
+
+        .modal-content i {
+            display: block;
+            font-size: 5rem;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        #content {
+            font-size: 2rem;
+        }
+
+        .bg-cloudblue {
+            background-color: rgb(127, 192, 238) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="content">
+            <div class="col-xs-12 col-sm-10 col-md-8 text-center">
+                <nav class="nav justify-content-center mb-3">
+                    <button type="button" class="btn p-2 btn-secondary col-3" id="btnPrevious">Previous </button>
+                    <button type="button" class="btn p-2 btn-primary col-6" id="btnRandom">Random Word</button>
+                    <button type="button" class="btn p-2 btn-secondary col-3" id="btnNext">Next</button>
+                </nav>
+                <div id="kanji">A</div>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg my-3" id="txtHira"
+                                placeholder="Hiragana or Katakana">
+                            <input type="text" class="form-control form-control-lg" id="txtHanviet"
+                                placeholder="Hán Việt">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button type="button" id="btnCheck" class="btn btn-success border border-dark">
+                            <i class="fa fa-check-circle"></i>
+                            Check
+                        </button>
+                        <button type="button" id="btnShowResult" class="btn btn-primary border border-dark">
+                            <i class="fa fa-arrow-circle-right"></i>
+                            Result
+                        </button>
+                    </div>
+                    <div class="col-5 d-none" id="resultBlock">
+                        <div id="hira"
+                            class="form-control form-control-lg mb-3 bg-cloudblue text-dark font-weight-bold">B</div>
+                        <div id="hanviet"
+                            class="form-control form-control-lg rounded bg-cloudblue text-dark font-weight-bold">B</div>
+                        <!-- <span id="vnese" class="d-block">C</span> -->
+                    </div>
+                </div>
+                <!-- <span id="vnese">C</span> -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal Alert -->
+    <div class="modal fade" id="modalAlert" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-success text-light text-center p-2" id="modalAlertContent">
+
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="test.js"></script>
+
+</html>
