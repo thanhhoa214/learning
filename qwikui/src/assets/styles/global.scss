@@ -1,0 +1,42 @@
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './components/_alert.scss';
+@import './components/_button.scss';
+@import './components/_lozenge.scss';
+@import './components/_selectable_card.scss';
+@import './components/_pagination.scss';
+@import './components/_tooltip.scss';
+
+@layer base {
+  a {
+    @apply text-hyperlink-normal;
+
+    &:hover {
+      @apply text-hyperlink-hover;
+    }
+
+    &:visited {
+      @apply text-hyperlink-visited;
+    }
+
+    &:active {
+      @apply text-hyperlink-pressed;
+    }
+  }
+}
+
+@layer components {
+  .qui-card {
+    @apply rounded-lg bg-neutral-25 p-4;
+  }
+}

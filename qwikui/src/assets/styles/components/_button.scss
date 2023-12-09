@@ -1,0 +1,110 @@
+@use 'sass:map';
+
+$themes: (
+  'primary-blue': (
+    'color': theme('textColor.invert'),
+    'default': theme('colors.primary.500'),
+    'hover': theme('colors.primary.400'),
+    'pressed': theme('colors.primary.700'),
+    'loading': theme('colors.primary.200'),
+    'disable': theme('colors.neutral.500'),
+  ),
+  'rose': (
+    'color': theme('textColor.invert'),
+    'default': theme('colors.rose.400'),
+    'hover': theme('colors.rose.300'),
+    'pressed': theme('colors.rose.600'),
+    'loading': theme('colors.rose.200'),
+    'disable': theme('colors.neutral.500'),
+  ),
+  'green': (
+    'color': theme('textColor.invert'),
+    'default': theme('colors.green.400'),
+    'hover': theme('colors.green.300'),
+    'pressed': theme('colors.green.500'),
+    'loading': theme('colors.green.300'),
+    'disable': theme('colors.neutral.500'),
+  ),
+  'secondary': (
+    'color': theme('textColor.sub-heading'),
+    'default': theme('colors.neutral.50'),
+    'hover': theme('colors.neutral.50'),
+    'pressed': theme('colors.neutral.100'),
+    'loading': theme('colors.neutral.50'),
+    'disable': theme('colors.neutral.500'),
+  ),
+  'invert': (
+    'color': theme('textColor.sub-heading'),
+    'default': theme('colors.neutral.0'),
+    'hover': theme('colors.neutral.10'),
+    'pressed': theme('colors.neutral.25'),
+    'loading': theme('colors.neutral.0'),
+    'disable': theme('colors.neutral.0'),
+  ),
+);
+
+$sizes: (
+  'small': (
+    text: 'body-1',
+    padding: '0.3125rem 0.5rem',
+    gap: '0.5rem',
+  ),
+  'medium': (
+    text: 'body-1',
+    padding: '0.5rem 1rem',
+    gap: '0.5rem',
+  ),
+  'big': (
+    text: 'heading-5',
+    padding: '0.75rem 1.5rem',
+    gap: '0.5rem',
+  ),
+  'giant': (
+    text: 'heading-4',
+    padding: '0.75rem 1.5rem',
+    gap: '0.5rem',
+  ),
+);
+
+.qui-button {
+  @apply inline-flex min-w-fit items-center rounded font-semibold;
+  gap: var(--gap);
+  background-color: var(--default);
+  color: var(--color);
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  padding: var(--padding);
+
+  &:hover {
+    background-color: var(--hover);
+  }
+
+  &:active {
+    background-color: var(--pressed);
+  }
+
+  &:disabled {
+    background-color: var(--disable);
+  }
+
+  &-loading {
+    background-color: var(--loading);
+  }
+
+  @each $type, $colors in $themes {
+    &-#{$type} {
+      @each $key, $color in $colors {
+        --#{$key}: #{$color};
+      }
+    }
+  }
+
+  @each $key, $size in $sizes {
+    &-#{$key} {
+      --fontSize: theme(fontSize[#{map.get($size, 'text')}]);
+      --lineHeight: theme(lineHeight[#{map.get($size, 'text')}]);
+      --gap: #{map.get($size, 'gap')};
+      --padding: #{map.get($size, 'padding')};
+    }
+  }
+}

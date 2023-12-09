@@ -1,0 +1,41 @@
+@use 'sass:map';
+
+$statuses: (
+  neutral: (
+    background: theme('colors.neutral.50'),
+    color: theme('textColor.sub-heading'),
+  ),
+  success: (
+    background: theme('colors.green.50'),
+    color: theme('textColor.success'),
+  ),
+  error: (
+    background: theme('colors.rose.50'),
+    color: theme('textColor.error'),
+  ),
+  warning: (
+    background: theme('colors.yellow.50'),
+    color: theme('textColor.warning'),
+  ),
+  in-progress: (
+    background: theme('colors.blue.50'),
+    color: theme('textColor.highlight'),
+  ),
+  note: (
+    background: theme('colors.purple.50'),
+    color: theme('colors.purple.500'),
+  ),
+);
+
+.qui-lozenge {
+  @apply inline-block rounded px-1 text-body-3 font-semibold;
+  background-color: var(--backgroundColor);
+  color: var(--color);
+
+  @each $key, $value in $statuses {
+    &-#{$key} {
+      --backgroundColor: #{map.get($value, 'background')};
+      --color: #{map.get($value, 'color')};
+    }
+  }
+}

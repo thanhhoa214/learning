@@ -1,0 +1,41 @@
+$types: (
+  'error': (
+    'backgroundColor': theme('colors.rose.50'),
+    'borderColor': theme('colors.rose.400'),
+    'color': theme('textColor.error'),
+  ),
+  'warning': (
+    'backgroundColor': theme('colors.yellow.50'),
+    'borderColor': theme('colors.yellow.600'),
+    'color': theme('textColor.warning'),
+  ),
+  'success': (
+    'backgroundColor': theme('colors.green.50'),
+    'borderColor': theme('colors.green.400'),
+    'color': theme('textColor.success'),
+  ),
+  'information': (
+    'backgroundColor': theme('colors.blue.50'),
+    'borderColor': theme('colors.blue.500'),
+    'color': theme('textColor.info'),
+  ),
+  'neutral': (
+    'backgroundColor': theme('colors.neutral.50'),
+    'borderColor': theme('colors.neutral.400'),
+    'color': theme('textColor.sub-heading'),
+  ),
+);
+
+.qui-alert {
+  background-color: var(--backgroundColor);
+  border-color: var(--borderColor);
+  color: var(--color);
+
+  @each $type, $colors in $types {
+    &-#{$type} {
+      @each $key, $color in $colors {
+        --#{$key}: #{$color};
+      }
+    }
+  }
+}

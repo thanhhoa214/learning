@@ -1,0 +1,29 @@
+.qui-sc {
+  @apply cursor-pointer space-y-1 rounded-lg border border-solid border-neutral-100 bg-neutral-0 p-4 pr-6 text-sub-heading;
+
+  &-vertical p {
+    @apply ml-10;
+  }
+
+  &-horizontal header {
+    @apply flex-row-reverse;
+  }
+
+  &:hover {
+    @apply border-primary-500 outline outline-primary-100;
+  }
+}
+
+input {
+  &:checked + label {
+    @apply border-2 border-primary-500 bg-blue-10 text-highlight;
+  }
+
+  &:disabled + label {
+    @apply pointer-events-none border-neutral-50 bg-neutral-10 text-disable;
+  }
+
+  &:disabled:checked + label {
+    @apply border-primary-200 bg-blue-10 text-blue-200;
+  }
+}

@@ -1,0 +1,16 @@
+.qui-pagination {
+  .qui-pagination-item {
+    @apply inline-flex h-8 w-8
+           cursor-pointer items-center justify-center 
+           rounded text-center text-body-1 font-semibold text-sub-heading
+           hover:border hover:border-blue-200 hover:bg-blue-50;
+
+    &.selected {
+      @apply bg-primary-500 text-invert;
+    }
+
+    &.disabled {
+      @apply cursor-not-allowed text-disable hover:border-none hover:bg-transparent;
+    }
+  }
+}
