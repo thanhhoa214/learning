@@ -1,0 +1,10 @@
+{
+  "name": "ch-web-fe Generator",
+  "id": "1232652283558944631",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "ui.html"
+}

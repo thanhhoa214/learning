@@ -1,0 +1,85 @@
+<style>
+  body {
+    width: 75vw;
+    height: 75vh;
+  }
+  code {
+    margin-bottom: 2rem;
+  }
+</style>
+<body>
+  <code id="html"></code>
+  <code id="componentImports"></code>
+  <code id="translation"></code>
+</body>
+<script>
+  const props = ['html', 'componentImports', 'translation'];
+  let latestData;
+
+  window.onmessage = ({ data }) => {
+    if (data.pluginMessage.type === 'html') {
+      latestData = data.pluginMessage.data;
+      // For quicker development
+      copyTextToClipboard(latestData.html);
+
+      const htmlElement = document.querySelector(`#html`);
+      htmlElement.innerHTML = latestData.html;
+
+      const componentImportsElement = document.querySelector(`#componentImports`);
+      componentImportsElement.innerHTML = `[${latestData.componentImports.join(',')}]`;
+
+      const translationElement = document.querySelector(`#translation`);
+      translationElement.innerHTML = JSON.stringify(latestData.translation);
+    }
+  };
+
+  props.forEach((name) => {
+    const codeElement = document.querySelector(`#${name}`);
+    codeElement.addEventListener('click', () => {
+      if (!latestData) return;
+      if (name === 'html') return copyTextToClipboard(latestData[name]);
+      if (name === 'translation')
+        return copyTextToClipboard(JSON.stringify(latestData[name], null, 2).replace(/\n/g, ''));
+      if (name === 'componentImports') return copyTextToClipboard(latestData[name].join(','));
+    });
+  });
+
+  function copyTextToClipboard(text) {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+    }
+    navigator.clipboard.writeText(text).then(
+      function () {
+        console.log('Async: Copying to clipboard was successful!');
+      },
+      function (err) {
+        console.error('Async: Could not copy text: ', err);
+      }
+    );
+  }
+
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+
+    // Avoid scrolling to bottom
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.position = 'fixed';
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const successful = document.execCommand('copy');
+      const msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+</script>
