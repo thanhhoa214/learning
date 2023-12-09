@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/aboutOrganica.css">
+    <link rel="shortcut icon" href="../images/ico/logo_s.png">
+    <title>About Organica</title>
+</head>
+
+<body>
+    <header>
+        <div class="siteInfor">
+            <div class="siteInforLeft">
+                <a href="../html/aboutOrganica.html">About Organica</a>
+                <a href="https://www.facebook.com/thanhhoa214">Talk to Hòa</a>
+                <a href="#">Purchase Instructions</a>
+            </div>
+
+            <div class="siteInforRight">
+                <a href="#">
+                    <img src="../images/ico/ico_ship.png">
+                    <span>Transaction Policy</span>
+                </a>
+                <a href="#">
+                    <img src="../images/ico/ico_heart.png">
+                    <span onclick="showLovedList()">Loved Product
+                        <span class="badge badge-light ml-1 bg-primary text-light" id="numberOfPro"></span>
+                    </span>
+                </a>
+                <a style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter2"><span>Login /
+                        Register</span></a>
+            </div>
+        </div>
+        <!-- Start Navigation -->
+        <nav>
+            <div class="navLeft">
+                <ul>
+                    <li class="optionItem">
+                        <a href="./SaleOffPage.html">SALE OFF</a>
+                    </li>
+                    <li class="optionItem">
+                        <div class="dropdown myDropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <a href="#">PRODUCTS
+                                    <i class="fas fa-bars" style="color: rgba(8, 165, 79, 0.918)"></i>
+                                </a>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="./organica.html#remarkProduct">Vegetables</a>
+                                <a class="dropdown-item" href="./organica.html#remarkProduct">Fruits</a>
+                                <a class="dropdown-item" href="./organica.html#saleOffProduct">Supported Products</a>
+                            </div>
+                        </div>
+                    </li>
+                    <a href="./organica.html"><img src="../images/ico/logo.png" id="logo" class="wow fadeInLeft"
+                            data-wow-delay="0.1s" style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;"></a>
+                    <li class="optionItem">
+                        <a href="./SaleOffPage.html">COMBO</a>
+                    </li>
+                    <li class="optionItem">
+                        <a href="./stores.html">STORES</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navRight">
+                <div class="optionItem">
+                    <img src="../images/ico/ico_plus_circle.png" style="margin-bottom: 2px">
+                    <a href="#">Purchase History</a>
+                </div>
+                <div class="inputGroup optionItem">
+                    <input type="text" placeholder="What are you looking for ?">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="optionItem">
+                    <span id="cart">
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 offset-1 mt-5">
+                    <p style="font-size: 20px;">
+                        <strong>Organica</strong>, founded in early 2013, is an organic food development and
+                        distribution system operated with a mission: helping Vietnamese consumers reach a better life
+                        by qualified organic, natural or no genetically modified (GMO) food which are certified
+                        officially.
+                    </p>
+                    <p>&nbsp;
+                        <img class="content-image" src="../images/about/1.png">
+                    </p>
+                    <p>
+                        By 2015, after many self-development and manufacturing efforts, pp Organica & nbsp; in Long
+                        Thanh, Dong Nai has been certified organic by the US (USDA) and European Union (EU), became the
+                        first organic tropical vegetable farm in Vietnam Later, in 2017, Ba Vi Organica Garden was also
+                        held by the Union Control Union Prices reach the organic standards of the US and Europe.
+                        Organica also uses Traceverified, Retrieve service Vietnam's only electronic source, with the
+                        desire for transparency of information and commitment too Cultivate your organic farming with
+                        the consumer.
+                    </p>
+                    <p>
+                        <span>
+                            <img class="content-image" src="../images/about/2.jpg">
+                        </span>
+                    </p>
+                    <p>
+                        We believe that everyone has the rights to use clean, safe and healthy food. But it seems to be
+                        impossible under the conditions of our traditional agriculture. Started as a small business, we
+                        have been trying really hard to serve and provide our customers the best safe, clean and
+                        affordable products. Besides, we are on our way to achieve the bigger goal by cooperate with
+                        our local suppliers to produce the best goods for Vietnamese.
+                    </p>
+                    <p>
+
+                        Besides the products developed at the farm, Organica also
+                        Coordinate with other units with organic certification to distribute the products to the
+                        consumers use Vietnam and import organic products for distribution in the country. To date,
+                        Organica has been around 1,000 kinds of organic certified products including fresh foods, dried
+                        foods, organic spices, organic cosmetics, home care products to fish care products Organic
+                        cotton is made from cotton. At present Organica is working with the counter In the United
+                        States and the EU to bring the missing organic products in Vietnam to complete the category
+                        Organic products meet the requirements of customers.
+                    </p>
+                    <p>
+                        <span>
+                            <img class="content-image" src="../images/about/3.jpg">
+                        </span>
+                    </p>
+                    <p>
+                        As committed since its inception, the Organica stores have spent 80% display area and product
+                        categories for sale of certified organic foods and abroad. The remaining 20% ​​is for products
+                        that are in the transition to farming organic, environmentally friendly products (such as MSC -
+                        Capture Fisheries lasting; or UTZ-certified sustainable development for cocoa, coffee and tea),
+                        and a small portion Among them are local specialty products. All of these products have a
+                        certificate of protection food safety and traceability.
+                    </p>
+                    <p>
+                        <span>
+                            <img class="content-image" src="../images/about/4.jpg">
+                        </span>
+                    </p>
+                    <p>
+                        Enters its fifth year of activity in the field of development and distribution Organics & nbsp;
+                        Organica & nbsp; currently has 03 stores in HCMC. 1 store at Da Nang and 01 store in Hanoi was
+                        opened on 25/07/2018. Page system Farm & nbsp; Organica & nbsp; and associated farms have grown
+                        steadily in many localities Long Thanh (Dong Nai); Ba Vi (Hanoi); Luoyang, Don Duong (Lam
+                        Dong), Binh Phuoc, ... Organica has also put into use e-commerce website at address
+                        <a href="../html/organica.html"> <strong> MYORGANICA.VN </strong> </a> with many convenient
+                        features for shoppers on the web. </ p>
+                        <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="quote">
+            <span>
+                Organica has the first tropical vegetable farm in Vietnam certified by the Ministry of Agriculture
+                United States (USDA) & EU Organic Farming (European Union)
+            </span>
+            <img src="../images/ico/img_badge01.png" title="">
+            <img src="../images/ico/img_badge02.png" title="">
+        </div>
+
+        <div class="container myContainer">
+            <div class="row">
+                <div class="col-sm-4 item">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sale Off</a></li>
+                        <li><a href="/">Products</a>
+                            <ul>
+                                <li><a href="#">Vegetables</a></li>
+                                <li><a href="#">Fruits</a></li>
+                                <li><a href="#">Meat &amp; Seafood</a></li>
+                                <li><a href="#">Milk &amp; Milk's Products</a></li>
+                                <li><a href="#">Drinks</a></li>
+                                <li><a href="#">Cereals, Beans &amp; Seeds</a></li>
+                                <li><a href="#">Spices &amp; Cooking Ingredients</a></li>
+                                <li><a href="#">Processed Products</a></li>
+                                <li><a href="#">Regional Specialties</a></li>
+                                <li><a href="#">Non-Foods</a></li>
+                                <li><a href="#">Mom &amp; Baby</a></li>
+                                <li><a href="#">Supplements</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 item">
+                    <ul>
+                        <li><a href="#">About organica</a>
+                            <ul>
+                                <li><a href="#">Introduction</a></li>
+                                <li><a href="#">Vision &amp; Mission</a></li>
+                                <li><a href="#">Organic Farms</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Talk to Organica</a>
+                            <ul>
+                                <li><a href="#">Organic Understanding</a></li>
+                                <li><a href="#">Organic Eating</a></li>
+                                <li><a href="#">Organic Living</a></li>
+                                <li><a href="#">Organic Mom</a></li>
+                                <li><a href="#">Organica Blog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Customer Supports</a>
+                            <ul>
+                                <li><a href="#">Purchase Instructions</a></li>
+                                <li><a href="#">Member</a></li>
+                                <li><a href="#">Transaction Policy</a></li>
+                                <li><a href="#">Security Policy</a></li>
+                                <li><a href="#">Reimbursement policy</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Recruitment</a></li>
+                        <li>
+                            <img src="../images/ico/bocongthuong.png" width="250" height="94">
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 item">
+                    <ul>
+                        <li>
+                            <p>Stores in TP.Hồ Chí Minh</p>
+                            <ul>
+                                <li>117 Nguyễn Thái Học, Cầu Ông Lãnh Ward, District 1, Hồ Chí Minh City <br />
+                                    <b> Tel: 028 2253 0602 | 088 677 6116 </b>
+                                </li>
+                                <li>130 Nguyễn Đình Chiểu, Ward 6, District 3, Hồ Chí Minh City <br />
+                                    <b>Tel: 028 6673 3350 | 0902 686 292</b>
+                                </li>
+                                <li>54 Hoàng Văn Thụ, Ward 9, Phú Nhuận District, Hồ Chí Minh City <br />
+                                    <b>Tel: 028 6685 0532 | 0901 81 81 84</b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Stores in Đà Nẵng</p>
+                            <ul>
+                                <li>90 Hải Phòng, Thạch Thang, Hải Châu District, Đà Nẵng <br />
+                                    <b>Tel: 0236 366 4646</b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Stores in Hà Nội</p>
+                            <ul>
+                                <li>5A1 lane 192 Thái Thịnh, Đống Đa District, Hà Nội <br />
+                                    <b>Tel: 0243 687 8899 | 0996 211 899</b>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>Hotline</p>
+                            <ul>
+                                <li>If troubles occurs while shopping at Organica, please tell us: 0901
+                                    82 86 89&nbsp;to be supported immediately.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Email</p>
+                            <ul>
+                                <li>Order: sales@organica.vn</li>
+                                <li>Co-operation: organica@organica.vn</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Connect to Organica with</p>
+                            <ul>
+                                <li class="connectIco">
+                                    <a href="https://plus.google.com/105637790573689856558">
+                                        <i class="fab fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="connectIco connectIcoFB">
+                                    <a href="https://www.facebook.com/thucphamhuucoorganica">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="connectIco">
+                                    <a href="https://www.youtube.com/channel/UCoffpwLIDnOTIalenS0c-ew">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="loveHeart" onclick="clickLoveHeart()">
+        <i class="fa fa-heart fa-3x text-danger pulse" data-wow-iteration="infinite" data-wow-duration="500ms"></i>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="../js/animateOnScroll.js"></script>
+    <script>
+        // Start navigation
+        $(window).bind('mousewheel DOMMouseScroll', function (event) {
+            let nav = document.getElementsByTagName('nav')[0];
+            let logo = document.getElementById('logo');
+            if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+            }
+            else {
+                nav.style = 'position: fixed; z-index: 1000; top: 0; left: 0;';
+                logo.style.width = '90px';
+                logo.style.marginLeft = '20px';
+            }
+        });
+        var distance = $('header').offset().top;
+        $(window).scroll(function () {
+            if ($(this).scrollTop() <= distance) {
+                let nav = document.getElementsByTagName('nav')[0];
+                let logo = document.getElementById('logo');
+                nav.style.clear;
+                logo.style.clear;
+                nav.style = 'width: 100%;height: 60px;background-color: #fff;border-bottom: 1px solid rgba(8, 165, 79, 0.918);margin-bottom: 10px;font-size: 18px;';
+                logo.style = 'display: block;position: absolute;left: 43%;top: 5px;z-index: 1000;margin: 10px auto;'
+            };
+        });
+        // End navigation
+        // Click for logo
+        $('#logo').click(() => {
+            open('../html/organica.html', '_blank');
+        }
+        )
+    </script>
+</body>
+
+</html>

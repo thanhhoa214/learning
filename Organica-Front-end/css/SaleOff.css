@@ -1,0 +1,413 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6fff1;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a {
+    color: rgba(0, 0, 0, 0.884);
+}
+a:hover {
+    color: rgba(8, 165, 79, 0.918);
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+.clear {
+    clear: both;
+}
+.line {
+    margin: 10px 0;
+    width: 70%;
+    height: 2px;
+    background-color: rgba(139, 141, 138, 0.5);
+}
+
+h5 {
+    text-transform: capitalize;
+}
+/* start header */
+header {
+    background-color: #edeae6;
+}
+    /* start site information */
+.siteInfor {
+    font-size: 15px;
+    margin: auto;
+    width: 98%;
+}
+.siteInforLeft {
+    display: inline;
+}
+.siteInforLeft a {
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight {
+    display: inline;
+    margin-left: 24vw; /* 18 = 250px*/
+}
+.siteInforRight a {
+    display: inline-block;
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight img {
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+@media screen and (max-width: 900px) {
+    .siteInforRight {
+        display: block;
+        margin-left: 0;
+    }
+}
+    /* end site information */
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(8, 165, 79, 0.918);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.navLeft {
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+.navLeft ul {
+    margin-top: 15px;
+    list-style-type: none;
+}
+.navLeft > ul > li.optionItem {
+    display: inline;
+    margin-right: 40px;
+    font-weight: 550;
+}
+.myDropdown {
+    display: inline-block;
+}
+.dropdown-toggle {
+    background-color: white;
+    font-weight: 550;
+    border: none;
+    font-size: 18px;
+}
+#logo {
+    display: block;
+    position: absolute;
+    left: 43%;
+    top: 5px;
+    z-index: 1000;
+    margin: 10px auto;
+}
+.navRight {
+    width: 40%;
+    height: 50px;
+    float: right;
+}
+div.navRight > div.optionItem {
+    display: inline-block;
+    position: relative;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding: 3px 6px;
+    border: 1px solid rgb(202, 196, 196);
+    border-radius: 20px;
+    font-size: 16px;
+}
+#cart {
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    background: url("../images/ico/ico_cart.png") center center no-repeat;
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+.inputGroup {
+    width: auto;
+}
+.inputGroup > input {
+    margin-left: 5px;
+    max-width: 300px;
+    height: 20px;
+    background-color: transparent;
+    border: 0 solid;
+}
+.inputGroup > input:focus {
+    outline-width: 0;
+}
+div.navRight > div.optionItem:nth-child(3) {
+    padding: 6px;
+    font-size: 20px;
+    background-color: #a6ce39;
+    color: #fff;
+    border-radius: 50%;
+}
+div.inputGroup {
+    margin-top: 20px;
+}
+
+/* end header */
+article {
+    margin-top: 50px;
+    height: 800px;
+}
+section.container {
+    height: 350px;
+    overflow: auto;
+    background-color: rgb(229, 252, 238);
+}
+/* start remark-product */
+.productItem {
+    width: 190px;
+    height: 310px;
+    margin: 0.25%;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgb(202, 196, 196);
+    border-radius: 5px;
+    vertical-align: top;
+    text-align: left;
+}
+.productItem:hover {
+    opacity: 0.7;
+    filter: brightness(0.96);
+    background-color: rgb(245, 243, 243);
+    border-color: rgba(8, 165, 79, 0.918);
+}
+.productItem > a > img {
+    width: 100%;
+    border-radius: 5px;
+}
+.productItem > a > h5 {
+    display: block;
+    margin: 15px 20px 0 20px;
+    height: 50px;
+    font-size: 17px;
+}
+.price {
+    margin-left: 16px;
+    font-family: Geneva, Verdana, sans-serif;
+    font-size: 14.5px;
+    font-weight: bolder;
+    color: rgba(8, 165, 79, 0.918);
+}
+.price:nth-child(4) {
+    margin-left: 2px;
+}
+.productItem img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.productItem:hover .middle {
+      opacity: 1;
+      z-index: 10000;
+      filter: brightness(1.3);
+}
+.liked > i, .bought {
+    display: block;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    padding-top: 10px;
+    cursor: pointer;
+    background-color: rgba(8, 165, 79, 0.918);
+    color: white;
+    text-align: center;
+    border: 1px solid rgba(8, 165, 79, 0.918);
+    border-radius: 50%;
+}
+.liked > i {
+    font-size: 25px;
+}
+.bought {
+    left: 60px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.seeMore {
+    display: inline-block;
+    margin: 30px auto;
+}
+.seeMore:hover {
+    text-decoration: underline;
+}
+sup {
+    text-decoration-line: underline;
+}
+/* start discount */
+.discount {
+    margin-left: 5px;
+    font-size: 14px;
+    color: gray;
+    text-decoration-line: line-through; 
+}
+.saleOffProduct {
+    height: auto;
+    margin-bottom: 50px;
+}
+.saleOff {
+    position: absolute;
+    right: -3px;
+    top: 160px;
+    width: 75px;
+    background-image: url("../images/ico/bg_promotion.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: 41px;
+    color: white;
+    font-size: 15px;
+}
+    /* end discount */
+/* end remark-product */
+/* start quote */
+footer {
+    clear: both;
+    background-color: #c3d887;
+}
+.quote {
+    background: linear-gradient(to right top, #a1cd3a, #28b34b);
+}
+.quote > span {
+    display: inline-block;
+    width: 60%;
+    margin-top: 3%;
+    margin-left:  10%;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+.quote > img {
+    margin: 1%;
+}
+.myContainer {
+    margin-top: 50px;;
+}
+.item > ul > li > ul{
+    color: rgb(112, 111, 111);
+}
+.connectIco {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 30px;
+}
+.connectIco i:hover {
+    color: rgb(231, 54, 23);
+}
+.connectIcoFB i:hover {
+    color: #053db6;
+}
+#loveHeart {
+    min-width: 100px; 
+    display: block; 
+    position: fixed; 
+    bottom: 15px; 
+    right: 10px; 
+    cursor: pointer;
+}
+
+/* end quote */
+
+/* start modal product*/
+.title {
+    margin: 10px 0;
+    display: block;
+    width: 20%;
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.content {
+    margin: 10px 0;
+    display: block;
+    width: 80%;
+    float: left;
+}
+.trade {
+    display: inline-block;
+    width: 35%;
+}
+.priceModal {
+    display: block;
+    margin: 20px 16px;
+    font-family: Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color: rgba(8, 165, 79, 0.918);
+}
+.trade > .inputGroup {
+    font-size: 30px;
+}
+.trade > .inputGroup > span {
+    width: 40%;
+}
+.trade > .inputGroup > input {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+}
+.trade > button {
+    width: 80%;
+    height: 50px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(36, 158, 6, 0.918);
+    color: rgb(255, 250, 250);
+    font-size: 20px;
+    font-variant: small-caps;
+    cursor: pointer;
+    outline: none;
+}
+.property > .content > span{
+    display: inline-block;
+    border: 1px solid rgba(61, 61, 61, 0.952);
+    border-radius: 20px;
+    padding: 3px 6px;
+}
+/* end modal product */
+/* start modal login */
+.container-fluid > button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.container-fluid > form input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    border: 1px solid #a1cd3a;
+    border-radius: 20px;
+    text-indent: 30px;
+    outline: none;
+}
+form > a {
+    margin: 30px;
+}
+.socialLogin {
+    margin: 20px auto;
+}
+.socialLogin button:nth-of-type(2) {
+    margin-left: 20px;
+}
+/* end modal login */

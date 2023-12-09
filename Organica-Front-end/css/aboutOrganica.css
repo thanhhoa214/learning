@@ -1,0 +1,221 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6fff1;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a {
+    color: rgba(0, 0, 0, 0.884);
+}
+a:hover {
+    color: rgba(8, 165, 79, 0.918);
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+.clear {
+    clear: both;
+}
+h5 {
+    text-transform: capitalize;
+}
+/* start header */
+header {
+    background-color: #edeae6;
+}
+    /* start site information */
+.siteInfor {
+    font-size: 15px;
+    margin: auto;
+    width: 98%;
+}
+.siteInforLeft {
+    display: inline;
+}
+.siteInforLeft a {
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight {
+    display: inline;
+    margin-left: 24vw; /* 18 = 250px*/
+}
+.siteInforRight a {
+    display: inline-block;
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight img {
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+@media screen and (max-width: 900px) {
+    .siteInforRight {
+        display: block;
+        margin-left: 0;
+    }
+}
+    /* end site information */
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(8, 165, 79, 0.918);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.navLeft {
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+.navLeft ul {
+    margin-top: 15px;
+    list-style-type: none;
+}
+.navLeft > ul > li.optionItem {
+    display: inline;
+    margin-right: 40px;
+    font-weight: 550;
+}
+.myDropdown {
+    display: inline-block;
+}
+.dropdown-toggle {
+    background-color: white;
+    font-weight: 550;
+    border: none;
+    font-size: 18px;
+}
+#logo {
+    display: block;
+    position: absolute;
+    left: 43%;
+    top: 5px;
+    z-index: 1000;
+    margin: 10px auto;
+}
+#logo:hover {
+    cursor: pointer;
+}
+.navRight {
+    width: 40%;
+    height: 50px;
+    float: right;
+}
+div.navRight > div.optionItem {
+    display: inline-block;
+    position: relative;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding: 3px 6px;
+    border: 1px solid rgb(202, 196, 196);
+    border-radius: 20px;
+    font-size: 16px;
+}
+#cart {
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    background: url("../images/ico/ico_cart.png") center center no-repeat;
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+.inputGroup {
+    width: auto;
+}
+.inputGroup > input {
+    margin-left: 5px;
+    max-width: 300px;
+    height: 20px;
+    background-color: transparent;
+    border: 0 solid;
+}
+.inputGroup > input:focus {
+    outline-width: 0;
+}
+div.navRight > div.optionItem:nth-child(3) {
+    padding: 6px;
+    font-size: 20px;
+    background-color: #a6ce39;
+    color: #fff;
+    border-radius: 50%;
+}
+div.inputGroup {
+    margin-top: 20px;
+}
+
+/* end header */
+
+/* start banner */
+.banner {
+    position: relative;
+    margin-right: 2%;
+    height: 350px;
+}
+.banner img {
+    width: 98%;
+    margin: 1%;
+}
+/* end banner */
+
+p {
+    text-align: justify;
+    font-size: 18px;
+}
+.content-image {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+/* start quote */
+footer {
+    clear: both;
+    background-color: #c3d887;
+}
+.quote {
+    background: linear-gradient(to right top, #a1cd3a, #28b34b);
+}
+.quote > span {
+    display: inline-block;
+    width: 60%;
+    margin-top: 3%;
+    margin-left:  10%;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+.quote > img {
+    margin: 1%;
+}
+.myContainer {
+    margin-top: 50px;;
+}
+.item > ul > li > ul{
+    color: rgb(112, 111, 111);
+}
+.connectIco {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 30px;
+}
+.connectIco i:hover {
+    color: rgb(231, 54, 23);
+}
+.connectIcoFB i:hover {
+    color: #053db6;
+}
+#loveHeart {
+    min-width: 100px; 
+    display: block; 
+    position: fixed; 
+    bottom: 15px; 
+    right: 10px; 
+    cursor: pointer;
+}
+
+/* end quote */

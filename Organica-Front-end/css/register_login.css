@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6fff1;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a {
+    color: rgba(0, 0, 0, 0.884);
+}
+a:hover {
+    color: rgba(8, 165, 79, 0.918);
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+.clear {
+    clear: both;
+}
+h5 {
+    text-transform: capitalize;
+}
+/* start header */
+header {
+    background-color: #edeae6;
+}
+    /* start site information */
+.siteInfor {
+    font-size: 15px;
+    margin: auto;
+    width: 98%;
+}
+.siteInforLeft {
+    display: inline;
+}
+.siteInforLeft a {
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight {
+    display: inline;
+    margin-left: 24vw; /* 18 = 250px*/
+}
+.siteInforRight a {
+    display: inline-block;
+    margin: 0.72vw 0.36vw 0.75vw 2.52vw;
+}
+.siteInforRight img {
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+@media screen and (max-width: 900px) {
+    .siteInforRight {
+        display: block;
+        margin-left: 0;
+    }
+}
+    /* end site information */
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(8, 165, 79, 0.918);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.navLeft {
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+.navLeft ul {
+    margin-top: 15px;
+    list-style-type: none;
+}
+.navLeft > ul > li.optionItem {
+    display: inline;
+    margin-right: 40px;
+    font-weight: 550;
+}
+.myDropdown {
+    display: inline-block;
+}
+.dropdown-toggle {
+    background-color: white;
+    font-weight: 550;
+    border: none;
+    font-size: 18px;
+}
+#logo {
+    display: block;
+    position: absolute;
+    left: 43%;
+    top: 5px;
+    z-index: 1000;
+    margin: 10px auto;
+}
+.navRight {
+    width: 40%;
+    height: 50px;
+    float: right;
+}
+div.navRight > div.optionItem {
+    display: inline-block;
+    position: relative;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding: 3px 6px;
+    border: 1px solid rgb(202, 196, 196);
+    border-radius: 20px;
+    font-size: 16px;
+}
+#cart {
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    background: url("../images/ico/ico_cart.png") center center no-repeat;
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+.inputGroup {
+    width: auto;
+}
+.inputGroup > input {
+    margin-left: 5px;
+    max-width: 300px;
+    height: 20px;
+    background-color: transparent;
+    border: 0 solid;
+}
+.inputGroup > input:focus {
+    outline-width: 0;
+}
+div.navRight > div.optionItem:nth-child(3) {
+    padding: 6px;
+    font-size: 20px;
+    background-color: #a6ce39;
+    color: #fff;
+    border-radius: 50%;
+}
+div.inputGroup {
+    margin-top: 20px;
+}
+
+/* end header */
+
+/* start article */
+article {
+    width: 70%;
+    margin: 0 auto;
+}
+article > h1 {
+    text-transform: uppercase;  
+}
+article > section {
+    margin: 0 auto;
+}
+section > button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+section > form  input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    border: 1px solid #a1cd3a;
+    border-radius: 20px;
+    text-indent: 30px;
+    outline: none;
+}
+form > a {
+    margin: 30px;
+}
+.socialLogin {
+    margin: 20px auto;
+}
+.socialLogin button {
+    margin-left: 20px;
+}
+.location {
+    margin-left: -8px;
+    width: 602px;
+    height: 452px;
+    border: 2px dotted #4c4d4b42;
+    box-shadow: 4px 8px rgba(15, 15, 15, 0.185);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+/* end article */
+
+/* start quote */
+footer {
+    clear: both;
+    background-color: #c3d887;
+}
+.quote {
+    background: linear-gradient(to right top, #a1cd3a, #28b34b);
+}
+.quote > span {
+    display: inline-block;
+    width: 60%;
+    margin-top: 3%;
+    margin-left:  10%;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+.quote > img {
+    margin: 1%;
+}
+.myContainer {
+    margin-top: 50px;;
+}
+.item > ul > li > ul{
+    color: rgb(112, 111, 111);
+}
+.connectIco {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 30px;
+}
+.connectIco i:hover {
+    color: rgb(231, 54, 23);
+}
+.connectIcoFB i:hover {
+    color: #053db6;
+}
+/* end quote */
+
+/* start response */
+
+@media screen and (max-width: 1170px) {
+    article {
+        width: 100%;
+    }
+    aside {
+        display: none;
+    }
+}
+/* end response */
