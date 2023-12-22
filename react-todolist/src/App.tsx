@@ -67,7 +67,26 @@ function App() {
 
   return (
     <section>
-      <h2>React Todo List</h2>
+      <div className="alert">
+        <img src="angular-logo.png" alt="React logo" width={50} />
+        <p>
+          Check out the Angular implementation here{' '}
+          <a
+            href="https://rintodolist.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://rintodolist.netlify.app/
+          </a>
+        </p>
+      </div>
+
+      <h2>
+        React Todo List -{' '}
+        <a href="https://github.com/thanhhoa214/learning/tree/main/react-todolist">
+          Github
+        </a>
+      </h2>
 
       <input
         type="text"

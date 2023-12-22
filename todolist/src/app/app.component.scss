@@ -49,3 +49,15 @@ ul {
     outline: none;
   }
 }
+
+.alert {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #92d5a190;
+  border-radius: 0.25rem;
+}
