@@ -6,10 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 const idGeneratorFunc = () => {
   let index = 1;
-  return () => {
-    index++;
-    return index;
-  };
+  return () => ++index;
 };
 const idGenerator = idGeneratorFunc();
 
