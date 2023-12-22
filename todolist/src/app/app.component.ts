@@ -49,10 +49,10 @@ export class AppComponent {
 
   addTodo(text: string) {
     if (text === '') return;
-    this.todos.update((todos) => {
-      todos.push({ id: idGenerator(), status: 'pending', text });
-      return todos;
-    });
+    this.todos.set([
+      ...this.todos(),
+      { id: idGenerator(), status: 'pending', text },
+    ]);
     this.inputValue = '';
   }
 
