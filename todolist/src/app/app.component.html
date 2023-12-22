@@ -1,0 +1,40 @@
+<h2>Todo List</h2>
+
+<input
+  type="text"
+  placeholder="Search"
+  [value]="search()"
+  (input)="onChangeSearch($event.target)"
+/>
+
+<ul>
+  <li *ngFor="let todo of filteredTodos()">
+    <span
+      class="custom-radio"
+      [class.selected]="todo.status === 'completed'"
+      (click)="inputRef.value !== '' ? updateTodoStatus(todo.id) : null"
+    >
+      <span>v</span>
+    </span>
+    <input
+      #inputRef
+      [value]="todo.text"
+      class="editting-input"
+      (click)="editTodo(todo.id)"
+      (blur)="cancelEditting(inputRef)"
+      (keydown.enter)="updateTodo(inputRef.value, inputRef)"
+      (keydown.esc)="cancelEditting(inputRef)"
+      (keydown.backspace)="inputRef.value === '' ? deleteTodo(todo.id) : null"
+    />
+  </li>
+
+  <li *ngIf="inputtingMode">
+    <span class="custom-radio"></span>
+    <input
+      type="text"
+      [(ngModel)]="inputValue"
+      autofocus
+      (keydown.enter)="addTodo(inputValue)"
+    />
+  </li>
+</ul>
