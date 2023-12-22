@@ -30,11 +30,6 @@ export class AppComponent {
   todos = signal<TodoItem[]>([
     { id: idGenerator(), status: 'pending', text: 'Task 1' },
     { id: idGenerator(), status: 'pending', text: 'Task 2' },
-    { id: idGenerator(), status: 'pending', text: 'Task 3' },
-    { id: idGenerator(), status: 'completed', text: 'Task asdjaskd' },
-    { id: idGenerator(), status: 'pending', text: 'Task 4' },
-    { id: idGenerator(), status: 'pending', text: 'Task 5' },
-    { id: idGenerator(), status: 'completed', text: 'Task 6' },
     { id: idGenerator(), status: 'completed', text: 'Task 8' },
   ]);
 
