@@ -9,9 +9,9 @@ const idGenerator = idGeneratorFunc();
 
 export default function useTodos() {
   const [todos, setTodos] = useState<TodoItemModels>([
-    { id: idGenerator(), isCompleted: false, text: 'Task 1' },
-    { id: idGenerator(), isCompleted: false, text: 'Task 2' },
-    { id: idGenerator(), isCompleted: true, text: 'Task 8' },
+    { id: idGenerator(), isCompleted: false, text: 'Drink 2L water' },
+    { id: idGenerator(), isCompleted: false, text: 'Interview engineers' },
+    { id: idGenerator(), isCompleted: true, text: 'Practice Guitar' },
   ]);
 
   const addTodo = (text: TodoItemModel['text']) => {

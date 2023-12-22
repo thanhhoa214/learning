@@ -18,6 +18,7 @@ function App() {
   const searchedTodos = todos.filter((t) =>
     t.text.toLowerCase().includes(searchValue.toLowerCase())
   );
+  const pendingTodosCount = todos.filter((t) => !t.isCompleted).length;
 
   const handleAddTodo: React.KeyboardEventHandler<HTMLInputElement> = (
     event
@@ -96,7 +97,26 @@ function App() {
         onChange={handleSearchChange}
       />
 
+      <div className="progress-wrapper">
+        <progress
+          value={todos.length - pendingTodosCount}
+          max={todos.length}
+        ></progress>
+        <span>
+          {pendingTodosCount === 0
+            ? 'You did it! 🎁'
+            : pendingTodosCount + ' more left 🔥'}
+        </span>
+      </div>
+
       <ul>
+        {searchedTodos.length === 0 && (
+          <p>
+            Cannot find any results for "{searchValue}".
+            <br />
+            <button onClick={() => setSearchValue('')}>Clear</button>
+          </p>
+        )}
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.id}

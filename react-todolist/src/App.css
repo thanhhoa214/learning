@@ -1,11 +1,10 @@
 section {
-  padding: 4rem;
-  max-width: 20rem;
+  padding: 4rem 0;
+  max-width: 24rem;
   margin: 0 auto;
 }
 
 input {
-  width: 12rem;
   height: 1.5rem;
   width: 100%;
   padding: 0.25rem 0.5rem;
@@ -21,6 +20,15 @@ ul {
   margin: 0;
   padding: 1rem 0;
   width: 100%;
+}
+
+.progress-wrapper {
+  margin-top: 0.25rem;
+}
+
+progress {
+  width: 8rem;
+  margin-right: 0.5rem;
 }
 
 .alert {
