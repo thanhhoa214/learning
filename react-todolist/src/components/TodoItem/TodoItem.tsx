@@ -21,17 +21,11 @@ export function TodoItem({
     inputRef.current?.blur();
     onToggleEdittingMode();
   };
-  const handleChangeText: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    setText(event.currentTarget.value);
-  };
   const handleCheck = () => {
     if (inputRef.current?.value === '') return;
     todo.isCompleted = !todo.isCompleted;
     onUpdateTodo(todo, true);
   };
-  const handleEdit = () => onToggleEdittingMode();
   const handleCancelEditting = () => {
     if (inputRef.current) inputRef.current.value = todo.text;
     exitEditMode();
@@ -65,9 +59,9 @@ export function TodoItem({
       <EdittingInput
         ref={inputRef}
         value={text}
-        onChange={handleChangeText}
+        onChange={(event) => setText(event.currentTarget.value)}
         onKeyDown={handleKeydown}
-        onClick={handleEdit}
+        onClick={onToggleEdittingMode}
         onBlur={handleCancelEditting}
       />
     </StyledTodoItem>

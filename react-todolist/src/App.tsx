@@ -7,8 +7,6 @@ import {
 import useTodos from './hooks/useTodos';
 import './App.css';
 
-type InputEventHandler = React.ChangeEventHandler<HTMLInputElement>;
-
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [newTodoText, setNewTodoText] = useState('');
@@ -32,21 +30,6 @@ function App() {
   const handleBlur = () => {
     setNewTodoText('');
     setMode(null);
-  };
-
-  const handleSearchChange: InputEventHandler = (event) => {
-    setSearchValue(event.currentTarget.value);
-  };
-
-  const handleNewTodoTextChange: InputEventHandler = (event) => {
-    setNewTodoText(event.currentTarget.value);
-  };
-
-  const handleUpdateTodo: TodoItemProps['onUpdateTodo'] = (
-    todo,
-    willReorder
-  ) => {
-    updateTodo(todo, willReorder);
   };
 
   const handleDeleteTodo: TodoItemProps['onDeleteTodo'] = (todo) => {
@@ -94,7 +77,7 @@ function App() {
         type="text"
         placeholder="Search"
         value={searchValue}
-        onChange={handleSearchChange}
+        onChange={(event) => setSearchValue(event.currentTarget.value)}
       />
 
       <div className="progress-wrapper">
@@ -122,7 +105,7 @@ function App() {
             key={todo.id}
             todo={todo}
             onDeleteTodo={handleDeleteTodo}
-            onUpdateTodo={handleUpdateTodo}
+            onUpdateTodo={updateTodo}
             onToggleEdittingMode={handleToggleEdittingMode}
           />
         ))}
@@ -133,7 +116,7 @@ function App() {
             <input
               autoFocus
               value={newTodoText}
-              onChange={handleNewTodoTextChange}
+              onChange={(event) => setNewTodoText(event.currentTarget.value)}
               onKeyDown={handleAddTodo}
               onBlur={handleBlur}
             />
