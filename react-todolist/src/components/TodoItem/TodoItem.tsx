@@ -17,7 +17,10 @@ export function TodoItem({
 }: TodoItemProps) {
   const [text, setText] = useState(todo.text);
   const inputRef = useRef<HTMLInputElement>(null);
-
+  const exitEditMode = () => {
+    inputRef.current?.blur();
+    onToggleEdittingMode();
+  };
   const handleChangeText: React.ChangeEventHandler<HTMLInputElement> = (
     event
   ) => {
@@ -30,12 +33,8 @@ export function TodoItem({
   };
   const handleEdit = () => onToggleEdittingMode();
   const handleCancelEditting = () => {
-    const input = inputRef.current;
-    if (input) {
-      input.value = todo.text;
-      input.blur();
-      onToggleEdittingMode();
-    }
+    if (inputRef.current) inputRef.current.value = todo.text;
+    exitEditMode();
   };
 
   const handleKeydown: React.KeyboardEventHandler<HTMLInputElement> = (
@@ -45,6 +44,9 @@ export function TodoItem({
     switch (event.key) {
       case 'Enter':
         onUpdateTodo({ ...todo, text: inputRef.current.value }, false);
+        exitEditMode();
+        event.preventDefault();
+        event.stopPropagation();
         break;
       case 'Escape':
         handleCancelEditting();

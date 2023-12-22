@@ -22,9 +22,10 @@ function App() {
   const handleAddTodo: React.KeyboardEventHandler<HTMLInputElement> = (
     event
   ) => {
-    if (event.key !== 'Enter') return;
-    addTodo(event.currentTarget.value);
-    setNewTodoText('');
+    if (event.key === 'Enter' && event.currentTarget.value) {
+      addTodo(event.currentTarget.value);
+      setNewTodoText('');
+    }
   };
 
   const handleBlur = () => {
@@ -61,8 +62,8 @@ function App() {
       if (event.key === 'Enter' && mode === null) setMode('input');
     };
 
-    window.addEventListener('keyup', onEnter);
-    return () => window.removeEventListener('keyup', onEnter);
+    window.addEventListener('keydown', onEnter);
+    return () => window.removeEventListener('keydown', onEnter);
   });
 
   return (

@@ -19,7 +19,7 @@ export const CustomRadio = styled.span<{
   border: 1px rgb(108, 108, 108) solid;
   border-radius: 2rem;
   cursor: pointer;
-  color: white;
+  color: var(--bg-color);
 
   ${(props) =>
     props.$completed
