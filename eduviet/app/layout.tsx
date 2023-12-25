@@ -4,7 +4,6 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "../lib/utils";
 import PageHeader from "@/components/molecules/PageHeader";
-import Sidenav from "@/components/molecules/Sidenav";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,8 +30,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <div className="grid min-h-screen w-full md:grid-cols-[280px_1fr]">
-          <Sidenav />
+        <div className="min-h-screen w-full">
           <div className="flex flex-col">
             <PageHeader />
             {children}

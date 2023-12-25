@@ -1,12 +1,13 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import {
   CreditCard,
-  Home,
-  Keyboard,
+  LibrarySquare,
   LogOut,
+  MousePointerClick,
   Settings,
   User,
   UserRound,
@@ -18,22 +19,23 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 function PageHeader() {
+  const path = usePathname();
+
   return (
-    <header className="flex h-14 md:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
-      <Link className="md:hidden" href="#">
-        <Home />
-        <span className="sr-only">Home</span>
-      </Link>
+    <header className="flex h-14 md:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40 sticky top-0 left-0 z-50 backdrop-blur-md">
+      <div className="flex h-[60px] items-center border-b px-2">
+        <Link className="flex items-center gap-1 font-semibold" href="/">
+          <LibrarySquare />
+          <span>EduViet</span>
+        </Link>
+      </div>
       <div className="w-full flex-1">
         <form>
           <div className="relative">
@@ -46,10 +48,38 @@ function PageHeader() {
           </div>
         </form>
       </div>
-      <div className="relative">
+
+      <nav className="flex gap-4 justify-end items-center text-sm font-semibold">
+        <Link
+          href="/dashboard"
+          className={
+            path === "/dashboard" ? "underline underline-offset-2" : ""
+          }
+        >
+          Dashboard
+        </Link>
+        <Link
+          href="/quiz/create"
+          className={
+            path === "/quiz/create" ? "underline underline-offset-2" : ""
+          }
+        >
+          {path === "/quiz/create" ? (
+            "Create Quiz"
+          ) : (
+            <Button size="sm" className="gap-1">
+              <MousePointerClick /> Create Quiz
+            </Button>
+          )}
+        </Link>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="ml-auto h-8 w-8" size="icon" variant="outline">
+            <Button
+              className="ml-auto h-8 w-8 relative"
+              size="icon"
+              variant="outline"
+            >
               <UserRound size={16} />
               <span className="sr-only">User authentication</span>
             </Button>
@@ -82,7 +112,7 @@ function PageHeader() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
+      </nav>
     </header>
   );
 }

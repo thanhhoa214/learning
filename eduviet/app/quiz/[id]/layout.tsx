@@ -5,6 +5,7 @@ import { startCase } from "lodash-es";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { IdParamsProp } from "@/types/missing.type";
+import { PenBox } from "lucide-react";
 
 export default async function QuizDetailLayout({
   children,
@@ -17,13 +18,13 @@ export default async function QuizDetailLayout({
 
   return (
     <div className="p-4">
-      <header className="flex gap-4 justify-between items-start mb-4">
+      <header className="flex gap-4 justify-between items-start mb-4 px-4">
         <div>
           <h2 className="text-2xl font-bold mb-1">{quiz.title}</h2>
           <p>{quiz.description}</p>
         </div>
-        <Button className="ml-auto" size="sm">
-          Add Question
+        <Button className="ml-auto gap-2" variant="outline">
+          <PenBox /> Edit Quiz
         </Button>
       </header>
 
