@@ -38,7 +38,7 @@ export default async function QuizDetailLayout({
                     <Badge>{startCase(question.type)}</Badge>
                     <h3>{question.title}</h3>
                     <p className="text-gray-500 text-xs">
-                      {question.description}
+                      {question.explanation}
                     </p>
                   </TableCell>
                   <TableCell>
@@ -54,7 +54,9 @@ export default async function QuizDetailLayout({
             </TableBody>
           </Table>
         </div>
-        <aside className="w-full space-y-4">{children}</aside>
+        <aside className="w-full space-y-4 h-[25rem] sticky top-28">
+          {children}
+        </aside>
       </main>
     </div>
   );

@@ -11,7 +11,7 @@ export default function MultipleChoice({ question }: QuestionProps) {
     <section className="space-y-2">
       <h2>{question.title}</h2>
       <p className="text-sm text-gray-500 dark:text-gray-400">
-        {question.description}
+        {question.explanation}
       </p>
       <div className="space-y-1">
         {question.answers.map((answer, index) => (

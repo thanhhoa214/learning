@@ -8,5 +8,4 @@ export default async function QuizDetailPage({ params: { id } }: IdParamsProp) {
     include: { questions: { take: 1, include: { answers: true } } },
   });
   redirect(`/quiz/${id}/question/${questions[0]?.id}`);
-  return <></>;
 }

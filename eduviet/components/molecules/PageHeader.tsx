@@ -24,29 +24,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 function PageHeader() {
   const path = usePathname();
 
   return (
-    <header className="flex h-14 md:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40 sticky top-0 left-0 z-50 backdrop-blur-md">
+    <header className="flex h-14 md:h-[60px] items-center gap-2 md:gap-4 border-b bg-gray-100/40 px-2 md:px-6 dark:bg-gray-800/40 sticky top-0 left-0 z-50 backdrop-blur-md">
       <div className="flex h-[60px] items-center border-b px-2">
         <Link className="flex items-center gap-1 font-semibold" href="/">
           <LibrarySquare />
-          <span>EduViet</span>
+          <span className="hidden md:inline">EduViet</span>
         </Link>
       </div>
-      <div className="w-full flex-1">
-        <form>
-          <div className="relative">
-            <div className="absolute left-2.5 top-2.5 text-gray-500 dark:text-gray-400" />
-            <Input
-              className="w-full md:w-2/3 lg:w-1/3"
-              placeholder="Search quizzes..."
-              type="search"
-            />
-          </div>
-        </form>
+      <div className="w-full pr-1">
+        <Input
+          className="w-full md:w-2/3 lg:w-1/3"
+          placeholder="Search quizzes..."
+          type="search"
+        />
       </div>
 
       <nav className="flex gap-4 justify-end items-center text-sm font-semibold">
@@ -60,15 +56,17 @@ function PageHeader() {
         </Link>
         <Link
           href="/quiz/create"
-          className={
+          className={cn(
+            "min-w-fit",
             path === "/quiz/create" ? "underline underline-offset-2" : ""
-          }
+          )}
         >
           {path === "/quiz/create" ? (
             "Create Quiz"
           ) : (
             <Button size="sm" className="gap-1">
-              <MousePointerClick /> Create Quiz
+              <MousePointerClick />{" "}
+              <span className="hidden md:inline">Create Quiz</span>
             </Button>
           )}
         </Link>

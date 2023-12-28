@@ -21,17 +21,17 @@ model Quiz {
   title       String
   description String?
   questions   Question[]
-  author      User       @relation(fields: [authorId], references: [id])
+  author      User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId    String
 }
 
 model Question {
   id          String       @id @default(uuid())
   title       String
-  description String?
+  explanation String?
   type        QuestionType
   answers     Answer[]
-  quiz        Quiz         @relation(fields: [quizId], references: [id])
+  quiz        Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
   quizId      String
 }
 
@@ -40,7 +40,7 @@ model Answer {
   text      String
   isCorrect Boolean
 
-  question   Question @relation(fields: [questionId], references: [id])
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId String
 }
 

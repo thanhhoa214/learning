@@ -59,7 +59,7 @@ async function main() {
         prisma.question.create({
           data: {
             title: faker.lorem.words(5),
-            description: faker.lorem.sentence(),
+            explanation: faker.lorem.sentence(),
             type,
             quizId: quiz1.id,
           },

@@ -4,6 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "../lib/utils";
 import PageHeader from "@/components/molecules/PageHeader";
+import { Toaster } from "@/components/ui/toaster";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -15,13 +16,7 @@ export const metadata: Metadata = {
   description: "eLMS for composing questions",
 };
 
-export default function RootLayout({
-  children,
-  modal,
-}: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
@@ -34,9 +29,9 @@ export default function RootLayout({
           <div className="flex flex-col">
             <PageHeader />
             {children}
-            {modal}
           </div>
         </div>
+        <Toaster />
       </body>
     </html>
   );
