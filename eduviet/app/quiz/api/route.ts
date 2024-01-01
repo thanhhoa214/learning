@@ -5,7 +5,7 @@ import { CreateQuizRequest, getQuizById } from "./type";
 export async function POST(request: NextRequest) {
   const body: CreateQuizRequest = await request.json();
   const quiz = await prisma.quiz.create({
-    data: { ...body.quiz, authorId: "b737e5f8-f551-4e1b-bc31-83933ab99642" },
+    data: { ...body.quiz, authorId: "dacc9977-14e0-44b8-8e09-88013b4d2316" },
   });
   await Promise.all(
     body.questions.map((question) =>

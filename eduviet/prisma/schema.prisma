@@ -28,11 +28,17 @@ model Quiz {
 model Question {
   id          String       @id @default(uuid())
   title       String
+  hint        String?
   explanation String?
   type        QuestionType
-  answers     Answer[]
-  quiz        Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  quizId      String
+
+  parent   Question?  @relation("ChildToParent", fields: [parentId], references: [id])
+  parentId String?
+  children Question[] @relation("ChildToParent")
+
+  answers Answer[]
+  quiz    Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  quizId  String
 }
 
 model Answer {
@@ -43,7 +49,6 @@ model Answer {
   question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId String
 }
-
 enum QuestionType {
   multipleChoice
   dragAndDrop
@@ -52,4 +57,6 @@ enum QuestionType {
   fillInTheBlanks
   matching
   dragTheWords
+  shortAnswer
+  crossword
 }

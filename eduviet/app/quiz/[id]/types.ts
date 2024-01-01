@@ -1,5 +1,6 @@
-import { Answer, Question } from "@prisma/client";
+import { QueryQuestionDetailType } from "@/app/util/queries/question.query";
 
 export interface QuestionProps {
-  question: Question & { answers: Answer[] };
+  question: NonNullable<QueryQuestionDetailType>;
+  onSubmit?: (isCorrect: boolean) => void;
 }

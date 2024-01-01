@@ -19,10 +19,8 @@ export interface CreateQuizRequest {
     answers: Array<PrismaOmitId<Prisma.AnswerCreateManyQuestionInput>>;
   }>;
 }
-export type CreateQuizResponse = Prisma.PromiseType<
-  ReturnType<typeof getQuizById>
->;
+export type CreateQuizResponse = Prisma.PromiseReturnType<typeof getQuizById>;
 
-export type DeleteQuizResponse = Prisma.PromiseType<
-  ReturnType<typeof deleteQuizById>
+export type DeleteQuizResponse = Prisma.PromiseReturnType<
+  typeof deleteQuizById
 >;

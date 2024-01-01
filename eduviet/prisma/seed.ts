@@ -1,7 +1,7 @@
-const prismaLib = require("@prisma/client");
-const faker = require("@faker-js/faker").faker;
+import { PrismaClient, QuestionType } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
-const prisma = new prismaLib.PrismaClient();
+const prisma = new PrismaClient();
 const answersForQuestionTypes = [
   [
     { text: "Option 1", isCorrect: true },
@@ -55,16 +55,18 @@ async function main() {
 
   const questionsIds = (
     await prisma.$transaction(
-      Object.values(prismaLib.QuestionType).map((type) =>
-        prisma.question.create({
-          data: {
-            title: faker.lorem.words(5),
-            explanation: faker.lorem.sentence(),
-            type,
-            quizId: quiz1.id,
-          },
-        })
-      )
+      Object.values(QuestionType)
+        .filter((t) => t !== "crossword" && t !== "shortAnswer")
+        .map((type) =>
+          prisma.question.create({
+            data: {
+              title: faker.lorem.words(5),
+              explanation: faker.lorem.sentence(),
+              type,
+              quizId: quiz1.id,
+            },
+          })
+        )
     )
   ).map((b) => b.id);
 
@@ -75,6 +77,31 @@ async function main() {
       })
     )
   );
+
+  const shortAnswerQuestionsIds = (
+    await prisma.$transaction(
+      ["Python", "for loop", "try catch", "do while"].map((answer) =>
+        prisma.question.create({
+          data: {
+            title: faker.lorem.words(5),
+            explanation: faker.lorem.sentence(),
+            type: QuestionType.shortAnswer,
+            quizId: quiz1.id,
+            answers: { create: { text: answer, isCorrect: true } },
+          },
+        })
+      )
+    )
+  ).map((b) => b.id);
+  const crosswordQuestion = await prisma.question.create({
+    data: {
+      title: "Crossword",
+      explanation: faker.lorem.sentence(),
+      type: QuestionType.crossword,
+      quizId: quiz1.id,
+      children: { connect: shortAnswerQuestionsIds.map((id) => ({ id })) },
+    },
+  });
 
   console.log("Seeding done!");
 }
