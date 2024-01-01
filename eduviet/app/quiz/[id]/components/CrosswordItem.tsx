@@ -31,7 +31,8 @@ export default function CrosswordItem({
   isHorizontal?: boolean;
   className?: string;
 }) {
-  const [x, y] = location;
+  let [x, y] = location;
+  if (!isHorizontal) [x, y] = [y, x];
   const nonCrosswordQuestion = question as unknown as QuestionProps["question"];
   const [openDialog, setOpenDialog] = useState(false);
 
@@ -69,10 +70,10 @@ export default function CrosswordItem({
             htmlFor={`${x}-${y}`}
             className="absolute top-0 left-0 ml-2 mt-1 "
           >
-            {label}{" "}
-            <span className="opacity-0 group-hover:opacity-90">
+            {label}
+            {/* <span className="opacity-0 group-hover:opacity-90">
               ~ {question.title}
-            </span>
+            </span> */}
           </label>
         </div>
       </DialogTrigger>

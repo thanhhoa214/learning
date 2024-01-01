@@ -1,6 +1,7 @@
 import React from "react";
 import { QuestionProps } from "../types";
 import crosswordGenerator, {
+  CrosswordLocation,
   toTwoDimensionArray,
 } from "@/lib/crossword-generator";
 import { flatMap, sortBy } from "lodash-es";
@@ -16,10 +17,7 @@ export default function Crossword({ question }: QuestionProps) {
   const { golden, positions } = crossword;
   const isGoldenHorizontal = false;
   const cellSize = 80;
-  const detailPositions = sortBy(
-    positions,
-    (a) => a.location[isGoldenHorizontal ? 1 : 0]
-  )
+  const detailPositions = sortBy(positions, (a) => a.location[0])
     .map((position) => ({
       position,
       question: questions.find(({ answers }) =>
@@ -58,14 +56,19 @@ export default function Crossword({ question }: QuestionProps) {
         </tbody>
 
         {detailPositions.map(
-          (position, index) =>
-            position.question && (
+          ({ position, question }, index) =>
+            question && (
               <CrosswordItem
-                label={`${index + 1}`}
+                label={
+                  <span>
+                    {index + 1} - {position.word.length} chars
+                  </span>
+                }
                 cellSize={cellSize}
-                wordPostion={position.position}
-                key={position.position.word}
-                question={position.question}
+                wordPostion={position}
+                key={position.word}
+                question={question}
+                isHorizontal={!isGoldenHorizontal}
                 className="bg-blue-100 border-black "
               />
             )
@@ -76,8 +79,11 @@ export default function Crossword({ question }: QuestionProps) {
             label={<strong>Golden</strong>}
             question={goldenQuestion}
             cellSize={cellSize}
-            wordPostion={golden}
-            isHorizontal={false}
+            wordPostion={{
+              word: golden.word,
+              location: golden.location.reverse() as CrosswordLocation,
+            }}
+            isHorizontal={isGoldenHorizontal}
             className="bg-blue-300 border-black transition-opacity opacity-0 hover:opacity-95"
           />
         )}

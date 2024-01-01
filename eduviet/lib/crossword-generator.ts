@@ -1,6 +1,6 @@
 import { filter, indexOf, intersection, max, sortBy, uniq } from "lodash-es";
 
-type CrosswordLocation = [number, number];
+export type CrosswordLocation = [number, number];
 export interface CrosswordPosition {
   location: CrosswordLocation;
   word: string;
