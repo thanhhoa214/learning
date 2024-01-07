@@ -30,7 +30,7 @@ function getItem(
 const items: MenuProps["items"] = [
   getItem("Dashboard", "dashboard", <HomeFilled />),
   getItem("Transactions", "transactions", <AppstoreOutlined />),
-  getItem("Accounts", "accounts", <AccountBookFilled />),
+  getItem("Address Books", "address-books", <AccountBookFilled />),
   getItem("Web3", "web3", <WalletFilled />),
   { type: "divider" },
   getItem("Setting", "setting", <SettingFilled />),

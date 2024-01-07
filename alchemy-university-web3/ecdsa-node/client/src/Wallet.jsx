@@ -1,26 +1,27 @@
-import server from "./server";
+import { useState } from "react";
+import useBalance from "./hooks/useBalance";
 
-function Wallet({ address, setAddress, balance, setBalance }) {
+function Wallet() {
+  const [address, setAddress] = useState("");
+  const [balance] = useBalance(address);
+
   async function onChange(evt) {
     const address = evt.target.value;
     setAddress(address);
-    if (address) {
-      const {
-        data: { balance },
-      } = await server.get(`balance/${address}`);
-      setBalance(balance);
-    } else {
-      setBalance(0);
-    }
   }
 
   return (
     <div className="container wallet">
-      <h1>Your Wallet</h1>
+      <h1>Balance Explorer</h1>
+      <p>Wallet balances are recorded publicly due to blockchain.</p>
 
       <label>
-        Wallet Address
-        <input placeholder="Type an address, for example: 0x1" value={address} onChange={onChange}></input>
+        Wallet Address (Public key)
+        <input
+          placeholder="Type an address, for example: 0x1"
+          value={address}
+          onChange={onChange}
+        ></input>
       </label>
 
       <div className="balance">Balance: {balance}</div>
