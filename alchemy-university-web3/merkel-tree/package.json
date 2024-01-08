@@ -1,0 +1,20 @@
+{
+  "name": "merkel-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha 'test/**/*.js' --recursive --timeout 60000 --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "^10.2.0"
+  }
+}
