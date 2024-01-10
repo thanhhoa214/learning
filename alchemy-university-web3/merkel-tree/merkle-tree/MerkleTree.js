@@ -3,6 +3,7 @@ class MerkleTree {
     this.leaves = leaves;
     this.concat = concat;
   }
+
   getRoot() {
     let clone = [...this.leaves];
     while (clone.length > 1) {
