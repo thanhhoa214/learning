@@ -18,7 +18,7 @@ app.post("/gift", (req, res) => {
   // grab the parameters from the front-end here
   const { name } = req.body;
 
-  // TODO: prove that a name is in the list
+  // Why we need proof and verifyProof when we can use index > -1 to determine
   const index = niceList.findIndex((n) => n === name);
   const proof = merkleTree.getProof(index);
   const isInTheList = verifyProof(proof, name, MERKLE_ROOT);
