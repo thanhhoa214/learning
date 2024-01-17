@@ -8,7 +8,10 @@ const config: HardhatUserConfig = {
   networks: {
     goerli: {
       url: process.env.ALCHEMY_HTTPS,
-      accounts: [process.env.TEST_PRIVATE_KEY as string],
+      accounts: [
+        process.env.TEST_PRIVATE_KEY as string,
+        process.env.TEST_ALCHEMY_PRIVATE_KEY as string,
+      ],
     },
   },
 };
