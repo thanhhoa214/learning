@@ -115,8 +115,12 @@ export default function Home() {
             <Button type="submit" className="mr-4">
               Download
             </Button>
-            <Button variant="outline" type="button">
-              Paste
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => form.setValue("link", "")}
+            >
+              Clear text
             </Button>
           </form>
         </Form>
