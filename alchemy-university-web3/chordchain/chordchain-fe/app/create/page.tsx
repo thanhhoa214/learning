@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,30 +25,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AppWindow } from "lucide-react";
-import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { AppWindow, Loader, UploadCloud } from "lucide-react";
+import { FormEventHandler, MouseEventHandler, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-const formSchema = z.object({
-  name: z.string().min(2),
-  lyric: z
-    .string()
-    .min(10, { message: "Bio must be at least 10 characters." })
-    .max(160, { message: "Bio must not be longer than 30 characters." }),
-  composer: z.string().optional(),
-  genre: z.string().optional(),
-  artist: z.object({
-    name: z.string(),
-    tone: z.string(),
-    musicLink: z.string(),
-  }),
-});
-
-type FormModel = z.infer<typeof formSchema>;
+import { CreateFormModel, createFormSchema } from "../api/create/util";
 
 const lyricPlaceholder = `Tông gốc, Capo 5
 ===
@@ -56,28 +51,25 @@ Hạt bụi [Am]nào hóa kiếp thân tôi
 Để một [Dm]mai vươn hình hài lớn dậy
 `;
 
-//   console.log("======================");
-
-//   console.log(process.env.PINATA_API_KEY);
-
-//   const pinata = new pinataSDK({
-//     pinataApiKey: process.env.PINATA_API_KEY,
-//     pinataSecretApiKey: process.env.PINATA_SECRET_KEY,
-//   });
-
-//   pinata.testAuthentication().then(console.log);
 export default function CreatePage() {
-  const [open, setOpen] = useState(false);
-  const form = useForm<FormModel>({
-    resolver: zodResolver(formSchema),
+  const [previewOpened, setPreviewOpened] = useState(false);
+  const [alertOpened, setAlertOpened] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const form = useForm<CreateFormModel>({
+    resolver: zodResolver(createFormSchema),
     defaultValues: {
-      name: "",
+      name: "Nothing gonna change my love for you",
+      lyric: lyricPlaceholder,
     },
   });
 
-  function onSubmit(values: FormModel) {
-    console.log(values);
-  }
+  const openAlert = () => setAlertOpened(true);
+  const onSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
+    setLoading(true);
+    await axios.post("/api/create", form.watch());
+    setLoading(false);
+    console.log("post successfully");
+  };
 
   return (
     <>
@@ -85,7 +77,7 @@ export default function CreatePage() {
         <h1 className="text-3xl font-bold mb-4">Post your chord</h1>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(openAlert)} className="space-y-4">
             <div className="flex items-start gap-8">
               <div className="w-full space-y-4">
                 <FormField
@@ -117,7 +109,7 @@ export default function CreatePage() {
                               className="appearance-none inline-flex gap-1 underline underline-offset-2 hover:text-primary"
                               type="button"
                               onClick={() =>
-                                form.watch("lyric") && setOpen(true)
+                                form.watch("lyric") && setPreviewOpened(true)
                               }
                             >
                               <AppWindow size={16} />
@@ -229,12 +221,15 @@ export default function CreatePage() {
                 </section>
               </div>
             </div>
-            <Button type="submit">Submit</Button>
+            <Button type="submit">
+              {loading ? <Loader className="animate-spin" /> : <UploadCloud />}
+              <span className="ml-2">Submit</span>
+            </Button>
           </form>
         </Form>
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={previewOpened} onOpenChange={setPreviewOpened}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Preview your lyric with chords</DialogTitle>
@@ -249,6 +244,26 @@ export default function CreatePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={alertOpened} onOpenChange={setAlertOpened}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Did you careful review your submission?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently store your
+              song on-chain and further changes will be costly.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={onSubmit}>
+              Yes, I reviewed
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }

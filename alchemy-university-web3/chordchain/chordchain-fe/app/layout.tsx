@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/ui2/Navbar";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           {children}
         </body>
       </TooltipProvider>
+      <Toaster />
     </html>
   );
 }
