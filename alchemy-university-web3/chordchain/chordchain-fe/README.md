@@ -6,6 +6,7 @@ Using Solidity + IPFS to store song's chord as NFT
 - Support [Open Graph protocol](https://ogp.me/) for sharing
 - Support cursor to track current word in the song (aka karaoke mode)
 - Support channel (QR code cast) for group of users to play/sing together
+- Strict type for calling contract using Viem
 
 ## Getting Started
 

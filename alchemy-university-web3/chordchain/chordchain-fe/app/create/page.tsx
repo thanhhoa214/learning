@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -23,7 +23,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   AlertDialog,
@@ -34,16 +33,26 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { AppWindow, Loader, UploadCloud } from "lucide-react";
-import { FormEventHandler, MouseEventHandler, useState } from "react";
+import {
+  AppWindow,
+  CheckCircle,
+  ExternalLink,
+  Loader2,
+  UploadCloud,
+  XCircle,
+} from "lucide-react";
+import { MouseEventHandler, useState } from "react";
+import { useContractWrite } from "wagmi";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CreateFormModel, createFormSchema } from "../api/create/util";
+import { chordchainContractConfig } from "@/lib/chordchain-contract";
+import { toast } from "sonner";
+import { SimulateContractErrorType } from "viem";
 
 const lyricPlaceholder = `Tông gốc, Capo 5
 ===
@@ -55,6 +64,10 @@ export default function CreatePage() {
   const [previewOpened, setPreviewOpened] = useState(false);
   const [alertOpened, setAlertOpened] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { writeAsync } = useContractWrite({
+    ...chordchainContractConfig,
+    functionName: "safeMint",
+  });
   const form = useForm<CreateFormModel>({
     resolver: zodResolver(createFormSchema),
     defaultValues: {
@@ -66,9 +79,42 @@ export default function CreatePage() {
   const openAlert = () => setAlertOpened(true);
   const onSubmit: MouseEventHandler<HTMLButtonElement> = async () => {
     setLoading(true);
-    await axios.post("/api/create", form.watch());
-    setLoading(false);
-    console.log("post successfully");
+
+    const { data } = await axios.post<CreateFormModel, AxiosResponse<string>>(
+      "/api/create",
+      form.watch()
+    );
+    try {
+      const { hash } = await writeAsync({ args: [data] });
+      setLoading(false);
+      toast(
+        `Your song has been submitted. It may take a while due to network traffic.`,
+        {
+          action: {
+            label: (
+              <span className="inline-flex items-center gap-1">
+                Etherscan <ExternalLink size={12} />
+              </span>
+            ),
+            onClick: () =>
+              window.open(`https://goerli.etherscan.io/tx/${hash}`, "_blank"),
+          },
+        }
+      );
+    } catch (e) {
+      const error = e as SimulateContractErrorType;
+
+      setLoading(false);
+      toast(error.name, {
+        description: (
+          <code className="bg-slate-800 text-slate-100 block max-h-20 overflow-auto p-2 rounded">
+            {error.message}
+          </code>
+        ),
+        icon: <XCircle size={24} className="mt-1" />,
+        className: "!text-red-500 !items-start",
+      });
+    }
   };
 
   return (
@@ -222,7 +268,7 @@ export default function CreatePage() {
               </div>
             </div>
             <Button type="submit">
-              {loading ? <Loader className="animate-spin" /> : <UploadCloud />}
+              {loading ? <Loader2 className="animate-spin" /> : <UploadCloud />}
               <span className="ml-2">Submit</span>
             </Button>
           </form>

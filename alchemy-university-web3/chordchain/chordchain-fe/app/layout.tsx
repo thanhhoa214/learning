@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui2/Navbar";
-import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+
+import { Web3Modal } from "../context/Web3Modal";
+import DarkModeProvider from "@/components/ui2/DarkModeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +19,14 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en">
       <TooltipProvider>
-        <body className={cn(inter.className)}>
-          <Navbar />
-          {children}
-        </body>
+        <Web3Modal>
+          <body className={inter.className}>
+            <DarkModeProvider>
+              <Navbar />
+              {children}
+            </DarkModeProvider>
+          </body>
+        </Web3Modal>
       </TooltipProvider>
       <Toaster />
     </html>
