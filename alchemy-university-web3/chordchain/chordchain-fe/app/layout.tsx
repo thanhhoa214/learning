@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 import { Web3Modal } from "../context/Web3Modal";
 import DarkModeProvider from "@/components/ui2/DarkModeProvider";
+import { SWRProvider } from "@/components/ui2/SWRProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,14 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
     <html lang="en">
       <TooltipProvider>
         <Web3Modal>
-          <body className={inter.className}>
-            <DarkModeProvider>
-              <Navbar />
-              {children}
-            </DarkModeProvider>
-          </body>
+          <SWRProvider>
+            <body className={inter.className}>
+              <DarkModeProvider>
+                <Navbar />
+                {children}
+              </DarkModeProvider>
+            </body>
+          </SWRProvider>
         </Web3Modal>
       </TooltipProvider>
       <Toaster />

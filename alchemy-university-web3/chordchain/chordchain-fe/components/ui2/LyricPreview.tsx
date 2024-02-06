@@ -10,8 +10,8 @@ export default function LyricPreview({
   if (!lyric) return "";
   const lyricWithBr = lyric.replace(/\n/gi, "<br/>");
   const chords = lyricWithBr.replace(
-    /(\[\w+\])([^\s]+)/gi,
-    `<span class="h-12 relative inline-block">$2 <strong class="absolute -top-5 left-0">$1</strong></span>`
+    /(\[[\w\/]+\])([^\s]+)/gi,
+    `<span class="h-11 relative inline-flex items-end">$2 <strong class="absolute top-0 left-0">$1</strong></span>`
   );
 
   return (

@@ -15,7 +15,7 @@ import { AudioWaveform, Info, Moon, PencilRuler, Sun } from "lucide-react";
 import { useDarkMode } from "usehooks-ts";
 
 export default function Navbar() {
-  const darkMode = useDarkMode();
+  const darkMode = useDarkMode({ initializeWithValue: false });
 
   return (
     <div className="px-8 py-4 flex justify-between bg-slate-900 text-slate-100 dark:bg-slate-700">
@@ -23,7 +23,8 @@ export default function Navbar() {
         <NavigationMenuList className="space-x-4">
           <NavigationMenuItem>
             <NavigationMenuLink href="/" className="flex gap-1">
-              <AudioWaveform /> Home
+              <AudioWaveform />
+              Home
             </NavigationMenuLink>
           </NavigationMenuItem>
           <Tooltip>
@@ -38,6 +39,11 @@ export default function Navbar() {
               <p>Coming soon!!!</p>
             </TooltipContent>
           </Tooltip>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/" className="flex gap-1">
+              My chords
+            </NavigationMenuLink>
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink href="/create">
               <Button>

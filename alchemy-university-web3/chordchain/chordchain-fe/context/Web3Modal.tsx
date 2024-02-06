@@ -24,7 +24,8 @@ createWeb3Modal({
   wagmiConfig,
   projectId,
   chains,
-  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  defaultChain: chains[0],
+  enableAnalytics: true,
 });
 
 export function Web3Modal({ children }: React.PropsWithChildren) {

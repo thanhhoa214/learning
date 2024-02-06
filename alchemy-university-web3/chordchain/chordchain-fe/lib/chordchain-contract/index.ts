@@ -1,9 +1,14 @@
-import { UseContractWriteConfig } from "wagmi";
+import { UseContractReadConfig } from "wagmi";
 import ChordsNFT from "./artifacts/contracts/ChordsNFT.sol/ChordsNFT.json";
 
-export const chordchainContractConfig: Partial<
-  UseContractWriteConfig<typeof ChordsNFT.abi>
+export const ETHERSCAN_URL = "https://goerli.etherscan.io";
+export const CHORDCHAIN_GOERLI_CONTRACT =
+  "0x856f519403bee9ce058ffe368c3f67de3aec64d4";
+
+export const chordchainContractConfig: Pick<
+  UseContractReadConfig<typeof ChordsNFT.abi>,
+  "abi" | "address"
 > = {
-  address: "0x02617d739c339b2c94916c9873ede7973ca531e7",
+  address: CHORDCHAIN_GOERLI_CONTRACT,
   abi: ChordsNFT.abi,
 };
