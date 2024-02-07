@@ -11,9 +11,22 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { AudioWaveform, Info, Moon, PencilRuler, Sun } from "lucide-react";
+import {
+  AudioWaveform,
+  Github,
+  Info,
+  Moon,
+  PencilRuler,
+  ReceiptText,
+  Sun,
+} from "lucide-react";
 import { useDarkMode, useMediaQuery, useIsClient } from "usehooks-ts";
 import { useAccount } from "wagmi";
+import Link from "next/link";
+import {
+  CHORDCHAIN_GOERLI_CONTRACT,
+  ETHERSCAN_URL,
+} from "@/lib/chordchain-contract";
 
 export default function Navbar() {
   const isClient = useIsClient();
@@ -86,6 +99,34 @@ export default function Navbar() {
           </TooltipContent>
         </Tooltip>
       </div>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link
+            href={`${ETHERSCAN_URL}/address/${CHORDCHAIN_GOERLI_CONTRACT}`}
+            target="_blank"
+          >
+            <Button
+              size={"icon"}
+              variant={"ghost"}
+              className="rounded-full ml-2"
+            >
+              <ReceiptText />
+            </Button>
+          </Link>
+        </TooltipTrigger>
+
+        <TooltipContent>Contract</TooltipContent>
+      </Tooltip>
+
+      <Link
+        href="https://github.com/thanhhoa214/learning/tree/main/alchemy-university-web3/chordchain"
+        target="_blank"
+      >
+        <Button size={"icon"} variant={"ghost"} className="rounded-full ml-2">
+          <Github />
+        </Button>
+      </Link>
     </div>
   );
 }
