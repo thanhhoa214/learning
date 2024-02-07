@@ -41,12 +41,6 @@ export default async function TokenDetailPage({
             {metadata.name}
           </CardTitle>
           <CardDescription>{metadata.description}</CardDescription>
-          {nft.mint?.mintAddress && (
-            <DonateButton
-              address={nft.mint.mintAddress}
-              className="absolute right-6 top-4"
-            />
-          )}
         </CardHeader>
         <CardContent>
           <LyricPreview lyric={metadata.lyric} />
@@ -90,9 +84,9 @@ export default async function TokenDetailPage({
           )}
 
           {nft.mint?.mintAddress && (
-            <DonateButton address={nft.mint.mintAddress} />
+            <DonateButton address={nft.mint.mintAddress} className="mt-4" />
           )}
-          <Link href={`/address/${nft.mint?.mintAddress}`} className="mt-4">
+          <Link href={`/address/${nft.mint?.mintAddress}`}>
             <Button variant={"secondary"} className=" w-full">
               Owner <CircleUserRound size={16} className="ml-1" />
             </Button>

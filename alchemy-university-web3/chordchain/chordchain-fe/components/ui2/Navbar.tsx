@@ -12,11 +12,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { AudioWaveform, Info, Moon, PencilRuler, Sun } from "lucide-react";
-import { useDarkMode, useMediaQuery } from "usehooks-ts";
+import { useDarkMode, useMediaQuery, useIsClient } from "usehooks-ts";
 import { useAccount } from "wagmi";
 
 export default function Navbar() {
-  const { address: myAddress } = useAccount();
+  const isClient = useIsClient();
+  const { address } = useAccount();
   const isMedium = useMediaQuery("(min-width: 768px)");
   const darkMode = useDarkMode({ initializeWithValue: false });
 
@@ -42,14 +43,16 @@ export default function Navbar() {
               <p>Coming soon!!!</p>
             </TooltipContent>
           </Tooltip>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href={`/address/${myAddress}`}
-              className="flex gap-1"
-            >
-              My chords
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+          {isClient && address && (
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={`/address/${address}`}
+                className="flex gap-1"
+              >
+                My chords
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          )}
           <NavigationMenuItem>
             <NavigationMenuLink href="/create">
               <Button>

@@ -43,6 +43,7 @@ export function NftItem({ nft, index }: { nft: Nft; index: number }) {
           </div>
         </div>
       </AccordionTrigger>
+
       <AccordionContent className="flex gap-4 text-slate-700 dark:text-slate-300">
         <div>
           <p>
