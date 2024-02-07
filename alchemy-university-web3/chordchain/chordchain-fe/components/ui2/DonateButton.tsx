@@ -54,7 +54,7 @@ export default function DonateButton({
     <form
       onSubmit={onSubmit}
       className={cn(
-        "flex items-center gap-2 py-2 px-4 border rounded-lg bg-orange-100",
+        "flex items-center gap-2 py-2 px-4 border rounded-lg bg-gradient-to-r from-emerald-400  via-sky-400 to-indigo-400 dark:from-emerald-600  dark:via-sky-600 dark:to-indigo-500",
         className
       )}
     >

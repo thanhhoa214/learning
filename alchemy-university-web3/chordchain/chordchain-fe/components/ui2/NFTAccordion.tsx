@@ -34,7 +34,7 @@ export function NFTAccordion({ nfts }: { nfts: Nft[] }) {
             className="border-b-0"
           >
             <header
-              className="flex flex-col gap-2 md:flex-row justify-between items-center w-full cursor-pointer px-4 py-2 rounded-md hover:bg-slate-50"
+              className="flex flex-col gap-2 md:flex-row justify-between items-center w-full cursor-pointer px-4 py-2 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800"
               onClick={() =>
                 setSelectedValue(
                   nft.tokenId === selectedValue ? "" : nft.tokenId
