@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -15,7 +14,7 @@ import { ChordsRequest, ChordsResponse } from "./api/chords/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { FormEventHandler } from "react";
-import { NftItem } from "@/components/ui2/NFTItem";
+import { NFTAccordion } from "@/components/ui2/NFTAccordion";
 
 type QueryKey = keyof ChordsRequest;
 const QUERY_Q: QueryKey = "q";
@@ -52,19 +51,13 @@ export default function Home() {
           <CardTitle>Minted chords</CardTitle>
           <CardDescription>Recent minted chords on contract</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="h-full">
           {isLoading ? (
             Array.from({ length: 5 }, (_, index) => (
               <Skeleton className="h-12 w-full rounded-xl mb-4" key={index} />
             ))
-          ) : data?.nfts.length ? (
-            <Accordion type="single" collapsible className="w-full">
-              {data?.nfts.map((nft, index) => (
-                <NftItem nft={nft} index={index} key={nft.tokenId} />
-              ))}
-            </Accordion>
           ) : (
-            <p>No NFTs has been minted.</p>
+            <NFTAccordion nfts={data?.nfts || []} />
           )}
         </CardContent>
       </Card>

@@ -9,9 +9,9 @@ import {
 import PageContainer from "@/components/ui2/PageContainer";
 import { alchemy } from "@/lib/alchemy";
 import { Accordion } from "@/components/ui/accordion";
-import { NftItem } from "@/components/ui2/NFTItem";
 import { shortenAddress } from "@/lib/chordchain-contract";
 import DonateButton from "@/components/ui2/DonateButton";
+import { NFTAccordion } from "@/components/ui2/NFTAccordion";
 
 export default async function OwnerDetailPage({
   params,
@@ -37,15 +37,7 @@ export default async function OwnerDetailPage({
           />
         </CardHeader>
         <CardContent>
-          {ownedNfts.length ? (
-            <Accordion type="single" collapsible className="w-full">
-              {ownedNfts.map((nft, index) => (
-                <NftItem nft={nft} index={index} key={nft.tokenId} />
-              ))}
-            </Accordion>
-          ) : (
-            <p>No NFTs has been minted.</p>
-          )}
+          <NFTAccordion nfts={ownedNfts} />
         </CardContent>
       </Card>
     </PageContainer>
