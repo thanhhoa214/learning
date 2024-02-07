@@ -41,9 +41,6 @@ Chordchain utilizes Solidity and IPFS to store songs' chords as non-fungible tok
 ## Testing Data Examples
 
 ### Song 1: "Summer Breeze"
-
-Lyric:
-
 ```
 See the [G]curtains [D/F#]hangin' in the [Em]window
 In the evenin' [G]on a Friday [D]night
@@ -52,13 +49,15 @@ Lets me know [G]everything's [D]alright
 ```
 
 Composer: Seals and Crofts
+
 Genre: Folk
+
 Artist: Seals and Crofts
+
 Music Link: https://www.youtube.com/watch?v=GQQbjpomexo
 
 
 ### Song 2: "Hotel California"
-Lyric:
 ```
 On a dark [Bm]desert [F#]highway, [A]cool wind in my [E]hair
 Warm smell of [G]colitas, [D]rising up through the [Em]air
@@ -66,12 +65,14 @@ Up ahead in the [F#]distance, I [A]saw a shimmering [E]light
 My head grew [G]heavy and my [D]sight grew dim, I [Em]had to stop for the [F#]night
 ```
 Composer: Eagles
+
 Genre: Rock
+
 Artist: Eagles
+
 Music Link: https://open.spotify.com/track/4GkOfUKUqDDgoeiov8Uqyi
 
 ### Song 3: "Hallelujah"
-Lyric:
 ```
 I've [C]heard there was a [Am]secret chord
 That [C]David played and it [Am]pleased the Lord
@@ -81,8 +82,11 @@ The [F]minor fall, the [G]major lift
 The baffled [Am]king composing [Em]Hallelujah
 ```
 Composer: Leonard Cohen
+
 Genre: Folk Rock
+
 Artist: Leonard Cohen
+
 Music Link: https://www.youtube.com/watch?v=YrLk4vdY28Q
 
 ## TODO
