@@ -1,4 +1,5 @@
 # Chordchain
+<img width="1222" alt="Screenshot 2024-02-07 at 14 10 40" src="https://github.com/thanhhoa214/learning/assets/32329202/07317eb7-4b6a-4af7-ac93-8eb674571362">
 
 Using Solidity + IPFS to store song's chord as NFT
 
