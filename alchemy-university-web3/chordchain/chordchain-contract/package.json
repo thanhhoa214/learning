@@ -1,5 +1,10 @@
 {
-  "name": "hardhat-project",
+  "name": "chordchain-contract",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "goerli:deploy": "hardhat run scripts/deploy.ts --network goerli"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
     "hardhat": "^2.19.5"

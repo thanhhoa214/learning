@@ -78,10 +78,7 @@ export default function CreatePage() {
   });
   const form = useForm<CreateFormModel>({
     resolver: zodResolver(createFormSchema),
-    defaultValues: {
-      name: "Nothing gonna change my love for you",
-      lyric: lyricPlaceholder,
-    },
+    defaultValues: { name: "", description: "", lyric: "" },
   });
 
   const openAlert = () => setAlertOpened(true);
@@ -148,6 +145,22 @@ export default function CreatePage() {
                         <FormControl>
                           <Input
                             placeholder="Nothing's Gonna Change My Love for You"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Description</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Some notes for reader such as Capo level, style"
                             {...field}
                           />
                         </FormControl>

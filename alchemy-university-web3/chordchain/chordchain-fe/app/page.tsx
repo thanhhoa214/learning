@@ -13,7 +13,7 @@ import useSWR from "swr";
 import { ChordsRequest, ChordsResponse } from "./api/chords/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
-import { FormEventHandler } from "react";
+import { FormEventHandler, Suspense } from "react";
 import { NFTAccordion } from "@/components/ui2/NFTAccordion";
 
 type QueryKey = keyof ChordsRequest;
@@ -21,11 +21,6 @@ const QUERY_Q: QueryKey = "q";
 
 export default function Home() {
   const router = useRouter();
-  const query = useSearchParams();
-  const q = query.get(QUERY_Q);
-  const { data, error, isLoading } = useSWR<ChordsResponse>(
-    `/api/chords?${QUERY_Q}=${q}`
-  );
   const pathname = usePathname();
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
@@ -52,15 +47,26 @@ export default function Home() {
           <CardDescription>Recent minted chords on contract</CardDescription>
         </CardHeader>
         <CardContent className="h-full">
-          {isLoading ? (
-            Array.from({ length: 5 }, (_, index) => (
-              <Skeleton className="h-12 w-full rounded-xl mb-4" key={index} />
-            ))
-          ) : (
-            <NFTAccordion nfts={data?.nfts || []} />
-          )}
+          <Suspense>
+            <NFTContainer />
+          </Suspense>
         </CardContent>
       </Card>
     </main>
   );
+}
+
+function NFTContainer() {
+  const query = useSearchParams();
+  const q = query.get(QUERY_Q);
+  const { data, isLoading } = useSWR<ChordsResponse>(
+    `/api/chords?${QUERY_Q}=${q}`
+  );
+
+  if (isLoading)
+    return Array.from({ length: 5 }, (_, index) => (
+      <Skeleton className="h-12 w-full rounded-xl mb-4" key={index} />
+    ));
+
+  return <NFTAccordion nfts={data?.nfts || []} />;
 }
