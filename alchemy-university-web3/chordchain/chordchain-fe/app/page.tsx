@@ -6,24 +6,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import Link from "next/link";
-import { Nft } from "alchemy-sdk";
-import { ETHERSCAN_URL } from "@/lib/chordchain-contract";
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { CircleUserRound, ExternalLink, Music4, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import useSWR from "swr";
 import { ChordsRequest, ChordsResponse } from "./api/chords/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { FormEventHandler } from "react";
-import { CreateFormModel } from "./api/create/util";
+import { NftItem } from "@/components/ui2/NFTItem";
 
 type QueryKey = keyof ChordsRequest;
 const QUERY_Q: QueryKey = "q";
@@ -77,76 +69,5 @@ export default function Home() {
         </CardContent>
       </Card>
     </main>
-  );
-}
-
-function NftItem({ nft, index }: { nft: Nft; index: number }) {
-  const metadata = nft.raw.metadata as CreateFormModel;
-  return (
-    <AccordionItem value={nft.tokenId} className="border-b-0">
-      <AccordionTrigger>
-        <div className="flex justify-between items-center w-full">
-          <p className="flex gap-1">
-            <strong>
-              {index + 1}. {metadata.name}
-            </strong>
-            <span>|</span>
-            <span>{metadata.composer}</span>
-          </p>
-          <div className="flex gap-2 mr-2">
-            <Link href={`/token/${nft.tokenId}`}>
-              <Button size={"sm"} variant={"secondary"}>
-                Chords <Music4 size={16} className="ml-1" />
-              </Button>
-            </Link>
-            <Link
-              href={`${ETHERSCAN_URL}/address/${nft.mint?.mintAddress}`}
-              target="_blank"
-            >
-              <Button size={"sm"} variant={"secondary"}>
-                Owner <CircleUserRound size={16} className="ml-1" />
-              </Button>
-            </Link>
-            {nft.tokenUri && (
-              <Link href={nft.tokenUri} target="_blank">
-                <Button size={"sm"} variant={"secondary"}>
-                  Raw <ExternalLink size={16} className="ml-1" />
-                </Button>
-              </Link>
-            )}
-          </div>
-        </div>
-      </AccordionTrigger>
-      <AccordionContent className="flex gap-4 text-slate-700 dark:text-slate-300">
-        <div>
-          <p>
-            <strong>Composer:</strong> {metadata.composer || "None"}
-          </p>
-          <p>
-            <strong>Genre:</strong> {metadata.genre || "None"}
-          </p>
-        </div>
-        {metadata.artist && (
-          <div>
-            <p>
-              <strong>Artist name:</strong> {metadata.artist.name || "None"}
-            </p>
-            <p>
-              <strong>Tone:</strong> {metadata.artist.tone || "None"}
-            </p>
-            <p>
-              <strong>Music link:</strong>{" "}
-              {metadata.artist.musicLink ? (
-                <Link href={metadata.artist.musicLink} target="_blank">
-                  {metadata.artist.musicLink}
-                </Link>
-              ) : (
-                "None"
-              )}
-            </p>
-          </div>
-        )}
-      </AccordionContent>
-    </AccordionItem>
   );
 }

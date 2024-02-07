@@ -12,3 +12,8 @@ export const chordchainContractConfig: Pick<
   address: CHORDCHAIN_GOERLI_CONTRACT,
   abi: ChordsNFT.abi,
 };
+
+export const shortenAddress = (address: string, character = 16) =>
+  `${address.slice(0, character / 2)}...${address.slice(
+    address.length - character / 2
+  )}`;

@@ -7,3 +7,9 @@ declare namespace NodeJS {
     CHORDCHAIN_GOERLI_CONTRACT: string;
   }
 }
+
+namespace JSX {
+  interface IntrinsicElements {
+    ["giscus-widget"]: DOMAttributes;
+  }
+}

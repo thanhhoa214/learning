@@ -25,7 +25,7 @@
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
   }
-  
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
@@ -56,4 +56,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.chord-link {
+  @apply text-primary hover:to-green-600 hover:underline underline-offset-2 active:text-green-700;
 }

@@ -12,24 +12,27 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { AudioWaveform, Info, Moon, PencilRuler, Sun } from "lucide-react";
-import { useDarkMode } from "usehooks-ts";
+import { useDarkMode, useMediaQuery } from "usehooks-ts";
+import { useAccount } from "wagmi";
 
 export default function Navbar() {
+  const { address: myAddress } = useAccount();
+  const isMedium = useMediaQuery("(min-width: 768px)");
   const darkMode = useDarkMode({ initializeWithValue: false });
 
   return (
-    <div className="px-8 py-4 flex justify-between bg-slate-900 text-slate-100 dark:bg-slate-700">
+    <div className="h-16 px-8 flex justify-between items-center bg-slate-900 text-slate-100 dark:bg-slate-700">
       <NavigationMenu>
         <NavigationMenuList className="space-x-4">
           <NavigationMenuItem>
             <NavigationMenuLink href="/" className="flex gap-1">
               <AudioWaveform />
-              Home
+              <span className="hidden sm:inline">Home</span>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <Tooltip>
             <TooltipTrigger asChild>
-              <NavigationMenuItem>
+              <NavigationMenuItem className="hidden md:block">
                 <NavigationMenuLink href="/" className="flex gap-1">
                   Play together <Info />
                 </NavigationMenuLink>
@@ -40,14 +43,18 @@ export default function Navbar() {
             </TooltipContent>
           </Tooltip>
           <NavigationMenuItem>
-            <NavigationMenuLink href="/" className="flex gap-1">
+            <NavigationMenuLink
+              href={`/address/${myAddress}`}
+              className="flex gap-1"
+            >
               My chords
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink href="/create">
               <Button>
-                <PencilRuler className="mr-2" /> Post your chord
+                <PencilRuler />
+                <span className="ml-2 hidden md:inline">Post your chord</span>
               </Button>
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -55,7 +62,7 @@ export default function Navbar() {
       </NavigationMenu>
 
       <div className="ml-auto flex">
-        <w3m-button />
+        <w3m-button balance={isMedium ? "show" : "hide"} />
         <Button
           size={"icon"}
           variant={"link"}
