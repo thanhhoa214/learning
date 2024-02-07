@@ -63,13 +63,25 @@ export default function Navbar() {
 
       <div className="ml-auto flex">
         <w3m-button balance={isMedium ? "show" : "hide"} />
-        <Button
-          size={"icon"}
-          variant={"link"}
-          onClick={() => darkMode.toggle()}
-        >
-          {darkMode.isDarkMode ? <Sun /> : <Moon />}
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={() => darkMode.toggle()}
+              className="appearance-none ml-2"
+            >
+              {darkMode.isDarkMode ? (
+                <Moon className="fill-yellow-500 text-yellow-500" />
+              ) : (
+                <Sun className="text-white" />
+              )}
+            </button>
+          </TooltipTrigger>
+
+          <TooltipContent>
+            Switch to{" "}
+            <strong>{darkMode.isDarkMode ? "Light" : "Dark"} mode</strong>
+          </TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );
