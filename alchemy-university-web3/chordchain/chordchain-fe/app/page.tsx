@@ -54,7 +54,6 @@ export default function Home() {
               empty={
                 isSearching && (
                   <p className="px-4">
-                    {data?.nfts.length}
                     No results were found for{" "}
                     <strong>
                       {query && `“${query}”`}{" "}
