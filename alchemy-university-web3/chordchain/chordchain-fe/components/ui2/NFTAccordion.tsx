@@ -11,10 +11,17 @@ import { CircleUserRound, ExternalLink, Music4 } from "lucide-react";
 import { CreateFormModel } from "@/app/api/create/util";
 import { useState } from "react";
 
-export function NFTAccordion({ nfts }: { nfts: Nft[] }) {
+export function NFTAccordion({
+  nfts,
+  empty,
+}: {
+  nfts: Nft[];
+  empty?: React.ReactNode;
+}) {
   const [selectedValue, setSelectedValue] = useState<string>();
 
-  if (nfts.length === 0) return <p>No NFTs has been minted.</p>;
+  if (nfts.length === 0)
+    return empty || <p className="pl-10">No NFTs has been minted.</p>;
 
   return (
     <Accordion
