@@ -21,7 +21,7 @@ export function NFTAccordion({
   const [selectedValue, setSelectedValue] = useState<string>();
 
   if (nfts.length === 0)
-    return empty || <p className="pl-10">No NFTs has been minted.</p>;
+    return empty || <p className="pl-4">No NFTs has been minted.</p>;
 
   return (
     <Accordion
