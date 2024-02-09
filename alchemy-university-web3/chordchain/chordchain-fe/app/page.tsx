@@ -10,18 +10,14 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import useSWR from "swr";
 import { ChordsResponse, SearchFormValue } from "./api/chords/types";
-import { usePathname, useRouter } from "next/navigation";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { NFTAccordion } from "@/components/ui2/NFTAccordion";
 
 import SearchForm, { SearchFormProps } from "@/components/ui2/SearchForm";
 import useChordchainAssets from "@/hooks/useChordchainAssets";
 import { omitBy } from "lodash-es";
-import { useEffectOnce } from "usehooks-ts";
 
 export default function Home() {
-  const router = useRouter();
-  const pathname = usePathname();
   const [queryParams, setQueryParams] = useState<SearchFormValue>({
     query: "",
   });
@@ -30,24 +26,12 @@ export default function Home() {
     `/api/chords?${new URLSearchParams(queryParams).toString()}`
   );
 
-  useEffectOnce(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const keys: Array<keyof SearchFormValue> = ["query", "genre", "tone"];
-    const [query, genre, tone] = keys.map(
-      (key) => searchParams.get(key) || undefined
-    );
-    setQueryParams({ query, genre, tone });
-  });
-
   const { query, genre, tone } = queryParams;
   const isSearching = !!query || !!genre || !!tone;
 
   const onSubmit: SearchFormProps["onSubmit"] = (value) => {
     const filterUndefined = omitBy(value, (key) => !key);
     setQueryParams(filterUndefined);
-    router.push(
-      `${pathname}?${new URLSearchParams(filterUndefined).toString()}`
-    );
   };
 
   return (
@@ -70,6 +54,7 @@ export default function Home() {
               empty={
                 isSearching && (
                   <p className="px-4">
+                    {data?.nfts.length}
                     No results were found for{" "}
                     <strong>
                       {query && `“${query}”`}{" "}

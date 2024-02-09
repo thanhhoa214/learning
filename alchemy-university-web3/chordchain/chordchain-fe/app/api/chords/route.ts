@@ -31,12 +31,12 @@ export async function GET(request: NextRequest) {
     ).map(({ nft }) => nft);
   }
 
-  if (genre)
+  if (!!genre)
     nfts = nfts.filter(
       (n) => (n.raw.metadata as CreateFormModel).genre === genre
     );
 
-  if (tone)
+  if (!!tone)
     nfts = nfts.filter(
       (n) => (n.raw.metadata as CreateFormModel).artist.tone === tone
     );
