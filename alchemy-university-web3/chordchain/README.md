@@ -5,6 +5,11 @@ Chordchain utilizes Solidity and IPFS to store songs' chords as non-fungible tok
 <img width="1222" alt="Screenshot listing chord" src="https://github.com/thanhhoa214/learning/assets/32329202/07317eb7-4b6a-4af7-ac93-8eb674571362">
 <img width="1168" alt="Screenshot detail chord" src="https://github.com/thanhhoa214/learning/assets/32329202/7b7cc8b2-ee39-444b-9613-764030ba96c7">
 
+## Links:
+- Presentation Slide: https://docs.google.com/presentation/d/1qqtGA9xPvtwxTMRX5pzevOXwMSXjpMzGoe1Zokf9mwQ/edit?usp=sharing
+- Live demo link: https://chordchain.vercel.app
+- Live contract on Goerli: https://goerli.etherscan.io/address/0x856f519403bee9ce058ffe368c3f67de3aec64d4
+
 ## Project & Tech stack
 
 - `chordchain-fe` ~ Web ~ [Live Demo](https://chordchain.vercel.app):
@@ -88,6 +93,24 @@ Genre: Folk Rock
 Artist: Leonard Cohen
 
 Music Link: https://www.youtube.com/watch?v=YrLk4vdY28Q
+
+
+### Song 4: "Let It Be"
+```
+When I [C]find myself in [G]times of trouble
+Mother [Am]Mary comes to [F]me
+Speaking [C]words of wisdom
+Let it [G]be [F]Let it [C]be [G]Let it [Am]be
+[F]Let it [C]be [G]Whisper [F]words of [C]wisdom
+Let it [G]be
+```
+Composer: The Beatles
+
+Genre: Rock
+
+Artist: The Beatles
+
+Music Link: https://youtu.be/QDYfEBY9NM4
 
 ## TODO
 
