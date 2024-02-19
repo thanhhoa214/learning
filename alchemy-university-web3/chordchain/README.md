@@ -45,6 +45,12 @@ Chordchain utilizes Solidity and IPFS to store songs' chords as non-fungible tok
 
 ## Testing Data Examples
 
+### Tips: Ask ChatGPT to help generating your favorite songs or random songs
+```
+Act as a music collector, generate 10 songs with chords in the following sample format
+{"name":"Nothing gonna change my love for you","lyric":"If I [C]had to [G/B]live my life [Am]without you near me\nThe days would [C]all be empty\nThe nights [C]would seem so long\n \nWith you, I see forever oh so clearly\nI might have been [G]in love before\nBut it [Am]never felt this strong","composer":"Beethoven","genre":"acoustic","artist":{"name":"Alan","tone":"Am","musicLink":"https://www.youtube.com/watch?v=mUg5aEy-8CQ"}}
+```
+
 ### Song 1: "Summer Breeze"
 ```
 See the [G]curtains [D/F#]hangin' in the [Em]window
