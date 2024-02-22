@@ -1,10 +1,11 @@
 import {
   Code,
+  Code2,
   ImageIcon,
   MessageSquare,
   MusicIcon,
   VideoIcon,
-} from 'lucide-react';
+} from "lucide-react";
 
 export const navItems = [
   {
@@ -36,6 +37,12 @@ export const navItems = [
     icon: Code,
     href: "/code",
     color: "text-emerald-500",
+  },
+  {
+    label: "AntDesign Code Generation",
+    icon: Code2,
+    href: "/ant-design",
+    color: "text-red-500",
   },
   // {
   //   label: "Settings",
