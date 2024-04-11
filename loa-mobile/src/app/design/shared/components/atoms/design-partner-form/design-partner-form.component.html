@@ -1,0 +1,39 @@
+<h6 class="text-center">
+  <ion-text color="secondary">
+    <b [innerHTML]="'HOME.DESIGN_PARTNER_FORM.this_will_lead_to' | translate">
+    </b>
+  </ion-text>
+</h6>
+<p class="d-flex flex-column justify-content-center text-center w-75 mx-auto">
+  <small
+    [innerHTML]="'HOME.DESIGN_PARTNER_FORM.this_is_an_alternative' | translate"
+  >
+  </small>
+</p>
+
+<mat-form-field class="w-100">
+  <input matInput [value]="referenceLink" readonly />
+  <!-- <ion-icon name="clipboard-outline"></ion-icon> -->
+</mat-form-field>
+<div class="d-flex justify-content-between">
+  <ion-button
+    expand="block"
+    color="secondary"
+    fill="outline"
+    class="mr-2"
+    (click)="copyLink()"
+  >
+    {{ 'HOME.DESIGN_PARTNER_FORM.copy_link' | translate }}
+  </ion-button>
+
+  <ion-button
+    expand="block"
+    color="secondary"
+    fill="solid"
+    class="ml-2"
+    (click)="proceedToLink()"
+  >
+    {{ 'HOME.DESIGN_PARTNER_FORM.proceed_to_link' | translate }}
+    <!-- <ion-icon slot="end" name="chevron-forward-outline"></ion-icon> -->
+  </ion-button>
+</div>

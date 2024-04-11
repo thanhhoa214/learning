@@ -1,0 +1,80 @@
+query AllMyBookmarkMenu(
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $designId: String
+  $userId: String
+  $searchBy: String
+  $orderBy: String
+) {
+  designsBookmarks(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    designId: $designId
+    userId: $userId
+    searchBy: $searchBy
+    orderBy: $orderBy
+  ) {
+    edges {
+      cursor
+      node {
+        created
+        id
+        design {
+          id
+          projectName
+          typeOfHouse
+          designType
+          price
+          area
+          style
+          thumbnail
+          wholeHouse {
+            edges {
+              node {
+                preview {
+                  image
+                }
+              }
+            }
+          }
+          room {
+            preview {
+              image
+            }
+          }
+        }
+        user {
+          firstName
+          lastName
+          bookmarks {
+            totalCount
+            edges {
+              cursor
+              node {
+                created
+                id
+              }
+            }
+            pageInfo {
+              endCursor
+              hasNextPage
+              hasPreviousPage
+              startCursor
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+}

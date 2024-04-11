@@ -1,0 +1,5 @@
+mutation CreateCommentDesign($input: QuestionDesignCreateInput!) {
+  designUserQuestion(input: $input) {
+    status
+  }
+}

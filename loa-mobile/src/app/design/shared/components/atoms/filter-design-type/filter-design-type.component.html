@@ -1,0 +1,94 @@
+<div class="row mx-0 px-3">
+  <div class="col-large pb-2 pr-1">
+    <ion-button
+      fill="solid"
+      size="small"
+      expand="block"
+      class="h-100"
+      [color]="selectedDesignType === designTypes[0] ? 'primary' : 'tertiary'"
+      (click)="setDesignTypeAndRoomType(designTypes[0])"
+    >
+      <ion-text
+        [color]="selectedDesignType === designTypes[0] ? 'light' : 'secondary'"
+      >
+        {{ 'DESIGN.FILTERS.ROOM_TYPE.full_house' | translate }}</ion-text
+      >
+    </ion-button>
+  </div>
+  <div class="col-small px-1 d-flex flex-column align-items-stretch">
+    <ion-button
+      fill="solid"
+      size="small"
+      class="h-50"
+      [color]="
+        selectedRoomTypes.includes(roomTypes[0]) ? 'primary' : 'tertiary'
+      "
+      expand="block"
+      (click)="setDesignTypeAndRoomType(designTypes[1], roomTypes[0])"
+    >
+      <ion-text
+        [color]="
+          selectedRoomTypes.includes(roomTypes[0]) ? 'light' : 'secondary'
+        "
+      >
+        {{ 'DESIGN.FILTERS.ROOM_TYPE.kitchen' | translate }}</ion-text
+      >
+    </ion-button>
+    <ion-button
+      fill="solid"
+      size="small"
+      expand="block"
+      class="h-50"
+      [color]="
+        selectedRoomTypes.includes(roomTypes[1]) ? 'primary' : 'tertiary'
+      "
+      (click)="setDesignTypeAndRoomType(designTypes[1], roomTypes[1])"
+    >
+      <ion-text
+        [color]="
+          selectedRoomTypes.includes(roomTypes[1]) ? 'light' : 'secondary'
+        "
+      >
+        {{ 'DESIGN.FILTERS.ROOM_TYPE.bathroom' | translate }}</ion-text
+      >
+    </ion-button>
+  </div>
+  <div class="col-small pl-1 d-flex flex-column align-items-stretch">
+    <ion-button
+      fill="solid"
+      size="small"
+      expand="block"
+      class="h-50"
+      [color]="
+        selectedRoomTypes.includes(roomTypes[2]) ? 'primary' : 'tertiary'
+      "
+      (click)="setDesignTypeAndRoomType(designTypes[1], roomTypes[2])"
+    >
+      <ion-text
+        [color]="
+          selectedRoomTypes.includes(roomTypes[2]) ? 'light' : 'secondary'
+        "
+      >
+        {{ 'DESIGN.FILTERS.ROOM_TYPE.bedroom' | translate }}</ion-text
+      >
+    </ion-button>
+    <ion-button
+      fill="solid"
+      size="small"
+      expand="block"
+      class="h-50"
+      [color]="
+        selectedRoomTypes.includes(roomTypes[3]) ? 'primary' : 'tertiary'
+      "
+      (click)="setDesignTypeAndRoomType(designTypes[1], roomTypes[3])"
+    >
+      <ion-text
+        [color]="
+          selectedRoomTypes.includes(roomTypes[3]) ? 'light' : 'secondary'
+        "
+      >
+        {{ 'DESIGN.FILTERS.ROOM_TYPE.living_room' | translate }}</ion-text
+      >
+    </ion-button>
+  </div>
+</div>

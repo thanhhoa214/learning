@@ -1,0 +1,106 @@
+<loa-mobile-back-bar
+  [title]="'AUTH.REGISTER_BUSINESS.sign_up_with_email' | translate"
+></loa-mobile-back-bar>
+<ion-content class="container-fluid">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    <div class="d-flex flex-column justify-content-between text-center">
+      <div class="flex-center flex-column text-center rounded-lg px-2">
+        <h2 class="mt-0">
+          <ion-text color="secondary">
+            <b>{{ 'AUTH.CHOOSE_USER_TYPE.member' | translate }}</b>
+          </ion-text>
+        </h2>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.first_name' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            (keyup)="focusInputByFormControlName($event, 'lastName')"
+          />
+          <mat-error *ngIf="formGroup.get('firstName').hasError">
+            {{ getErrorMessage('firstName') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.last_name' | translate }} *</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="lastName"
+            (keyup)="focusInputByFormControlName($event, 'email')"
+          />
+          <mat-error *ngIf="formGroup.get('lastName').hasError">
+            {{ getErrorMessage('lastName') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.email' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            autocomplete="email"
+            class="text-lowercase"
+            (keyup)="focusInputByFormControlName($event, 'password')"
+          />
+          <mat-error *ngIf="formGroup.get('email').hasError">
+            {{ getErrorMessage('email') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.password' | translate }} *</mat-label>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            matInput
+            formControlName="password"
+            (keyup)="focusInputByFormControlName($event, 'confirmPassword')"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+          <mat-error *ngIf="formGroup.get('password').hasError">
+            {{ getErrorMessage('password') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label
+            >{{ 'AUTH.REGISTER.confirm_password' | translate }} *</mat-label
+          >
+          <input
+            [type]="confirmHide ? 'password' : 'text'"
+            matInput
+            formControlName="confirmPassword"
+          />
+          <mat-icon matSuffix (click)="confirmHide = !confirmHide">{{
+            confirmHide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+          <mat-error *ngIf="formGroup.get('confirmPassword').hasError">
+            {{ getErrorMessage('confirmPassword') | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="py-2">
+          <div>{{ 'AUTH.REGISTER.by_creating_an_account' | translate }}</div>
+          <b>{{ 'AUTH.REGISTER.terms_of_service' | translate }}</b>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column">
+        <ion-button
+          expand="fill"
+          fill="solid"
+          color="secondary"
+          type="submit"
+          class="my-3"
+        >
+          {{ 'AUTH.REGISTER_BUSINESS.sign_up_with_email' | translate }}
+        </ion-button>
+        <div class="small">
+          {{ 'AUTH.REGISTER.have_account_already' | translate }}
+          <b (click)="goToLogin()">
+            {{ 'AUTH.REGISTER.login_here' | translate }}
+          </b>
+        </div>
+      </div>
+    </div>
+  </form></ion-content
+>

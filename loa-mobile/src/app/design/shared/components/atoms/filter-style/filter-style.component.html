@@ -1,0 +1,38 @@
+<div class="col-12 py-2 rounded bg-tertiary">
+  <h5 class="my-0 d-flex justify-content-between align-items-center">
+    <ion-text color="secondary">{{
+      'DESIGN.LISTING.style' | translate
+    }}</ion-text>
+    <ion-fab-button
+      class="fab-arrow-up"
+      (click)="isShowStyleSection = !isShowStyleSection"
+      ><ion-icon
+        color="secondary"
+        [name]="
+          isShowStyleSection ? 'chevron-up-outline' : 'chevron-down-outline'
+        "
+      ></ion-icon
+    ></ion-fab-button>
+  </h5>
+  <ng-container *ngIf="isShowStyleSection">
+    <section id="quick-buttons" class="row mt-1 mx-0 pb-2">
+      <div class="col-4 pl-0 pr-1 py-1" *ngFor="let style of styles">
+        <ion-button
+          fill="solid"
+          size="small"
+          expand="block"
+          class="h-100"
+          [color]="selectedStyles.includes(style) ? 'primary' : 'medium'"
+          (click)="selectStyle(style)"
+        >
+          <ion-text
+            [color]="selectedStyles.includes(style) ? 'light' : 'secondary'"
+            >{{
+              'DESIGN.FILTERS.STYLE.' + style.toLowerCase() | translate
+            }}</ion-text
+          >
+        </ion-button>
+      </div>
+    </section>
+  </ng-container>
+</div>

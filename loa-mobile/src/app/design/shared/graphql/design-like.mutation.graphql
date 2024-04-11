@@ -1,0 +1,5 @@
+mutation LikeDesign($id: String!) {
+  designUserLike(id: $id) {
+    status
+  }
+}

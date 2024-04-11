@@ -1,0 +1,268 @@
+<ng-container *ngIf="portfolio; else loading">
+  <loa-mobile-back-bar [title]="portfolio.projectName">
+    <ion-button size="small" routerLink="/home" id="start-button">
+      <ion-icon
+        slot="icon-only"
+        color="secondary"
+        name="loa-home"
+      ></ion-icon> </ion-button
+  ></loa-mobile-back-bar>
+  <ion-content class="container-fluid" #mainContainer>
+    <div class="row img-wrapper mb-3">
+      <img [src]="portfolio.images[0].image || 'assets/images/1280x580.png'" />
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 d-flex flex-column">
+        <h4 class="mb-1">
+          <ion-text color="secondary" class="truncate"
+            ><b>{{ portfolio.projectName }}</b></ion-text
+          >
+        </h4>
+        <h6 class="mt-0 pb-4 border-bottom">
+          <ion-text color="secondary">
+            {{ portfolio.location }}
+          </ion-text>
+        </h6>
+      </div>
+    </div>
+    <div class="d-flex mb-4 pb-4 border-bottom" id="properties">
+      <div class="d-flex flex-column align-items-center text-center property">
+        <ion-icon name="house-type"></ion-icon>
+        <ion-text color="secondary" class="smaller">{{
+          'CONSTRUCTION.PORTFOLIO_DETAIL.project_type' | translate
+        }}</ion-text>
+        <ion-text color="secondary" class="smaller"
+          ><b>{{
+            'DESIGN.FILTERS.HOUSE_TYPE.' + portfolio.projectType.toLowerCase()
+              | translate
+          }}</b></ion-text
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center text-center property">
+        <ion-icon name="area-size"></ion-icon>
+        <ion-text color="secondary" class="smaller">{{
+          'CONSTRUCTION.PORTFOLIO_DETAIL.area_size' | translate
+        }}</ion-text>
+        <ion-text color="secondary" class="smaller"
+          ><b>{{ portfolio.area }} m<sup>2</sup></b></ion-text
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center text-center property">
+        <ion-icon name="estimate-cost"></ion-icon>
+        <ion-text color="secondary" class="smaller">{{
+          'CONSTRUCTION.PORTFOLIO_DETAIL.total_cost' | translate
+        }}</ion-text>
+        <ion-text color="secondary" class="smaller"
+          ><b
+            >{{ portfolio.totalCostFrom | number: '1.0-4' }} ~
+            {{ portfolio.totalCostTo | number: '1.0-4' }}</b
+          ></ion-text
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center text-center property">
+        <ion-icon name="construction-period"></ion-icon>
+        <ion-text color="secondary" class="smaller">{{
+          'CONSTRUCTION.PORTFOLIO_DETAIL.period' | translate
+        }}</ion-text>
+        <ion-text color="secondary" class="smaller"
+          ><b
+            >{{ portfolio.period }}
+            {{ 'CONSTRUCTION.PORTFOLIO_DETAIL.months' | translate }}</b
+          ></ion-text
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center text-center property">
+        <ion-icon name="style-house"></ion-icon>
+        <ion-text color="secondary" class="smaller">{{
+          'CONSTRUCTION.PORTFOLIO_DETAIL.style' | translate
+        }}</ion-text>
+        <ion-text color="secondary" class="smaller"
+          ><b>{{
+            'DESIGN.FILTERS.STYLE.' + portfolio.style?.toLowerCase() | translate
+          }}</b></ion-text
+        >
+      </div>
+    </div>
+    <div class="row" *ngIf="portfolio.description">
+      <h5 class="col-12 mb-2">
+        <ion-text color="secondary"
+          ><b>{{
+            'CONSTRUCTION.PORTFOLIO_DETAIL.description' | translate
+          }}</b></ion-text
+        >
+      </h5>
+      <p class="col-12" [innerHTML]="portfolio.description"></p>
+      <div class="col-12 px-0">
+        <img
+          *ngFor="let image of portfolio.images"
+          [src]="image.image"
+          class="w-100 mb-2"
+        />
+      </div>
+    </div>
+  </ion-content>
+</ng-container>
+<ng-template #loading class="loading">
+  <loa-mobile-back-bar title="Interior Design"></loa-mobile-back-bar>
+
+  <div class="container-fluid">
+    <div class="img-wrapper rounded-lg mb-3">
+      <ngx-skeleton-loader
+        [theme]="{ width: '100%', height: '100%' }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div class="row mb-4">
+      <div class="col-8 d-flex flex-column">
+        <ngx-skeleton-loader
+          class="mt-2"
+          [theme]="{ width: '50%', height: '2rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '75%', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-start">
+        <button mat-icon-button color="secondary">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '9rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '7rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+      <div class="col-6 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '12rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '7rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>single_bed</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>bathtub</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>filters</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>single_bed</mat-icon>
+      </div>
+    </div>
+    <div class="row">
+      <h4 class="col-12">
+        {{ 'DESIGN.DETAIL.project_description' | translate }}
+      </h4>
+      <p class="col-12 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '70%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '85%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '50%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '40%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '65%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '95%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '90%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+      </p>
+    </div>
+    <div class="row mb-4">
+      <h4 class="col-12 bg-md-primary">
+        {{ 'DESIGN.DETAIL.details' | translate }}
+      </h4>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.living_room' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.bathroom' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.kitchen' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4" id="suggested-portfolio">
+      <h4 class="col-12">
+        {{ 'DESIGN.DETAIL.suggested_portfolio' | translate }}
+      </h4>
+      <div class="col-12">
+        <div class="row">
+          <div
+            class="col-6 mb-1"
+            [class.pr-2]="item % 2"
+            [class.pl-2]="item % 2 === 0"
+            *ngFor="let item of [1, 2, 3, 4]"
+          >
+            <div class="d-flex flex-column">
+              <div class="img-wrapper rounded-lg mb-1">
+                <ngx-skeleton-loader
+                  [theme]="{ width: '100%', height: '100%' }"
+                ></ngx-skeleton-loader>
+              </div>
+              <ngx-skeleton-loader
+                [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+              ></ngx-skeleton-loader>
+              <ngx-skeleton-loader
+                [theme]="{ width: '60%', height: '1.4rem', marginBottom: '0' }"
+              ></ngx-skeleton-loader>
+              <div>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star_outline</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

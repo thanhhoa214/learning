@@ -1,0 +1,39 @@
+<loa-mobile-back-bar
+  [title]="'AUTH.verification' | translate"
+  backTo="/auth/choose-user-type"
+></loa-mobile-back-bar>
+
+<ion-content (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="container-fluid">
+  <div class="d-flex flex-column text-center h-100">
+    <ng-otp-input
+      (onInputChange)="onOtpChange($event)"
+      [config]="config"
+      class="py-3"
+    ></ng-otp-input>
+    <mat-error
+      class="py-2"
+      [class.invisible]="!formGroup.get('code').errors?.invalid"
+    >
+      {{ 'MESSAGE.AUTH.code.invalid' | translate }}
+    </mat-error>
+    <ion-button
+      fill="solid"
+      color="secondary"
+      type="submit"
+      class="mt-1"
+      [disabled]="isLoading || formGroup.invalid"
+    >
+      {{ 'AUTH.confirm' | translate }}
+    </ion-button>
+    <ion-button
+      color="secondary"
+      fill="clear"
+      class="mt-1"
+      [disabled]="!sendable"
+      (click)="resend()"
+      *ngIf="type == 'forgot'"
+    >
+      {{ 'AUTH.resend' | translate }}
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LOA</string>
+    <string name="title_activity_main">Interior Design</string>
+    <string name="package_name">com.abc.platform</string>
+    <string name="custom_url_scheme">com.abc.platform</string>
+    <string name="facebook_app_id">507820243471653</string>
+    <string name="fb_login_protocol_scheme">fb507820243471653</string>
+    <string name="appID">4273561339650086150</string>
+    <string name="applink_host">loa.app.link</string>
+    <string name="applink_host_alternate">loa-alternate.app.link</string>
+    <string name="deeplink_scheme">abc</string>
+    <string name="branch_key">key_live_bm8oBjXeAxAfU348ItUG4glgAtbgvIbX</string>
+    <string name="branch_test_key">key_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</string>
+    <string name="branch_test_mode">false</string>
+    <!-- set above to "true" to use test key -->
+</resources>

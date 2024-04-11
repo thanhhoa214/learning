@@ -1,0 +1,11 @@
+@import '../auth.component.scss';
+ng-otp-input {
+  width: 100% !important;
+
+  ::ng-deep {
+    input {
+      width: 3rem !important;
+      height: 3rem !important;
+    }
+  }
+}

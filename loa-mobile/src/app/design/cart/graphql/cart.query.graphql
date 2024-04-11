@@ -1,0 +1,23 @@
+query Cart {
+  cart {
+    details {
+      design {
+        id
+        projectName
+        style
+        area
+        price
+        promotionalPrice
+        designType
+        typeOfHouse
+        thumbnail
+        tower
+        unitType
+        registeredDesignNumber
+        room {
+          roomType
+        }
+      }
+    }
+  }
+}

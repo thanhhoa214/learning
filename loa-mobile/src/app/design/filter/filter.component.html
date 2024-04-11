@@ -1,0 +1,99 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button size="small" (click)="back()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>
+    <img src="assets/icons/icon.svg" alt="Logo" id="logo-wrapper" />
+  </ion-title>
+</ion-toolbar>
+<ion-content class="container-fluid">
+  <form [formGroup]="formGroup">
+    <section id="searchbar" class="row mt-n3 mb-1">
+      <ion-searchbar
+        [placeholder]="'HOME.search_placeholder' | translate"
+        class="py-0"
+        color="tertiary"
+        searchIcon="loa-search"
+        enterkeyhint="search"
+        inputmode="search"
+        (keyup.enter)="applyChanges()"
+      ></ion-searchbar>
+    </section>
+    <section id="actions" class="row mb-2">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <h6 class="my-0">
+          <ion-text color="secondary">{{
+            "DESIGN.LISTING.filter" | translate
+          }}</ion-text>
+        </h6>
+        <h6 class="my-0">
+          <ion-text color="secondary">
+            <b (click)="reset()">{{ "DESIGN.LISTING.reset" | translate }}</b>
+          </ion-text>
+        </h6>
+      </div>
+    </section>
+    <section id="house-type" class="row mb-2">
+      <loa-mobile-filter-design-type
+        [formGroup]="formGroup"
+        class="w-100"
+      ></loa-mobile-filter-design-type>
+    </section>
+    <section id="size" class="row mb-2">
+      <div class="col-12">
+        <loa-mobile-filter-area
+          [formGroup]="formGroup"
+          class="w-100"
+        ></loa-mobile-filter-area>
+      </div>
+    </section>
+    <section id="design-price" class="row mb-2">
+      <div class="col-12">
+        <loa-mobile-filter-price
+          [formGroup]="formGroup"
+          class="w-100"
+        ></loa-mobile-filter-price>
+      </div>
+    </section>
+    <section id="construction-price" class="row mb-2">
+      <div class="col-12">
+        <loa-mobile-filter-construction-price
+          [formGroup]="formGroup"
+          class="w-100"
+        ></loa-mobile-filter-construction-price>
+      </div>
+    </section>
+    <section id="style" class="row mb-2">
+      <div class="col-12">
+        <loa-mobile-filter-style
+          [formGroup]="formGroup"
+          class="w-100"
+        ></loa-mobile-filter-style>
+      </div>
+    </section>
+    <section id="type-of-house" class="row">
+      <div class="col-12">
+        <loa-mobile-filter-house-type
+          [formGroup]="formGroup"
+          class="w-100"
+        ></loa-mobile-filter-house-type>
+      </div>
+    </section>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      id="apply-button"
+      fill="solid"
+      expand="block"
+      class="rounded-pill"
+      (click)="applyChanges()"
+    >
+      <span>{{ "DESIGN.FILTERS.apply_changes" | translate }}</span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

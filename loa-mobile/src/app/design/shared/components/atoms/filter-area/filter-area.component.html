@@ -1,0 +1,93 @@
+<div class="col-12 py-2 rounded bg-tertiary">
+  <h4 class="my-0 d-flex justify-content-between align-items-center">
+    <ion-text color="secondary">{{
+      "DESIGN.LISTING.area_range" | translate
+    }}</ion-text>
+    <ion-fab-button
+      class="fab-arrow-up"
+      (click)="isShowSizeSection = !isShowSizeSection"
+      ><ion-icon
+        color="secondary"
+        [name]="
+          isShowSizeSection ? 'chevron-up-outline' : 'chevron-down-outline'
+        "
+      ></ion-icon
+    ></ion-fab-button>
+  </h4>
+  <ng-container *ngIf="isShowSizeSection">
+    <div class="d-flex justify-content-between align-items-center">
+      <ion-text color="secondary"
+        ><b>{{ "DESIGN.LISTING.area_range" | translate }}</b></ion-text
+      >
+      <ion-text color="secondary">
+        <b>
+          <span
+            *ngIf="
+              formGroup.get('areaFrom').value === rangeOptions.min;
+              else notMinimum
+            "
+            >0sqm</span
+          >
+          <ng-template #notMinimum>
+            {{ formGroup?.get("areaFrom").value | number: "1.0-4" }}sqm
+          </ng-template>
+
+          ~
+
+          <span
+            *ngIf="
+              formGroup.get('areaTo').value === rangeOptions.max;
+              else notMaximum
+            "
+            >Over 400sqm</span
+          >
+          <ng-template #notMaximum>
+            {{ formGroup?.get("areaTo").value | number: "1.0-4" }}sqm
+          </ng-template>
+        </b>
+      </ion-text>
+    </div>
+    <ion-range
+      [dualKnobs]="true"
+      [min]="rangeOptions.min"
+      [max]="rangeOptions.max"
+      [step]="rangeOptions.step"
+      [value]="rangeOptions.init"
+      (ionChange)="ionChange($event)"
+      #range
+    ></ion-range>
+
+    <section id="quick-buttons" class="row mt-1 mx-0 pb-2">
+      <div class="col-4 pl-0 pr-1 py-1" *ngFor="let size of sizeRange">
+        <ion-button
+          fill="solid"
+          size="small"
+          expand="block"
+          class="h-100"
+          [color]="
+            !isInit &&
+            !isFullRange &&
+            size.value >= this.formGroup?.get('areaFrom').value &&
+            size.value <= this.formGroup?.get('areaTo').value
+              ? 'primary'
+              : 'medium'
+          "
+          (click)="setSliderValue(size.value)"
+        >
+          <ion-text
+            [color]="
+              !isInit &&
+              !isFullRange &&
+              size.value >= this.formGroup?.get('areaFrom').value &&
+              size.value <= this.formGroup?.get('areaTo').value
+                ? 'light'
+                : 'secondary'
+            "
+          >
+            {{ size.title }}
+          </ion-text>
+        </ion-button>
+      </div>
+    </section>
+  </ng-container>
+</div>

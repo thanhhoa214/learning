@@ -1,0 +1,93 @@
+<loa-mobile-back-bar
+  [title]="
+    ('AUTH.LOGIN.login' | translate) +
+    (isBusiness ? ' ' + ('AUTH.LOGIN.business' | translate) : '')
+  "
+  [backTo]="backTo"
+></loa-mobile-back-bar>
+<ion-content
+  ><form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="pb-0">
+    <div class="d-flex flex-column justify-content-between text-center h-100">
+      <div class="flex-center flex-column text-center mt-3">
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.LOGIN.email' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            autocomplete="email"
+            class="text-lowercase"
+          />
+          <mat-error *ngIf="formGroup.get('email').hasError">
+            {{ getErrorMessageLogin('email') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.LOGIN.password' | translate }} *</mat-label>
+          <input
+            [type]="isShowPassword ? 'password' : 'search'"
+            matInput
+            autocomplete="current-password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="formGroup.get('password').hasError">
+            {{ getErrorMessageLogin('password') | translate }}
+          </mat-error>
+          <ion-icon
+            matSuffix
+            color="secondary"
+            [name]="isShowPassword ? 'eye-outline' : 'eye-off-outline'"
+            (click)="isShowPassword = !isShowPassword"
+          ></ion-icon>
+        </mat-form-field>
+        <div class="mb-3 text-center">
+          <ion-text color="secondary" (click)="forgotPassword()"
+            >{{ 'AUTH.LOGIN.forgot_password' | translate }}?</ion-text
+          >
+        </div>
+        <ion-button fill="solid" color="secondary" type="submit">
+          <b>{{ 'AUTH.LOGIN.continue' | translate }}</b>
+        </ion-button>
+        <!-- <ng-container *ngIf="!isBusiness">
+          <loa-mobile-divider-or height="10vh"></loa-mobile-divider-or>
+          <ion-button
+            fill="solid"
+            color="tertiary"
+            type="button"
+            class="mt-2"
+            (click)="loginByFB()"
+          >
+            <ion-icon slot="start" name="loa-facebook"></ion-icon>
+            <ion-text color="secondary" class="w-100 text-center">
+              {{ 'AUTH.LOGIN.connect_with' | translate }} Facebook
+            </ion-text>
+          </ion-button>
+          <ion-button
+            fill="solid"
+            color="tertiary"
+            type="button"
+            class="mt-2"
+            (click)="loginByZalo()"
+          >
+            <ion-icon slot="start" name="loa-zalo"></ion-icon>
+            <ion-text color="secondary" class="w-100 text-center">
+              {{ 'AUTH.LOGIN.connect_with' | translate }} Zalo
+            </ion-text>
+          </ion-button>
+        </ng-container> -->
+        <ion-text color="secondary" class="py-3">
+          <div>{{ 'AUTH.REGISTER.by_creating_an_account' | translate }}</div>
+          <div>
+            <b>{{ 'AUTH.REGISTER.terms_of_service' | translate }}</b>
+          </div>
+        </ion-text>
+      </div>
+
+      <ion-text color="secondary" class="py-4">
+        {{ 'AUTH.LOGIN.dont_have_account_yet' | translate }}
+        <b [routerLink]="'../register' + (isBusiness ? '-business' : '')">
+          {{ 'AUTH.REGISTER.sign_up' | translate }}
+        </b>
+      </ion-text>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,38 @@
+ion-toolbar {
+  ion-searchbar {
+    --border-radius: 0.3rem;
+    text-indent: 0.25rem;
+  }
+  #logo-wrapper {
+    width: 6rem;
+  }
+}
+
+ion-content {
+  --padding-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-icon {
+  zoom: 1.5;
+}
+#categories .col-4 {
+  &:nth-child(1) {
+    padding-right: 0.5rem;
+  }
+  &:nth-child(2) {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  &:nth-child(3) {
+    padding-left: 0.5rem;
+  }
+}
+.bg-tertiary {
+  background-color: var(--ion-color-tertiary);
+}

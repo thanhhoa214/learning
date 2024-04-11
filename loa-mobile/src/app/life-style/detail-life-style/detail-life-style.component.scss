@@ -1,0 +1,98 @@
+loa-mobile-back-bar ion-icon {
+  zoom: 0.8;
+}
+ion-content.container {
+  --padding-top: 0;
+}
+.img-wrapper {
+  height: 16rem;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0rem;
+  }
+}
+#filters {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.bookmark {
+  z-index: 10;
+}
+.bookmark ion-icon {
+  zoom: 2.3 !important;
+}
+#btn-filter {
+  min-width: 4rem;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+:host ::ng-deep svg {
+  fill: #a0a0a0;
+}
+:host ::ng-deep img:not(.image-share) {
+  // height: 16rem;
+  width: 100%;
+  max-height: 100%;
+  // min-width: 100%;
+  // border-radius: 0.6rem;
+  object-fit: cover;
+}
+.bookmark-detail {
+  background-color: #a0a0a0;
+}
+.like-detail {
+  border: 0rem;
+  background-color: transparent;
+}
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
+  padding: 0rem !important;
+}
+h5.number-like {
+  font-size: 11px !important;
+  color: #535252;
+}
+.border-share {
+  border: solid #8d8d8d;
+  border-width: 1px 0 0 0;
+}
+.padding-l-r-15 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.position-absolute-home {
+  position: absolute;
+  left: 56px;
+}
+#detail-life-style .like-icon ion-icon {
+  width: 19px;
+  height: 19px;
+  min-width: 30px;
+}
+.share-icon {
+  zoom: 1.85;
+}
+:host ::ng-deep .ql-editor h1 {
+  font-size: 2em !important;
+}
+:host ::ng-deep .ql-editor h2 {
+  font-size: 1.5em !important;
+}
+:host ::ng-deep .ql-editor h3 {
+  font-size: 1.17em !important;
+}
+:host ::ng-deep .ql-editor h4 {
+  font-size: 1em !important;
+}
+:host ::ng-deep .ql-editor h5 {
+  font-size: 0.83em !important;
+}
+:host ::ng-deep .ql-editor h6 {
+  font-size: 0.67em !important;
+}
+
+.font-size-12px {
+  font-size: 12px;
+}

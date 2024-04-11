@@ -1,0 +1,175 @@
+<loa-mobile-back-bar [title]="'CART.title' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+</loa-mobile-back-bar>
+
+<ion-content [class.d-none]="cart?.details?.length <= 0">
+  <section
+    id="select-all"
+    class="d-flex justify-content-between align-items-center my-3"
+  >
+    <ion-text
+      color="secondary"
+      class="checkbox d-flex align-items-center"
+      (click)="checkboxAllClickHandler()"
+    >
+      <ion-checkbox #checkboxAll class="m-0 mr-3 events-none"></ion-checkbox>
+      <ion-icon
+        name="loa-check"
+        color="light"
+        *ngIf="checkboxAll.checked"
+      ></ion-icon>
+      <b>{{'CART.select_all' | translate}}</b>
+    </ion-text>
+    <ion-text color="secondary" (click)="removeDesigns()"
+      ><b>{{'CART.remove' | translate}} </b></ion-text
+    >
+  </section>
+  <ion-list class="row mb-4" id="designs">
+    <ng-container *ngFor="let item of cart?.details; index as index">
+      <ion-item
+        class="w-100 d-flex justify-content-between align-items-start"
+        color="tertiary"
+        [lines]="index === cart?.details.length -1? 'none':''"
+        (click)="checkbox.checked = !checkbox.checked"
+      >
+        <ion-text color="secondary" class="checkbox mr-3 small">
+          <ion-checkbox
+            #checkbox
+            class="m-0 events-none"
+            [value]="item.design.id"
+          ></ion-checkbox>
+          <ion-icon
+            name="loa-check"
+            color="light"
+            *ngIf="checkbox.checked"
+          ></ion-icon>
+        </ion-text>
+        <ion-thumbnail
+          (click)="goToDesignById($event, item.design.id)"
+          class="mr-3"
+        >
+          <img
+            [src]="
+            item.design.thumbnail ||
+              'assets/images/construction-company-placeholder.png'
+            "
+            [class.border]="!item.design.thumbnail"
+          />
+        </ion-thumbnail>
+        <div class="d-flex flex-column justify-content-between h-100 py-2">
+          <h5 class="mt-0">
+            <ion-text color="dark" class="text-wrap truncate">
+              <b (click)="goToDesignById($event, item.design.id)">
+                <ng-container
+                  *ngIf="item.design.designType.toString() == 'WHOLE_HOUSE'"
+                >
+                  {{ item.design.projectName }}
+                </ng-container>
+                <ng-container
+                  *ngIf="item.design.designType.toString() == 'ROOM'"
+                >
+                  {{ "DESIGN.FILTERS.ROOM_TYPE." +
+                  item.design.room.roomType.toLowerCase() | translate }}
+                </ng-container>
+                <ng-container *ngIf="item.design.registeredDesignNumber"
+                  >- {{ item.design.registeredDesignNumber }}</ng-container
+                >
+              </b>
+            </ion-text>
+          </h5>
+          <ion-text color="dark" class="font-size-normal">
+            {{ item.design.price | number: "1.0-4" }} đ
+          </ion-text>
+        </div>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <ion-list class="row" id="total">
+    <ion-item color="tertiary" class="w-100">
+      <div
+        class="w-100 d-flex justify-content-between align-items-start font-size-normal"
+      >
+        <ion-text color="dark">
+          {{'CART.sub_total' | translate}}
+        </ion-text>
+        <ion-text color="dark" slot="end">
+          {{ invoice.subTotal | number: "1.0-4" }} đ
+        </ion-text>
+      </div>
+    </ion-item>
+    <ion-item color="tertiary" class="w-100">
+      <div
+        class="w-100 d-flex justify-content-between align-items-start font-size-normal"
+      >
+        <ion-text color="dark">
+          {{'CART.discount' | translate}}
+        </ion-text>
+        <ion-text color="dark" slot="end">
+          {{ 0 | number: "1.0-4" }} đ
+        </ion-text>
+      </div>
+    </ion-item>
+    <ion-item color="tertiary" class="w-100 border-secondary">
+      <div
+        class="w-100 d-flex justify-content-between align-items-start font-size-normal"
+      >
+        <ion-text color="dark">
+          {{'CART.vat' | translate}} {{invoice.vat}}%
+        </ion-text>
+        <ion-text color="dark" slot="end">
+          {{ invoice.subTotal*invoice.vat/100 | number: "1.0-4" }} đ
+        </ion-text>
+      </div>
+    </ion-item>
+    <ion-item color="tertiary" class="w-100" lines="none">
+      <h5
+        class="w-100 my-0 d-flex justify-content-between align-items-start font-weight-bold"
+      >
+        <ion-text color="secondary">
+          {{'CART.total' | translate}}
+        </ion-text>
+        <ion-text color="dark" slot="end">
+          {{ invoice.total | number: "1.0-4" }} đ
+        </ion-text>
+      </h5>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content [class.d-none]="cart?.details?.length > 0"
+  ><div
+    class="w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+  >
+    <ion-text color="secondary"
+      >{{'CART.nothing_in_your_cart' | translate}}</ion-text
+    >
+    <ion-button
+      color="secondary"
+      id="apply-button"
+      fill="solid"
+      expand="block"
+      class="rounded-pill w-50"
+      routerLink="/design"
+    >
+      <span>{{ 'CART.go_to_design' | translate }}</span>
+    </ion-button>
+  </div></ion-content
+>
+
+<ion-footer class="ion-no-border" *ngIf="cart?.details?.length > 0">
+  <ion-toolbar>
+    <ion-button
+      color="secondary"
+      id="apply-button"
+      fill="solid"
+      expand="block"
+      class="rounded-pill"
+      [disabled]="!invoice.total"
+      (click)="openVNPay()"
+    >
+      <span>{{ 'CART.checkout' | translate }}</span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

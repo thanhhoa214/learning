@@ -1,0 +1,21 @@
+.container {
+    min-height: 80% !important;
+}
+
+ .mat-list-base .list-item-img{
+    font-size: 12px !important;
+    height: 72px !important;
+  }
+
+
+.img-border-radius{
+    border-radius: 0.25rem !important;
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+
+  :host ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content{
+      align-items: flex-start !important;
+      padding-left: 0rem !important;
+      padding-right: 0rem !important;
+  }

@@ -1,0 +1,43 @@
+<div class="col-12 py-2 rounded bg-tertiary">
+  <h4 class="my-0 d-flex justify-content-between align-items-center">
+    <ion-text color="secondary">{{
+      "DESIGN.LISTING.house_type" | translate
+    }}</ion-text>
+    <ion-fab-button
+      class="fab-arrow-up"
+      (click)="isShowHouseTypeSection = !isShowHouseTypeSection"
+      ><ion-icon
+        color="secondary"
+        [name]="
+          isShowHouseTypeSection ? 'chevron-up-outline' : 'chevron-down-outline'
+        "
+      ></ion-icon
+    ></ion-fab-button>
+  </h4>
+  <ng-container *ngIf="isShowHouseTypeSection">
+    <section id="quick-buttons" class="row mt-1 mx-0 pb-2">
+      <div class="col-4 pl-0 pr-1 py-1" *ngFor="let houseType of houseTypes">
+        <ion-button
+          fill="solid"
+          size="small"
+          expand="block"
+          class="h-100"
+          [color]="
+            selectedHouseTypes.includes(houseType) ? 'primary' : 'medium'
+          "
+          (click)="selectHouseType(houseType)"
+        >
+          <ion-text
+            [color]="
+              selectedHouseTypes.includes(houseType) ? 'light' : 'secondary'
+            "
+          >
+            {{
+              "DESIGN.FILTERS.HOUSE_TYPE." + houseType.toLowerCase() | translate
+            }}
+          </ion-text>
+        </ion-button>
+      </div>
+    </section>
+  </ng-container>
+</div>

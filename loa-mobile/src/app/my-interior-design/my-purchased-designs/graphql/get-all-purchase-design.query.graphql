@@ -1,0 +1,50 @@
+query AllPurchaseDesign(
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $orderBy: String
+) {
+  designsPurchased(
+    orderBy: $orderBy
+    last: $last
+    after: $after
+    first: $first
+    before: $before
+  ) {
+    edges {
+      node {
+        id
+        price
+        style
+        area
+        registeredDesignNumber
+        projectName
+        designType
+        thumbnail
+        typeOfHouse
+        tower
+        bought
+        room {
+          roomType
+        }
+        orderDetails {
+          edges {
+            node {
+              order {
+                createdDate
+              }
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+}

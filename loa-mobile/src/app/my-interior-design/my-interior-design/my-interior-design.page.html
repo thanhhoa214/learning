@@ -1,0 +1,30 @@
+<loa-mobile-back-bar
+  [title]="'MENU.interior_design' | translate"
+></loa-mobile-back-bar>
+
+<ion-content class="container-fluid">
+  <ion-list class="row">
+    <ion-item
+      color="tertiary"
+      class="w-100 ion-text-wrap ion-wrap"
+      detail="true"
+      routerLink="shared"
+    >
+      <ion-text color="secondary" class="font-size-normal"
+        >{{'INTERIOR_DESIGN.SHARE_DESIGN.title' | translate}}
+      </ion-text>
+    </ion-item>
+    <ion-item
+      color="tertiary"
+      class="w-100"
+      detail="true"
+      lines="none"
+      routerLink="purchased"
+      *ngIf="loginService?.snapshot.userNode.userType.includes('business')"
+    >
+      <ion-text color="secondary" class="font-size-normal"
+        >{{'INTERIOR_DESIGN.title_purchase' | translate}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

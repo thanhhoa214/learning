@@ -1,0 +1,139 @@
+<ion-toolbar class="bg-white w-100 d-flex align-items-center border-bottom">
+  <ion-searchbar
+    [placeholder]="'HOME.search_placeholder' | translate"
+    [debounce]="500"
+    class="pb-0"
+    color="tertiary"
+    searchIcon="loa-search"
+  ></ion-searchbar>
+
+  <ion-icon
+    slot="end"
+    routerLink="/design/filter"
+    [name]="hasFilters ? 'funnel' : 'funnel-outline'"
+    [color]="hasFilters ? 'primary' : 'dark'"
+    class="p-1 pr-3 align-self-center"
+  ></ion-icon>
+</ion-toolbar>
+<ion-content class="container-fluid">
+  <div *ngIf="designs$ | async as designs; else emptySearch">
+    <div
+      class="mb-3 rounded-lg overflow-hidden position-relative"
+      *ngFor="let design of designs.edges"
+      [routerLink]="['..', design.node.id]"
+    >
+      <div class="img-wrapper overflow-hidden w-100">
+        <img [src]="design.node.thumbnail" />
+        <ion-fab-button
+          class="bookmark"
+          color="medium"
+          (click)="bookmark($event, design.node.id)"
+        >
+          <ion-icon
+            [color]="design.node.bookmarked ? 'primary' : 'dark'"
+            [name]="
+              design.node.bookmarked ? 'loa-bookmark' : 'loa-bookmark-outline'
+            "
+          ></ion-icon>
+        </ion-fab-button>
+      </div>
+      <div class="border rounded-bottom px-2">
+        <div class="row mb-2">
+          <div class="col-11 d-flex flex-column">
+            <h4 class="mt-2 mb-1">
+              <ion-text color="dark" class="text-wrap truncate">
+                <b
+                  ><ng-container
+                    *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+                  >
+                    {{ design.node.projectName }}
+                  </ng-container>
+                  <ng-container
+                    *ngIf="design.node.designType.toString() == 'ROOM'"
+                  >
+                    {{ "DESIGN.FILTERS.ROOM_TYPE." +
+                    design.node.room.roomType.toLowerCase() | translate }}
+                  </ng-container>
+                  - {{ design.node.registeredDesignNumber }}</b
+                >
+              </ion-text>
+            </h4>
+            <ion-text color="dark" class="mb-2">
+              <ng-container
+                *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+              >
+                {{ design.node.tower }} | {{ design.node.unitType }} | {{
+                design.node.area | number: "1.0-4" }} sq.m | {{
+                "DESIGN.FILTERS.HOUSE_TYPE." +
+                design.node.typeOfHouse.toLowerCase() | translate }} | {{
+                "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase() |
+                translate }}
+              </ng-container>
+              <ng-container *ngIf="design.node.designType.toString() == 'ROOM'">
+                {{ design.node.area | number: "1.0-4" }} sq.m | {{
+                "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase() |
+                translate }}
+              </ng-container>
+            </ion-text>
+          </div>
+        </div>
+        <div class="row mb-3 font-weight-light">
+          <div class="col-8 d-flex flex-column">
+            <h6 class="my-0">
+              <ion-text color="dark">
+                <b
+                  >{{ "DESIGN.DETAIL.estimated_construction_cost" | translate
+                  }}</b
+                >
+              </ion-text>
+            </h6>
+            <ion-text color="dark" class="my-1"
+              >{{ design.node.estimateCostFrom | number: "1.0-4" }} ~ {{
+              design.node.estimateCostTo | number: "1.0-4" }} {{ "CORE.currency"
+              | translate }}</ion-text
+            >
+            <ion-text color="dark" class="super-small"
+              >*{{ "DESIGN.LISTING.review_on" | translate }} {{
+              design.node.reviewedOnDate | date: "MM/yyyy" }}</ion-text
+            >
+          </div>
+          <div class="col-4 d-flex flex-column" *ngIf="design.node.price">
+            <h6 class="my-0">
+              <ion-text color="dark"
+                ><b>{{ "DESIGN.DETAIL.design_price" | translate }}</b></ion-text
+              >
+            </h6>
+            <ion-text color="dark">
+              {{ design.node.price | number: "1.0-4" }} {{ "CORE.currency" |
+              translate }}</ion-text
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="p-2 mt-3 rounded-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+      *ngIf="designs.edges.length === 0"
+    >
+      <img src="assets/icons/sad.svg" class="w-25" style="opacity: 0.5;" />
+      <ion-text color="dark" class="mt-3 w-75 mx-auto text-center">
+        {{ "DESIGN.LISTING.sorry" | translate }}
+      </ion-text>
+    </div>
+  </div>
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore()">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'CONTENT_PAGE.loading' | translate"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ng-template #emptySearch>
+    <div
+      class="p-2 mt-3 rounded-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+    >
+      {{ "DESIGN.LISTING.loading" | translate }}
+    </div>
+  </ng-template>
+</ion-content>

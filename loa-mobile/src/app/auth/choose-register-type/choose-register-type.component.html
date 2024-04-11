@@ -1,0 +1,53 @@
+<ion-content class="position-relative">
+  <ion-icon name="close" routerLink="../choose-user-type"></ion-icon>
+  <div class="d-flex flex-column text-center">
+    <h3 class="text-left">
+      <ion-text color="secondary">
+        <strong>{{
+          'AUTH.CHOOSE_REGISTER_TYPE.welcome_to_life_on' | translate
+        }}</strong>
+      </ion-text>
+    </h3>
+    <ion-button
+      fill="solid"
+      color="tertiary"
+      type="button"
+      class="mt-2"
+      (click)="loginByFB()"
+    >
+      <ion-icon slot="start" name="loa-facebook"></ion-icon>
+      <ion-text color="secondary" class="w-100 text-center">
+        {{ 'AUTH.LOGIN.connect_with' | translate }} Facebook
+      </ion-text>
+    </ion-button>
+    <ion-button
+      fill="solid"
+      color="tertiary"
+      type="button"
+      class="mt-2"
+      (click)="loginByZalo()"
+    >
+      <ion-icon slot="start" name="loa-zalo"></ion-icon>
+      <ion-text color="secondary" class="w-100 text-center">
+        {{ 'AUTH.LOGIN.connect_with' | translate }} Zalo
+      </ion-text>
+    </ion-button>
+    <loa-mobile-divider-or height="10vh"></loa-mobile-divider-or>
+    <ion-button
+      fill="solid"
+      color="secondary"
+      class="mt-1"
+      [routerLink]="['..', 'register']"
+    >
+      {{ 'AUTH.CHOOSE_REGISTER_TYPE.sign_up_with_email' | translate }}
+    </ion-button>
+    <div class="py-3 small">
+      <ion-text color="secondary">
+        {{ 'AUTH.REGISTER.have_account_already' | translate }}
+        <b [routerLink]="['..', 'login']">
+          {{ 'AUTH.REGISTER.login_here' | translate }}
+        </b>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

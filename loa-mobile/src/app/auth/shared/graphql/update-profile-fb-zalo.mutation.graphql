@@ -1,0 +1,30 @@
+mutation UpdateProfileWithFBAndZalo(
+  $input: UserChangeProfileFacebookZaloInput!
+) {
+  userChangeProfileFbZalo(input: $input) {
+    errors {
+      code
+      message
+      field
+    }
+    status
+    user {
+      id
+      lastName
+      firstName
+      userType
+      email
+      phone
+      avatar
+      created
+      loginMethod
+      business {
+        businessType
+        companyName
+        companyPhone
+        registerationNumber
+        taxCode
+      }
+    }
+  }
+}

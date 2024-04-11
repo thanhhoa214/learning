@@ -1,0 +1,89 @@
+<loa-mobile-back-bar
+  [title]="'MENU.question_answer' | translate"
+></loa-mobile-back-bar>
+
+<ion-content>
+  <mat-tab-group
+    mat-align-tabs="center"
+    (selectedTabChange)="tabChanged($event)"
+    class="remove-border-bottom"
+  >
+    <mat-tab [label]="'QUESTION_ANSWER.title_tab_design' | translate">
+      <div
+        class="search-results"
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        (scrolled)="onScrollDown()"
+        [scrollWindow]="false"
+      >
+        <mat-list>
+          <mat-list-item
+            *ngFor="let item of array; index as index"
+            type="button"
+            (click)="detailPage(item.node.design.id)"
+          >
+            <div *ngIf="item.node.design.room != null">
+              <img
+                matListAvatar
+                class="img-border-radius mt-3 mb-3"
+                *ngIf="
+                  item.node.design.room != null &&
+                  item.node.design.room.preview?.length > 0
+                "
+                [src]="item.node.design.room.preview[0].image"
+                alt="Thumbnail"
+              />
+              <img
+                matListAvatar
+                class="img-border-radius mt-3 mb-3"
+                *ngIf="item.node.design.room.preview?.length == 0"
+                src="/assets/images/1280x580.png"
+                alt="No Thumbnail"
+              />
+            </div>
+            <div *ngIf="item.node.design.room == null">
+              <img
+                matListAvatar
+                class="img-border-radius mt-3 mb-3"
+                *ngIf="
+                  item.node.design.room == null &&
+                  item.node.design.wholeHouse.edges.length > 0 &&
+                  item.node.design.wholeHouse.edges[0].node.preview.length > 0
+                "
+                [src]="
+                  item.node.design.wholeHouse.edges[0].node.preview[0].image
+                "
+                alt="Thumbnail"
+              />
+              <img
+                matListAvatar
+                class="img-border-radius mt-3 mb-3"
+                *ngIf="
+                  item.node.design.wholeHouse.edges[0].node.preview.length == 0
+                "
+                src="/assets/images/1280x580.png"
+                alt="No Thumbnail"
+              />
+            </div>
+            <ion-text color="secondary" class="ml-4">
+              <div class="size-title">
+                {{ item.node.design.projectName }}
+              </div>
+              <div class="size-date pt-1 pb-1">
+                {{ item.node.created | date: 'MM.dd.yyyy - HH:mm' }}
+              </div>
+
+              <div class="size-title">
+                {{ item.node.comment }}
+              </div>
+            </ion-text>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'QUESTION_ANSWER.title_tab_forum' | translate }}"
+      >Q&A Forum</mat-tab
+    >
+  </mat-tab-group>
+</ion-content>

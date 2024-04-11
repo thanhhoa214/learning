@@ -1,0 +1,664 @@
+<ng-container *ngIf="construction; else loading">
+  <loa-mobile-back-bar [title]="'HOME.construction' | translate">
+    <ion-button size="small" routerLink="/home" id="start-button">
+      <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+    </ion-button>
+  </loa-mobile-back-bar>
+  <ion-content class="container-fluid" #mainContainer>
+    <ion-list class="row" id="information">
+      <ion-item class="col-12 py-2" color="tertiary">
+        <ion-thumbnail
+          [routerLink]="'/construction/' + construction.construction.id"
+          class="mr-2"
+        >
+          <img
+            [src]="
+              construction.construction.avatar ||
+              'assets/images/construction-company-placeholder.png'
+            "
+          />
+        </ion-thumbnail>
+        <ion-label class="d-flex flex-column">
+          <h4 class="ml-1">
+            <ion-text
+              color="secondary"
+              class="text-wrap truncate"
+              [routerLink]="'/construction/' + construction.construction.id"
+            >
+              <b>{{
+                construction.construction.constructorCompany.companyName
+              }}</b>
+            </ion-text>
+          </h4>
+          <div class="d-flex align-items-center">
+            <!-- <ion-icon
+              name="loa-star"
+              [color]="
+                index < construction.construction.constructorCompany.rating
+                  ? 'secondary'
+                  : 'medium'
+              "
+              *ngFor="let index of [1, 2, 3, 4, 5]"
+            ></ion-icon>
+             -->
+            <div
+              *ngFor="let star of stars; index as index"
+              class="d-flex align-items-center mr-1"
+            >
+              <ion-icon
+                *ngIf="
+                  index + 1 <=
+                  construction.construction.constructorCompany.rating
+                "
+                name="star-full"
+              >
+              </ion-icon>
+              <ion-icon
+                *ngIf="
+                  index + 1 >
+                    construction.construction.constructorCompany.rating &&
+                  index - construction.construction.constructorCompany.rating <
+                    0
+                "
+                name="star-review-half"
+              >
+              </ion-icon>
+              <ion-icon
+                *ngIf="
+                  index + 1 >
+                    construction.construction.constructorCompany.rating &&
+                  index - construction.construction.constructorCompany.rating >=
+                    0
+                "
+                name="star-no"
+              >
+              </ion-icon>
+            </div>
+            <ion-text color="secondary" class="ml-2 pb-1 text-secondary">
+              <small
+                >{{ construction.constructionReviews.totalCount }} Review{{
+                  construction.constructionReviews.totalCount > 1 ? 's' : ''
+                }}</small
+              >
+            </ion-text>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mw-25">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.hotline' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="mw-49 letter-spacing">
+            <ion-text color="secondary">{{
+              construction.construction.constructorCompany.hotline
+            }}</ion-text>
+          </h6>
+          <ion-button
+            [href]="
+              'tel:' + construction.construction.constructorCompany.hotline
+            "
+            color="secondary"
+            fill="solid"
+            class="w-26"
+            [disabled]="!construction.construction.constructorCompany.hotline"
+          >
+            <ion-text>
+              {{ 'CONSTRUCTION.DETAIL.call' | translate }}
+            </ion-text>
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mw-25">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.phone' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="mw-49 letter-spacing">
+            <ion-text color="secondary">{{
+              construction.construction.phone
+            }}</ion-text>
+          </h6>
+          <ion-button
+            [href]="'tel:' + construction.construction.phone"
+            color="secondary"
+            fill="solid"
+            class="w-26"
+            [disabled]="!construction.construction.phone"
+          >
+            <ion-text>
+              {{ 'CONSTRUCTION.DETAIL.call' | translate }}
+            </ion-text>
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mw-25">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.email' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="mw-49 letter-spacing">
+            <ion-text color="secondary" class="text-wrap">{{
+              construction.construction.email
+            }}</ion-text>
+          </h6>
+          <ion-button
+            [href]="'mailto:' + construction.construction.email"
+            color="secondary"
+            fill="solid"
+            class="w-26"
+            [disabled]="!construction.construction.email"
+          >
+            <ion-text>
+              {{ 'CONSTRUCTION.DETAIL.send_email' | translate }}
+            </ion-text>
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mw-25">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.website' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="w-75 letter-spacing">
+            <ion-text color="secondary">{{
+              construction.construction.constructorCompany.website
+            }}</ion-text>
+          </h6>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mw-25">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.address' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="w-75 text-wrap">
+            <ion-text color="secondary">
+              {{ construction.construction.constructorCompany.address }},
+              {{ construction.construction.constructorCompany.city }},
+              {{
+                construction.construction.constructorCompany.country
+              }}</ion-text
+            >
+          </h6>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary">
+        <div class="w-50 d-flex justify-content-between align-items-center">
+          <h5 class="w-50">
+            <ion-text color="secondary">
+              <b>{{ 'CONSTRUCTION.DETAIL.tax_code' | translate }}</b></ion-text
+            >
+          </h5>
+          <h6 class="w-50 text-wrap">
+            <ion-text color="secondary">
+              {{ construction.construction.business[0].taxCode }}
+            </ion-text>
+          </h6>
+        </div>
+        <div class="w-50 d-flex justify-content-between align-items-center">
+          <h5 class="w-50 d-flex justify-content-between align-items-center">
+            <ion-text color="secondary">
+              <b>{{
+                'CONSTRUCTION.DETAIL.experience' | translate
+              }}</b></ion-text
+            >
+          </h5>
+          <h6
+            class="w-50 text-wrap d-flex justify-content-between align-items-center"
+          >
+            <ion-text color="secondary">
+              {{ construction.construction.constructorCompany.experiences }}
+              Years</ion-text
+            >
+          </h6>
+        </div>
+      </ion-item>
+      <ion-item class="col-12" color="tertiary" lines="none">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h5 class="mb-1">
+            <ion-text color="secondary">
+              <b>{{
+                'CONSTRUCTION.DETAIL.Introduction' | translate
+              }}</b></ion-text
+            >
+          </h5>
+        </div>
+      </ion-item>
+      <ion-item class="col-12 border-introduction" color="tertiary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h6 class="text-wrap mt-0">
+            <ion-text color="secondary">
+              {{
+                construction.construction.constructorCompany.introduction
+              }}</ion-text
+            >
+          </h6>
+        </div>
+      </ion-item>
+      <ion-item
+        class="col-12 pb-3"
+        id="write-a-review"
+        lines="none"
+        color="tertiary"
+      >
+        <div class="w-100" *ngIf="!checkDisableReview">
+          <ion-button
+            class="my-4 mx-auto"
+            color="secondary"
+            fill="solid"
+            expand="block"
+            (click)="writeReviewConstructor(construction.construction.id)"
+            ><h5 class="my-0">
+              {{ 'CONSTRUCTION_REVIEW.btn_write_review' | translate }}
+            </h5></ion-button
+          >
+        </div>
+      </ion-item>
+    </ion-list>
+    <section id="portfolio">
+      <h4 class="mb-3">
+        <ion-text color="secondary">
+          <b>{{ 'CONSTRUCTION.DETAIL.portfolio' | translate }}</b>
+        </ion-text>
+      </h4>
+      <div class="d-flex flex-wrap">
+        <div
+          class="w-50 rounded-lg portfolio-item mb-1"
+          [class.pr-1]="i % 2 === 0"
+          [class.pl-1]="i % 2 !== 0"
+          *ngFor="
+            let portfolio of construction.construction.constructorCompany
+              .portfolio.edges;
+            index as i
+          "
+          [routerLink]="['portfolio', portfolio.node.id]"
+        >
+          <div class="img-wrapper rounded-lg overflow-hidden">
+            <img
+              [src]="
+                portfolio.node.images[0]?.image || 'assets/images/1280x580.png'
+              "
+              [alt]="portfolio.node.projectName"
+              class="img-cover"
+            />
+          </div>
+          <h6 class="text-center truncate mt-3">
+            <ion-text color="secondary">
+              {{ portfolio.node.projectName }}
+            </ion-text>
+          </h6>
+        </div>
+      </div>
+    </section>
+    <section id="review">
+      <h4 class="mb-3">
+        <ion-text color="secondary">
+          <b>{{ 'CONSTRUCTION.DETAIL.review' | translate }}</b>
+        </ion-text>
+      </h4>
+      <div *ngIf="dataSource">
+        <div
+          *ngFor="let item of dataSource; index as index"
+          class="margin-left-right"
+        >
+          <div
+            class="bg-content py-4 my-3 padding-l-r-16"
+            [class.mt-4]="index == 0"
+          >
+            <div class="w-100">
+              <div class="d-flex flex-row w-100 pb-4">
+                <div class="image-wrapper mr-4">
+                  <img
+                    [src]="
+                      item.node.reviewer.avatar ||
+                      'assets/images/construction-company-placeholder.png'
+                    "
+                    alt="Logo"
+                    [class.border]="!item.node.reviewer.avatar"
+                  />
+                </div>
+                <div class="d-flex flex-column">
+                  <h4 class="mb-auto mt-0">
+                    <b>{{
+                      item.node.reviewer.constructor
+                        ? item.node.reviewer.constructor.companyName
+                        : item.node.reviewer.firstName +
+                          ' ' +
+                          item.node.reviewer.lastName
+                    }}</b>
+                  </h4>
+                  <div class="d-flex flex-row">
+                    <div *ngFor="let star of stars; index as index">
+                      <ion-icon
+                        *ngIf="index + 1 <= item.node.rating"
+                        name="star-full"
+                      >
+                      </ion-icon>
+                      <ion-icon
+                        *ngIf="
+                          index + 1 > item.node.rating &&
+                          index - item.node.rating < 0
+                        "
+                        name="star-review-half"
+                      >
+                      </ion-icon>
+                      <ion-icon
+                        *ngIf="
+                          index + 1 > item.node.rating &&
+                          index - item.node.rating >= 0
+                        "
+                        name="star-no"
+                      >
+                      </ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mat-divider class="custom-divider-border"></mat-divider>
+            <div class="d-flex flex-row py-3">
+              <ion-text class="title-12 w-43">
+                <b>
+                  {{
+                    'CONSTRUCTION_REVIEW.MY_REVIEW.construction_location'
+                      | translate
+                  }}
+                </b>
+              </ion-text>
+              <ion-text class="title-13 w-57">
+                {{ item.node.constructionLocation }},
+
+                {{ item.node.district }},
+
+                {{ item.node.city }}
+              </ion-text>
+            </div>
+            <mat-divider class="custom-divider"></mat-divider>
+            <div class="d-flex flex-row py-3">
+              <ion-text class="title-12 w-43">
+                <b>
+                  {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.area_size' | translate }}
+                </b>
+              </ion-text>
+              <ion-text class="title-13 w-57">
+                {{ item.node.areaSize }} sm.q
+              </ion-text>
+            </div>
+            <mat-divider class="custom-divider"></mat-divider>
+            <div class="d-flex flex-row py-3">
+              <ion-text class="title-12 w-43">
+                <b>
+                  {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.style' | translate }}
+                </b>
+              </ion-text>
+              <ion-text class="title-13 w-57">
+                {{ item.node.designStyle | titlecase }}
+              </ion-text>
+            </div>
+            <mat-divider class="custom-divider"></mat-divider>
+            <div class="d-flex flex-row py-3">
+              <ion-text class="title-12 w-43">
+                <b>
+                  {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.period' | translate }}
+                </b>
+              </ion-text>
+              <ion-text class="title-13 w-57">
+                {{ item.node.constructionPeriod }}
+                {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.month' | translate }}
+              </ion-text>
+            </div>
+            <mat-divider class="custom-divider"></mat-divider>
+            <div class="d-flex flex-row py-3">
+              <ion-text class="title-12 w-43">
+                <b>
+                  {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.cost' | translate }}
+                </b>
+              </ion-text>
+              <ion-text class="title-13 w-57">
+                {{ item.node.constructionCostFrom | number: '1.0-4' }}đ ~
+                {{ item.node.constructionCostTo | number: '1.0-4' }}đ
+              </ion-text>
+            </div>
+            <mat-divider class="custom-divider-border"></mat-divider>
+            <div class="d-flex flex-row py-4">
+              <app-view-more-review
+                class="flex-grow-1 my-1"
+                [contentReview]="item.node.review"
+              >
+              </app-view-more-review>
+            </div>
+            <div class="d-flex flex-row margin-l-r-16 overflow-scroll-x">
+              <div *ngFor="let i of item.node.images; index as indexImage">
+                <div
+                  class="wrapper-image"
+                  [class.mr-1]="indexImage == 0"
+                  [class.ml-1]="indexImage == item.node.images.length - 1"
+                  [class.mx-1]="
+                    indexImage != item.node.images.length - 1 && indexImage != 0
+                  "
+                >
+                  <div
+                    [ngStyle]="{
+                      'background-image': 'url(' + i.image + ')'
+                    }"
+                  ></div>
+                  <!-- <img [src]="i.image" alt="Image review" /> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="w-100 text-center mt-3 mb-4" *ngIf="pageInfo?.hasNextPage">
+      <ion-text
+        color="dark"
+        class="border-bottom border-secondary px-2 py-1"
+        (click)="loadMoreData()"
+      >
+        <b>{{ 'HOME.view_more' | translate }}</b>
+      </ion-text>
+    </div>
+  </ion-content>
+</ng-container>
+<ng-template #loading class="loading">
+  <loa-mobile-back-bar title="Interior Design">
+    <ion-button size="small" routerLink="/home" id="start-button">
+      <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+    </ion-button>
+  </loa-mobile-back-bar>
+  <div class="container-fluid">
+    <div class="img-wrapper rounded-lg mb-3">
+      <ngx-skeleton-loader
+        [theme]="{ width: '100%', height: '100%' }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div class="row mb-4">
+      <div class="col-8 d-flex flex-column">
+        <ngx-skeleton-loader
+          class="mt-2"
+          [theme]="{ width: '50%', height: '2rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '75%', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-start">
+        <button mat-icon-button color="secondary">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-6 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '9rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '7rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+      <div class="col-6 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '12rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '7rem', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>single_bed</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>bathtub</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>filters</mat-icon>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon>single_bed</mat-icon>
+      </div>
+    </div>
+    <div class="row">
+      <h4 class="col-12">
+        {{ 'DESIGN.DETAIL.project_description' | translate }}
+      </h4>
+      <p class="col-12 d-flex flex-column">
+        <ngx-skeleton-loader
+          [theme]="{ width: '70%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '85%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '50%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '40%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '65%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '95%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          [theme]="{ width: '90%', height: '1.4rem', marginBottom: '0' }"
+        ></ngx-skeleton-loader>
+      </p>
+    </div>
+    <div class="row mb-4">
+      <h4 class="col-12">
+        <ion-text color="secondary">
+          {{ 'DESIGN.DETAIL.details' | translate }}
+        </ion-text>
+      </h4>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.living_room' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.bathroom' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <h5>{{ 'DESIGN.FILTERS.ROOM_TYPE.kitchen' | translate }}</h5>
+          <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+            <ngx-skeleton-loader
+              [theme]="{ width: '100%', height: '100%' }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4" id="suggested-construction">
+      <h4 class="col-12">
+        {{ 'DESIGN.DETAIL.suggested_construction' | translate }}
+      </h4>
+      <div class="col-12">
+        <div class="row">
+          <div
+            class="col-6 mb-1"
+            [class.pr-2]="item % 2"
+            [class.pl-2]="item % 2 === 0"
+            *ngFor="let item of [1, 2, 3, 4]"
+          >
+            <div class="d-flex flex-column">
+              <div class="img-wrapper rounded-lg mb-1">
+                <ngx-skeleton-loader
+                  [theme]="{ width: '100%', height: '100%' }"
+                ></ngx-skeleton-loader>
+              </div>
+              <ngx-skeleton-loader
+                [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+              ></ngx-skeleton-loader>
+              <ngx-skeleton-loader
+                [theme]="{ width: '60%', height: '1.4rem', marginBottom: '0' }"
+              ></ngx-skeleton-loader>
+              <div>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star_outline</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <h4 class="col-12">{{ 'DESIGN.DETAIL.comment' | translate }}</h4>
+      <div class="col-12">
+        <div class="d-flex flex-column">
+          <ng-container *ngFor="let i of [1, 2]">
+            <ngx-skeleton-loader
+              [theme]="{ width: '70%', height: '1.8rem' }"
+            ></ngx-skeleton-loader>
+
+            <ngx-skeleton-loader
+              [theme]="{ width: '95%', height: '1.4rem', marginBottom: '0' }"
+            ></ngx-skeleton-loader>
+
+            <ngx-skeleton-loader
+              [theme]="{ width: '80%', height: '1.4rem' }"
+            ></ngx-skeleton-loader>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

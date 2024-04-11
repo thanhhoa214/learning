@@ -1,0 +1,17 @@
+ion-fab {
+  margin-top: max(0.75rem, env(safe-area-inset-top));
+  margin-right: 0.75rem;
+}
+ion-content {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+ion-fab-button {
+  zoom: 0.75;
+}

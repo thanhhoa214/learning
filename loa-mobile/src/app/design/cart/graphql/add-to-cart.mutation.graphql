@@ -1,0 +1,5 @@
+mutation DesignAddToCart($input: DesignAddToCartInput!) {
+  designAddToCart(input: $input) {
+    status
+  }
+}

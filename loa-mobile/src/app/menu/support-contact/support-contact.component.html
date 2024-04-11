@@ -1,0 +1,304 @@
+<loa-mobile-back-bar
+  [backTo]="'/menu'"
+  [title]="'SUPPORT_CONTACT.title' | translate"
+></loa-mobile-back-bar>
+
+<ion-content>
+  <div class="h-100 d-flex flex-column justify-content-between">
+    <div>
+      <div class="row bg-tertiary border-top border-bottom" id="q1">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q1' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(0)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[0] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[0]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q1_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q2">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q2' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(1)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[1] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[1]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q2_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q3">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q3' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(2)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[2] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[2]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q3_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q4">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q4' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(3)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[3] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[3]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q4_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q5">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q5' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(4)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[4] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[4]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q5_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q6">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q6' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(5)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[5] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[5]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q6_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q7">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q7' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(6)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[6] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[6]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q7_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q8">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q8' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(7)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[7] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[7]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q8_a' | translate"></ion-text>
+        </p>
+      </div>
+      <!---->
+      <div class="row bg-tertiary border-top border-bottom" id="q9">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q9' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(8)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[8] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[8]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q9_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q10">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q10' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(9)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[9] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[9]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q10_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q11">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q11' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(10)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[10] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[10]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q11_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q12">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q12' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(11)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[11] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[11]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q12_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q13">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q13' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(12)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[12] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[12]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q13_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q14">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q14' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(13)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[13] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[13]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q14_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q15">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q15' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(14)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[14] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[14]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q15_a' | translate"></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="q16">
+        <div class="col-12 py-3 d-flex justify-content-between align-items-center">
+          <ion-text class="d-flex flex-1" color="dark">
+            <b>{{ 'SUPPORT_CONTACT.q16' | translate }}</b>
+          </ion-text>
+          <div class="w-3rem">
+            <ion-fab-button class="fab-arrow-up" (click)="toggleShowSection(15)"
+              ><ion-icon
+                color="secondary"
+                [name]="isShowSections[15] ? 'chevron-up-outline' : 'chevron-down-outline'"
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </div>
+        <p class="col-12 mt-0" *ngIf="isShowSections[15]">
+          <ion-text color="secondary" [innerHTML]="'SUPPORT_CONTACT.q16_a' | translate"></ion-text>
+        </p>
+      </div>
+    </div>
+    <ion-text color="secondary" class="d-block pt-4 pb-5 text-center">
+      <p class="mb-2">{{ 'SUPPORT_CONTACT.another_support' | translate }}</p>
+      <b>customer@abc.com</b>
+    </ion-text>
+  </div>
+</ion-content>

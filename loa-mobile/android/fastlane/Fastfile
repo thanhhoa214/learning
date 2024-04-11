@@ -1,0 +1,50 @@
+default_platform(:android)
+
+platform :android do
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(task: "clean assembleRelease")
+    changelog_from_git_commits
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    version_code = google_play_track_version_codes(track: "internal").max + 1
+
+    gradle(task: 'clean')
+    changelog_from_git_commits
+    android_set_version_code(
+      version_code: version_code, # optional, if not specified, Version Code will be incremented
+      gradle_file: "app/build.gradle" # optional
+    )
+    gradle(
+      task: "assembleRelease",
+      properties: {
+        "android.injected.signing.store.file" => "abc.ks",
+        "android.injected.signing.store.password" => "123123",
+        "android.injected.signing.key.alias" => "key0",
+        "android.injected.signing.key.password" => "123123",
+      }
+    )
+    upload_to_play_store(
+      json_key: './fastlane/pc-api-7981328619542726534-783-6be79e278c03.json', 
+      track: 'internal', 
+      package_name: 'com.abc.platform',
+      version_code: version_code
+    )
+    changelog_from_git_commits
+    google_chat(
+      imageUrl: 'https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png',
+      webhook: 'https://chat.googleapis.com/v1/spaces/AAAAEA-u61M/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=njbd-GCQTqW63_QgNo2D3r8lO_vFjnBBz7Xn2rks1AY%3D',
+      title: '🟢 Upload to Google Play successfully!',
+      description: 'Hello <users/104121422729815117160>! Please help me test it.',
+      section1Title: "Deploy success!",
+      section1Description: "- Current version: #{ENV['version_code']}\n- Current API_URL: #{ENV['API_URL']}",
+      buttonTitle: "Download",
+      buttonUrl: "https://play.google.com/store/apps/details?id=com.abc.platform"
+    )
+  end
+end

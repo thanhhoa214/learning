@@ -1,0 +1,5 @@
+mutation DesignOrderUpdate($input: DesignOrderUpdateInput!) {
+  designOrderUpdate(input: $input) {
+    status
+  }
+}

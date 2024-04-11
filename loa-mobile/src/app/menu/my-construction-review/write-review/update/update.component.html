@@ -1,0 +1,461 @@
+<ion-content>
+  <div *ngIf="dataSourse; else loading">
+    <div class="w-100 bg-first-row">
+      <div class="d-flex flex-row w-100 padding-l-r-16 mt-3 py-4">
+        <div class="image-wrapper mr-4">
+          <img
+            [src]="
+              dataSourse.construction.user.avatar ||
+              'assets/images/construction-company-placeholder.png'
+            "
+            alt="Logo"
+            [class.border]="!dataSourse.construction.user.avatar"
+          />
+        </div>
+        <div class="d-flex flex-column">
+          <h4 class="mb-auto mt-0">
+            <b>{{ dataSourse.construction.companyName }}</b>
+          </h4>
+          <div
+            class="d-flex flex-row view-profile-icon"
+            [routerLink]="'/construction/' + dataSourse.construction.id"
+          >
+            <ion-text color="secondary mr-2">
+              {{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.btn_view_profile" | translate
+              }}
+            </ion-text>
+            <mat-icon class="my-auto">navigate_next</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="reviewFormGroup" (ngSubmit)="updateReview()">
+      <div class="d-flex flex-row justify-content-center w-100 mt-4 mb-2">
+        <div *ngFor="let item of stars; index as index">
+          <a
+            type="button"
+            color="medium"
+            (click)="rating($event, index)"
+            class="star-icon"
+          >
+            <ion-icon
+              [name]="
+                selectedStar >= index + 1 ? 'star-selected' : 'star-not-select'
+              "
+            ></ion-icon>
+          </a>
+        </div>
+      </div>
+      <div class="d-flex flex-column padding-l-r-16">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{
+            "CONSTRUCTION_REVIEW.WRITE_REVIEW.phone" | translate
+          }}</ion-label>
+          <ion-input
+            placeholder="{{
+              'CONSTRUCTION_REVIEW.WRITE_REVIEW.phone' | translate
+            }}"
+            formControlName="phoneCtr"
+            required
+            [class.border-danger]="
+              (reviewFormGroup.controls['phoneCtr'].touched &&
+                reviewFormGroup.hasError('required', 'phoneCtr')) ||
+              (reviewFormGroup.controls['phoneCtr'].touched &&
+                reviewFormGroup.hasError('pattern', 'phoneCtr'))
+            "
+          ></ion-input>
+        </ion-item>
+        <ion-text
+          class="error"
+          *ngIf="
+            reviewFormGroup.controls['phoneCtr'].touched &&
+            reviewFormGroup.hasError('required', 'phoneCtr')
+          "
+          color="danger"
+        >
+          {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_phone" | translate }}
+        </ion-text>
+
+        <ion-text
+          class="error"
+          *ngIf="
+            reviewFormGroup.controls['phoneCtr'].touched &&
+            reviewFormGroup.hasError('pattern', 'phoneCtr')
+          "
+          color="danger"
+        >
+          {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.invalid_phone" | translate }}
+        </ion-text>
+
+        <ion-item lines="none" class="mb-2">
+          <ion-label position="stacked">{{
+            "CONSTRUCTION_REVIEW.WRITE_REVIEW.construction_location" | translate
+          }}</ion-label>
+          <ion-input
+            placeholder="{{
+              'CONSTRUCTION_REVIEW.WRITE_REVIEW.text_location' | translate
+            }}"
+            formControlName="nameCtrl"
+            required
+            [class.border-danger]="
+              reviewFormGroup.controls['nameCtrl'].touched &&
+              reviewFormGroup.hasError('required', 'nameCtrl')
+            "
+          ></ion-input>
+        </ion-item>
+        <ion-text
+          class="error-lbl"
+          *ngIf="
+            reviewFormGroup.controls['nameCtrl'].touched &&
+            reviewFormGroup.hasError('required', 'nameCtrl')
+          "
+          color="danger"
+        >
+          {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_location" | translate }}
+        </ion-text>
+
+        <div class="d-flex flex-row w-100">
+          <div class="d-flex flex-column">
+            <ion-item lines="none" class="pr-1">
+              <ion-input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.district' | translate
+                }}"
+                formControlName="districtCtrl"
+                required
+                [class.border-danger]="
+                  reviewFormGroup.controls['districtCtrl'].touched &&
+                  reviewFormGroup.hasError('required', 'districtCtrl')
+                "
+              ></ion-input>
+            </ion-item>
+            <ion-text
+              class="error"
+              *ngIf="
+                reviewFormGroup.controls['districtCtrl'].touched &&
+                reviewFormGroup.hasError('required', 'districtCtrl')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_district" | translate }}
+            </ion-text>
+          </div>
+          <div class="d-flex flex-column">
+            <ion-item lines="none" class="pl-1">
+              <ion-input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.city' | translate
+                }}"
+                formControlName="cityCtrl"
+                required
+                [class.border-danger]="
+                  reviewFormGroup.controls['cityCtrl'].touched &&
+                  reviewFormGroup.hasError('required', 'cityCtrl')
+                "
+              ></ion-input>
+            </ion-item>
+            <ion-text
+              class="error ml-1"
+              *ngIf="
+                reviewFormGroup.controls['cityCtrl'].touched &&
+                reviewFormGroup.hasError('required', 'cityCtrl')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_city" | translate }}
+            </ion-text>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row w-100">
+          <div class="d-flex flex-column">
+            <ion-item lines="none" class="w-100 pr-1">
+              <ion-label position="stacked">{{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.area_size" | translate
+              }}</ion-label>
+              <input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.area_size' | translate
+                }}"
+                formControlName="areaCtr"
+                required
+                [suffix]="areaConfig.suffix"
+                [mask]="areaConfig.mask"
+                [thousandSeparator]="areaConfig.thousandSeparator"
+                class="custom-input w-100"
+                [class.border-danger]="
+                  reviewFormGroup.controls['areaCtr'].touched &&
+                  reviewFormGroup.hasError('required', 'areaCtr')
+                "
+              />
+            </ion-item>
+            <ion-text
+              class="error"
+              *ngIf="
+                reviewFormGroup.controls['areaCtr'].touched &&
+                reviewFormGroup.hasError('required', 'areaCtr')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_area_size" | translate }}
+            </ion-text>
+          </div>
+
+          <ion-item lines="none" class="w-50 pl-1">
+            <ion-label position="stacked">{{
+              "CONSTRUCTION_REVIEW.WRITE_REVIEW.style" | translate
+            }}</ion-label>
+            <ion-select [(value)]="slectedStyleRoom">
+              <ion-select-option
+                *ngFor="let item of styleRoom"
+                [value]="item.value"
+                >{{ item.viewValue | translate }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div class="d-flex flex-row w-100">
+          <div class="d-flex flex-column w-25">
+            <ion-item lines="none" class="pr-1">
+              <ion-label position="stacked">{{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.period" | translate
+              }}</ion-label>
+              <input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.period' | translate
+                }}"
+                formControlName="periodCtr"
+                required
+                [suffix]="timeConfig.suffix"
+                [mask]="timeConfig.mask"
+                [thousandSeparator]="timeConfig.thousandSeparator"
+                class="custom-input w-100"
+                [class.border-danger]="
+                  reviewFormGroup.controls['periodCtr'].touched &&
+                  reviewFormGroup.hasError('required', 'periodCtr')
+                "
+              />
+            </ion-item>
+
+            <ion-text
+              class="error"
+              *ngIf="
+                reviewFormGroup.controls['periodCtr'].touched &&
+                reviewFormGroup.hasError('required', 'periodCtr')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_period" | translate }}
+            </ion-text>
+          </div>
+
+          <div class="d-flex flex-column w-37-5">
+            <ion-item lines="none" class="px-1">
+              <ion-label position="stacked">{{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.construction_cost" | translate
+              }}</ion-label>
+              <input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.cost_from' | translate
+                }}"
+                formControlName="costFromCtr"
+                required
+                [suffix]="costConfig.suffix"
+                [mask]="costConfig.mask"
+                [thousandSeparator]="costConfig.thousandSeparator"
+                class="custom-input w-100"
+                [class.border-danger]="
+                  reviewFormGroup.controls['costFromCtr'].touched &&
+                  reviewFormGroup.hasError('required', 'costFromCtr')
+                "
+                [class.border-danger]="checkFrom"
+                (ngModelChange)="estimateFromChange($event)"
+              />
+            </ion-item>
+            <ion-text
+              class="error ml-1"
+              *ngIf="
+                reviewFormGroup.controls['costFromCtr'].touched &&
+                reviewFormGroup.hasError('required', 'costFromCtr')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_cost_from" | translate }}
+            </ion-text>
+            <ion-text
+              class="error ml-1"
+              *ngIf="
+                reviewFormGroup.controls['costFromCtr'].touched && checkFrom
+              "
+              color="danger"
+            >
+              {{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.invalid_cost_from" | translate
+              }}
+            </ion-text>
+          </div>
+
+          <div class="d-flex flex-column w-37-5">
+            <ion-item lines="none" class="pl-1">
+              <!-- <ion-label position="stacked">Construction cost</ion-label> -->
+              <input
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.cost_to' | translate
+                }}"
+                formControlName="costToCtr"
+                required
+                [suffix]="costConfig.suffix"
+                [mask]="costConfig.mask"
+                [thousandSeparator]="costConfig.thousandSeparator"
+                class="custom-input w-100 cost-to"
+                [class.border-danger]="
+                  reviewFormGroup.controls['costToCtr'].touched &&
+                  reviewFormGroup.hasError('required', 'costToCtr')
+                "
+                [class.border-danger]="checkTo"
+                (ngModelChange)="estimateToChange($event)"
+              />
+            </ion-item>
+            <ion-text
+              class="error ml-1"
+              *ngIf="
+                reviewFormGroup.controls['costToCtr'].touched &&
+                reviewFormGroup.hasError('required', 'costToCtr')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_cost_to" | translate }}
+            </ion-text>
+
+            <ion-text
+              class="error ml-1"
+              *ngIf="reviewFormGroup.controls['costFromCtr'].touched && checkTo"
+              color="danger"
+            >
+              {{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.invalid_cost_to" | translate
+              }}
+            </ion-text>
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col-12">
+            <ion-item lines="none">
+              <ion-label position="stacked">{{
+                "CONSTRUCTION_REVIEW.WRITE_REVIEW.review" | translate
+              }}</ion-label>
+              <ion-textarea
+                class="w-100 text-align-left rounded-lg"
+                placeholder="{{
+                  'CONSTRUCTION_REVIEW.WRITE_REVIEW.review' | translate
+                }}"
+                cols="30"
+                rows="5"
+                (ngModelChange)="changeValueContent($event)"
+                formControlName="reviewContentCtr"
+                [class.border-danger]="
+                  reviewFormGroup.controls['reviewContentCtr'].touched &&
+                  reviewFormGroup.hasError('required', 'reviewContentCtr')
+                "
+                required
+              ></ion-textarea>
+            </ion-item>
+            <ion-text
+              class="error"
+              *ngIf="
+                reviewFormGroup.controls['reviewContentCtr'].touched &&
+                reviewFormGroup.hasError('required', 'reviewContentCtr')
+              "
+              color="danger"
+            >
+              {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.err_review" | translate }}
+            </ion-text>
+          </div>
+        </div>
+
+        <div class="row"></div>
+
+        <div class="row">
+          <!-- List images old -->
+          <div
+            class="col-3 img-wrapper rounded-lg col-3 mt-2 mb-2"
+            *ngFor="let item of imagesOld; index as index"
+          >
+            <img [src]="item.image" alt="Image" />
+            <a
+              class="position-btn-delete"
+              (click)="deleteImageOld(item.id)"
+              mat-icon-button
+              color="#fff333"
+            >
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+
+          <!-- List images new -->
+          <div
+            class="img-wrapper rounded-lg col-3 mt-2 mb-2"
+            *ngFor="let item of imagesNew; index as index"
+          >
+            <img [src]="item" alt="Image post" />
+            <a
+              class="position-btn-delete"
+              (click)="deleteImage(index)"
+              mat-icon-button
+              color="#fff333"
+            >
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+
+          <div class="col-3 mt-2 mb-2">
+            <button
+              type="button"
+              class="w-100 btn-select-file"
+              (click)="fileInput.click()"
+            >
+              <img src="assets/images/Group.svg" alt="Add image" />
+            </button>
+            <input
+              hidden
+              (change)="onFileSelected($event.target.files)"
+              #fileInput
+              type="file"
+              id="file"
+              accept="image/png, image/jpeg, image/jpg"
+              multiple
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <ion-button
+              type="submit"
+              color="secondary"
+              fill="solid"
+              expand="block"
+              class="w-100 mx-0"
+              [disabled]="
+                reviewFormGroup.invalid ||
+                checkSubmit ||
+                checkTo ||
+                checkFrom ||
+                !checkEmpty
+              "
+            >
+              <ion-spinner *ngIf="checkSubmit"></ion-spinner>
+              <b>
+                {{ "CONSTRUCTION_REVIEW.WRITE_REVIEW.btn_upload" | translate }}
+              </b>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #loading class="loading"></ng-template>
+</ion-content>

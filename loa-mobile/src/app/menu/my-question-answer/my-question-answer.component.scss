@@ -1,0 +1,29 @@
+ion-content {
+  --padding-top: 0;
+}
+
+.mat-list-base .mat-list-item {
+  font-size: 12px !important;
+  border: solid #707070;
+  border-width: 0px 0px 1px 0px;
+  height: 100% !important;
+}
+
+.search-results {
+  height: 70vh;
+  overflow: scroll;
+}
+
+.img-border-radius {
+  border-radius: 0.25rem !important;
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+.size-title {
+  font-size: 14px !important;
+}
+
+.size-date {
+  font-size: 12px !important;
+}

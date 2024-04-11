@@ -1,0 +1,47 @@
+query GetAllConstructions(
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $email: String
+  $created: DateTime
+  $loginMethod: String
+  $name: String
+  $orderBy: String
+) {
+  constructions: constructors(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    email: $email
+    created: $created
+    loginMethod: $loginMethod
+    companyName: $name
+    orderBy: $orderBy
+  ) {
+    totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        email
+        phone
+        avatar
+        constructor {
+          id
+          companyName
+          country
+          city
+          address
+          introduction
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<div class="w-100 py-2 mb-1 section-header">
+  <h4 class="my-2">
+    <ion-text color="dark"
+      ><b>{{ "HOME.interior_designs" | translate }}</b></ion-text
+    >
+  </h4>
+  <ion-icon
+    color="dark"
+    routerLink="/design"
+    name="chevron-forward-outline"
+  ></ion-icon>
+</div>
+<div
+  class="w-100 d-flex flex-column align-items-center mb-2"
+  *ngFor="let design of designs?.edges; let i = index"
+>
+  <div
+    class="img-wrapper mb-1 w-100 rounded-lg overflow-hidden"
+    [routerLink]="['/', 'design', design.node.id]"
+  >
+    <img [src]="design.node.thumbnail" />
+    <div
+      class="overlay d-flex flex-column justify-content-end align-items-start p-3"
+    >
+      <h5 class="my-0 mb-1">
+        <ion-text color="light"
+          ><b>
+            <ng-container
+              *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+            >
+              {{ design.node.projectName }}
+            </ng-container>
+            <ng-container *ngIf="design.node.designType.toString() == 'ROOM'">
+              {{
+                "DESIGN.FILTERS.ROOM_TYPE." +
+                  design.node.room.roomType.toLowerCase() | translate
+              }}
+            </ng-container>
+            -
+            {{ design.node.registeredDesignNumber }}
+          </b></ion-text
+        >
+      </h5>
+      <ion-text color="light">
+        <ng-container
+          *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+        >
+          {{ design.node.tower }} | {{ design.node.unitType }} |
+          {{ design.node.area | number: "1.0-4" }} sq.m |
+          {{
+            "DESIGN.FILTERS.HOUSE_TYPE." +
+              design.node.typeOfHouse.toLowerCase() | translate
+          }}
+          |
+          {{
+            "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase()
+              | translate
+          }}
+        </ng-container>
+        <ng-container *ngIf="design.node.designType.toString() == 'ROOM'">
+          {{ design.node.area | number: "1.0-4" }} sq.m |
+          {{
+            "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase()
+              | translate
+          }}
+        </ng-container>
+      </ion-text>
+    </div>
+  </div>
+</div>
+<div class="w-100 text-center">
+  <ion-text
+    color="dark"
+    class="border-bottom border-secondary px-2 py-1"
+    routerLink="/design"
+  >
+    <b>{{ "HOME.view_more" | translate }}</b>
+  </ion-text>
+</div>

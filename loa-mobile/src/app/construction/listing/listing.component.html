@@ -1,0 +1,91 @@
+<loa-mobile-back-bar [title]="'HOME.construction' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+</loa-mobile-back-bar>
+<ion-searchbar
+  [debounce]="500"
+  class="py-0"
+  color="tertiary"
+  searchIcon="loa-search"
+  enterkeyhint="search"
+  [placeholder]="'CONSTRUCTION.LISTING.search_placeholder' | translate"
+  inputmode="search"
+></ion-searchbar>
+<ion-content class="container-fluid">
+  <ion-list *ngIf="constructions$ | async as constructions; else loading" class="row">
+    <ion-item class="w-100" *ngFor="let construction of constructions.edges" color="tertiary">
+      <ion-thumbnail [routerLink]="'/construction/' + construction.node.id" class="mr-2">
+        <img
+          [src]="construction.node.avatar || 'assets/images/construction-company-placeholder.png'"
+        />
+      </ion-thumbnail>
+      <ion-label class="d-flex flex-column py-2">
+        <h4 class="ml-1">
+          <ion-text
+            color="secondary"
+            class="text-wrap truncate"
+            [routerLink]="'/construction/' + construction.node.id"
+          >
+            <b>{{ construction.node.constructor.companyName }}</b>
+          </ion-text>
+        </h4>
+        <div class="w-100 d-flex">
+          <ion-button
+            [href]="'tel:' + construction.node.phone"
+            color="secondary"
+            expand="block"
+            fill="solid"
+            class="w-50 pr-1"
+            [disabled]="!construction.node.phone"
+          >
+            <h6 class="my-0">
+              {{ 'CONSTRUCTION.DETAIL.call' | translate }}
+            </h6>
+          </ion-button>
+          <ion-button
+            color="secondary"
+            expand="block"
+            fill="solid"
+            class="w-50 pl-1"
+            [disabled]="!construction.node.email"
+            (click)="mailToDesign(construction.node)"
+          >
+            <h6 class="my-0">
+              {{ 'CONSTRUCTION.DETAIL.send_email' | translate }}
+            </h6>
+          </ion-button>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ng-template #loading>
+    <mat-list class="row">
+      <mat-list-item *ngFor="let construction of [1, 2, 3, 4, 5]" class="mb-4">
+        <ngx-skeleton-loader
+          matListAvatar
+          [theme]="{ width: '8rem', height: '8rem' }"
+          class="mr-5"
+        ></ngx-skeleton-loader>
+        <h3 matLine class="ml-4 mt-5">
+          <ngx-skeleton-loader [theme]="{ width: '50%', height: '2rem' }"></ngx-skeleton-loader>
+        </h3>
+        <p matLine class="ml-4">
+          <ngx-skeleton-loader [theme]="{ width: '70%', height: '1.5rem' }"></ngx-skeleton-loader>
+        </p>
+        <p matLine class="ml-4">
+          <ngx-skeleton-loader [theme]="{ width: '50%', height: '1.5rem' }"></ngx-skeleton-loader>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore()">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'CONTENT_PAGE.loading' | translate"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,21 @@
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    get_certificates(
+      development: true,
+      generate_apple_certs: true
+    )
+    get_provisioning_profile
+    
+    increment_build_number({
+      build_number: latest_testflight_build_number + 1
+    })
+    build_app(workspace: "App.xcworkspace", scheme: "App")
+    upload_to_testflight(
+      changelog: "- API Server: #{ENV['API_URL']} \n- Changes: #{ENV['CI_COMMIT_MESSAGE']}"
+    )
+  end
+end

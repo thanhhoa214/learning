@@ -1,0 +1,699 @@
+<ng-container *ngIf="user$ | async as user">
+  <loa-mobile-back-bar>
+    <ion-button size="small" routerLink="/home" id="start-button">
+      <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+    </ion-button>
+    <ion-buttons slot="end" id="end-buttons">
+      <ion-button size="small" routerLink="/design/filter">
+        <ion-icon slot="icon-only" color="secondary" name="loa-search"></ion-icon>
+      </ion-button>
+      <ion-button
+        size="small"
+        routerLink="/design/cart"
+        *ngIf="user.userType?.includes('business')"
+      >
+        <ion-icon slot="icon-only" color="secondary" name="loa-cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </loa-mobile-back-bar>
+  <ng-container *ngIf="design$ | async as design; else loading">
+    <ion-content class="container-fluid" #mainContainer>
+      <div class="img-wrapper big-img mx-n3 mb-3">
+        <img
+          [src]="
+            (design.room?.preview)[0]?.image ||
+            (design.wholeHouse?.edges)[0].node.preview[0]?.image ||
+            'assets/images/1280x580.png'
+          "
+        />
+      </div>
+      <div class="row" id="information">
+        <div class="col-8 d-flex flex-column">
+          <h4 class="bg-transparent text-wrap truncate my-0">
+            <ion-text color="dark">
+              <b>
+                <ng-container *ngIf="design.designType.toString() == 'WHOLE_HOUSE'">
+                  {{ design.projectName }}
+                </ng-container>
+                <ng-container *ngIf="design.designType.toString() == 'ROOM'">
+                  {{ "DESIGN.FILTERS.ROOM_TYPE." + design.room.roomType.toLowerCase() | translate }}
+                </ng-container>
+                - {{ design.registeredDesignNumber }}</b
+              >
+            </ion-text>
+          </h4>
+          <ion-text color="dark">
+            <ng-container *ngIf="design.designType.toString() == 'WHOLE_HOUSE'">
+              {{ design.tower }} | {{ design.unitType }} | {{ design.area | number: "1.0-4" }} sq.m
+              | {{ "DESIGN.FILTERS.HOUSE_TYPE." + design.typeOfHouse.toLowerCase() | translate }} |
+              {{ "DESIGN.FILTERS.STYLE." + design.style.toLowerCase() | translate }}
+            </ng-container>
+            <ng-container *ngIf="design.designType.toString() == 'ROOM'">
+              {{ design.area | number: "1.0-4" }} sq.m | {{ "DESIGN.FILTERS.STYLE." +
+              design.style.toLowerCase() | translate }}
+            </ng-container>
+          </ion-text>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+          <ion-icon
+            [color]="design.bookmarked ? 'primary' : 'secondary'"
+            [name]="design.bookmarked ? 'loa-bookmark' : 'loa-bookmark-outline'"
+            (click)="bookmark(design.id)"
+            class="pr-3"
+          ></ion-icon>
+
+          <div class="d-flex flex-column align-items-center">
+            <ion-icon
+              [color]="design.liked ? 'primary' : 'secondary'"
+              [name]="design.liked ? 'loa-like' : 'loa-like-outline'"
+              (click)="like(design.id)"
+            ></ion-icon>
+            <span class="small">{{ design.numberOfLikes }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 pb-3 mb-4 border-bottom" *ngIf="user.userType?.includes('business')"></div>
+      <div class="row" *ngIf="user.userType?.includes('business')">
+        <h5 class="col-12 my-0 d-flex flex-column font-weight-bold">
+          <ion-text color="dark" class="mb-1">
+            {{ "DESIGN.DETAIL.design_price" | translate }}
+          </ion-text>
+          <ion-text color="secondary"
+            >{{ design.price | number: "1.0-4" }} {{ "CORE.currency" | translate }}</ion-text
+          >
+        </h5>
+      </div>
+      <div class="w-100 pb-3 mb-4 border-bottom"></div>
+      <div class="row">
+        <h5 class="col-12 my-0 d-flex flex-column">
+          <ion-text color="dark" class="mb-1">
+            <b>{{ "DESIGN.DETAIL.estimated_construction_cost" | translate }}</b>
+          </ion-text>
+          <ion-text color="secondary" class="mb-3"
+            ><b
+              >{{ design.estimateCostFrom || 0 | number: "1.0-4" }} ~ {{ design.estimateCostTo || 0
+              | number: "1.0-4" }} {{ "CORE.currency" | translate }}</b
+            ></ion-text
+          >
+          <ion-text color="secondary" class="super-small mb-2"
+            >*{{ "DESIGN.LISTING.review_on" | translate }} {{ design.reviewedOnDate | date:
+            "MM/yyyy" }}</ion-text
+          >
+          <ion-text color="secondary" class="small"
+            >{{ "DESIGN.DETAIL.estimated_guide" | translate }}
+          </ion-text>
+        </h5>
+      </div>
+      <div class="w-100 pb-3 mb-4 border-bottom" *ngIf="design.designType === 'WHOLE_HOUSE'"></div>
+      <div
+        class="d-flex justify-content-between small"
+        id="room-count"
+        *ngIf="design.designType === 'WHOLE_HOUSE'"
+      >
+        <div class="room">
+          <ion-text color="secondary"
+            ><b>{{ "DESIGN.FILTERS.ROOM_TYPE.bedroom" | translate }}</b></ion-text
+          >
+          <ion-icon name="icon-loa-bedroom"></ion-icon>
+          <ion-text color="secondary">{{ design.bedrooms }}</ion-text>
+        </div>
+        <div class="room">
+          <ion-text color="secondary"
+            ><b>{{ "DESIGN.FILTERS.ROOM_TYPE.bathroom" | translate }}</b></ion-text
+          >
+          <ion-icon name="icon-loa-bathroom"></ion-icon>
+          <ion-text color="secondary">{{ design.bathrooms }}</ion-text>
+        </div>
+        <div class="room w-25">
+          <ion-text color="secondary"
+            ><b>{{ "DESIGN.FILTERS.ROOM_TYPE.living_room" | translate }}</b></ion-text
+          >
+          <ion-icon name="icon-loa-living-room"></ion-icon>
+          <ion-text color="secondary">{{ design.livingRooms }}</ion-text>
+        </div>
+        <div class="d-flex flex-column align-items-center room">
+          <ion-text color="secondary"
+            ><b>{{ "DESIGN.FILTERS.ROOM_TYPE.kitchen" | translate }}</b></ion-text
+          >
+          <ion-icon name="icon-loa-kitchen"></ion-icon>
+          <ion-text color="secondary">{{ design.kitchens }}</ion-text>
+        </div>
+        <div class="d-flex flex-column align-items-center room">
+          <ion-text color="secondary"
+            ><b>{{ "DESIGN.FILTERS.ROOM_TYPE.other" | translate }}</b></ion-text
+          >
+          <ion-icon name="icon-loa-other"></ion-icon>
+          <ion-text color="secondary">{{ design.others }}</ion-text>
+        </div>
+      </div>
+      <div class="w-100 pb-3 mb-4 border-bottom"></div>
+      <div class="row" *ngIf="design.description" id="description">
+        <h5 class="col-12 my-0 font-weight-bold">
+          <ion-text color="dark">
+            {{ "DESIGN.DETAIL.project_description" | translate }}
+          </ion-text>
+        </h5>
+        <p class="col-12">
+          <ion-text color="secondary" [innerHTML]="design.description"></ion-text>
+        </p>
+      </div>
+      <ng-container
+        *ngIf="
+          design.room &&
+          (design.room.suggestedAreaSize ||
+            design.room.planType ||
+            design.room.size)
+        "
+        ><div class="w-100 pb-3 mb-4 border-bottom"></div>
+        <div class="d-flex flex-column">
+          <h5 class="mt-0">
+            <ion-text color="dark" class="mb-1">
+              <b>{{ "DESIGN.DETAIL.information" | translate }}</b>
+            </ion-text>
+          </h5>
+          <ion-text color="secondary" class="mb-2" *ngIf="design.room.suggestedAreaSize">
+            <b>{{ "DESIGN.DETAIL.suggested_area_size" | translate }}</b>: {{
+            design.room.suggestedAreaSize }} m<sup>2</sup>
+          </ion-text>
+          <ion-text color="secondary" class="mb-2" *ngIf="design.room.planType">
+            <b>{{ "DESIGN.DETAIL.plan_type" | translate }}</b>: {{ design.room.planType }}
+          </ion-text>
+          <ion-text color="secondary" class="mb-2" *ngIf="design.room.size">
+            <b>{{ "DESIGN.DETAIL.size" | translate }}</b>: {{ design.room.size }}
+          </ion-text>
+        </div></ng-container
+      >
+      <div class="w-100 pb-3 mb-4 border-bottom"></div>
+      <div class="row mb-4">
+        <h5 class="col-12 mt-0 font-weight-bold">
+          <ion-text color="dark">
+            {{ "DESIGN.DETAIL.details" | translate }}
+          </ion-text>
+        </h5>
+        <div class="col-12">
+          <div class="d-flex flex-column">
+            <ion-text color="secondary" class="mb-3"
+              ><b>
+                {{ "DESIGN.DETAIL.layout_plan" | translate }}
+              </b></ion-text
+            >
+            <div class="img-wrapper mx-n3 mb-3" *ngFor="let layoutItem of design.layout">
+              <img [src]="layoutItem.image" />
+            </div>
+            <ng-container *ngIf="design.room">
+              <ion-text color="secondary" class="mt-2 mb-3"
+                ><b>
+                  {{ "DESIGN.FILTERS.ROOM_TYPE." + (design.room.roomType | lowercase) | translate }}
+                </b></ion-text
+              >
+              <div class="img-wrapper mx-n3 mb-2" *ngFor="let image of design.room.preview">
+                <img
+                  [src]="image.image"
+                  [alt]="'DESIGN.FILTERS.ROOM_TYPE.living_room' | translate"
+                /></div
+            ></ng-container>
+            <ng-container *ngIf="design.designType == 'WHOLE_HOUSE'">
+              <ng-container *ngFor="let edge of design.wholeHouse.edges">
+                <b class="mt-2 mb-3">
+                  <ion-text color="secondary"
+                    >{{ "DESIGN.FILTERS.ROOM_TYPE." + (edge.node.roomType | lowercase) | translate
+                    }}</ion-text
+                  >
+                </b>
+                <div class="img-wrapper mx-n3 mb-2" *ngFor="let image of edge.node.preview">
+                  <img
+                    [src]="image.image"
+                    [alt]="'DESIGN.FILTERS.ROOM_TYPE.living_room' | translate"
+                  />
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5" id="new-look">
+        <div class="col-12 d-flex flex-column align-items-center text-center">
+          <ion-icon name="checkmark-circle-outline" color="secondary"></ion-icon>
+          <h5 class="w-75 mt-2">
+            <b
+              ><ion-text color="dark" [innerHTML]="'DESIGN.DETAIL.do_you_want_this' | translate">
+              </ion-text
+            ></b>
+          </h5>
+          <ion-text
+            color="secondary"
+            class="w-90"
+            [innerHTML]="'DESIGN.DETAIL.do_you_want_this_detail' | translate "
+          >
+          </ion-text>
+        </div>
+      </div>
+      <div class="row bg-tertiary border-top border-bottom" id="policy-announcements">
+        <h5 class="col-12 my-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <ion-text color="dark">
+              <b>{{ "DESIGN.DETAIL.policy_announce" | translate }}</b>
+            </ion-text>
+            <ion-fab-button class="fab-arrow-up" (click)="isShowPolicy = !isShowPolicy"
+              ><ion-icon
+                color="secondary"
+                [name]="
+                  isShowPolicy ? 'chevron-up-outline' : 'chevron-down-outline'
+                "
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </h5>
+        <p class="col-12 mt-0" *ngIf="isShowPolicy">
+          <ion-text
+            color="secondary"
+            [innerHTML]="'DESIGN.DETAIL.policy_announce_detail' | translate"
+          ></ion-text>
+        </p>
+      </div>
+      <div class="row bg-tertiary border-bottom" id="refund-n-exchange">
+        <h5 class="col-12 my-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <ion-text color="dark">
+              <b>{{ "DESIGN.DETAIL.refund_exchange" | translate }}</b>
+            </ion-text>
+            <ion-fab-button class="fab-arrow-up" (click)="isShowRefund = !isShowRefund"
+              ><ion-icon
+                color="secondary"
+                [name]="
+                  isShowRefund ? 'chevron-up-outline' : 'chevron-down-outline'
+                "
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </h5>
+        <p class="col-12 mt-0" *ngIf="isShowRefund">
+          <ion-text
+            color="secondary"
+            [innerHTML]="'DESIGN.DETAIL.refund_exchange_detail' | translate"
+          ></ion-text>
+        </p>
+      </div>
+      <div class="row mb-5 bg-tertiary border-bottom" id="other-service">
+        <h5 class="col-12 my-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <ion-text color="dark">
+              <b>{{ "DESIGN.DETAIL.other_service_ann" | translate }}</b>
+            </ion-text>
+            <ion-fab-button
+              class="fab-arrow-up"
+              (click)="isShowServiceAnnounce = !isShowServiceAnnounce"
+              ><ion-icon
+                color="secondary"
+                [name]="
+                  isShowServiceAnnounce
+                    ? 'chevron-up-outline'
+                    : 'chevron-down-outline'
+                "
+              ></ion-icon
+            ></ion-fab-button>
+          </div>
+        </h5>
+        <p class="col-12 mt-0" *ngIf="isShowServiceAnnounce">
+          <ion-text
+            color="secondary"
+            [innerHTML]="'DESIGN.DETAIL.other_service_ann_detail' | translate"
+          ></ion-text>
+        </p>
+      </div>
+      <div class="row mb-5" id="request-design" *ngIf="user.userType?.includes('business')">
+        <div class="col-12 text-center">
+          <ion-button
+            expand="block"
+            color="secondary"
+            fill="solid"
+            strong="true"
+            (click)="openRequestDesignDialog(design.id)"
+          >
+            {{ "DESIGN.DETAIL.REQUEST_DESIGN.request_bigger_design_images" | translate }}
+          </ion-button>
+          <small
+            >{{ "DESIGN.DETAIL.REQUEST_DESIGN.you_can_receive_bigger_design" | translate }}</small
+          >
+        </div>
+      </div>
+      <div class="row mb-4 d-none" id="suggested-construction">
+        <h5 class="col-12 font-weight-bold">
+          <ion-text color="dark">
+            {{ "DESIGN.DETAIL.suggested_construction" | translate }}
+          </ion-text>
+        </h5>
+        <div class="col-12">
+          <div class="row">
+            <div
+              class="col-6 mb-1"
+              [class.pr-2]="item % 2"
+              [class.pl-2]="item % 2 === 0"
+              *ngFor="let item of [1, 2, 3, 4]"
+            >
+              <div class="d-flex flex-column">
+                <div class="img-wrapper rounded-lg mb-1">
+                  <img src="assets/images/sample-cate-2.jpg" alt="" />
+                </div>
+                <div>Some title here Please note Please note</div>
+                <div>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star_outline</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          {{ "HOME.view_more" | translate }}
+        </div>
+      </div>
+
+      <div class="row" id="qna">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+          <div>
+            <ion-text color="dark" class="h5 font-weight-bold mr-2">
+              {{ "DESIGN.DETAIL.COMMENT.comment" | translate }}
+            </ion-text>
+            <ion-text color="dark">{{ design.questionAnswer.totalCount }}</ion-text>
+          </div>
+
+          <b
+            class="d-flex justify-content-between align-items-center"
+            (click)="toggleCommentVisibility()"
+          >
+            <ion-text color="dark"
+              >{{ "DESIGN.DETAIL.COMMENT." + (isShowComment ? "hide_comments" : "show_comments") |
+              translate }}</ion-text
+            >
+
+            <ion-fab-button class="fab-arrow-up"
+              ><ion-icon
+                color="secondary"
+                [name]="
+                  isShowComment ? 'chevron-up-outline' : 'chevron-down-outline'
+                "
+              ></ion-icon
+            ></ion-fab-button>
+          </b>
+        </div>
+        <div class="col-12" *ngIf="isShowComment">
+          <loa-mobile-comment
+            [parentElement]="mainContainer"
+            [questionAnswer]="design.questionAnswer"
+            [id]="design.id"
+          ></loa-mobile-comment>
+        </div>
+      </div>
+    </ion-content>
+    <ion-footer class="hide-on-keyboard-open ion-no-border">
+      <ion-toolbar
+        color="tertiary"
+        class="mt-0 text-center"
+        id="add-to-cart"
+        *ngIf="user.userType?.includes('business') && !design.bought"
+        (click)="addToCart(design.id)"
+      >
+        <div class="h-100 d-flex justify-content-center align-items-center">
+          <ion-button fill="clear" size="small">
+            <ion-icon color="dark" name="loa-cart"></ion-icon>
+            <ion-text color="dark" class="ml-2"
+              ><b>{{ "PRODUCT.add_to_cart" | translate }}</b></ion-text
+            >
+          </ion-button>
+        </div>
+      </ion-toolbar>
+      <ion-toolbar
+        color="tertiary"
+        class="mt-0 text-center"
+        id="add-to-cart"
+        *ngIf="user.userType?.includes('business') && design.bought"
+        (click)="openDesign()"
+      >
+        <div class="h-100 d-flex justify-content-center align-items-center">
+          <ion-button fill="clear" size="small" disabled>
+            <ion-icon color="dark" name="loa-cart"></ion-icon>
+            <ion-text color="dark" class="ml-2"
+              ><b>{{ "PRODUCT.purchased" | translate }}</b></ion-text
+            >
+          </ion-button>
+        </div>
+      </ion-toolbar>
+      <ion-toolbar color="tertiary" class="footer border-top mt-0" id="share">
+        <div class="d-flex justify-content-between">
+          <ion-button
+            fill="clear"
+            size="small"
+            class="border-right flex-grow-1"
+            (click)="shareDesign(design.id)"
+          >
+            <ion-icon slot="start" color="dark" name="loa-constructor"></ion-icon>
+            <h6 class="my-0">
+              <ion-text color="dark">
+                <b [innerHTML]="'HOME.construction' | translate"></b
+              ></ion-text>
+            </h6>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            size="small"
+            (click)="share(design, 'system')"
+            class="border-right px-1"
+          >
+            <ion-icon color="dark" slot="start" name="share-social"></ion-icon>
+            <h6 class="my-0">
+              <b><ion-text color="dark"> {{ "DESIGN.DETAIL.share" | translate }}</ion-text></b>
+            </h6>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            size="small"
+            (click)="share(design, 'fb')"
+            class="border-right pr-1"
+          >
+            <ion-icon slot="icon-only" color="dark" name="loa-facebook"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" (click)="share(design, 'zalo')">
+            <ion-icon slot="icon-only" color="dark" name="loa-zalo"></ion-icon>
+          </ion-button>
+        </div> </ion-toolbar
+    ></ion-footer>
+  </ng-container>
+  <ng-template #loading class="loading">
+    <ion-content class="container-fluid">
+      <div class="img-wrapper big-img rounded-lg mb-3">
+        <ngx-skeleton-loader [theme]="{ width: '100%', height: '100%' }"></ngx-skeleton-loader>
+      </div>
+      <div class="row mb-4">
+        <div class="col-8 d-flex flex-column">
+          <ngx-skeleton-loader
+            class="mt-2"
+            [theme]="{ width: '50%', height: '2rem' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{ width: '75%', height: '1.5rem' }"></ngx-skeleton-loader>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+          <ion-icon color="secondary" name="loa-bookmark-outline'" class="pr-3"></ion-icon>
+
+          <ion-icon color="secondary" name="loa-like-outline'"></ion-icon>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-6 d-flex flex-column">
+          <ngx-skeleton-loader [theme]="{ width: '9rem', height: '1.5rem' }"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{ width: '7rem', height: '1.5rem' }"></ngx-skeleton-loader>
+        </div>
+        <div class="col-6 d-flex flex-column">
+          <ngx-skeleton-loader [theme]="{ width: '12rem', height: '1.5rem' }"></ngx-skeleton-loader>
+          <ngx-skeleton-loader [theme]="{ width: '7rem', height: '1.5rem' }"></ngx-skeleton-loader>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-2 d-flex align-items-center">
+          <mat-icon>single_bed</mat-icon>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+          <mat-icon>bathtub</mat-icon>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+          <mat-icon>filters</mat-icon>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+          <mat-icon>single_bed</mat-icon>
+        </div>
+      </div>
+      <div class="row">
+        <h5 class="col-12">
+          {{ "DESIGN.DETAIL.project_description" | translate }}
+        </h5>
+        <p class="col-12 d-flex flex-column">
+          <ngx-skeleton-loader
+            [theme]="{ width: '70%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '85%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '50%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '40%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '65%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '95%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            [theme]="{ width: '90%', height: '1.4rem', marginBottom: '0' }"
+          ></ngx-skeleton-loader>
+        </p>
+      </div>
+      <div class="row mb-4">
+        <h5 class="col-12 font-weight-bold">
+          {{ "DESIGN.DETAIL.details" | translate }}
+        </h5>
+        <div class="col-12">
+          <div class="d-flex flex-column">
+            <h5>{{ "DESIGN.FILTERS.ROOM_TYPE.living_room" | translate }}</h5>
+            <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+              <ngx-skeleton-loader
+                [theme]="{ width: '100%', height: '100%' }"
+              ></ngx-skeleton-loader>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex flex-column">
+            <h5>{{ "DESIGN.FILTERS.ROOM_TYPE.bathroom" | translate }}</h5>
+            <div class="img-wrapper rounded-lg mb-3">
+              <ngx-skeleton-loader
+                [theme]="{ width: '100%', height: '100%' }"
+              ></ngx-skeleton-loader>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex flex-column">
+            <h5>{{ "DESIGN.FILTERS.ROOM_TYPE.kitchen" | translate }}</h5>
+            <div class="img-wrapper rounded-lg mb-3" *ngFor="let image of [1, 2]">
+              <ngx-skeleton-loader
+                [theme]="{ width: '100%', height: '100%' }"
+              ></ngx-skeleton-loader>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <h5 class="col-12 font-weight-bold">
+          {{ "DESIGN.DETAIL.policy_announce" | translate }}
+        </h5>
+        <p class="col-12">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi cumque iusto, vel atque
+          eligendi deserunt veniam veritatis rerum. Ea fugit sed officiis asperiores placeat a?
+        </p>
+      </div>
+      <div class="row">
+        <h5 class="col-12">
+          <div class="d-flex justify-content-between align-items-center">
+            <b>{{ "DESIGN.DETAIL.refund_exchange" | translate }}</b>
+            <button mat-icon-button (click)="isShowRefund = !isShowRefund">
+              <mat-icon *ngIf="isShowRefund">arrow_upward</mat-icon>
+              <mat-icon *ngIf="!isShowRefund">arrow_downward</mat-icon>
+            </button>
+          </div>
+        </h5>
+        <p class="col-12 visible" [class.invisible]="!isShowRefund">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique expedita pariatur ut
+          veritatis officiis, eligendi possimus laborum perferendis architecto amet esse molestiae
+          optio consectetur accusantium? Nesciunt sint sequi harum soluta mollitia ut, praesentium
+          at voluptatum, repudiandae cum eaque in maiores.
+        </p>
+      </div>
+      <div class="row mb-2">
+        <h5 class="col-12">
+          <div class="d-flex justify-content-between align-items-center">
+            <b>{{ "DESIGN.DETAIL.other_service_ann" | translate }}</b>
+            <button mat-icon-button (click)="isShowServiceAnnounce = !isShowServiceAnnounce">
+              <mat-icon *ngIf="isShowServiceAnnounce">arrow_upward</mat-icon>
+              <mat-icon *ngIf="!isShowServiceAnnounce">arrow_downward</mat-icon>
+            </button>
+          </div>
+        </h5>
+        <p class="col-12" [class.invisible]="!isShowServiceAnnounce">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique expedita pariatur ut
+          veritatis officiis, eligendi possimus laborum perferendis architecto amet esse molestiae
+          optio consectetur accusantium? Nesciunt sint sequi harum soluta mollitia ut, praesentium
+          at voluptatum, repudiandae cum eaque in maiores.
+        </p>
+      </div>
+      <div class="row mb-4" id="suggested-construction">
+        <h5 class="col-12 font-weight-bold">
+          {{ "DESIGN.DETAIL.suggested_construction" | translate }}
+        </h5>
+        <div class="col-12">
+          <div class="row">
+            <div
+              class="col-6 mb-1"
+              [class.pr-2]="item % 2"
+              [class.pl-2]="item % 2 === 0"
+              *ngFor="let item of [1, 2, 3, 4]"
+            >
+              <div class="d-flex flex-column">
+                <div class="img-wrapper rounded-lg mb-1">
+                  <ngx-skeleton-loader
+                    [theme]="{ width: '100%', height: '100%' }"
+                  ></ngx-skeleton-loader>
+                </div>
+                <ngx-skeleton-loader
+                  [theme]="{ width: '80%', height: '1.4rem', marginBottom: '0' }"
+                ></ngx-skeleton-loader>
+                <ngx-skeleton-loader
+                  [theme]="{ width: '60%', height: '1.4rem', marginBottom: '0' }"
+                ></ngx-skeleton-loader>
+                <div>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                  <mat-icon>star_outline</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          {{ "HOME.view_more" | translate }}
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <h5 class="col-12">{{ "DESIGN.DETAIL.comment" | translate }}</h5>
+        <div class="col-12">
+          <div class="d-flex flex-column">
+            <ng-container *ngFor="let i of [1, 2]">
+              <ngx-skeleton-loader
+                [theme]="{ width: '70%', height: '1.8rem' }"
+              ></ngx-skeleton-loader>
+
+              <ngx-skeleton-loader
+                [theme]="{ width: '95%', height: '1.4rem', marginBottom: '0' }"
+              ></ngx-skeleton-loader>
+
+              <ngx-skeleton-loader
+                [theme]="{ width: '80%', height: '1.4rem' }"
+              ></ngx-skeleton-loader>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ng-container>

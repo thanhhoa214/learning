@@ -1,0 +1,30 @@
+platform :ios, '11.0'
+use_frameworks!
+
+# workaround to avoid Xcode caching of Pods that requires
+# Product -> Clean Build Folder after new Cordova plugins installed
+# Requires CocoaPods 1.6 or newer
+install! 'cocoapods', :disable_input_output_paths => true
+
+def capacitor_pods
+  # Automatic Capacitor Pod dependencies, do not delete
+  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorCommunityFacebookLogin', :path => '../../node_modules/@capacitor-community/facebook-login'
+  pod 'CapacitorBranchDeepLinks', :path => '../../node_modules/capacitor-branch-deep-links'
+  pod 'CapacitorPluginDownloader', :path => '../../node_modules/capacitor-plugin-downloader'
+  pod 'ZaloAuthCapacitorPlugin', :path => '../../node_modules/zalo-auth-capacitor-plugin'
+  pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
+  pod 'CordovaPluginsStatic', :path => '../capacitor-cordova-ios-plugins'
+  # Do not delete
+end
+
+target 'App' do
+  capacitor_pods
+  # Add your Pods here
+  pod 'ZaloSDK'
+  pod 'Branch'
+  pod 'Firebase/Performance'
+  # pod 'Firebase/Analytics'
+
+end

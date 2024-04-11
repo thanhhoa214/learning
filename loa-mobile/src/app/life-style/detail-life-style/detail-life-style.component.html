@@ -1,0 +1,154 @@
+<loa-mobile-back-bar [title]="'LIFE_STYLE.title' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+</loa-mobile-back-bar>
+
+<ion-content
+  class="container-detail container-fluid"
+  #mainContainer
+  *ngIf="dataSource"
+  id="detail-life-style"
+>
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-list>
+        <mat-list-item>
+          <img
+            matListAvatar
+            [src]="dataSource?.user?.avatar || '../assets/images/default-avatar.jpg'"
+            alt="Avatar"
+          />
+          <h3 matLine>{{ dataSource.user.firstName }} {{ dataSource.user.lastName }}</h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-6 d-flex justify-content-end align-items-center">
+      <a type="button" class="bookmark" color="medium" (click)="bookmark($event, dataSource.id)">
+        <ion-icon
+          [name]="dataSource.followed ? 'bookmarked-life-style' : 'bookmark-life-style'"
+        ></ion-icon>
+      </a>
+    </div>
+  </div>
+  <div class="img-wrapper overflow-hidden w-100">
+    <img [src]="dataSource.thumbnail" />
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-row justify-content-between w-100 padding-l-r-15 mt-3">
+      <ion-text color="secondary">
+        <h5 class="text-wrap truncate mt-2 mb-0 font-weight-bold">
+          {{ dataSource.title }}
+        </h5>
+      </ion-text>
+      <div class="d-flex flex-column align-items-center like-icon">
+        <!-- <button
+          (click)="Like($event, dataSource.id)"
+          class="mr-2 like-detail"
+          mat-icon-button
+        >
+          <mat-icon>{{
+            dataSource.liked ? "favorite" : "favorite_border"
+          }}</mat-icon>
+        </button> -->
+        <ion-icon
+          [color]="dataSource.liked ? 'primary' : 'secondary'"
+          [name]="dataSource.liked ? 'loa-like' : 'loa-like-outline'"
+          (click)="Like($event, dataSource.id)"
+        ></ion-icon>
+        <div class="flex-row">
+          <span class="font-size-12px">
+            {{ dataSource.numberOfLikes }}
+          </span>
+          <!-- <span>{{ "LIFE_STYLE.DETAIL.number_like" | translate }}</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row font-weight-light">
+    <div class="col-6 d-flex">
+      <span class="mr-3"> {{ dataSource.created | date: 'dd/MM/yyyy' }}</span>
+    </div>
+  </div>
+  <div class="row mb-4 font-weight-light ql-editor">
+    <div class="col-12 img-wrapper-content" [innerHTML]="dataSource.content"></div>
+  </div>
+
+  <div class="d-flex flex-row mb-3">
+    <div class="w-100 border-share"></div>
+  </div>
+  <div class="d-flex flex-row mt-1 mb-1 justify-content-between">
+    <div class="like-icon d-flex flex-row align-items-center pl-2">
+      <ion-icon
+        class="mr-2"
+        [color]="dataSource.liked ? 'primary' : 'secondary'"
+        [name]="dataSource.liked ? 'loa-like' : 'loa-like-outline'"
+        (click)="Like($event, dataSource.id)"
+      ></ion-icon>
+      <h6 class="my-auto">
+        {{ 'LIFE_STYLE.DETAIL.number_like' | translate }}
+      </h6>
+      <h5 class="ml-2 mr-2 number-like my-auto">
+        {{ dataSource.numberOfLikes }}
+        <!-- {{ 'LIFE_STYLE.DETAIL.people_like' | translate }} -->
+      </h5>
+    </div>
+
+    <a type="button" (click)="share($event, 'system')" class="d-flex flex-row align-items-center">
+      <a class="mr-2 share-icon">
+        <ion-icon color="dark" name="share-social"></ion-icon>
+      </a>
+      <ion-text color="secondary">
+        <h6 class="mr-2 my-auto">
+          {{ 'LIFE_STYLE.DETAIL.share' | translate }}
+        </h6>
+      </ion-text>
+    </a>
+
+    <div class="d-flex flex-row align-items-center">
+      <a type="button" (click)="share($event, 'fb')" class="share-icon">
+        <ion-icon color="dark" name="loa-facebook"></ion-icon>
+      </a>
+    </div>
+
+    <div class="d-flex flex-row align-items-center pr-3">
+      <a type="button" (click)="share($event, 'zalo')" class="share-icon">
+        <ion-icon color="dark" name="loa-zalo"></ion-icon>
+      </a>
+    </div>
+  </div>
+  <div class="d-flex flex-row mt-3">
+    <div class="w-100 border-share"></div>
+  </div>
+
+  <div class="row mt-4" id="qna">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <h4>
+        {{ 'DESIGN.DETAIL.COMMENT.comment' | translate }}
+      </h4>
+
+      <b
+        class="d-flex justify-content-between align-items-center"
+        (click)="isShowComment = !isShowComment"
+      >
+        <ng-container *ngIf="!isShowComment"
+          >{{ 'DESIGN.DETAIL.COMMENT.show_comments' | translate }}
+          <mat-icon>expand_more</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="isShowComment"
+          >{{ 'DESIGN.DETAIL.COMMENT.hide_comments' | translate }}
+          <mat-icon>expand_less</mat-icon>
+        </ng-container>
+      </b>
+    </div>
+    <div class="col-12" *ngIf="isShowComment">
+      <loa-mobile-comment
+        [parentElement]="mainContainer"
+        [questionAnswer]="dataSource.comments"
+        [id]="dataSource.id"
+      ></loa-mobile-comment>
+    </div>
+  </div>
+</ion-content>

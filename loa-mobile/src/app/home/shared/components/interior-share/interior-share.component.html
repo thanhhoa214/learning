@@ -1,0 +1,62 @@
+<div class="w-100 py-2 mb-1 section-header">
+  <h4 class="my-2">
+    <ion-text color="dark"
+      ><b>{{ 'HOME.interior_tips' | translate }}</b></ion-text
+    >
+  </h4>
+  <ion-icon
+    color="dark"
+    routerLink="/interior-share"
+    name="chevron-forward-outline"
+  ></ion-icon>
+</div>
+<div class="w-100 mb-3">
+  <h6 class="my-0 pb-2 border-bottom">
+    <ion-text color="dark"
+      ><b>{{ 'HOME.new_posts' | translate }}</b></ion-text
+    >
+  </h6>
+  <div class="w-100" id="interior-share-imageless">
+    <div *ngFor="let topic of newShares?.edges" class="w-100 border-bottom">
+      <div class="w-85 p-2 text-truncate">
+        <ion-text
+          color="dark"
+          [routerLink]="['..', 'interior-share', topic.node.id]"
+        >
+          {{ topic.node.content }}
+        </ion-text>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-100">
+  <h6 class="my-0 pb-2">
+    <ion-text color="dark"
+      ><b>{{ 'HOME.most_popular_posts' | translate }}</b></ion-text
+    >
+  </h6>
+  <div class="row mx-n2">
+    <div class="col-6 p-2" *ngFor="let topic of mostPopularShares?.edges">
+      <div
+        class="img-wrapper rounded-lg overflow-hidden"
+        [routerLink]="['..', 'interior-share', topic.node.id]"
+      >
+        <img [src]="topic.node.images[0].image" class="img-cover" />
+      </div>
+      <p class="truncate mb-1">
+        <ion-text color="dark">
+          {{ topic.node.content }}
+        </ion-text>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="w-100 text-center">
+  <ion-text
+    color="dark"
+    class="border-bottom border-secondary px-2 py-1"
+    routerLink="/interior-share"
+  >
+    <b>{{ 'HOME.view_more' | translate }}</b>
+  </ion-text>
+</div>

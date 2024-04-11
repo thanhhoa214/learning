@@ -1,0 +1,119 @@
+<loa-mobile-back-bar [title]="'INTERIOR_SHARE.CREATE.title' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+</loa-mobile-back-bar>
+<ion-content class="container-fluid">
+  <form [formGroup]="postFormGroup" (ngSubmit)="createPost()">
+    <div class="row mb-4">
+      <div class="col-12">
+        <mat-list>
+          <mat-list-item>
+            <img
+              class="mr-3"
+              *ngIf="dataSource && dataSource.avatar"
+              matListAvatar
+              [src]="dataSource.avatar"
+              alt="Avatar"
+            />
+            <img
+              class="mr-3"
+              *ngIf="!dataSource || !dataSource.avatar"
+              matListAvatar
+              src="../assets/images/default-avatar.jpg"
+              alt="Avatar"
+            />
+            <div class="d-flex flex-column">
+              <h4 class="name-user" *ngIf="dataSource">
+                {{ dataSource.firstName }} {{ dataSource.lastName }}
+              </h4>
+              <span class="title-member">
+                {{
+                  (dataSource?.business?.length == 0
+                    ? 'INTERIOR_SHARE.LISTING.title_member'
+                    : 'INTERIOR_SHARE.LISTING.title_business'
+                  ) | translate
+                }}
+              </span>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12">
+        <textarea
+          class="w-100 text-align-left rounded-lg"
+          placeholder="{{ 'INTERIOR_SHARE.CREATE.content' | translate }}"
+          cols="30"
+          rows="5"
+          formControlName="content"
+          (ngModelChange)="changeValueContent($event)"
+        ></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="img-wrapper rounded-lg col-3 mt-2 mb-2"
+        *ngFor="let item of imagesNew; index as index"
+      >
+        <img [src]="item" alt="Image post" />
+        <a
+          class="position-btn-delete"
+          (click)="deleteImage(index)"
+          mat-icon-button
+          color="#fff333"
+        >
+          <mat-icon>delete</mat-icon>
+        </a>
+      </div>
+      <div class="col-3 mt-2 mb-2">
+        <button
+          type="button"
+          class="w-100 btn-select-file"
+          (click)="fileInput.click()"
+        >
+          <img src="assets/images/Group.svg" alt="Add image" />
+        </button>
+        <input
+          hidden
+          (change)="onFileSelected($event.target.files)"
+          #fileInput
+          type="file"
+          id="file"
+          accept="image/png, image/jpeg, image/jpg"
+          multiple
+        />
+      </div>
+    </div>
+    <!-- <div class="row d-flex flex-row justify-content-between padding-left-right">
+    <div class="btn-add-image img-wrapper" *ngFor="let item of imagesNew; index as index">
+      <img [src]="item" alt="Image post">
+    </div>
+    <div>
+      <button mat-icon-button class="btn-add-image" (click)="fileInput.click()">
+        <img class="pl-2 pr-2" src="assets/images/Group.svg" alt="Write post">
+      </button>
+      <input hidden (change)="onFileSelected($event.target.files)" #fileInput type="file" id="file" accept="image/png, image/jpeg" multiple>
+    </div>
+  </div> -->
+    <div class="row">
+      <div class="col-12">
+        <ion-button
+          type="submit"
+          color="secondary"
+          fill="solid"
+          expand="block"
+          class="w-100 mx-0"
+          [disabled]="(postFormGroup.invalid && imagesNew.length == 0) || checkSubmit 
+          || (checkEmpty && imagesNew.length == 0)"
+        >
+          <ion-spinner *ngIf="checkSubmit"></ion-spinner>  
+          <b>
+            {{ 'INTERIOR_SHARE.CREATE.btn_post' | translate }}
+          </b>
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-content>
+  <div class="h-100 d-flex flex-column justify-content-between">
+    <div class="flex-grow-1 h-100 flex-center-center">
+      <div
+        class="w-100 flex-center-center flex-column bg-tertiary rounded-lg"
+        *ngIf="isConstructionCompany; else isNotConstructionCompany"
+      >
+        <h2 class="w-75 mt-0 mb-5 text-center text-capitalize">
+          <ion-text color="secondary"
+            ><b
+              *ngIf="fromRegister; else notFromRegister"
+              [innerHTML]="'AUTH.REGISTER_BUSINESS_SUCCESS.your_account_has_been' | translate"
+            >
+            </b>
+            <ng-template #notFromRegister>
+              <b [innerHTML]="'AUTH.REGISTER_BUSINESS_SUCCESS.you_are_just_login' | translate"></b>
+            </ng-template>
+          </ion-text>
+        </h2>
+        <div class="w-100 px-3 text-center">
+          <p
+            class="mb-5"
+            [innerHTML]="'AUTH.REGISTER_BUSINESS_SUCCESS.for_managing' | translate"
+          ></p>
+
+          <ion-button fill="solid" color="primary" expand="block" class="mt-5" (click)="copyLink()">
+            <b>{{ adminUrl }}</b>
+          </ion-button>
+
+          <ion-button
+            *ngIf="fromRegister"
+            fill="solid"
+            color="secondary-lighter"
+            class="mt-10"
+            expand="block"
+            [href]="uploadPortfolioConstructionUrl"
+          >
+            {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.now_on_mobile' | translate }}
+          </ion-button>
+        </div>
+      </div>
+      <ng-template #isNotConstructionCompany>
+        <div class="w-100 flex-center-center flex-column bg-tertiary rounded-lg">
+          <h2 class="w-75 mt-0 mb-5 text-center text-capitalize">
+            <ion-text color="secondary"
+              ><b>{{ 'AUTH.REGISTER_BUSINESS_SUCCESS.do_you_want_to_be' | translate }}</b></ion-text
+            >
+          </h2>
+          <div class="w-100 px-3 mt-4 text-center">
+            <p>
+              {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.upload_sell_your_design' | translate }}
+            </p>
+
+            <ion-button
+              fill="solid"
+              color="primary"
+              expand="block"
+              class="mt-1"
+              (click)="openDesignPartnerPopup()"
+            >
+              {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.register_design_partner' | translate }}
+            </ion-button>
+            <loa-mobile-divider-or backgroundColor="tertiary" height="7vh"></loa-mobile-divider-or>
+            <p class="mt-0">
+              {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.register_your_company_profile' | translate }}
+            </p>
+            <ion-button
+              fill="solid"
+              color="warning"
+              expand="block"
+              class="mt-1"
+              [href]="registeredConstructionUrl"
+            >
+              {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.register_construction_company' | translate }}
+            </ion-button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <ion-button fill="solid" color="secondary" routerLink="/" class="my-3" expand="block">
+      {{ 'AUTH.REGISTER_BUSINESS_SUCCESS.later' | translate }}
+    </ion-button>
+  </div>
+</ion-content>

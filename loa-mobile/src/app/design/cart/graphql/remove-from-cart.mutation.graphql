@@ -1,0 +1,10 @@
+mutation DesignRemoveFromCart($input: DesignRemoveFromCartInput!) {
+  designRemoveFromCart(input: $input) {
+    status
+    errors {
+      code
+      message
+      field
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<loa-mobile-back-bar
+  [title]="'MENU.request_design' | translate"
+></loa-mobile-back-bar>
+<ion-content>
+  <mat-list *ngIf="requestDesigns; else loading">
+    <mat-list-item
+      *ngFor="let requestDesign of requestDesigns.edges"
+      [routerLink]="'/design/' + requestDesign.node.design.id"
+    >
+      <img
+        matListAvatar
+        [src]="
+          (requestDesign.node.design.room?.preview)[0]?.image ||
+          (requestDesign.node.design.wholeHouse?.edges)[0].node.preview[0]
+            ?.image
+        "
+        class="w-25 rounded-lg"
+      />
+      <h6 matLine>
+        <b>{{ requestDesign.node.design.projectName }}</b>
+      </h6>
+      <p matLine>
+        <small>
+          <ng-container
+            *ngIf="
+              requestDesign.node.design.designType == 'WHOLE_HOUSE';
+              else room
+            "
+          >
+            <span class="text-capitalize">
+              {{ requestDesign.node.design.typeOfHouse | lowercase }}
+            </span>
+            / {{ 'DESIGN.FILTERS.whole_unit' | translate }}
+          </ng-container>
+
+          <ng-template #room>{{
+            'DESIGN.FILTERS.room' | translate
+          }}</ng-template>
+
+          / {{ requestDesign.node.design.area }}sqm /
+          <span class="text-capitalize">
+            {{ requestDesign.node.design.style | lowercase }}
+          </span>
+        </small>
+      </p>
+      <p matLine class="d-flex justify-content-between align-items-center">
+        <small class="text-secondary"> {{ requestDesign.node.email }} </small>
+        <small class="text-secondary">
+          <small> {{ requestDesign.node.created | date }}</small>
+        </small>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</ion-content>
+<ng-template #loading>
+  <mat-list>
+    <mat-list-item *ngFor="let requestDesign of [1, 2, 3, 4, 5]">
+      <ngx-skeleton-loader
+        matListAvatar
+        [theme]="{ width: '5rem', height: '5rem' }"
+      ></ngx-skeleton-loader>
+      <h3 matLine class="ml-4 mt-5">
+        <ngx-skeleton-loader
+          [theme]="{ width: '50%', height: '2rem' }"
+        ></ngx-skeleton-loader>
+      </h3>
+      <p matLine class="ml-4">
+        <ngx-skeleton-loader
+          [theme]="{ width: '70%', height: '1.5rem' }"
+        ></ngx-skeleton-loader>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</ng-template>

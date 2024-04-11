@@ -1,0 +1,87 @@
+<div class="col-12 py-2 rounded bg-tertiary">
+  <h4 class="my-0 d-flex justify-content-between align-items-center">
+    <ion-text color="secondary">{{
+      "DESIGN.LISTING.construction_price_range" | translate
+    }}</ion-text>
+    <ion-fab-button
+      class="fab-arrow-up"
+      (click)="isShowSizeSection = !isShowSizeSection"
+      ><ion-icon
+        color="secondary"
+        [name]="
+          isShowSizeSection ? 'chevron-up-outline' : 'chevron-down-outline'
+        "
+      ></ion-icon
+    ></ion-fab-button>
+  </h4>
+  <ng-container *ngIf="isShowSizeSection">
+    <div class="d-flex justify-content-between align-items-center">
+      <ion-text color="secondary"
+        ><b>{{ "DESIGN.LISTING.price_range" | translate }}</b></ion-text
+      >
+      <ion-text color="secondary">
+        <b
+          >{{
+            formGroup?.get("lowestConstructionPrice").value | number: "1.0-4"
+          }}
+          {{ "CORE.currency" | translate }} ~
+          <span
+            *ngIf="
+              formGroup.get('highestConstructionPrice').value ===
+                rangeOptions.max;
+              else notMaximum
+            "
+            >Over 1.4 B</span
+          >
+          <ng-template #notMaximum>
+            {{
+              formGroup?.get("highestConstructionPrice").value | number: "1.0-4"
+            }}
+          </ng-template>
+          {{ "CORE.currency" | translate }}</b
+        >
+      </ion-text>
+    </div>
+    <ion-range
+      [dualKnobs]="true"
+      [min]="rangeOptions.min"
+      [max]="rangeOptions.max"
+      [step]="rangeOptions.step"
+      [value]="rangeOptions.init"
+      (ionChange)="ionChange($event)"
+      #range
+    ></ion-range>
+
+    <section id="quick-buttons" class="row mt-1 mx-0 pb-2">
+      <div class="col-4 pl-0 pr-1 py-1" *ngFor="let size of sizeRange">
+        <ion-button
+          fill="solid"
+          size="small"
+          expand="block"
+          class="h-100"
+          [color]="
+            !isInit &&
+            !isFullRange &&
+            size.value >= formGroup?.get('lowestConstructionPrice').value &&
+            size.value <= formGroup?.get('highestConstructionPrice').value
+              ? 'primary'
+              : 'medium'
+          "
+          (click)="setSliderValue(size.value)"
+        >
+          <ion-text
+            [color]="
+              !isInit &&
+              !isFullRange &&
+              size.value >= formGroup?.get('lowestConstructionPrice').value &&
+              size.value <= formGroup?.get('highestConstructionPrice').value
+                ? 'light'
+                : 'secondary'
+            "
+            >{{ size.title | currencyI18n }}</ion-text
+          >
+        </ion-button>
+      </div>
+    </section>
+  </ng-container>
+</div>

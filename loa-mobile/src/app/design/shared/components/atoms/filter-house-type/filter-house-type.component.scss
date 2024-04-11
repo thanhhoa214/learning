@@ -1,0 +1,13 @@
+@import '../../../../filter/filter.component.scss';
+.text-disabled {
+  --ion-color-base: #bbbbbb !important;
+}
+
+.col-4 {
+  min-height: 4rem;
+  &:nth-child(7),
+  &:nth-child(8) {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}

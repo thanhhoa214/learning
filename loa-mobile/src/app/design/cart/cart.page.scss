@@ -1,0 +1,45 @@
+loa-mobile-back-bar ion-icon {
+  zoom: 0.8;
+}
+ion-content {
+  --padding-bottom: 0;
+
+  ion-list {
+    background-color: var(--ion-color-tertiary);
+
+    ion-item {
+      --inner-padding-top: 1.23rem;
+      --inner-padding-bottom: 1.23rem;
+      --inner-padding-start: 1.23rem;
+    }
+
+    &#designs {
+      ion-item {
+        --padding-start: 0;
+
+        ion-thumbnail {
+          width: 8.5rem;
+          min-width: 8.5rem;
+          height: 5.4rem;
+          --border-radius: 0.5rem;
+          overflow: hidden;
+          img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    &#total {
+      ion-item {
+        --padding-start: 1.25rem;
+        --padding-end: 1.25rem;
+
+        &.border-secondary {
+          --ion-color-shade: var(--ion-color-secondary) !important;
+        }
+      }
+    }
+  }
+}

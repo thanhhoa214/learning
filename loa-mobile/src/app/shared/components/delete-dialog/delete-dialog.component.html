@@ -1,0 +1,23 @@
+<h5 class="text-center">
+  <b>{{ "CORE.DELETE_CONFIRMATION.message" | translate }}</b>
+</h5>
+
+<div class="w-100 d-flex justify-content-end">
+  <ion-button
+    fill="outline"
+    color="secondary"
+    class="w-50 mt-1"
+    (click)="close()"
+  >
+    {{ "CORE.DELETE_CONFIRMATION.cancel" | translate: { name: data.name } }}
+  </ion-button>
+  <ion-button
+    fill="solid"
+    color="medium"
+    class="w-50 mt-1"
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+  >
+    {{ "CORE.DELETE_CONFIRMATION.delete" | translate: { name: data.name } }}
+  </ion-button>
+</div>

@@ -1,0 +1,28 @@
+mutation UpdateProfile($input: UserChangeProfileInput!) {
+  userChangeProfile(input: $input) {
+    errors {
+      code
+      message
+      field
+    }
+    status
+    user {
+      id
+      lastName
+      firstName
+      userType
+      email
+      phone
+      avatar
+      created
+      loginMethod
+      business {
+        businessType
+        companyName
+        companyPhone
+        registerationNumber
+        taxCode
+      }
+    }
+  }
+}

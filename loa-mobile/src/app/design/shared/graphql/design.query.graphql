@@ -1,0 +1,102 @@
+query GetDesign($id: String!) {
+  design(id: $id) {
+    projectName
+    id
+    style
+    description
+    area
+    price
+    designType
+    liked
+    bookmarked
+    numberOfLikes
+    numberOfViews
+    numberOfQuestions
+    numberOfBookmarks
+    typeOfHouse
+    estimateCostFrom
+    estimateCostTo
+    registeredDesignNumber
+    kitchens
+    livingRooms
+    bathrooms
+    bedrooms
+    others
+    reviewedOnDate
+    thumbnail
+    tower
+    unitType
+    bought
+    layout {
+      image
+    }
+    questionAnswer(level: 0, last: 4) {
+      totalCount
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          comment
+          created
+          user {
+            id
+            lastName
+            firstName
+            created
+            avatar
+          }
+          answer(last: 3) {
+            totalCount
+            pageInfo {
+              endCursor
+              startCursor
+              hasNextPage
+              hasPreviousPage
+            }
+            edges {
+              node {
+                id
+                comment
+                created
+                user {
+                  id
+                  avatar
+                  firstName
+                  lastName
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    wholeHouse {
+      edges {
+        node {
+          id
+          roomType
+
+          preview {
+            image
+          }
+        }
+      }
+    }
+    room {
+      roomType
+      suggestedAreaSize
+      suggestedRoomSize
+      planType
+      size
+
+      preview {
+        image
+      }
+    }
+  }
+}

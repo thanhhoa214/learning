@@ -1,0 +1,14 @@
+<ion-router-outlet></ion-router-outlet>
+<ion-tabs>
+  <ion-tab-bar
+    color="primary"
+    slot="bottom"
+    class="pt-1 border-0"
+    [class.d-none]="!(bottomBarVisibility.visible$ | async)"
+  >
+    <ion-tab-button *ngFor="let link of navLinks" [tab]="link.link">
+      <ion-icon [name]="link.icon"></ion-icon>
+      <ion-label>{{ link.label | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

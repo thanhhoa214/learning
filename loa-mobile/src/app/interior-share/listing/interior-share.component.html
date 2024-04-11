@@ -1,0 +1,309 @@
+<loa-mobile-back-bar [title]="'INTERIOR_SHARE.title' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+  <ion-buttons slot="end" id="end-buttons">
+    <ion-button
+      size="small"
+      *ngIf="dataUser"
+      color="secondary"
+      type="button"
+      routerLink="/interior-share/my-post"
+    >
+      <small
+        ><b>{{ 'INTERIOR_SHARE.LISTING.title_post' | translate }}</b></small
+      >
+    </ion-button>
+  </ion-buttons>
+</loa-mobile-back-bar>
+
+<ion-searchbar
+  [placeholder]="'INTERIOR_SHARE.LISTING.search' | translate"
+  [debounce]="500"
+  class="py-0"
+  color="tertiary"
+  searchIcon="loa-search"
+></ion-searchbar>
+<ion-content class="container-fluid" *ngIf="dataSource" #mainContainer>
+  <div class="content-post" *ngFor="let item of dataSource; index as index">
+    <div class="row">
+      <div class="col-10">
+        <mat-list>
+          <mat-list-item>
+            <img
+              class="mr-3"
+              matListAvatar
+              [src]="item?.node?.user?.avatar || '../assets/images/default-avatar.jpg'"
+              alt="Avatar"
+            />
+            <div class="d-flex flex-column">
+              <ion-text color="secondary">
+                <h4 class="text-wrap truncate mt-2 mb-0">
+                  {{ item?.node?.user?.firstName }}
+                  {{ item?.node?.user?.lastName }}
+                </h4>
+              </ion-text>
+              <span class="title-member">
+                {{
+                  (item?.node?.user?.userType?.includes('customer')
+                    ? 'INTERIOR_SHARE.LISTING.title_member'
+                    : 'INTERIOR_SHARE.LISTING.title_business'
+                  ) | translate
+                }}
+              </span>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="col-2 d-flex align-items-center justify-content-end">
+        <a
+          type="button"
+          *ngIf="dataUser && dataUser.id != item.node.user.id"
+          class="bookmark-interior"
+          color="medium"
+          (click)="bookmark($event, item.node.id)"
+        >
+          <ion-icon
+            [name]="item.node.followed ? 'bookmarked-life-style' : 'bookmark-life-style'"
+          ></ion-icon>
+        </a>
+
+        <a
+          type="button"
+          [matMenuTriggerFor]="menu"
+          class="btn-more-vert"
+          *ngIf="dataUser && dataUser.id == item.node.user.id"
+        >
+          <!-- <mat-icon>more_horiz</mat-icon> -->
+          <img src="assets/images/More.svg" alt="More" />
+        </a>
+        <mat-menu #menu="matMenu">
+          <a
+            [routerLink]="['/interior-share/' + item.node.id + '/update']"
+            type="button"
+            mat-menu-item
+            class="btn-update-post text-center"
+          >
+            <span>{{ 'INTERIOR_SHARE.LISTING.btn_update' | translate }}</span>
+          </a>
+          <a
+            class="btn-delete-post text-center"
+            (click)="deleteInteriorShare($event, item.node.id, index)"
+            type="button"
+            mat-menu-item
+          >
+            <span>{{ 'INTERIOR_SHARE.LISTING.btn_delete' | translate }}</span>
+          </a>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="mt-3 position-relative" [routerLink]="['/interior-share/' + item.node.id]">
+      <!-- One image -->
+      <div
+        class="img-wrapper-one overflow-hidden"
+        *ngIf="item.node.images.length == 1"
+        [ngStyle]="{
+          'background-image': 'url(' + item.node.images[0].image + ')'
+        }"
+      ></div>
+      <!-- two images -->
+      <div
+        class="img-wrapper-two overflow-hidden mb-1"
+        *ngIf="item.node.images.length == 2"
+        [ngStyle]="{
+          'background-image': 'url(' + item.node.images[0].image + ')'
+        }"
+      ></div>
+      <div
+        class="img-wrapper-two overflow-hidden"
+        *ngIf="item.node.images.length == 2"
+        [ngStyle]="{
+          'background-image': 'url(' + item.node.images[1].image + ')'
+        }"
+      ></div>
+
+      <!-- three images -->
+      <div
+        class="img-wrapper-three overflow-hidden w-100 mb-1"
+        *ngIf="item.node.images.length == 3"
+        [ngStyle]="{
+          'background-image': 'url(' + item.node.images[0].image + ')'
+        }"
+      ></div>
+      <div class="d-flex flex-row">
+        <div
+          class="img-wrapper-three overflow-hidden w-50"
+          *ngIf="item.node.images.length == 3"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[1].image + ')'
+          }"
+        ></div>
+        <div
+          class="img-wrapper-three overflow-hidden w-50 ml-1"
+          *ngIf="item.node.images.length == 3"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[2].image + ')'
+          }"
+        ></div>
+      </div>
+
+      <!-- four images -->
+      <div class="d-flex flex-row mb-1" *ngIf="item.node.images.length > 3">
+        <div
+          class="img-wrapper-three overflow-hidden w-50"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[0].image + ')'
+          }"
+        ></div>
+        <div
+          class="img-wrapper-three overflow-hidden w-50 ml-1"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[1].image + ')'
+          }"
+        ></div>
+      </div>
+
+      <div class="d-flex flex-row" *ngIf="item.node.images.length > 3">
+        <div
+          class="img-wrapper-three overflow-hidden w-50"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[2].image + ')'
+          }"
+        ></div>
+        <div
+          class="img-wrapper-three overflow-hidden w-50 ml-1"
+          [ngStyle]="{
+            'background-image': 'url(' + item.node.images[3].image + ')'
+          }"
+          [class.opacity-image]="item.node.images.length > 4"
+        ></div>
+      </div>
+      <div *ngIf="item.node.images.length > 4" class="bonus-image">
+        +{{ item.node.images.length - 4 }}
+      </div>
+
+      <!-- <div *ngIf="item.node.images.length > 4" class="bonus-image">+{{item.node.images.length - 4}}</div> -->
+      <div class="row mb-2 padding-l-r-16 mb-5">
+        <div class="col-12 d-flex flex-column">
+          <ion-text color="secondary">
+            <h5
+              class="mt-2 mb-0 text-style-wrap"
+              [innerHTML]="setUrlInteriorShare(item.node.content)"
+            ></h5>
+            <!-- <app-rin-truncate-text
+              seeMoreBgColor="secondary"
+              class="flex-grow-1 my-1"
+            >
+              <pre><h5 [innerHTML]="item.node.content"></h5></pre>
+            </app-rin-truncate-text> -->
+          </ion-text>
+        </div>
+      </div>
+      <div class="row mb-4 font-weight-light padding-l-r-16">
+        <div class="col-5 d-flex flex-row">
+          <span class="mr-3"> {{ item.node.created | date: 'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+      <div class="d-flex flex-row padding-l-r-16 mb-3">
+        <div class="w-100 border-share"></div>
+      </div>
+      <div
+        class="d-flex flex-row mt-1 mb-1 padding-l-r-16 justify-content-between"
+        id="listing-interior"
+      >
+        <div class="like-icon d-flex flex-row align-items-center pl-2">
+          <ion-icon
+            class="mr-2"
+            [color]="item.node.liked ? 'primary' : 'secondary'"
+            [name]="item.node.liked ? 'loa-like' : 'loa-like-outline'"
+            (click)="Like($event, item.node.id)"
+          ></ion-icon>
+          <h6 class="my-auto">
+            {{ item.node.numberOfLikes }}
+            {{ 'INTERIOR_SHARE.LISTING.number_like' | translate }}
+          </h6>
+          <!--
+          <h5 class="ml-2 mr-2 my-auto number-like">
+            {{ "INTERIOR_SHARE.LISTING.people_like" | translate }}
+          </h5>
+          -->
+        </div>
+
+        <div class="d-flex flex-row align-items-center">
+          <a type="button" (click)="share($event, item.node, 'system')" class="mr-2 share-icon">
+            <ion-icon color="dark" name="share-social"></ion-icon>
+          </a>
+          <h4 class="mr-3 my-auto">
+            {{ 'INTERIOR_SHARE.LISTING.share' | translate }}
+          </h4>
+        </div>
+
+        <div class="d-flex flex-row align-items-center">
+          <a type="button" (click)="share($event, item.node, 'fb')" class="share-icon">
+            <ion-icon color="dark" name="loa-facebook"></ion-icon>
+          </a>
+        </div>
+
+        <div class="d-flex flex-row align-items-center pr-3">
+          <a type="button" (click)="share($event, item.node, 'zalo')" class="share-icon">
+            <ion-icon color="dark" name="loa-zalo"></ion-icon>
+          </a>
+        </div>
+      </div>
+      <div class="d-flex flex-row padding-l-r-16 mt-3">
+        <div class="w-100 border-share"></div>
+      </div>
+    </div>
+    <div class="row mt-5 padding-l-r-16">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <h4>
+          <ion-text color="dark"
+            ><b>{{ 'DESIGN.DETAIL.COMMENT.comment' | translate }}</b></ion-text
+          >
+        </h4>
+        <b
+          class="d-flex justify-content-between align-items-center"
+          (click)="isShowComment[index] = !isShowComment[index]"
+        >
+          <ng-container *ngIf="!isShowComment[index]"
+            >{{ 'DESIGN.DETAIL.COMMENT.show_comments' | translate }}
+            <mat-icon>expand_more</mat-icon>
+          </ng-container>
+          <ng-container *ngIf="isShowComment[index]"
+            >{{ 'DESIGN.DETAIL.COMMENT.hide_comments' | translate }}
+            <mat-icon>expand_less</mat-icon>
+          </ng-container>
+        </b>
+      </div>
+      <div class="col-12" *ngIf="isShowComment[index]">
+        <loa-mobile-comment-interior-listing
+          [parentElement]="mainContainer"
+          [questionAnswer]="item.node.comments"
+          [id]="item.node.id"
+        ></loa-mobile-comment-interior-listing>
+      </div>
+    </div>
+    <!-- <div class="row mr-0 ml-0">
+        <button mat-icon-button class="btn-write-post" [routerLink]="['.', 'create']">
+          <img class="pl-2 pr-2" src="assets/images/noun_Write post_3345910.svg" alt="Write post">
+          Write a post
+        </button>
+      </div> -->
+  </div>
+  <!-- </div> -->
+  <ion-infinite-scroll (ionInfinite)="onScrollDown($event)" *ngIf="!hideLoadMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'LIFE_STYLE.load_more' | translate }}"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer class="hide-on-keyboard-open ion-no-border"
+  ><ion-toolbar class="mt-0">
+    <ion-button expand="block" [routerLink]="['.', 'create']" class="m-0">
+      <ion-icon slot="start" name="create-outline"></ion-icon>
+      {{ 'INTERIOR_SHARE.CREATE.title' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

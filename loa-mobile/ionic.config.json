@@ -1,0 +1,7 @@
+{
+  "name": "loa-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

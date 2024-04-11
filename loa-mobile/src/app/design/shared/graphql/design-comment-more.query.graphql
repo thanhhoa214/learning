@@ -1,0 +1,49 @@
+query DesignCommentMore($id: String!, $before: String) {
+  design(id: $id) {
+    questionAnswer(level: 0, last: 4, before: $before) {
+      totalCount
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          comment
+          created
+          user {
+            id
+            lastName
+            firstName
+            created
+            avatar
+          }
+          answer(first: 3) {
+            totalCount
+            pageInfo {
+              endCursor
+              startCursor
+              hasNextPage
+              hasPreviousPage
+            }
+            edges {
+              node {
+                id
+                comment
+                created
+                user {
+                  id
+                  avatar
+                  firstName
+                  lastName
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

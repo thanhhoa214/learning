@@ -1,0 +1,17 @@
+.img-wrapper {
+  width: 2rem;
+  height: 2rem;
+}
+
+button[mat-icon-button] {
+  zoom: 0.6;
+}
+
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1010;
+  background-color: white;
+  padding: 0.5rem 1rem;
+}

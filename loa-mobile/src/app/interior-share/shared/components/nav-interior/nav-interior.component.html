@@ -1,0 +1,21 @@
+<nav
+  *ngIf="bottomBarVisibility.visible$ | async"
+  mat-tab-nav-bar
+  mat-stretch-tabs
+  class="mat-tab-group-inverted-header border-bottom-0"
+>
+  <div
+    mat-tab-link
+    *ngFor="let link of navLinks"
+    class="border-top"
+    [routerLink]="link.link"
+    routerLinkActive="active-list-item"
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    <div class="tab-icon pt-2">
+      <mat-icon>{{ link.icon }}</mat-icon>
+      <span> {{ link.label | translate }}</span>
+    </div>
+  </div>
+</nav>

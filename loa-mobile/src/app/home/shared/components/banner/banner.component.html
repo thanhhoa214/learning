@@ -1,0 +1,22 @@
+<ng-container *ngIf="banners">
+  <ion-slides
+    [options]="slideOptions"
+    class="rounded-lg overflow-hidden"
+    [style.backgroundColor]="
+      banners.edges.length > 0 ? '' : 'var(--bullet-background)'
+    "
+  >
+    <ion-slide
+      *ngFor="let banner of banners.edges"
+      [routerLink]="[
+        '/',
+        'content-page',
+        banner.node.linkTo[0]?.contentPage.id || '0'
+      ]"
+    >
+      <div class="img-wrapper w-100 rounded-lg overflow-hidden">
+        <img [src]="banner.node.file" />
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ng-container>

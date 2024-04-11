@@ -1,0 +1,12 @@
+#see-more {
+  display: inline-block;
+  position: absolute;
+  text-align: right;
+  right: 6px;
+  bottom: 0;
+  z-index: 2;
+  background-color: var(--ion-color-light);
+}
+.ion-text-secondary {
+  color: var(--ion-color-secondary);
+}

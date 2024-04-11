@@ -1,0 +1,40 @@
+query GetConstruction($id: String!) {
+  construction: constructor(id: $id) {
+    id
+    avatar
+    email
+    phone
+    business {
+      taxCode
+    }
+
+    constructorCompany: constructor {
+      id
+      companyPhone
+      companyName
+      experiences
+      country
+      city
+      address
+      website
+      hotline
+      introduction
+      rating
+
+      portfolio {
+        edges {
+          node {
+            id
+            projectName
+            images {
+              image
+            }
+          }
+        }
+      }
+    }
+  }
+  constructionReviews(construction: $id) {
+    totalCount
+  }
+}

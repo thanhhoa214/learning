@@ -1,0 +1,188 @@
+<ion-content>
+  <div *ngIf="dataSource">
+    <div *ngFor="let item of dataSource; index as index">
+      <div class="bg-content py-4" [class.mt-4]="index == 0">
+        <div class="w-100">
+          <div class="d-flex flex-row w-100 padding-l-r-16 pb-4">
+            <div class="image-wrapper mr-4">
+              <img
+                [src]="
+                  item.node.construction.user.avatar ||
+                  'assets/images/construction-company-placeholder.png'
+                "
+                alt="Logo"
+                [class.border]="!item.node.construction.user.avatar"
+              />
+            </div>
+            <div class="d-flex flex-column">
+              <h4 class="mb-auto mt-0">
+                <b>{{ item.node.construction.companyName }}</b>
+              </h4>
+              <div class="d-flex flex-row">
+                <div *ngFor="let star of stars; index as index">
+                  <ion-icon
+                    *ngIf="index + 1 <= item.node.rating"
+                    name="star-full"
+                  >
+                  </ion-icon>
+                  <ion-icon
+                    *ngIf="
+                      index + 1 > item.node.rating &&
+                      index - item.node.rating < 0
+                    "
+                    name="star-review-half"
+                  >
+                  </ion-icon>
+                  <ion-icon
+                    *ngIf="
+                      index + 1 > item.node.rating &&
+                      index - item.node.rating >= 0
+                    "
+                    name="star-no"
+                  >
+                  </ion-icon>
+                </div>
+              </div>
+            </div>
+            <a type="button" [matMenuTriggerFor]="menu" class="btn-more-vert">
+              <!-- <mat-icon>more_horiz</mat-icon> -->
+              <img src="assets/images/More.svg" alt="More" />
+              <!-- <mat-icon>
+                more_update
+              </mat-icon> -->
+            </a>
+          </div>
+        </div>
+
+        <mat-menu
+          #menu="matMenu"
+          style="position: absolute; top: 100px !important;"
+        >
+          <a
+            [routerLink]="[
+              '/menu/my-construction-review/write-review/update/' + item.node.id
+            ]"
+            type="button"
+            mat-menu-item
+            class="btn-update-post text-center"
+          >
+            <span>{{ 'INTERIOR_SHARE.LISTING.btn_update' | translate }}</span>
+          </a>
+          <a
+            class="btn-delete-post text-center"
+            (click)="deleteMyReview(item.node.id)"
+            type="button"
+            mat-menu-item
+          >
+            <span>{{ 'INTERIOR_SHARE.LISTING.btn_delete' | translate }}</span>
+          </a>
+        </mat-menu>
+        <mat-divider class="custom-divider-border"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-3">
+          <ion-text class="title-12 w-43">
+            <b>
+              {{
+                'CONSTRUCTION_REVIEW.MY_REVIEW.construction_location'
+                  | translate
+              }}
+            </b>
+          </ion-text>
+          <ion-text class="title-13 w-57">
+            {{ item.node.constructionLocation }},
+
+            {{ item.node.district }},
+
+            {{ item.node.city }}
+          </ion-text>
+        </div>
+        <mat-divider class="custom-divider"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-3">
+          <ion-text class="title-12 w-43">
+            <b>
+              {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.area_size' | translate }}
+            </b>
+          </ion-text>
+          <ion-text class="title-13 w-57">
+            {{ item.node.areaSize }} sm.q
+          </ion-text>
+        </div>
+        <mat-divider class="custom-divider"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-3">
+          <ion-text class="title-12 w-43">
+            <b>
+              {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.style' | translate }}
+            </b>
+          </ion-text>
+          <ion-text class="title-13 w-57">
+            {{
+              'CONSTRUCTION_REVIEW.WRITE_REVIEW.' +
+                item.node.designStyle.toLowerCase() | translate
+            }}
+          </ion-text>
+        </div>
+        <mat-divider class="custom-divider"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-3">
+          <ion-text class="title-12 w-43">
+            <b>
+              {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.period' | translate }}
+            </b>
+          </ion-text>
+          <ion-text class="title-13 w-57">
+            {{ item.node.constructionPeriod }}
+            {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.month' | translate }}
+          </ion-text>
+        </div>
+        <mat-divider class="custom-divider"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-3">
+          <ion-text class="title-12 w-43">
+            <b>
+              {{ 'CONSTRUCTION_REVIEW.MY_REVIEW.cost' | translate }}
+            </b>
+          </ion-text>
+          <ion-text class="title-13 w-57">
+            {{ item.node.constructionCostFrom | number: '1.0-4' }}đ ~
+            {{ item.node.constructionCostTo | number: '1.0-4' }}đ
+          </ion-text>
+        </div>
+        <mat-divider class="custom-divider-border"></mat-divider>
+        <div class="d-flex flex-row padding-l-r-16 py-4">
+          <app-view-more-review
+            class="flex-grow-1 my-1"
+            [contentReview]="item.node.review"
+          >
+          </app-view-more-review>
+        </div>
+        <div class="d-flex flex-row margin-l-r-16 overflow-scroll-x">
+          <div *ngFor="let i of item.node.images; index as indexImage">
+            <div
+              class="wrapper-image"
+              [class.mr-1]="indexImage == 0"
+              [class.ml-1]="indexImage == item.node.images.length - 1"
+              [class.mx-1]="
+                indexImage != item.node.images.length - 1 && indexImage != 0
+              "
+            >
+              <div
+                [ngStyle]="{
+                  'background-image': 'url(' + i.image + ')'
+                }"
+              ></div>
+              <!-- <img [src]="i.image" alt="Image review" /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-infinite-scroll
+    (ionInfinite)="loadMoreData($event)"
+    *ngIf="!hideLoadMore"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'LIFE_STYLE.load_more' | translate }}"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

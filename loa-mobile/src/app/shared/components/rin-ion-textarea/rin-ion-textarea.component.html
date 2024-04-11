@@ -1,0 +1,12 @@
+<ion-textarea
+  class="border-0 w-90"
+  [placeholder]="placeholder"
+  (ionChange)="ionTextareaInput($event)"
+  (ionInput)="ionInput.emit($event)"
+  (ionBlur)="ionBlur.emit($event)"
+  (ionFocus)="ionFocus.emit($event)"
+  [spellcheck]="spellcheck"
+  [value]="initValue"
+  wrap="soft"
+  rows="1"
+></ion-textarea>

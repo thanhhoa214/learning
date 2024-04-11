@@ -1,0 +1,24 @@
+<h2 class="w-75 mx-auto text-center">
+  <ion-text color="secondary">
+    <b>{{
+      'DESIGN.DETAIL.REQUEST_DESIGN.your_request_has_been_success' | translate
+    }}</b>
+  </ion-text>
+</h2>
+<p class="my-4 w-75 mx-auto text-center">
+  <small>
+    {{
+      'DESIGN.DETAIL.REQUEST_DESIGN.please_note_that_there_may_be' | translate
+    }}
+  </small>
+</p>
+
+<ion-button
+  fill="solid"
+  color="secondary"
+  class="mt-1"
+  expand="block"
+  (click)="close()"
+>
+  {{ 'DESIGN.DETAIL.REQUEST_DESIGN.continue' | translate }}
+</ion-button>

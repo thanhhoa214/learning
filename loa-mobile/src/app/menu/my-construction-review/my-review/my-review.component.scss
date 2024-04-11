@@ -1,0 +1,96 @@
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --background: #f6f5f4;
+}
+.bg-content {
+  background-color: #f6f5f4;
+}
+.padding-l-r-16 {
+  padding: 0px 16px;
+}
+.margin-l-r-16 {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.bg-first-row {
+  background-color: #f6f5f4;
+}
+.image-wrapper {
+  width: 90px;
+  height: 60px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+.wrapper-image {
+  width: 150px;
+  height: 108px;
+  div {
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.25rem;
+  }
+}
+ion-icon.star-icon {
+  zoom: 1.38;
+}
+.custom-divider {
+  border-top-width: 0.5px !important;
+  border-top-color: #c7c4c2 !important;
+  margin: 0 16px;
+}
+.title-12 {
+  font-size: 12px !important;
+}
+.title-13 {
+  font-size: 13px !important;
+  font-weight: 400;
+}
+.w-43 {
+  width: 43%;
+}
+.w-57 {
+  width: 57%;
+}
+.custom-divider-border {
+  border-top-color: #535252 !important;
+  margin: 0 16px;
+}
+.text-pre-wrap {
+  white-space: pre-wrap;
+}
+.btn-more-vert {
+  background-color: transparent;
+  position: absolute;
+  right: 1.5rem;
+}
+.btn-delete-post {
+  background-color: #535252;
+  color: #ffffff;
+  text-decoration: none;
+}
+a.btn-delete-post:hover {
+  text-decoration: none;
+}
+.btn-update-post {
+  text-decoration: none;
+}
+a.btn-update-post:hover {
+  text-decoration: none;
+}
+::ng-deep .mat-menu-content:not(:empty) {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+.overflow-scroll-x {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+}

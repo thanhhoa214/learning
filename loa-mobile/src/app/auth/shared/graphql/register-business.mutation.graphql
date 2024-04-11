@@ -1,0 +1,10 @@
+mutation RegisterBusiness($input: RegisterBusinessInput!) {
+  authRegisterBusiness(input: $input) {
+    errors {
+      code
+      message
+      field
+    }
+    status
+  }
+}

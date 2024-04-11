@@ -1,0 +1,91 @@
+<loa-mobile-back-bar
+  [title]="'MENU.interior_design' | translate"
+  [backTo]="activatedRoute.snapshot.queryParams.backTo"
+></loa-mobile-back-bar>
+
+<ion-content>
+  <h6 class="w-100 text-center font-weight-bold" id="designs-share-button">
+    {{'INTERIOR_DESIGN.PURCHASE_DESIGN.title' | translate}}
+  </h6>
+  <ion-list class="row mb-4" id="designs" *ngIf="dataSource">
+    <ng-container *ngFor="let design of dataSource; index as index">
+      <ion-item class="w-100 d-flex justify-content-between align-items-start" lines="none">
+        <ion-thumbnail class="mr-3">
+          <img
+            [src]="
+            design.node.thumbnail ||
+              'assets/images/construction-company-placeholder.png'
+            "
+            [class.border]="!design.node.thumbnail"
+          />
+        </ion-thumbnail>
+        <div class="d-flex flex-column w-100 h-100">
+          <ion-text class="text-wrap truncate mb-1" color="secondary">
+            <b class="font-size-normal">
+              <ng-container *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'">
+                {{ design.node.projectName }}
+              </ng-container>
+              <ng-container *ngIf="design.node.designType.toString() == 'ROOM'">
+                {{ "DESIGN.FILTERS.ROOM_TYPE." + design.node.room.roomType.toLowerCase() | translate
+                }}
+              </ng-container>
+              - {{ design.node.registeredDesignNumber }}</b
+            >
+          </ion-text>
+          <ion-text class="my-1" color="secondary">
+            <!-- <ng-container
+              *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+            >
+              {{ design.node.tower }} | {{ design.node.unitType }} | {{
+              design.node.area | number: "1.0-4" }} sq.m | {{
+              "DESIGN.FILTERS.HOUSE_TYPE." +
+              design.node.typeOfHouse.toLowerCase() | translate }} | {{
+              "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase() |
+              translate }}
+            </ng-container> -->
+            <ng-container>
+              {{ design.node.area | number: "1.0-4" }} sq.m | {{ "DESIGN.FILTERS.STYLE." +
+              design.node.style.toLowerCase() | translate }}
+            </ng-container>
+          </ion-text>
+          <ion-text class="mb-1" color="secondary">
+            <b>{{design.node.price | number: "1.0-4" }} đ</b>
+          </ion-text>
+          <ion-text class="super-small" color="secondary">
+            {{'INTERIOR_DESIGN.PURCHASE_DESIGN.purchase_date' | translate}} - {{
+            design?.node?.orderDetails?.edges[0].node.order.createdDate | date: "dd/MM/yyyy" }}
+          </ion-text>
+        </div>
+      </ion-item>
+      <ion-item class="w-100">
+        <ion-button
+          class="w-100"
+          color="secondary"
+          expand="block"
+          (click)="downloadDesignFile(design.node.id, design.node.projectName)"
+          *ngIf="!downloadedIds.includes(design.node.id)"
+          >{{ 'INTERIOR_DESIGN.PURCHASE_DESIGN.btn_download' | translate}}</ion-button
+        >
+        <ion-button
+          class="w-100"
+          color="secondary"
+          expand="block"
+          (click)="openDialog({id: design.node.id, name: design.node.projectName})"
+          *ngIf="downloadedIds.includes(design.node.id)"
+          >{{ 'PRODUCT.open'| translate}}</ion-button
+        >
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMorePurchaseDesign($event)" *ngIf="!hideLoadMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'LIFE_STYLE.load_more' | translate }}"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-text class="d-block pt-4 pb-5 text-center" color="secondary">
+    <p class="mb-2" [innerHTML]="'INTERIOR_DESIGN.PURCHASE_DESIGN.contact_detail' | translate "></p>
+    <b>customer@abc.com</b>
+  </ion-text>
+</ion-content>

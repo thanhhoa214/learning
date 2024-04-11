@@ -1,0 +1,270 @@
+<loa-mobile-back-bar
+  [backTo]="'/menu'"
+  [title]="'BOOKMARK.title' | translate"
+></loa-mobile-back-bar>
+
+<ion-content>
+  <mat-tab-group
+    mat-align-tabs="center"
+    (selectedTabChange)="tabChanged($event)"
+    class="remove-border-bottom h-100"
+  >
+    <mat-tab label="{{ 'MY_BOOKMARK.title_interior_design' | translate }}">
+      <div class="search-results">
+        <div *ngIf="array; else loading" class="">
+          <div *ngFor="let design of array">
+            <div class="d-flex flex-row w-100 justify-content-between mb-4">
+              <div class="d-flex flex-row w-100">
+                <div
+                  class="wrapper-image mr-3"
+                  [routerLink]="'/design/' + design.node.design.id"
+                >
+                  <img
+                    [src]="
+                      design.node.design.thumbnail ||
+                      '/assets/images/1280x580.png'
+                    "
+                    class="rounded-lg"
+                  />
+                </div>
+                <div
+                  class="d-flex flex-column"
+                  [routerLink]="'/design/' + design.node.design.id"
+                >
+                  <h5 class="mb-auto mt-0">
+                    <b>{{ design.node.design.projectName }}</b>
+                  </h5>
+                  <small class="">
+                    {{ design.node.design.area }} sq.m |
+                    {{
+                      'STYLE_HOUSE.' + design.node.design.style.toLowerCase()
+                        | translate
+                    }}
+                  </small>
+                </div>
+              </div>
+              <a
+                type="button"
+                class="bookmark-no-image"
+                color="light"
+                (click)="bookmarkdesign($event, design.node.design.id)"
+              >
+                <ion-icon name="bookmarked-interior-share"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="w-100 text-center mt-3 mb-4" *ngIf="pageInfo?.hasNextPage">
+          <ion-text
+            color="dark"
+            class="border-bottom border-secondary px-2 py-1"
+            (click)="loadMoreBookmarkDesign()"
+          >
+            <b>{{ 'HOME.view_more' | translate }}</b>
+          </ion-text>
+        </div>
+        <ng-template #loading>
+          <mat-list>
+            <mat-list-item *ngFor="let design of [1, 2, 3, 4, 5]">
+              <ngx-skeleton-loader
+                matListAvatar
+                [theme]="{ width: '5rem', height: '5rem' }"
+              ></ngx-skeleton-loader>
+              <h3 matLine class="ml-4 mt-5">
+                <ngx-skeleton-loader
+                  [theme]="{ width: '50%', height: '2rem' }"
+                ></ngx-skeleton-loader>
+              </h3>
+              <p matLine class="ml-4">
+                <ngx-skeleton-loader
+                  [theme]="{ width: '70%', height: '1.5rem' }"
+                ></ngx-skeleton-loader>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </ng-template>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'MY_BOOKMARK.title_interior_share' | translate }}">
+      <div class="scroll-bookmark">
+        <div
+          class="d-flex flex-column padding-l-r-16 mt-1 mb-3"
+          *ngFor="let item of dataSourceBookmarkNoImage; index as indexNoImage"
+        >
+          <div
+            class="d-flex flex-row justify-content-between"
+            [routerLink]="'/interior-share/' + item.node.topic.id"
+          >
+            <ion-text color="secondary">
+              <h5 class="text-wrap truncate mt-2 mb-0">
+                {{
+                  item?.node?.topic?.content?.length > 40
+                    ? (item?.node?.topic?.content | slice: 0:40) + '...'
+                    : item?.node?.topic?.content
+                }}
+              </h5>
+            </ion-text>
+            <a
+              type="button"
+              class="bookmark-no-image"
+              color="light"
+              (click)="bookmarkNoImage($event, item.node.topic.id)"
+            >
+              <ion-icon name="bookmarked-interior-share"></ion-icon>
+            </a>
+          </div>
+          <div class="d-flex flex-row w-100">
+            <span>
+              {{ 'INTERIOR_SHARE.MY_POST.save_at' | translate }}
+              {{ item.node.created | date: 'dd/MM/yyyy' }}
+            </span>
+          </div>
+          <hr class="w-100 line-no-image" />
+        </div>
+        <div
+          class="w-100 text-center mb-4"
+          *ngIf="pageInfoBookmarkNoImage?.hasNextPage"
+        >
+          <ion-text
+            color="dark"
+            class="px-2 py-1"
+            (click)="loadMoreBookmarkNoImage()"
+          >
+            <b>{{ 'HOME.view_more' | translate }}</b>
+          </ion-text>
+        </div>
+        <div class="row padding-l-r-16" *ngIf="dataSourceBookmark?.length > 0">
+          <!-- <div
+            class="search-results"
+          > -->
+          <div
+            class="mb-3 col-6"
+            *ngFor="let item of dataSourceBookmark; index as index"
+            [class.padding-right-bookmark]="index % 2 == 0"
+            [class.padding-left-bookmark]="index % 2 != 0"
+          >
+            <div
+              class="img-wrapper-bookmark rounded-lg overflow-hidden w-100"
+              [routerLink]="'/interior-share/' + item.node.topic.id"
+            >
+              <img [src]="item.node.topic.images[0].image" />
+              <a
+                type="button"
+                class="bookmark-image"
+                [class.bookmark-image-cus]="index % 2 == 0"
+                color="light"
+                (click)="bookmark($event, item.node.topic.id)"
+              >
+                <ion-icon name="bookmarked-interior-share"></ion-icon>
+              </a>
+            </div>
+            <div class="row mb-2">
+              <div
+                class="col-12 h-60"
+                [routerLink]="'/interior-share/' + item.node.topic.id"
+              >
+                <ion-text color="secondary">
+                  <h5 class="text-wrap truncate mt-2 mb-0 height-title">
+                    {{
+                      item?.node?.topic?.content?.length > 50
+                        ? (item?.node?.topic?.content | slice: 0:50) + '...'
+                        : item?.node?.topic?.content
+                    }}
+                  </h5>
+                </ion-text>
+              </div>
+              <div class="col-12 mt-3">
+                <span>
+                  {{ 'INTERIOR_SHARE.MY_POST.save_at' | translate }}
+                  {{ item.node.created | date: 'dd/MM/yyyy' }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+        <div
+          class="w-100 text-center mt-3 mb-4"
+          *ngIf="pageInfoBookmark?.hasNextPage"
+        >
+          <ion-text
+            color="dark"
+            class="border-bottom border-secondary px-2 py-1"
+            (click)="loadMoreBookmark()"
+          >
+            <b>{{ 'HOME.view_more' | translate }}</b>
+          </ion-text>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'MY_BOOKMARK.title_life_style' | translate }}">
+      <div class="scroll-bookmark">
+        <div
+          class="row padding-l-r-16"
+          *ngIf="dataSourceBookmarkLifeStyle?.length > 0"
+        >
+          <!-- <div
+            class="search-results"
+          > -->
+          <div
+            class="mt-3 col-6"
+            *ngFor="let item of dataSourceBookmarkLifeStyle; index as index"
+            [class.padding-right-bookmark]="index % 2 == 0"
+            [class.padding-left-bookmark]="index % 2 != 0"
+          >
+            <div
+              class="img-wrapper-bookmark-life-style rounded-lg overflow-hidden w-100"
+              [routerLink]="'/life-style/' + item.node.article.id"
+            >
+              <img [src]="item.node.article.thumbnail" />
+              <a
+                type="button"
+                class="bookmark-image"
+                [class.bookmark-image-cus]="index % 2 == 0"
+                color="light"
+                (click)="bookmarkLifeStyle($event, item.node.article.id)"
+              >
+                <ion-icon name="bookmarked-interior-share"></ion-icon>
+              </a>
+            </div>
+            <div class="row mb-2">
+              <div
+                class="col-12 h-60"
+                [routerLink]="'/life-style/' + item.node.article.id"
+              >
+                <ion-text color="secondary">
+                  <h5 class="text-wrap truncate mt-2 mb-0 height-title">
+                    {{
+                      item?.node?.article?.title?.length > 50
+                        ? (item?.node?.article?.title | slice: 0:50) + '...'
+                        : item?.node?.article?.title
+                    }}
+                  </h5>
+                </ion-text>
+              </div>
+              <div class="col-12 mt-3">
+                <span>
+                  {{ 'INTERIOR_SHARE.MY_POST.save_at' | translate }}
+                  {{ item.node.created | date: 'dd/MM/yyyy' }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+        <div
+          class="w-100 text-center mt-3 mb-4"
+          *ngIf="pageInfoBookmarkLifeStyle?.hasNextPage"
+        >
+          <ion-text
+            color="dark"
+            class="border-bottom border-secondary px-2 py-1"
+            (click)="loadMoreBookmarkLifeStyle()"
+          >
+            <b>{{ 'HOME.view_more' | translate }}</b>
+          </ion-text>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</ion-content>

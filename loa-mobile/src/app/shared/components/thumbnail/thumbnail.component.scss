@@ -1,0 +1,43 @@
+.img-wrapper {
+  --my-size: "5rem";
+  position: relative;
+  margin: 0.5rem;
+  /* border-radius: 0.5rem; */
+  border-radius: 50%;
+  // border: 0.25rem solid lightgray;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img-wrapper .main-img {
+  transition: all 0.5s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-wrapper mat-icon#icon-cancel {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  opacity: 0;
+}
+
+.img-wrapper-hover:hover .main-img {
+  transform: scale(1.1);
+  filter: grayscale(100%) blur(1px);
+}
+.img-wrapper-hover:hover mat-icon#icon-cancel {
+  opacity: 1;
+}
+
+.edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  zoom: 1.2;
+  background-color: var(--ion-color-secondary);
+}

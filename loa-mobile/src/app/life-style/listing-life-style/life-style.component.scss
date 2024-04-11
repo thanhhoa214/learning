@@ -1,0 +1,59 @@
+loa-mobile-back-bar ion-icon {
+  zoom: 0.8;
+}
+ion-content.container {
+  --padding-top: 0;
+}
+
+.img-wrapper {
+  height: 16rem;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#filters {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.bookmark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+.bookmark ion-icon {
+  zoom: 2.3;
+}
+#btn-filter {
+  min-width: 4rem;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+:host ::ng-deep svg {
+  fill: #a0a0a0;
+}
+
+.search-results {
+  height: calc(100vh - 110px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.position-absolute-home {
+  position: absolute;
+  left: 56px;
+}
+.btn-back {
+  width: 16 !important;
+  height: 14px !important;
+  min-width: 16px;
+  line-height: 14px !important;
+}
+
+#like-life-style ion-icon {
+  zoom: 1.5;
+}

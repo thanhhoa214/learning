@@ -1,0 +1,5 @@
+mutation BookmarkDesign($id: String!) {
+  designUserBookmarks(id: $id) {
+    status
+  }
+}

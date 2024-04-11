@@ -1,0 +1,81 @@
+<loa-mobile-back-bar
+  [title]="'MENU.interior_design' | translate"
+></loa-mobile-back-bar>
+
+<ion-content>
+  <h6 class="w-100 text-center font-weight-bold" id="designs-share-button">
+    {{'INTERIOR_DESIGN.SHARE_DESIGN.title' | translate}}
+  </h6>
+  <ion-list class="row mb-4" id="designs">
+    <ng-container *ngFor="let design of dataSource; index as index">
+      <ion-item class="w-100 d-flex justify-content-between align-items-start">
+        <ion-thumbnail class="mr-3">
+          <img
+            [src]="
+            design.node.thumbnail ||
+              'assets/images/construction-company-placeholder.png'
+            "
+            [class.border]="!design.node.thumbnail"
+          />
+        </ion-thumbnail>
+        <div class="d-flex flex-column w-100 h-100 py-1">
+          <ion-text color="secondary" class="text-wrap truncate mb-2">
+            <b>
+              <ng-container>
+                {{ design.node.projectName }}
+              </ng-container>
+              - {{ design.node.registeredDesignNumber }}</b
+            >
+          </ion-text>
+          <ion-text
+            color="secondary"
+            class="border-bottom border-tight pb-2 mb-2"
+          >
+            <!-- <ng-container
+              *ngIf="design.node.designType.toString() == 'WHOLE_HOUSE'"
+            >
+              {{ design.node.tower }} | {{ design.node.unitType }} | {{
+              design.node.area | number: "1.0-4" }} sq.m | {{
+              "DESIGN.FILTERS.HOUSE_TYPE." +
+              design.node.typeOfHouse.toLowerCase() | translate }} | {{
+              "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase() |
+              translate }}
+            </ng-container> -->
+            <ng-container>
+              {{ design.node.area | number: "1.0-4" }} sq.m | {{
+              "DESIGN.FILTERS.STYLE." + design.node.style.toLowerCase() |
+              translate }}
+            </ng-container>
+          </ion-text>
+          <ion-text color="secondary">
+            <b>{{'INTERIOR_DESIGN.SHARE_DESIGN.share_with' | translate}}</b>
+          </ion-text>
+          <div
+            class="d-flex justify-content-between align-items-center"
+            *ngFor="let itemConstructor of design.node.share.edges"
+          >
+            <ion-text color="secondary" class="small pr-1"
+              >{{itemConstructor.node.constructor.constructor.companyName}}</ion-text
+            >
+            <ion-button
+              [routerLink]="'/design/' + design.node.id"
+              color="secondary"
+              >{{'INTERIOR_DESIGN.SHARE_DESIGN.btn_view' |
+              translate}}</ion-button
+            >
+          </div>
+        </div>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+  <ion-infinite-scroll
+    (ionInfinite)="loadMorePurchaseDesign($event)"
+    *ngIf="!hideLoadMore"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'LIFE_STYLE.load_more' | translate }}"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

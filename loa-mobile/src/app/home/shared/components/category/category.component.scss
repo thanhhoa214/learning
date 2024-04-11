@@ -1,0 +1,12 @@
+@import '../../../home.component.scss';
+
+.img-wrapper {
+  position: relative;
+  height: 6rem;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // background: rgba(0, 0, 0, 0.2);
+  }
+}

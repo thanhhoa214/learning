@@ -1,0 +1,30 @@
+<div class="position-relative">
+  <div
+    class="img-wrapper"
+    [class.img-wrapper-hover]="hoverable"
+    [style.width]="size"
+    [style.height]="size"
+    (click)="clickImage($event)"
+  >
+    <img
+      class="main-img"
+      [src]="image?.url || imageUrl || 'assets/images/default-avatar.jpg'"
+      [alt]="image?.description || imageUrl"
+    />
+    <mat-icon
+      *ngIf="removable"
+      color="primary"
+      (click)="image ? removeImage($event, image?.id) : null"
+      id="icon-cancel"
+      >cancel</mat-icon
+    >
+  </div>
+  <ion-icon
+    name="camera-outline"
+    color="light"
+    class="edit p-1 rounded-circle"
+  ></ion-icon>
+  <div class="pl-2">
+    <mat-error>{{ errorMsg }}</mat-error>
+  </div>
+</div>

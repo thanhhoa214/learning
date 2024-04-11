@@ -1,0 +1,71 @@
+query GetHomeData {
+  banners(first: 15, orderBy: "sort_order") {
+    edges {
+      node {
+        file
+        linkTo {
+          contentPage {
+            id
+          }
+        }
+      }
+    }
+  }
+  designs(first: 3, orderBy: "-id") {
+    edges {
+      node {
+        thumbnail
+        id
+        projectName
+        area
+        style
+        tower
+        unitType
+        designType
+        typeOfHouse
+        registeredDesignNumber
+        room {
+          roomType
+        }
+      }
+    }
+  }
+  topicsWithoutImage: topics(
+    first: 3
+    orderBy: "-id"
+    level: 0
+    hasContent: true
+  ) {
+    edges {
+      node {
+        id
+        content
+      }
+    }
+  }
+  topicsWithImage: topics(
+    hasImages: true
+    first: 8
+    orderBy: "-number_of_views"
+    level: 0
+  ) {
+    edges {
+      node {
+        id
+        content
+        images {
+          image
+        }
+      }
+    }
+  }
+  articles(first: 8, orderBy: "-id", level: 0) {
+    edges {
+      node {
+        id
+        title
+        thumbnail
+      }
+    }
+  }
+}

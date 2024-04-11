@@ -1,0 +1,79 @@
+query GetAllDesigns(
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $projectName: String
+  $designType: String
+  $style: String
+  $typeOfHouse: String
+  $roomType: String
+  $priceTo: String
+  $priceFrom: String
+  $areaTo: String
+  $areaFrom: String
+  $estimateCostFrom: String
+  $estimateCostTo: String
+) {
+  designs(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    projectName: $projectName
+    designType: $designType
+    style: $style
+    typeOfHouse: $typeOfHouse
+    roomType: $roomType
+    priceTo: $priceTo
+    priceFrom: $priceFrom
+    areaTo: $areaTo
+    areaFrom: $areaFrom
+    estimateCostFrom: $estimateCostFrom
+    estimateCostTo: $estimateCostTo
+    orderBy: "-id"
+  ) {
+    edges {
+      node {
+        id
+        projectName
+        style
+        typeOfHouse
+        description
+        area
+        price
+        designType
+        liked
+        bookmarked
+        estimateCostFrom
+        estimateCostTo
+        registeredDesignNumber
+        tower
+        unitType
+        reviewedOnDate
+        thumbnail
+        room {
+          roomType
+          preview {
+            image
+          }
+        }
+        wholeHouse {
+          edges {
+            node {
+              preview {
+                image
+              }
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

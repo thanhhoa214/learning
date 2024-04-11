@@ -1,0 +1,38 @@
+mutation UpdateProfileAndBusinessInfo(
+  $input: UserChangeProfileInput!
+  $businessInput: UserUpdateBusinessInfoInput!
+) {
+  userUpdateBusinessInfo(input: $businessInput) {
+    status
+    errors {
+      code
+      message
+    }
+  }
+  userChangeProfile(input: $input) {
+    status
+    errors {
+      code
+      field
+      message
+    }
+    user {
+      id
+      lastName
+      firstName
+      userType
+      email
+      phone
+      avatar
+      created
+      loginMethod
+      business {
+        businessType
+        companyName
+        companyPhone
+        registerationNumber
+        taxCode
+      }
+    }
+  }
+}

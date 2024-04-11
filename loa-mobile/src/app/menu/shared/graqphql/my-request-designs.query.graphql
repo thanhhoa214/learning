@@ -1,0 +1,58 @@
+query GetAllMyRequestDesigns(
+  $before: String
+  $after: String
+  $first: Int
+  $last: Int
+  $designId: String
+  $userId: String
+  $customer: String
+  $projectName: String
+  $searchBy: String
+  $email: String
+  $orderBy: String
+) {
+  designsInquiries(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    designId: $designId
+    userId: $userId
+    customer: $customer
+    projectName: $projectName
+    searchBy: $searchBy
+    email: $email
+    orderBy: $orderBy
+  ) {
+    edges {
+      node {
+        id
+        created
+        email
+        design {
+          id
+          projectName
+          typeOfHouse
+          designType
+          price
+          area
+          style
+          wholeHouse {
+            edges {
+              node {
+                preview {
+                  image
+                }
+              }
+            }
+          }
+          room {
+            preview {
+              image
+            }
+          }
+        }
+      }
+    }
+  }
+}

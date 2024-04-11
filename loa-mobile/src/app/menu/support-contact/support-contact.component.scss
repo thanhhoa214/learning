@@ -1,0 +1,22 @@
+#logo-wrapper {
+  width: 10rem;
+}
+.bg-tertiary {
+  background-color: var(--ion-color-tertiary);
+}
+
+.fab-arrow-up {
+  --background: transparent !important;
+  --background-activated: var(--ion-color-light);
+  --color: var(--ion-color-primary-tint);
+  --box-shadow: none;
+  zoom: 0.65;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.w-3rem {
+  width: 3rem;
+}

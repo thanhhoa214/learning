@@ -1,0 +1,22 @@
+mutation designOrderCreate($input: DesignOrderCreateInput!) {
+  designOrderCreate(input: $input) {
+    status
+    errors {
+      code
+      message
+      field
+    }
+    order {
+      id
+      details {
+        edges {
+          node {
+            design {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}

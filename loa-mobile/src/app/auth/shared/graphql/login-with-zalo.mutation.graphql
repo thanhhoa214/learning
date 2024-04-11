@@ -1,0 +1,30 @@
+mutation LoginWithZalo($input: ZaloLoginInput!) {
+  authLoginWithZalo(input: $input) {
+    status
+    token
+    errors {
+      code
+      field
+    }
+    zaloInformation {
+      user {
+        id
+        lastName
+        firstName
+        userType
+        email
+        phone
+        avatar
+        created
+        loginMethod
+        business {
+          businessType
+          companyName
+          companyPhone
+          registerationNumber
+          taxCode
+        }
+      }
+    }
+  }
+}

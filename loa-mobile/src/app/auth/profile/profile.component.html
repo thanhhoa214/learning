@@ -1,0 +1,177 @@
+<loa-mobile-back-bar [title]="'PROFILE.edit_my_profile' | translate">
+  <ion-buttons slot="end" id="end-buttons">
+    <ion-button
+      color="secondary"
+      size="small"
+      [disabled]="formGroup.invalid"
+      (click)="onSubmit()"
+    >
+      <h5 class="my-0">
+        <ion-text color="dark">
+          <b>{{ 'PROFILE.save' | translate }}</b>
+        </ion-text>
+      </h5>
+    </ion-button>
+  </ion-buttons>
+</loa-mobile-back-bar>
+<ion-content>
+  <div class="d-flex justify-content-center">
+    <input
+      #imageInput
+      type="file"
+      accept="image/png,image/jpeg"
+      [hidden]="true"
+      (change)="imageInputChange($event)"
+    />
+    <loa-mobile-thumbnail
+      class="mx-auto mb-3"
+      [imageUrl]="iconUrl || 'assets/images/default-avatar.jpg'"
+      (click)="imageInput.click()"
+      size="5.2rem"
+    ></loa-mobile-thumbnail>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    <h6
+      class="text-left"
+      *ngIf="
+        userInfo?.userType?.includes('business') &&
+        (userInfo?.business)[0].businessType !== 'freelancer'
+      "
+    >
+      <ion-text color="dark">
+        <b>{{ 'AUTH.REGISTER_BUSINESS.personal_information' | translate }}</b>
+      </ion-text>
+    </h6>
+    <mat-form-field class="w-100">
+      <mat-label>{{ 'PROFILE.first_name' | translate }}</mat-label>
+      <input type="text" matInput formControlName="firstName" />
+      <mat-error *ngIf="formGroup.get('firstName').hasError">
+        {{ getErrorMessage('firstName') | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>{{ 'PROFILE.last_name' | translate }}</mat-label>
+      <input type="text" matInput formControlName="lastName" />
+      <mat-error *ngIf="formGroup.get('lastName').hasError">
+        {{ getErrorMessage('lastName') | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        [readonly]="userInfo?.loginMethod === 'SYSTEM'"
+        class="text-lowercase"
+      />
+      <mat-error *ngIf="formGroup.get('email').hasError">
+        {{ getErrorMessage('email') | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>{{ 'PROFILE.phone' | translate }}</mat-label>
+      <input type="text" matInput formControlName="phone" />
+      <mat-error *ngIf="formGroup.get('phone').hasError">
+        {{ getErrorMessage('phone') | translate }}
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <ng-container
+      *ngIf="
+        userInfo?.userType?.includes('business') &&
+        (userInfo?.business)[0].businessType !== 'freelancer'
+      "
+    >
+      <h6 class="text-left">
+        <ion-text color="dark">
+          <b>{{ 'AUTH.REGISTER_BUSINESS.company_information' | translate }}</b>
+        </ion-text>
+      </h6>
+      <!-- <mat-radio-group
+        class="mt-3 mb-4 pr-3 d-flex justify-content-between"
+        formControlName="businessType"
+      >
+        <mat-radio-button [value]="businessTypes[0]">{{
+          'AUTH.REGISTER_BUSINESS.company' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="businessTypes[1]">{{
+          'AUTH.REGISTER_BUSINESS.individual' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="businessTypes[2]">{{
+          'AUTH.REGISTER_BUSINESS.freelancer' | translate
+        }}</mat-radio-button>
+      </mat-radio-group> -->
+
+      <mat-form-field class="w-100" id="company-name">
+        <mat-label>{{
+          'AUTH.REGISTER_BUSINESS.company_name' | translate
+        }}</mat-label>
+        <input
+          matInput
+          formControlName="companyName"
+          (keyup)="focusInputByFormControlName($event, 'companyPhone')"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100" id="company-phone">
+        <mat-label>{{
+          'AUTH.REGISTER_BUSINESS.company_phone' | translate
+        }}</mat-label>
+        <input
+          matInput
+          formControlName="companyPhone"
+          (keyup)="focusInputByFormControlName($event, 'companyBusinessRegis')"
+        />
+        <mat-error *ngIf="formGroup.get('companyPhone').hasError">
+          {{ 'MESSAGE.AUTH.AUTH_16' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" id="company-business-registration-no">
+        <mat-label>{{
+          'AUTH.REGISTER_BUSINESS.business_registration_no' | translate
+        }}</mat-label>
+        <input
+          matInput
+          formControlName="companyBusinessRegis"
+          (keyup)="focusInputByFormControlName($event, 'companyTaxCode')"
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-2" id="tax-code">
+        <mat-label>{{
+          'AUTH.REGISTER_BUSINESS.tax_code' | translate
+        }}</mat-label>
+        <input matInput formControlName="companyTaxCode" />
+        <mat-hint>{{
+          'AUTH.REGISTER_BUSINESS.these_infor' | translate
+        }}</mat-hint>
+      </mat-form-field>
+    </ng-container>
+    <ion-button
+      fill="clear"
+      color="secondary"
+      expand="block"
+      type="button"
+      class="my-2"
+      (click)="openSwitchToBusinessDialog()"
+      *ngIf="
+        !userInfo?.userType?.includes('business') &&
+        userInfo?.loginMethod.toString() === 'SYSTEM'
+      "
+    >
+      <u>{{ 'PROFILE.switch_to_business_member' | translate }}</u>
+    </ion-button>
+    <ion-text
+      *ngIf="
+        !userInfo?.userType?.includes('business') &&
+        userInfo?.loginMethod.toString() !== 'SYSTEM'
+      "
+    >
+      <div class="text-center">
+        {{ 'PROFILE.no_switch_business' | translate }}
+      </div>
+    </ion-text>
+  </form>
+</ion-content>

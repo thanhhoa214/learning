@@ -1,0 +1,10 @@
+<div class="divider" [style.height]="height">
+  <div class="line"></div>
+  <ion-text
+    color="secondary"
+    [style.backgroundColor]="
+      'var(--ion-color-' + (backgroundColor || 'light') + ')'
+    "
+    >{{ 'AUTH.CHOOSE_USER_TYPE.or' | translate }}</ion-text
+  >
+</div>

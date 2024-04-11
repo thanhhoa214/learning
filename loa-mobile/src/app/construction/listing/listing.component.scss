@@ -1,0 +1,46 @@
+loa-mobile-back-bar ion-icon {
+  zoom: 0.8;
+}
+ion-searchbar {
+  text-indent: 0.25rem;
+}
+ion-content {
+  --padding-top: 0;
+
+  ion-list {
+    background-color: var(--ion-color-tertiary);
+    ion-item {
+      min-height: 8.5rem;
+      --inner-padding-top: 1rem;
+      --inner-padding-bottom: 1rem;
+
+      ion-thumbnail {
+        width: 9rem;
+        height: 8rem;
+        --border-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: auto;
+          height: auto;
+          max-height: 100%;
+          max-width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .wrapper-img {
+        width: 9rem;
+        height: 6rem;
+        --border-radius: 0.25rem;
+        overflow: hidden;
+        img {
+          // max-height: 100%;
+          // max-width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

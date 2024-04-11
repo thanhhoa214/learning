@@ -1,0 +1,35 @@
+<loa-mobile-back-bar
+  [title]="'CONSTRUCTION_REVIEW.title' | translate"
+  [backTo]="backTo"
+></loa-mobile-back-bar>
+<ion-content [scrollY]="false">
+  <!-- <div
+    class="p-2 mt-3 rounded-lg w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+  >
+    <img src="assets/icons/sad.svg" class="w-25" style="opacity: 0.5;" />
+    <ion-text color="dark" class="mt-3 w-75 mx-auto text-center">
+      Currently we're not supported
+    </ion-text>
+  </div> -->
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button
+        class="write-tab"
+        tab="write-review"
+        (click)="changePage('/menu/my-construction-review/write-review')"
+      >
+        <ion-label>{{
+          "CONSTRUCTION_REVIEW.title_write_review" | translate
+        }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button
+        class="review-tab"
+        tab="review"
+        (click)="changePage('/menu/my-construction-review/review')"
+      >
+        <ion-label>{{ "CONSTRUCTION_REVIEW.my_review" | translate }}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

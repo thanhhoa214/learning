@@ -1,0 +1,77 @@
+<ion-searchbar
+  [placeholder]="'INTERIOR_SHARE.LISTING.search' | translate"
+  [debounce]="500"
+  class="py-0 mb-2"
+  color="tertiary"
+  searchIcon="loa-search"
+></ion-searchbar>
+<ion-content>
+  <div *ngIf="constructions$ | async as constructions; else loading">
+    <div class="w-100" *ngFor="let construction of constructions.edges">
+      <div class="w-100 py-4 border-bottom">
+        <div class="d-flex flex-row w-100 padding-l-r-16">
+          <div class="image-wrapper-list mr-4 w-35">
+            <img
+              [src]="
+                construction.node.avatar ||
+                'assets/images/construction-company-placeholder.png'
+              "
+              alt="Logo"
+              [class.border]="!construction.node.avatar"
+            />
+          </div>
+          <div class="d-flex flex-column w-65">
+            <h4 class="mb-auto mt-0">
+              <b>{{ construction.node.constructor.companyName }}</b>
+            </h4>
+            <ion-button
+              expand="block"
+              fill="solid"
+              class="pr-1 w-100 write-review"
+              (click)="writeReview(construction.node.id)"
+              *ngIf="construction.node.id != user.id"
+            >
+              <h6 class="my-0">
+                {{ 'CONSTRUCTION_REVIEW.btn_write_review' | translate }}
+              </h6>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <mat-list class="row">
+      <mat-list-item *ngFor="let construction of [1, 2, 3, 4, 5]" class="mb-4">
+        <ngx-skeleton-loader
+          matListAvatar
+          [theme]="{ width: '8rem', height: '8rem' }"
+          class="mr-5"
+        ></ngx-skeleton-loader>
+        <h3 matLine class="ml-4 mt-5">
+          <ngx-skeleton-loader
+            [theme]="{ width: '50%', height: '2rem' }"
+          ></ngx-skeleton-loader>
+        </h3>
+        <p matLine class="ml-4">
+          <ngx-skeleton-loader
+            [theme]="{ width: '70%', height: '1.5rem' }"
+          ></ngx-skeleton-loader>
+        </p>
+        <p matLine class="ml-4">
+          <ngx-skeleton-loader
+            [theme]="{ width: '50%', height: '1.5rem' }"
+          ></ngx-skeleton-loader>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore()">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'CONTENT_PAGE.loading' | translate"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,29 @@
+<button mat-icon-button id="btn-close" routerLink="../login">
+  <mat-icon>close</mat-icon>
+</button>
+<ion-content>
+  <div
+    class="container-fluid h-100 d-flex flex-column justify-content-center text-center"
+  >
+    <p>
+      {{ "AUTH.CHOOSE_USER_TYPE.do_you_want_to_explore" | translate }}
+    </p>
+    <ion-button fill="solid" color="primary" class="mt-1" routerLink="../login"
+      >{{ "AUTH.CHOOSE_USER_TYPE.continue_as_a" | translate }}
+      {{ "AUTH.CHOOSE_USER_TYPE.member" | translate }}
+    </ion-button>
+    <loa-mobile-divider-or height="10vh"></loa-mobile-divider-or>
+    <p>
+      {{ "AUTH.CHOOSE_USER_TYPE.do_you_want_to_buy" | translate }}
+    </p>
+
+    <ion-button
+      fill="solid"
+      color="primary"
+      class="mt-1"
+      routerLink="../login-business"
+      >{{ "AUTH.CHOOSE_USER_TYPE.continue_as_a" | translate }}
+      {{ "AUTH.CHOOSE_USER_TYPE.business_member" | translate }}
+    </ion-button>
+  </div>
+</ion-content>

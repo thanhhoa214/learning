@@ -1,0 +1,9 @@
+mutation RequestDesign($input: DesignInquiryCreateInput!) {
+  designInquiryCreate(input: $input) {
+    errors {
+      code
+      message
+    }
+    status
+  }
+}

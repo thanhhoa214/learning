@@ -1,0 +1,24 @@
+<ng-container *ngIf="userTypes$ | async as userTypes">
+  <ng-container *ngIf="userTypes.includes('business')">
+    <div class="w-100 px-4 py-2 section-header ion-bg-primary" (click)="openDesignPartnerPopup()">
+      <h5 class="my-2">
+        <ion-text color="light"
+          ><b>{{ 'HOME.design_partner_app' | translate }}</b></ion-text
+        >
+      </h5>
+      <ion-icon color="light" name="chevron-forward-outline"></ion-icon>
+    </div>
+    <div
+      class="w-100 px-4 py-2 section-header ion-bg-warning"
+      (click)="openAdminSite()"
+      *ngIf="!userTypes.includes('constructor')"
+    >
+      <h5 class="my-2">
+        <ion-text color="light"
+          ><b>{{ 'HOME.construction_partner_app' | translate }}</b></ion-text
+        >
+      </h5>
+      <ion-icon color="light" name="chevron-forward-outline"></ion-icon>
+    </div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,10 @@
+mutation ShareDesignConstructorMutation($input: ShareDesignCreateInput!) {
+  userShareDesignConstructor(input: $input) {
+    errors {
+      code
+      field
+      message
+    }
+    status
+  }
+}

@@ -1,0 +1,16 @@
+<span
+  class="position-relative truncate text-break ion-text-secondary"
+  #contentWrapper
+>
+  <span #content (click)="!isShowSeeMore && collapse()">
+    <ng-content></ng-content>
+  </span>
+  <ion-text
+    [color]="seeMoreColor"
+    [style.background-color]="'var(--ion-color-' + seeMoreBgColor + ')'"
+    id="see-more"
+    *ngIf="isShowSeeMore"
+    (click)="expand()"
+    >{{ 'DESIGN.DETAIL.COMMENT.see_more' | translate }}</ion-text
+  >
+</span>

@@ -1,0 +1,54 @@
+<ion-toolbar class="row mx-0 bg-white">
+  <div class="px-2 d-flex flex-column justify-content-end align-items-center">
+    <img src="assets/icons/icon.svg" alt="Logo" id="logo-wrapper" class="mx-auto mt-4 mb-3" />
+    <ion-searchbar
+      routerLink="/design/filter"
+      [queryParams]="{ fromHome: true }"
+      [placeholder]="'HOME.search_placeholder' | translate"
+      class="w-100 pb-0 px-1"
+      color="tertiary"
+      searchIcon="loa-search"
+    ></ion-searchbar>
+  </div>
+</ion-toolbar>
+<ion-content class="container-fluid" *ngIf="homeService.homeData$ | async as homeData">
+  <section class="w-100 mb-3" id="banner">
+    <home-banner [banners]="homeData.banners"></home-banner>
+  </section>
+
+  <section class="row mb-3" id="categories">
+    <div class="col-4" *ngFor="let category of categories">
+      <home-category-item [category]="category"></home-category-item>
+    </div>
+  </section>
+
+  <section class="row mb-3" id="interior-designs">
+    <div class="col-12">
+      <home-design [designs]="homeData.designs"></home-design>
+    </div>
+  </section>
+  <section class="row mb-3" id="interior-share">
+    <div class="col-12">
+      <home-interior-share
+        [newShares]="homeData.topicsWithoutImage"
+        [mostPopularShares]="homeData.topicsWithImage"
+      ></home-interior-share>
+    </div>
+  </section>
+
+  <section class="row mb-5" id="life-style">
+    <div class="col-12">
+      <home-life-style [lifeStyles]="homeData.articles"></home-life-style>
+    </div>
+  </section>
+  <section class="row" id="partner">
+    <div class="col-12 px-0">
+      <home-partner></home-partner>
+    </div>
+  </section>
+  <section class="row bg-tertiary">
+    <div class="col-12 py-4 px-5">
+      <home-information></home-information>
+    </div>
+  </section>
+</ion-content>

@@ -1,0 +1,30 @@
+.image-wrapper-list {
+  width: 120px;
+  height: 80px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+.w-65 {
+  width: 65%;
+}
+.w-35 {
+  width: 35%;
+}
+ion-button.write-review {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  --border-radius: 4px;
+  --color: #ffffff;
+  --background: #bbbbbb;
+  height: 32px;
+}
+ion-content {
+  --background: #f6f5f4;
+}
+ion-item {
+  --background: transparent;
+}

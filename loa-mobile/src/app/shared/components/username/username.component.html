@@ -1,0 +1,9 @@
+<span *ngIf="user; else notUser"
+  >{{ (user.firstName || '') + ' ' + (user.lastName || '') }}
+</span>
+<span *ngIf="user && !user.firstName && !user.lastName"
+  >{{ 'MENU.noname' | translate }}
+</span>
+<ng-template #notUser>
+  {{ 'MENU.guest' | translate }}
+</ng-template>

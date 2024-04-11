@@ -1,0 +1,36 @@
+<h2 class="text-center">
+  <ion-text color="secondary"
+    ><b>{{ "DESIGN.DETAIL.ZALO_SHARE.title" | translate }}</b></ion-text
+  >
+</h2>
+<p class="d-flex flex-column justify-content-center text-center mx-auto">
+  <ion-text color="secondary">
+    <small>
+      {{ "DESIGN.DETAIL.ZALO_SHARE.description" | translate }}
+    </small>
+  </ion-text>
+</p>
+
+<div class="img-wrapper rounded-lg overflow-hidden mb-4">
+  <img [src]="input.thumbnailUrl" [alt]="input.title" class="img-cover" />
+</div>
+
+<ion-button
+  fill="outline"
+  color="secondary"
+  class="mt-1"
+  expand="block"
+  (click)="share('message')"
+>
+  {{ "DESIGN.DETAIL.ZALO_SHARE.message" | translate }}
+</ion-button>
+
+<ion-button
+  fill="outline"
+  color="secondary"
+  class="mt-1"
+  expand="block"
+  (click)="share('wall')"
+>
+  {{ "DESIGN.DETAIL.ZALO_SHARE.post_to_wall" | translate }}
+</ion-button>

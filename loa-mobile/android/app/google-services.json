@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "909119824544",
+    "project_id": "loa-mobile-2243b",
+    "storage_bucket": "loa-mobile-2243b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909119824544:android:7069b33f7a7bbba45bdfc5",
+        "android_client_info": {
+          "package_name": "com.abc.platform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909119824544-4ob6vsi1o71ikli9nn3r569259efv124.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abc.platform",
+            "certificate_hash": "f5dd34a245cd9e854d9698badde7d1d0e812b40c"
+          }
+        },
+        {
+          "client_id": "909119824544-kcmajo0an02q4tdl1lrahfmk8tq3hfvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIybmJr0o8vcZrjpE55H9M09P1Vvx-vgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909119824544-kcmajo0an02q4tdl1lrahfmk8tq3hfvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

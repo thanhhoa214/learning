@@ -1,0 +1,13 @@
+.tab-selected {
+  color: #2d53a5 !important;
+  ion-label {
+    font-weight: bold !important;
+  }
+}
+ion-tab-bar {
+  min-height: 4.6rem;
+}
+ion-tab-button {
+  color: var(--ion-color-light);
+  --color-selected: #2d53a5 !important;
+}

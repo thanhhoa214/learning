@@ -1,0 +1,120 @@
+<ng-container *ngIf="!hide">
+  <p *ngIf="questionAnswer.pageInfo.hasPreviousPage" (click)="loadMoreComments()">
+    <ion-text color="secondary">
+      <b>{{ 'DESIGN.DETAIL.COMMENT.view_previous_comment' | translate }}</b>
+    </ion-text>
+  </p>
+  <section
+    class="d-flex flex-column my-2 pb-2 border-bottom"
+    *ngFor="let questionEdge of questionAnswer.edges"
+    #commentSection
+  >
+    <div class="d-flex">
+      <div class="img-wrapper rounded-circle">
+        <img
+          [src]="questionEdge.node.user.avatar || 'assets/images/default-avatar.jpg'"
+          [alt]="questionEdge.node.user.firstName"
+        />
+      </div>
+      <div class="w-100 pl-2 d-flex flex-column">
+        <ion-text color="dark"
+          ><strong> <loa-username [user]="questionEdge.node.user"></loa-username> </strong
+        ></ion-text>
+        <app-rin-truncate-text class="flex-grow-1 my-1">
+          <span class="text-comment" [innerHTML]="questionEdge.node.content"></span>
+        </app-rin-truncate-text>
+        <small>
+          <ion-text color="secondary">{{ questionEdge.node.created | timeago }} </ion-text>
+          <ion-text color="secondary" class="ml-2"
+            ><strong
+              (click)="
+                clickReply({
+                  name: questionEdge.node.user.firstName,
+                  questionId: questionEdge.node.id
+                })
+              "
+              >{{ 'DESIGN.DETAIL.COMMENT.reply' | translate }}</strong
+            ></ion-text
+          >
+          <ion-text color="secondary" class="ml-2">
+            <strong
+              (click)="deleteComment($event, questionEdge.node.id)"
+              *ngIf="questionEdge.node.user.id === me?.id"
+              >{{ 'DESIGN.DETAIL.COMMENT.delete' | translate }}</strong
+            ></ion-text
+          >
+        </small>
+      </div>
+    </div>
+    <p
+      class="ml-3 my-1"
+      *ngIf="questionEdge.node.answer?.pageInfo.hasPreviousPage"
+      (click)="loadMoreReply(questionEdge.node.id)"
+    >
+      <ion-text color="secondary">
+        <b>{{ 'DESIGN.DETAIL.COMMENT.view_more_replies' | translate }}</b>
+      </ion-text>
+    </p>
+    <div class="ml-3 my-1 d-flex" *ngFor="let answerEdge of questionEdge.node.answer?.edges">
+      <div class="img-wrapper rounded-circle">
+        <img
+          [src]="answerEdge.node.user.avatar || 'assets/images/default-avatar.jpg'"
+          [alt]="answerEdge.node.user.firstName"
+        />
+      </div>
+      <div class="w-100 pl-2 d-flex flex-column">
+        <ion-text color="dark">
+          <strong>
+            <loa-username [user]="answerEdge.node.user"></loa-username>
+          </strong>
+        </ion-text>
+        <app-rin-truncate-text class="flex-grow-1 my-1">
+          <span class="text-comment" [innerHTML]="answerEdge.node.content"></span>
+        </app-rin-truncate-text>
+        <small>
+          <ion-text color="secondary">{{ answerEdge.node.created | timeago }} </ion-text>
+          <ion-text color="secondary" class="ml-2"
+            ><strong
+              (click)="
+                clickReply({
+                  questionId: questionEdge.node.id,
+                  name: answerEdge.node.user.firstName
+                })
+              "
+              >{{ 'DESIGN.DETAIL.COMMENT.reply' | translate }}</strong
+            ></ion-text
+          >
+          <ion-text color="secondary" class="ml-2"
+            ><strong
+              (click)="deleteComment($event, answerEdge.node.id)"
+              *ngIf="answerEdge.node.user.id === me?.id"
+              >{{ 'DESIGN.DETAIL.COMMENT.delete' | translate }}</strong
+            ></ion-text
+          >
+        </small>
+      </div>
+    </div>
+  </section>
+  <div class="d-flex flex-column justify-content-end">
+    <div class="d-flex justify-content-between mb-1 small" *ngIf="replyInfo">
+      <ion-text color="secondary"
+        >{{ 'DESIGN.DETAIL.COMMENT.replying_to' | translate }}
+        <b>{{ replyInfo.name }}</b>
+      </ion-text>
+      <ion-text class="text-muted" (click)="resetSelectedQuestion()">{{
+        'DESIGN.DETAIL.COMMENT.cancel' | translate
+      }}</ion-text>
+    </div>
+    <div class="w-100 position-relative px-2 border rounded-lg">
+      <app-rin-ion-textarea
+        class="border-0 w-90"
+        [placeholder]="'DESIGN.DETAIL.COMMENT.placeholder' | translate"
+        (click)="scrollToBottom()"
+        [spellcheck]="false"
+        wrap="soft"
+        rows="1"
+      ></app-rin-ion-textarea>
+      <ion-icon (click)="comment($event)" color="secondary" name="send"></ion-icon>
+    </div>
+  </div>
+</ng-container>

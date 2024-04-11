@@ -1,0 +1,185 @@
+<loa-mobile-back-bar [title]="'INTERIOR_SHARE.title' | translate">
+  <ion-button size="small" routerLink="/home" id="start-button">
+    <ion-icon slot="icon-only" color="secondary" name="loa-home"></ion-icon>
+  </ion-button>
+</loa-mobile-back-bar>
+
+<ion-content class="container-fluid" #mainContainer *ngIf="dataSource">
+  <div
+    class="d-flex flex-row w-100 justify-content-between align-items-center padding-l-r-16 mt-3 mb-3"
+  >
+    <mat-list class="pl-0">
+      <mat-list-item>
+        <img
+          class="mr-3"
+          matListAvatar
+          [src]="dataSource?.user?.avatar || '../assets/images/default-avatar.jpg'"
+          alt="Avatar"
+        />
+        <div class="d-flex flex-column">
+          <!-- <h4 class="name-user" *ngIf="dataSource">{{dataSource.user.firstName}} {{dataSource.user.lastName}}</h4> -->
+          <ion-text color="dark">
+            <h4 class="text-wrap truncate mt-2 mb-0">
+              {{ dataSource?.user?.firstName }}
+              {{ dataSource?.node?.user?.lastName }}
+            </h4>
+          </ion-text>
+          <span class="title-member">
+            {{
+              (dataSource?.user.userType.includes('customer')
+                ? 'INTERIOR_SHARE.LISTING.title_member'
+                : 'INTERIOR_SHARE.LISTING.title_business'
+              ) | translate
+            }}
+          </span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <a
+      type="button"
+      *ngIf="dataUser && dataUser.id != dataSource.user.id"
+      class="bookmark-interior"
+      color="medium"
+      (click)="bookmark($event, dataSource.id)"
+    >
+      <ion-icon
+        [name]="dataSource.followed ? 'bookmarked-life-style' : 'bookmark-life-style'"
+      ></ion-icon>
+    </a>
+
+    <div *ngIf="dataUser && dataUser.id == dataSource.user.id">
+      <a
+        type="button"
+        [matMenuTriggerFor]="menu"
+        class="btn-more-vert"
+        *ngIf="dataUser && dataUser.id == dataSource.user.id"
+      >
+        <img src="assets/images/more_icon.svg" alt="More" />
+      </a>
+      <mat-menu #menu="matMenu">
+        <a
+          [routerLink]="['/interior-share/' + dataSource.id + '/update']"
+          type="button"
+          mat-menu-item
+          class="btn-update-post text-center"
+        >
+          <span>{{ 'INTERIOR_SHARE.DETAIL.btn_update' | translate }}</span>
+        </a>
+        <a
+          class="btn-delete-post text-center"
+          (click)="deleteInteriorShare($event, dataSource.id)"
+          type="button"
+          mat-menu-item
+        >
+          <span>{{ 'INTERIOR_SHARE.DETAIL.btn_delete' | translate }}</span>
+        </a>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="position-relative">
+    <!-- One image -->
+    <div
+      class="img-wrapper overflow-hidden w-100 mb-2"
+      *ngFor="let item of dataSource.images; index as indexImage"
+    >
+      <img [src]="item.image" />
+    </div>
+
+    <div class="row mb-3 padding-l-r-16">
+      <div class="col-12 d-flex flex-column padding-l-r-16">
+        <ion-text color="secondary">
+          <h5
+            class="text-style-wrap mt-2 mb-0"
+            [innerHTML]="setUrlInteriorShare(dataSource?.content)"
+          ></h5>
+        </ion-text>
+      </div>
+    </div>
+    <div class="row mb-4 font-weight-light padding-l-r-16">
+      <div class="col-5 d-flex flex-row padding-l-r-16">
+        <span class="mr-3"> {{ dataSource.created | date: 'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row padding-l-r-16 mb-3">
+    <div class="w-100 border-share"></div>
+  </div>
+  <div
+    class="d-flex flex-row mt-1 mb-1 padding-l-r-16 justify-content-between"
+    id="detail-interior"
+  >
+    <div class="like-icon d-flex flex-row align-items-center pl-2">
+      <ion-icon
+        class="mr-2"
+        [color]="dataSource.liked ? 'primary' : 'secondary'"
+        [name]="dataSource.liked ? 'loa-like' : 'loa-like-outline'"
+        (click)="Like($event, dataSource.id)"
+      ></ion-icon>
+      <h6 class="my-auto">
+        {{ dataSource.numberOfLikes }}
+        {{ 'INTERIOR_SHARE.DETAIL.number_like' | translate }}
+      </h6>
+      <!--
+      <h5 class="ml-2 mr-2 number-like my-auto">
+         {{ "INTERIOR_SHARE.DETAIL.people_like" | translate }} 
+      </h5>
+      -->
+    </div>
+
+    <a type="button" (click)="share($event, 'system')" class="d-flex flex-row align-items-center">
+      <a class="mr-2 share-icon">
+        <ion-icon color="dark" name="share-social"></ion-icon>
+      </a>
+      <ion-text color="secondary">
+        <h6 class="mr-2 my-auto">
+          {{ 'INTERIOR_SHARE.DETAIL.share' | translate }}
+        </h6>
+      </ion-text>
+    </a>
+
+    <div class="d-flex flex-row align-items-center">
+      <a type="button" (click)="share($event, 'fb')" class="share-icon">
+        <ion-icon color="dark" name="loa-facebook"></ion-icon>
+      </a>
+    </div>
+
+    <div class="d-flex flex-row align-items-center pr-3">
+      <a type="button" (click)="share($event, 'zalo')" class="share-icon">
+        <ion-icon color="dark" name="loa-zalo"></ion-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row padding-l-r-16 mt-3">
+    <div class="w-100 border-share"></div>
+  </div>
+  <div class="row mt-4 padding-l-r-16">
+    <div class="col-12 padding-l-r-16 d-flex justify-content-between align-items-center">
+      <h4>
+        {{ 'DESIGN.DETAIL.COMMENT.comment' | translate }}
+      </h4>
+      <b
+        class="d-flex justify-content-between align-items-center"
+        (click)="isShowComment = !isShowComment"
+      >
+        <ng-container *ngIf="!isShowComment"
+          >{{ 'DESIGN.DETAIL.COMMENT.show_comments' | translate }}
+          <mat-icon>expand_more</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="isShowComment"
+          >{{ 'DESIGN.DETAIL.COMMENT.hide_comments' | translate }}
+          <mat-icon>expand_less</mat-icon>
+        </ng-container>
+      </b>
+    </div>
+    <div class="col-12" *ngIf="isShowComment">
+      <loa-mobile-comment
+        [parentElement]="mainContainer"
+        [questionAnswer]="dataSource.comments"
+        [id]="dataSource.id"
+      ></loa-mobile-comment>
+    </div>
+  </div>
+</ion-content>

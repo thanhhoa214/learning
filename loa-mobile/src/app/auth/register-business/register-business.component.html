@@ -1,0 +1,200 @@
+<loa-mobile-back-bar
+  [title]="'AUTH.REGISTER_BUSINESS.sign_up_with_email' | translate"
+></loa-mobile-back-bar>
+<ion-content class="container-fluid">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    <div class="d-flex flex-column justify-content-between text-center">
+      <div class="flex-center flex-column text-center rounded-lg px-2">
+        <h2 class="mt-0 mb-4">
+          <ion-text color="secondary">
+            <b>{{ 'AUTH.REGISTER_BUSINESS.register' | translate }}</b>
+          </ion-text>
+        </h2>
+        <mat-radio-group
+          class="mb-4 d-flex justify-content-between"
+          formControlName="businessType"
+        >
+          <mat-radio-button [value]="businessTypes[0]">{{
+            'AUTH.REGISTER_BUSINESS.company' | translate
+          }}</mat-radio-button>
+          <mat-radio-button [value]="businessTypes[1]">{{
+            'AUTH.REGISTER_BUSINESS.individual' | translate
+          }}</mat-radio-button>
+          <mat-radio-button [value]="businessTypes[2]">{{
+            'AUTH.REGISTER_BUSINESS.freelancer' | translate
+          }}</mat-radio-button>
+        </mat-radio-group>
+
+        <!-- Personal Information -->
+        <!-- <h6 class="text-left">
+          <b>{{ 'AUTH.REGISTER_BUSINESS.personal_information' | translate }}</b>
+        </h6> -->
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.first_name' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            (keyup)="focusInputByFormControlName($event, 'lastName')"
+          />
+          <mat-error *ngIf="formGroup.get('firstName').hasError">
+            {{ getErrorMessage('firstName') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.last_name' | translate }} *</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="lastName"
+            (keyup)="focusInputByFormControlName($event, 'email')"
+          />
+          <mat-error *ngIf="formGroup.get('lastName').hasError">
+            {{ getErrorMessage('lastName') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.email' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            autocomplete="email"
+            class="text-lowercase"
+            (keyup)="focusInputByFormControlName($event, 'password')"
+          />
+          <mat-error *ngIf="formGroup.get('email').hasError">
+            {{ getErrorMessage('email') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field
+          id="phone"
+          *ngIf="formGroup.get('businessType').value !== businessTypes[2]"
+        >
+          <mat-label>{{ 'AUTH.REGISTER.phone' | translate }} </mat-label>
+          <input
+            matInput
+            formControlName="phone"
+            (keyup)="focusInputByFormControlName($event, 'companyName')"
+          />
+          <mat-error *ngIf="formGroup.get('phone').hasError">
+            {{ 'MESSAGE.AUTH.AUTH_16' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Company Information -->
+        <ng-container
+          *ngIf="formGroup.get('businessType').value !== businessTypes[2]"
+        >
+          <!-- <h6 class="text-left">
+            <b>{{
+              'AUTH.REGISTER_BUSINESS.company_information' | translate
+            }}</b>
+          </h6> -->
+          <mat-form-field id="company-name">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.company_name' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyName"
+              (keyup)="focusInputByFormControlName($event, 'companyPhone')"
+            />
+          </mat-form-field>
+          <mat-form-field id="company-phone">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.company_phone' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyPhone"
+              (keyup)="
+                focusInputByFormControlName($event, 'companyBusinessRegis')
+              "
+            />
+            <mat-error *ngIf="formGroup.get('companyPhone').hasError">
+              {{ 'MESSAGE.AUTH.AUTH_16' | translate }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field id="company-business-registration-no">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.business_registration_no' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyBusinessRegis"
+              (keyup)="focusInputByFormControlName($event, 'companyTaxCode')"
+            />
+          </mat-form-field>
+          <mat-form-field id="tax-code" class="mb-2">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.tax_code' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyTaxCode"
+              (keyup)="onSubmit()"
+            />
+            <mat-hint>{{
+              'AUTH.REGISTER_BUSINESS.these_infor' | translate
+            }}</mat-hint>
+          </mat-form-field>
+        </ng-container>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.password' | translate }} *</mat-label>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            matInput
+            formControlName="password"
+            (keyup)="focusInputByFormControlName($event, 'confirmPassword')"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+          <mat-error *ngIf="formGroup.get('password').hasError">
+            {{ getErrorMessage('password') | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label
+            >{{ 'AUTH.REGISTER.confirm_password' | translate }} *</mat-label
+          >
+          <input
+            [type]="confirmHide ? 'password' : 'text'"
+            matInput
+            formControlName="confirmPassword"
+            (keyup)="focusInputByFormControlName($event, 'phone')"
+          />
+          <mat-icon matSuffix (click)="confirmHide = !confirmHide">{{
+            confirmHide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+          <mat-error *ngIf="formGroup.get('confirmPassword').hasError">
+            {{ getErrorMessage('confirmPassword') | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="mt-3 mb-4">
+          <div>{{ 'AUTH.REGISTER.by_creating_an_account' | translate }}</div>
+          <div>
+            <b>{{ 'AUTH.REGISTER.terms_of_service' | translate }}</b>
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+          <ion-button
+            fill="solid"
+            color="secondary"
+            type="submit"
+            [disabled]="formGroup.invalid"
+            class="mb-3"
+          >
+            {{ 'AUTH.REGISTER_BUSINESS.sign_up_with_email' | translate }}
+          </ion-button>
+          <div class="small">
+            {{ 'AUTH.REGISTER.have_account_already' | translate }}
+            <b routerLink="../login-business">
+              {{ 'AUTH.REGISTER.login_here' | translate }}
+            </b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form></ion-content
+>

@@ -1,0 +1,26 @@
+query DesignCommentReplyMore($id: String!, $before: String) {
+  designQA(id: $id) {
+    answer(before: $before) {
+      totalCount
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        node {
+          id
+          comment
+          created
+          user {
+            id
+            avatar
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+  }
+}

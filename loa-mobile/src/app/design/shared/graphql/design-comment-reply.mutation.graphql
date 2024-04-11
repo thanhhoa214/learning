@@ -1,0 +1,5 @@
+mutation ReplyCommentDesign($input: AnswerDesignInput!) {
+  designAnswer(input: $input) {
+    status
+  }
+}

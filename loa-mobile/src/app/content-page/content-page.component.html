@@ -1,0 +1,23 @@
+<ng-container *ngIf="id && contentPage$ | async as contentPage">
+  <loa-mobile-back-bar
+    [title]="contentPage.name"
+    *ngIf="isShowHeader"
+  ></loa-mobile-back-bar>
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button (click)="isShowHeader = !isShowHeader">
+      <ion-icon name="expand-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-content
+    class="container-fluid px-0"
+    [class.mt-0]="!isShowHeader"
+    [style.background-image]="contentPage.file"
+  >
+    <img
+      [src]="contentPage.file"
+      [alt]="contentPage.description"
+      class="d-block w-100 h-auto"
+      #myImg
+    />
+  </ion-content>
+</ng-container>

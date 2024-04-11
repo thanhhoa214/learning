@@ -1,0 +1,32 @@
+{
+	"appId": "com.abc.platform",
+	"appName": "Interior Design",
+	"version": "0.0.1",
+	"author": "Thanh Hoa Nguyen",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "www",
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 3000,
+			"launchAutoHide": false,
+			"backgroundColor": "#ffffffff",
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP",
+			"splashFullScreen": true,
+			"splashImmersive": true
+		}
+	},
+	"server": {
+		"androidScheme": "http",
+		"allowNavigation": [
+			"http://*/*",
+			"https://*/*",
+			"tel:*",
+			"sms:*",
+			"mailto:*",
+			"geo:*"
+		]
+	},
+	"cordova": {}
+}

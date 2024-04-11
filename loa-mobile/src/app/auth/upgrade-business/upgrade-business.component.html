@@ -1,0 +1,142 @@
+<loa-mobile-back-bar
+  [title]="'AUTH.UPGRADE_BUSINESS.title_upgrade' | translate"
+></loa-mobile-back-bar>
+<ion-content class="container-fluid">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroupUpgrade">
+    <div class="d-flex flex-column justify-content-between text-center">
+      <div class="flex-center flex-column text-center rounded-lg px-2">
+        <h2 class="mt-0 mb-4">
+          <ion-text color="secondary">
+            <b>{{ 'AUTH.REGISTER_BUSINESS.register' | translate }}</b>
+          </ion-text>
+        </h2>
+        <mat-radio-group
+          class="mb-4 d-flex justify-content-between"
+          formControlName="businessType"
+        >
+          <mat-radio-button [value]="businessTypes[0]">{{
+            'AUTH.REGISTER_BUSINESS.company' | translate
+          }}</mat-radio-button>
+          <mat-radio-button [value]="businessTypes[1]">{{
+            'AUTH.REGISTER_BUSINESS.individual' | translate
+          }}</mat-radio-button>
+          <mat-radio-button [value]="businessTypes[2]">{{
+            'AUTH.REGISTER_BUSINESS.freelancer' | translate
+          }}</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.first_name' | translate }}</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            (keyup)="focusInputByFormControlName($event, 'lastName')"
+            required
+          />
+          <mat-error *ngIf="formGroupUpgrade.hasError('required', 'firstName')"
+            >{{ 'AUTH.UPGRADE_BUSINESS.first_name' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.last_name' | translate }}</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="lastName"
+            (keyup)="focusInputByFormControlName($event, 'phone')"
+            required
+          />
+          <mat-error *ngIf="formGroupUpgrade.hasError('required', 'lastName')"
+            >{{ 'AUTH.UPGRADE_BUSINESS.last_name' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'AUTH.REGISTER.email' | translate }} *</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            autocomplete="email"
+            class="text-lowercase"
+            readonly
+          />
+        </mat-form-field>
+        <mat-form-field
+          id="phone"
+        >
+          <mat-label>{{ 'AUTH.REGISTER.phone' | translate }} </mat-label>
+          <input
+            matInput
+            formControlName="phone"
+            (keyup)="focusInputByFormControlName($event, 'companyName')"
+          />
+        </mat-form-field>
+
+        <!-- Company Information -->
+        <ng-container
+          *ngIf="formGroupUpgrade.get('businessType').value !== businessTypes[2]"
+        >
+          <mat-form-field id="company-name">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.company_name' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyName"
+              (keyup)="focusInputByFormControlName($event, 'companyPhone')"
+            />
+          </mat-form-field>
+          <mat-form-field id="company-phone">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.company_phone' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyPhone"
+              (keyup)="
+                focusInputByFormControlName($event, 'registerationNumber')
+              "
+            />
+          </mat-form-field>
+          <mat-form-field id="company-business-registration-no">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.business_registration_no' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="registerationNumber"
+              (keyup)="focusInputByFormControlName($event, 'companyTaxCode')"
+            />
+          </mat-form-field>
+          <mat-form-field id="tax-code" class="mb-2">
+            <mat-label>{{
+              'AUTH.REGISTER_BUSINESS.tax_code' | translate
+            }}</mat-label>
+            <input
+              matInput
+              formControlName="companyTaxCode"
+            />
+            <mat-hint>{{
+              'AUTH.REGISTER_BUSINESS.these_infor' | translate
+            }}</mat-hint>
+          </mat-form-field>
+        </ng-container>
+        <div class="mt-3 mb-4">
+          <div>{{ 'AUTH.REGISTER.by_creating_an_account' | translate }}</div>
+          <div>
+            <b>{{ 'AUTH.REGISTER.terms_of_service' | translate }}</b>
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+          <ion-button
+            fill="solid"
+            color="secondary"
+            type="submit"
+            [disabled]="formGroupUpgrade.invalid"
+            class="mb-3"
+          >
+          {{ 'AUTH.UPGRADE_BUSINESS.btn_upgrade' | translate }}
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </form></ion-content
+>

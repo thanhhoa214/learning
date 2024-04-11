@@ -1,0 +1,134 @@
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+.padding-l-r-16 {
+  padding: 0px 16px;
+}
+.bg-first-row {
+  background-color: #f6f5f4;
+}
+.image-wrapper {
+  width: 90px;
+  height: 60px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+.image-wrapper-list {
+  width: 120px;
+  height: 80px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+.view-profile-icon mat-icon {
+  zoom: 0.7;
+}
+.star-icon ion-icon {
+  zoom: 2.5;
+}
+:host ::ng-deep ion-input input {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  height: 40px !important;
+}
+
+ion-item {
+  --padding-start: 0 !important;
+  --inner-padding-end: 0px;
+}
+ion-input {
+  background-color: #f6f5f4;
+  font-size: 13px;
+  border: 1px solid #dedede;
+  border-radius: 0.25rem !important;
+}
+ion-label {
+  font-size: 14px;
+  font-weight: 500;
+  --color: #535252 !important;
+}
+ion-select {
+  border: 1px solid #dedede !important;
+  padding-left: 20px !important;
+  background-color: #f6f5f4;
+  font-size: 13px;
+  border-radius: 0.25rem;
+  height: 40px !important;
+}
+ion-textarea {
+  border: 1px solid #dedede;
+  padding-left: 20px !important;
+  background-color: #f6f5f4;
+  padding-right: 20px !important;
+  font-size: 13px;
+}
+.img-wrapper {
+  width: 5rem;
+  height: 5rem;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+
+.btn-select-file {
+  border: 1px solid #8d8d8d;
+  border-radius: 0.25rem;
+  height: 5rem;
+}
+
+.position-btn-delete {
+  position: absolute;
+  top: 0rem;
+  right: 1.25rem;
+  width: 24px !important;
+  height: 24px !important;
+  line-height: 24px !important;
+}
+.w-65 {
+  width: 65%;
+}
+.w-35 {
+  width: 35%;
+}
+.w-37-5 {
+  width: 37.5%;
+}
+ion-button.write-review {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  --border-radius: 0;
+}
+input.cost-to {
+  margin-top: 31px !important;
+}
+ion-text.error-lbl {
+  margin: -6px 0px 8px 0px;
+  font-size: 11px;
+}
+ion-text.error {
+  font-size: 11px;
+}
+
+input.custom-input {
+  background-color: #f6f5f4;
+  font-size: 13px;
+  border: 1px solid #dedede;
+  border-radius: 0.25rem !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  height: 40px !important;
+}
+ion-item {
+  --background-activated: transparent;
+}

@@ -1,0 +1,22 @@
+<section
+  class="d-flex flex-column justify-content-center align-items-center pt-5 pb-4"
+>
+  <ng-container *ngIf="platform === 'android'">
+    <img src="assets/images/my-files.webp" alt="" class="w-50 mb-2" />
+    <ion-text color="secondary" class="mb-1">Open application</ion-text>
+    <ion-badge color="secondary" class="py-2 px-3">My Files</ion-badge>
+    in your phone
+    <ion-text color="secondary"
+      >Under <b>Internal Storage > Interior Design</b> folder</ion-text
+    >
+  </ng-container>
+  <ng-container *ngIf="platform === 'ios'">
+    <img src="assets/images/files.png" alt="" class="w-50 mb-2" />
+    <ion-text color="secondary" class="mb-1">Open application</ion-text>
+    <ion-badge color="secondary" class="py-2 px-3">Files</ion-badge>
+    in your iPhone
+    <ion-text color="secondary"
+      >Under <b>Locations > Interior Design</b> folder</ion-text
+    >
+  </ng-container>
+</section>

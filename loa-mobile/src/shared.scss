@@ -1,0 +1,257 @@
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Avo',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+@include mat-core($custom-typography);
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand/static/Quicksand-Regular.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand/static/Quicksand-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand/static/Quicksand-Light.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand/static/Quicksand-Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand/static/Quicksand-SemiBold.ttf');
+  font-weight: 600;
+}
+html {
+  height: 100vh;
+  font-size: 13px;
+  // max-width: 425px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Quicksand';
+  background-color: white !important;
+}
+* {
+  font-family: 'Quicksand';
+}
+
+.remove-border-bottom .mat-tab-header {
+  border-bottom: none;
+}
+
+ion-button {
+  font-weight: bold;
+  font-size: 15px;
+}
+h2,
+.h2 {
+  font-size: 20px !important;
+}
+h3,
+.h3 {
+  font-size: 18px !important;
+}
+h4,
+.h4 {
+  font-size: 16px !important;
+}
+h5,
+.h5 {
+  font-size: 15px !important;
+}
+h6,
+.h6 {
+  font-size: 14px !important;
+}
+
+.font-size-normal {
+  font-size: var(--ion-font-size) !important;
+}
+small,
+.small {
+  font-size: 12px;
+}
+.super-small {
+  font-size: 10px !important;
+}
+// .container {
+//   overflow-x: hidden;
+//   overflow-y: scroll;
+//   height: 100%;
+//   min-height: 90%;
+//   padding-bottom: calc(8rem + env(safe-area-inset-bottom));
+// }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.events-none {
+  pointer-events: none;
+}
+
+.flex-center-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.flex-center {
+  display: flex !important;
+  justify-content: center;
+}
+.flex-gap {
+  gap: 0.5rem;
+}
+
+.mat-form-field {
+  line-height: 1.1rem !important;
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.mat-stroked-button {
+  font-size: 0.8rem !important;
+}
+
+.font-weight-lighter {
+  font-weight: lighter;
+}
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.smaller {
+  font-size: 0.95rem;
+}
+.mat-form-field-infix {
+  line-height: 1.35rem !important;
+}
+
+ion-toolbar {
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+}
+
+ion-footer ion-toolbar {
+  margin-top: 0;
+}
+.tooltip-custom {
+  --width: 80%;
+}
+ion-searchbar {
+  --background: var(--ion-color-light);
+
+  input {
+    font-size: 13px !important;
+  }
+}
+.keyboardWillShow .hide-on-keyboard-open {
+  display: none;
+}
+.cdk-overlay-pane {
+  max-width: 92% !important;
+  .mat-dialog-container {
+    padding: 16px;
+  }
+}
+
+.checkbox {
+  position: relative !important;
+
+  ion-checkbox {
+    width: 18px;
+    height: 18px;
+    --border-color: #c7c4c2;
+    --border-color-checked: var(--ion-color-secondary);
+    --border-radius: 2px;
+    --border-width: 1px;
+    --background-checked: var(--ion-color-secondary);
+    --checkmark-color: transparent;
+  }
+
+  ion-icon[name='loa-check'],
+  ion-icon[name='pause'] {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 100;
+    pointer-events: none;
+  }
+}
+
+// https://github.com/ionic-team/ionic-framework/issues/16852
+ion-modal.auto-height {
+  &.bottom {
+    align-items: flex-end;
+  }
+
+  --height: auto;
+
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: content;
+
+    .inner-content {
+      max-height: 80vh;
+      overflow: auto;
+      padding: 10px;
+    }
+  }
+}
+.basic-modal {
+  --width: 90%;
+  --height: 25rem !important;
+  --border-radius: 6px;
+}
+.downloading {
+  --width: 20rem;
+}

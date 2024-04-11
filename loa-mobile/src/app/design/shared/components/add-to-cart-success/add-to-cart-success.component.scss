@@ -1,0 +1,26 @@
+ion-icon[name="checkmark-circle-outline"] {
+  zoom: 1.5;
+}
+.zoom-2 {
+  zoom: 2;
+}
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+
+  ion-thumbnail {
+    width: 8.5rem;
+    min-width: 8.5rem;
+    height: 5.4rem;
+    --border-radius: 0.25rem;
+    overflow: hidden;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.font-size-normal {
+  font-size: var(--ion-font-size);
+}

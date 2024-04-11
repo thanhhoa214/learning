@@ -1,0 +1,152 @@
+<ion-toolbar>
+  <ion-title color="secondary"> {{ 'CORE.my_page' | translate }}</ion-title>
+</ion-toolbar>
+
+<ion-content class="container-fluid pt-4">
+  <div class="row pb-2 align-items-center" (click)="goTo('auth/profile')">
+    <div class="avatar mr-2">
+      <img [src]="user?.avatar || 'assets/images/default-avatar.jpg'" />
+    </div>
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-row">
+        <ion-text color="dark">
+          <b>
+            <loa-username [user]="user"> </loa-username>
+          </b>
+        </ion-text>
+        <ion-badge color="primary" class="ml-2"
+          ><small>{{
+            (user?.userType?.includes('business')
+              ? 'INTERIOR_SHARE.LISTING.title_business'
+              : 'INTERIOR_SHARE.LISTING.title_member'
+            ) | translate
+          }}</small></ion-badge
+        >
+      </div>
+      <ion-text color="secondary">
+        <small class="text-lowercase">{{ user?.email }}</small>
+      </ion-text>
+    </div>
+  </div>
+
+  <mat-divider *ngIf="user" class="mt-1 mb-1 h-divider"></mat-divider>
+
+  <ng-container *ngIf="user">
+    <div
+      *ngIf="user.userType.includes('constructor')"
+      class="row"
+      (click)="goTo('/menu/construction-management')"
+    >
+      <div class="col pt-3 pb-3 pr-0">
+        <div class="d-flex align-items-center">
+          <img
+            class="w-h-icon mr-3"
+            src="/assets/images/Icon-C.CManagment.png"
+          />
+          <ion-text color="secondary" class="pl-2 title-menu">{{
+            'MENU.construction_management' | translate
+          }}</ion-text>
+        </div>
+      </div>
+
+      <div class="col-2 d-flex align-items-center justify-content-end">
+        <ion-icon color="secondary" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+    <div *ngFor="let item of menu" class="row" (click)="goTo(item.link)">
+      <div class="col pt-3 pb-3 pr-0">
+        <div class="d-flex align-items-center">
+          <!-- <ion-icon color="dark" [name]="item.icon"></ion-icon> -->
+          <img class="w-h-icon mr-3" [src]="item.icon" />
+          <ion-text color="secondary" class="pl-2 title-menu">{{
+            'MENU.' + item.name | translate
+          }}</ion-text>
+        </div>
+      </div>
+
+      <div class="col-2 d-flex align-items-center justify-content-end">
+        <ion-icon color="secondary" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="d-flex justify-content-between align-items-center py-3">
+    <div class="d-flex align-items-center w-75">
+      <!-- <ion-icon color="dark" name="language-outline"></ion-icon> -->
+      <img class="w-h-icon mr-3" src="../../assets/images/Icon-Language.png" />
+      <ion-text color="secondary" class="pl-2 title-menu"
+        >{{ 'MENU.change_language' | translate }}
+      </ion-text>
+    </div>
+    <mat-select [formControl]="languageSelect" class="text-center w-25">
+      <mat-option class="text-center" value="en">English</mat-option>
+      <mat-option class="text-center" value="vi">Tiếng Việt</mat-option>
+      <mat-option class="text-center" value="ko">한국어</mat-option>
+    </mat-select>
+  </div>
+
+  <mat-divider *ngIf="user" class="mt-1 mb-1"></mat-divider>
+  <!-- My profile -->
+  <ng-container *ngIf="user">
+    <div *ngFor="let item of profile" class="row" (click)="goTo(item.link)">
+      <div class="col pt-3 pb-3">
+        <div class="d-flex align-items-center">
+          <!-- <ion-icon color="dark" [name]="item.icon"></ion-icon> -->
+          <img class="w-h-icon mr-3" [src]="item.icon" />
+          <ion-text color="secondary" class="pl-2 title-menu">{{
+            'MENU.' + item.name | translate
+          }}</ion-text>
+        </div>
+      </div>
+
+      <div class="col-2 d-flex align-items-center justify-content-end">
+        <ion-icon color="secondary" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <mat-divider *ngIf="user" class="mt-1 mb-1"></mat-divider>
+
+  <!-- FAQ -->
+  <ng-container *ngIf="user">
+    <div *ngFor="let item of contact" class="row" (click)="goTo(item.link)">
+      <div class="col pt-3 pb-3">
+        <div class="d-flex align-items-center">
+          <!-- <ion-icon color="dark" [name]="item.icon"></ion-icon> -->
+          <img class="w-h-icon mr-3" [src]="item.icon" />
+          <ion-text color="secondary" class="pl-2 title-menu">{{
+            item.name | translate
+          }}</ion-text>
+        </div>
+      </div>
+
+      <div class="col-2 d-flex align-items-center justify-content-end">
+        <ion-icon color="secondary" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Logout -->
+  <div (click)="logout()" class="row" *ngIf="user">
+    <div class="col pt-3 pb-3">
+      <div class="d-flex align-items-center">
+        <!-- <ion-icon color="dark" name="log-out-outline"></ion-icon> -->
+        <img class="w-h-icon mr-3" src="../../assets/images/Icon-Logout.png" />
+        <ion-text color="secondary" class="pl-2 title-menu">{{
+          'MENU.logout' | translate
+        }}</ion-text>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="d-flex justify-content-between " *ngIf="!user">
+    <div class="d-flex align-items-center" (click)="login()">
+      <ion-icon color="dark" name="finger-print-outline"></ion-icon>
+      <ion-text color="secondary" class="pl-2">{{
+        'MENU.login' | translate
+      }}</ion-text>
+    </div>
+  </div> -->
+  <div class="space"></div>
+
+  <mat-divider *ngIf="user" class="mt-1 h-divider"></mat-divider>
+</ion-content>

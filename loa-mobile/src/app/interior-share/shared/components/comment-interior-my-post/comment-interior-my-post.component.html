@@ -1,0 +1,138 @@
+<ng-container *ngIf="!hide">
+  <p
+    *ngIf="questionAnswer.pageInfo.hasPreviousPage"
+    (click)="loadMoreComments()"
+  >
+    <b>{{ 'DESIGN.DETAIL.COMMENT.view_previous_comment' | translate }}</b>
+  </p>
+  <section
+    class="d-flex flex-column my-2 pb-2 border-bottom"
+    *ngFor="let questionEdge of questionAnswer.edges; index as indexParent"
+    #commentSection
+  >
+    <div class="d-flex">
+      <div class="img-wrapper rounded-circle mr-2">
+        <img
+          [src]="
+            questionEdge.node.user.avatar || 'assets/images/default-avatar.jpg'
+          "
+          [alt]="questionEdge.node.user.firstName"
+        />
+      </div>
+      <div class="w-100 d-flex flex-column">
+        <strong
+          ><loa-username [user]="questionEdge.node.user"></loa-username
+        ></strong>
+        <span class="flex-grow-1 truncate">{{
+          questionEdge.node.content
+        }}</span>
+        <small>
+          <span class="text-secondary"
+            >{{ questionEdge.node.created | timeago }}
+          </span>
+          <strong
+            class="ml-2 text-secondary"
+            (click)="
+              clickReply({
+                name: questionEdge.node.user.firstName,
+                questionId: questionEdge.node.id
+              })
+            "
+            >{{ 'DESIGN.DETAIL.COMMENT.reply' | translate }}</strong
+          >
+          <strong
+            class="ml-2 text-muted"
+            (click)="deleteComment($event, questionEdge.node.id)"
+            *ngIf="questionEdge.node.user.id === me?.id"
+            >{{ 'DESIGN.DETAIL.COMMENT.delete' | translate }}</strong
+          >
+        </small>
+      </div>
+    </div>
+    <p
+      class="ml-3 my-1"
+      *ngIf="questionEdge.node.comments.pageInfo.hasPreviousPage"
+      (click)="
+        loadMoreReply(questionEdge.node.id, questionEdge.node.comments.pageInfo)
+      "
+    >
+      <b>{{ 'DESIGN.DETAIL.COMMENT.view_more_replies' | translate }}</b>
+    </p>
+    <div
+      class="ml-3 my-1 d-flex"
+      *ngFor="let answerEdge of questionEdge.node.comments.edges"
+    >
+      <div class="img-wrapper rounded-circle mr-2">
+        <img
+          *ngIf="answerEdge.node.user"
+          [src]="
+            answerEdge.node.user.avatar || 'assets/images/default-avatar.jpg'
+          "
+          [alt]="answerEdge.node.user.firstName"
+        />
+        <img
+          *ngIf="!answerEdge.node.user"
+          [src]="'assets/images/default-avatar.jpg'"
+          alt="Data test"
+        />
+      </div>
+      <div class="w-100 d-flex flex-column">
+        <strong
+          ><loa-username [user]="answerEdge.node.user"></loa-username
+        ></strong>
+        <span class="flex-grow-1 truncate">{{ answerEdge.node.content }}</span>
+        <small>
+          <span class="text-secondary"
+            >{{ answerEdge.node.created | timeago }}
+          </span>
+          <strong
+            class="ml-2 text-secondary"
+            (click)="
+              clickReply({
+                questionId: questionEdge.node.id,
+                name:
+                  answerEdge.node.user.firstName + answerEdge.node.user.lastName
+              })
+            "
+            >{{ 'DESIGN.DETAIL.COMMENT.reply' | translate }}</strong
+          >
+          <strong
+            class="ml-2 text-muted"
+            (click)="deleteComment($event, answerEdge.node.id)"
+            *ngIf="answerEdge.node.user.id === me?.id"
+            >{{ 'DESIGN.DETAIL.COMMENT.delete' | translate }}</strong
+          >
+        </small>
+      </div>
+    </div>
+  </section>
+  <div
+    class="d-flex flex-column justify-content-end"
+    [class.fixed-bottom]="isKeyboardShowing"
+  >
+    <div class="d-flex justify-content-between mb-1" *ngIf="replyInfo">
+      <small
+        >{{ 'DESIGN.DETAIL.COMMENT.replying_to' | translate }}
+        <b>{{ replyInfo.name }}</b></small
+      >
+      <small class="text-muted" (click)="resetSelectedQuestion()">{{
+        'DESIGN.DETAIL.COMMENT.cancel' | translate
+      }}</small>
+    </div>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        [formControl]="commentInput"
+        [placeholder]="'DESIGN.DETAIL.COMMENT.placeholder' | translate"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="comment($event, commentInput.value)"
+        class="mt-1"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</ng-container>

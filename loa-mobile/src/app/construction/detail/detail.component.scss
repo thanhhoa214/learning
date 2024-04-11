@@ -1,0 +1,130 @@
+loa-mobile-back-bar ion-icon {
+  zoom: 0.8;
+}
+ion-list {
+  background-color: var(--ion-color-tertiary);
+  ion-item {
+    --padding-start: 0;
+
+    ion-thumbnail {
+      width: 8rem;
+      height: 8rem;
+      padding-bottom: 0.5rem;
+      --border-radius: 0.25rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+    ion-button {
+      font-size: 1rem;
+      font-weight: normal;
+    }
+  }
+}
+#write-a-review {
+  --inner-padding-end: 0;
+
+  ion-button {
+    --padding-top: 1.6rem;
+    --padding-bottom: 1.6rem;
+  }
+}
+.letter-spacing {
+  letter-spacing: 1px;
+}
+#portfolio {
+  .img-wrapper {
+    height: 9.5rem;
+    img {
+      pointer-events: none;
+    }
+  }
+}
+.mw-25 {
+  min-width: 25%;
+}
+.w-26 {
+  min-width: 6.6rem;
+}
+.mw-49 {
+  min-width: 49%;
+}
+.image-wrapper {
+  width: 90px;
+  height: 60px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+}
+.wrapper-image {
+  width: 150px;
+  height: 108px;
+  div {
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.25rem;
+  }
+}
+ion-icon.star-icon {
+  zoom: 1.38;
+}
+.custom-divider {
+  border-top-width: 0.5px !important;
+  border-top-color: #c7c4c2 !important;
+}
+.title-12 {
+  font-size: 12px !important;
+}
+.title-13 {
+  font-size: 13px !important;
+  font-weight: 400;
+}
+.w-43 {
+  width: 43%;
+}
+.w-57 {
+  width: 57%;
+}
+.custom-divider-border {
+  border-top-color: #535252 !important;
+}
+.text-pre-wrap {
+  white-space: pre-wrap;
+}
+::ng-deep .mat-menu-content:not(:empty) {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+.overflow-scroll-x {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+}
+.padding-l-r-16 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.margin-left-right {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.bg-content {
+  background-color: #f6f5f4 !important;
+}
+ion-item.border-introduction {
+  --border-width: 0 0 0.75px 0;
+}

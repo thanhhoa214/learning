@@ -1,0 +1,780 @@
+{
+  "HOME": {
+    "search": "Search...",
+    "life_style": "Life Style",
+    "interior_tips": "Interior Share",
+    "construction": "Contractor Directory",
+    "interior_designs": "Interior Design",
+    "reviews": "Reviews",
+    "view_more": "View More",
+    "find_construction_partner": "Find Construction Partner",
+    "service_introduction": "Service introduction. Compare reasonable costs and reliable construction partners!",
+    "matching_service": "Matching Service",
+    "find_by_myself": "Find by Myself",
+    "design_partner_app": "Register as a Design Partner",
+    "construction_partner_app": "Register as a Construction Company",
+    "new_posts": "New Posts",
+    "most_popular_posts": "Most Popular Posts",
+    "url_does_not_match": "Sorry, we can't find your page. Let's walk through our app.",
+    "search_placeholder": "Enter your Apartment's name or House's name",
+    "DESIGN_PARTNER_FORM": {
+      "this_will_lead_to": "This will lead to Google Form for you to register as a Design Partner",
+      "this_is_an_alternative": "This is an alternative process. We are in process of building this.",
+      "copy_link": "Copy Link",
+      "proceed_to_link": "Proceed to Link",
+      "url_copied": "Link copied to clipboard.",
+      "open_url_failed": "Open document link failed. Sorry, please try copy & paste the link on your browser."
+    },
+    "INFORMATION": {
+      "time": "08:00 - 17:00 (Mon - Fri)",
+      "company": "Company",
+      "abc": "Interior Design CO., LTD",
+      "email": "Email",
+      "customer&partner": "Customer & Partner support",
+      "ceo": "CEO",
+      "ceo_name": "GA MYEON JEONG",
+      "business_regis": "Business Registeration Number",
+      "address": "Address",
+      "address_detail": "3rd Floor, The Vista Building, 628C Ha Noi Highway, An Phu Ward, District 2, HCMC",
+      "payment_service": "Payment service will be provided with secure protection by <b>VNPay</b>",
+      "copyright": "© Interior Design CO., LTD All rights reserved",
+      "patent_application": "Patent application No. 1-2019-03133",
+      "bank_account": "Beneficiary: Interior Design Co., Ltd.<br/>Account No.: <br/><span class='ml-5'>0764-007235-20-002 (VND)</span><br/><span class='ml-5'>0764-007235-20-001 (USD)</span><br/>Bank: IBK Bank - Ho Chi Minh City Branch<br/><br/>"
+    }
+  },
+  "MENU": {
+    "language": "English",
+    "profile": "My profile",
+    "change_language": "Language",
+    "login": "Login",
+    "logout": "Logout",
+    "guest": "Guest",
+    "business": "Business",
+    "noname": "Name is not set",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "done": "Done",
+    "winner": "Winner",
+    "construction_management": "Construction Company Management",
+    "change_password": "Change Password",
+    "bookmark": "My Bookmark",
+    "question_answer": "Comment",
+    "purchase_design": "Purchased Design",
+    "request_design": "Request design",
+    "interior_design": "My Interior Design",
+    "construction_review": "My construction review",
+    "CONSTRUCTION_MANAGEMENT": {
+      "you_are_logged_in": "You are logged in as a Construction Company,",
+      "for_managing_your_com": "For managing your company <br/>profile and portfolio, you can access to <br/><b>Management website</b> with your account."
+    }
+  },
+  "PROFILE": {
+    "title": "Profile",
+    "name": "Full Name",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "phone": "Phone Number",
+    "change_password": "Change Password",
+    "old_password": "Old Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "change": "Change",
+    "btn_upgrade": "Upgrade",
+    "switch_to_business_member": "Switch To Business Member",
+    "switch_to_business_member_btn": "Switch To Business Member",
+    "switch_to_business_detail": "You are a Member right now, do you want to switch your account to Business Member?",
+    "save": "Save",
+    "edit_my_profile": "Edit My Profile",
+    "no_switch_business": "You are signed in with a social account, to switch to Business Member you need to sign in with your email"
+  },
+  "SEARCH": {
+    "search": "Search",
+    "trending": "Trending",
+    "recent": "Recent",
+    "not_found": "Product Not Found"
+  },
+  "ADDRESS": {
+    "title": "Shipping Address",
+    "receiver": "Receiver",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "edit_address": "Edit Address",
+    "add_address": "Add Address",
+    "delete": "Delete",
+    "required": "is required."
+  },
+  "HISTORY": {
+    "order_id": "Order ID",
+    "total": "Total",
+    "review": "Review",
+    "shipping_status": "Shipping Status",
+    "payment_status": "Payment Status",
+    "SHIPPING": "Shipping",
+    "DELIVERED": "Delivered",
+    "CANCELLED": "Canceled",
+    "PAID": "Paid",
+    "WAIT_FOR_PAY": "Waiting"
+  },
+  "CART": {
+    "title": "Cart",
+    "total": "Total",
+    "checkout": "Checkout",
+    "checkout_successful": "Checkout Successfully",
+    "go_back_in": "Go back in",
+    "sub_total": "Sub Total",
+    "discount": "Discount",
+    "vat": "VAT",
+    "remove": "Remove",
+    "select_all": "Select All",
+    "checkout_failed": "Check out failed. Please try again later.",
+    "nothing_in_your_cart": "Nothing in your cart.",
+    "go_to_design": "Go to Design"
+  },
+  "CHECKOUT": {
+    "title": "Checkout",
+    "address": "Address",
+    "change": "Change",
+    "add_address": "Add Address",
+    "payment_method": "Payment Method",
+    "COD": "COD",
+    "Paypal": "Paypal",
+    "total": "Total",
+    "pay": "Pay",
+    "name": "Full Name",
+    "phone": "Phone",
+    "district": "District",
+    "city": "City",
+    "address_note": "Address Note",
+    "order_note": "Order Note"
+  },
+  "PRODUCT": {
+    "description": "Description",
+    "related": "Related",
+    "review": "Review",
+    "open": "Open",
+    "draw_in": "Draw in",
+    "drawn": "Drawn",
+    "bettor_list": "Bettor List",
+    "name": "Name",
+    "ticket": "Ticket",
+    "bet": "BET",
+    "add_to_cart": "Add To Cart",
+    "purchased": "Purchased"
+  },
+  "AUTH": {
+    "change_password": "Change Password",
+    "code": "Code",
+    "resend": "Resend",
+    "confirm": "Confirm",
+    "verification": "Verification",
+    "change": "Change",
+    "LOGIN": {
+      "email": "Email",
+      "login": "Login",
+      "business": "Business",
+      "password": "Password",
+      "forgot_password": "Forgot Password",
+      "dont_have_account_yet": "Don't have an account yet?",
+      "register": "Register here",
+      "continue": "Continue",
+      "connect_with": "Connect with",
+      "login_failed": "Sorry, login failed for some reasons. Please try again."
+    },
+    "REGISTER": {
+      "register": "Member",
+      "create_an_account": "Create an Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "by_creating_an_account": "By creating an account you agree to our",
+      "terms_of_service": "Terms of Service and Privacy Policy",
+      "have_account_already": "Have an account already?",
+      "login_here": "Login here",
+      "sign_up": "Sign Up"
+    },
+    "REGISTER_BUSINESS": {
+      "register": "Business Member",
+      "personal_information": "Personal Information",
+      "company_information": "Company Information",
+      "company_name": "Company Name",
+      "company_phone": "Company Phone Number",
+      "business_registration_no": "Business Registration No.",
+      "tax_code": "TAX Code",
+      "these_infor": "These information is for issuing TAX Bill",
+      "company": "Company",
+      "individual": "Individual",
+      "freelancer": "Freelancer",
+      "sign_up_with_email": "Sign up with Email"
+    },
+    "FORGOT_PASSWORD": {
+      "forgot_password": "Forgot Password",
+      "email": "Email",
+      "send_reset_code": "Send Verification Code via Email",
+      "send_reset_code_failed": "Your code is incorrect. Please try again.",
+      "send_reset_code_success": "Your code has been sent successfully. Please check your mailbox."
+    },
+    "CHANGE_PASSWORD": {
+      "new_password": "New Password",
+      "confirm_password": "Confirm Password",
+      "submit": "Change",
+      "success": "Success",
+      "fail": "Fail",
+      "change_password_failed": "Change password failed processing! Please try again later.",
+      "change_password_success": "Change password successfully! ",
+      "log_out": "Log out",
+      "new_password_must_be_at_least": "New password must be at least 6 characters",
+      "current_password_is_incorrect": "Current password is incorrect",
+      "new_password_and_confirm": "New password and confirm password are not match"
+    },
+    "RESET_PASSWORD": {
+      "reset_password": "Reset Password",
+      "token": "Reset Code",
+      "token_hint": "Check your mailbox to receive reset token. Not received yet ? ",
+      "resend": "Resend",
+      "confirmed_password": "Confirmed Password",
+      "reset_password_success": "Reset password successfully"
+    },
+    "CHOOSE_USER_TYPE": {
+      "do_you_want_to_explore": "Do you want to explore and play?",
+      "continue_as_a": "Continue as a",
+      "member": "Member",
+      "or": "or",
+      "do_you_want_to_buy": "Do you want to buy design ?",
+      "business_member": "Business Member"
+    },
+    "CHOOSE_REGISTER_TYPE": {
+      "welcome_to_life_on": "Welcome to Interior Design",
+      "sign_up_with_email": "Sign up with email"
+    },
+    "REGISTER_SUCCESS": {
+      "congrats": "Congratulations!<br/> You Account Has Been Created.",
+      "your_account_has_been": "Your Account Has Been Successfully Created",
+      "start": "Start Now"
+    },
+    "REGISTER_BUSINESS_SUCCESS": {
+      "your_account_has_been": "You have <br/>registered successfully",
+      "do_you_want_to_be": "Do you want to participate More ?",
+      "upload_sell_your_design": "Upload & Sell your Design",
+      "register_design_partner": "Register as Design Partner",
+      "or": "or",
+      "register_your_company_profile": "Register your company profile on our App",
+      "register_construction_company": "Register as Construction Company",
+      "skip": "Skip",
+      "later": "Later",
+      "you_are_just_login": "You are just logged in as a Construction Company.",
+      "for_managing": "For managing your company<br/>profile and portfolio, you can access to <br/>Management website with your account.",
+      "now_on_mobile": "Now, on mobile"
+    },
+    "UPGRADE_BUSINESS": {
+      "first_name": "First Name is required",
+      "last_name": "Last name is required",
+      "title_upgrade": "Upgrade business",
+      "btn_upgrade": "Upgrade business"
+    }
+  },
+  "MESSAGE": {
+    "AUTH": {
+      "AUTH_01": "Email already exist",
+      "AUTH_02": "Password must be at least 6 characters",
+      "AUTH_03": "Your account has been activated",
+      "AUTH_04": "Code invalid",
+      "AUTH_05": "Email does not exist",
+      "AUTH_06": "Code invalid or expired time",
+      "AUTH_07": "Confirm password does not match",
+      "AUTH_08": "You do not have permission to perform this action",
+      "AUTH_09": "Password does not match",
+      "AUTH_10": "You do not have permission to perform this address",
+      "AUTH_11": "Account does not exists",
+      "AUTH_13": "Maximum address is 10",
+      "AUTH_14": "Site does not exist",
+      "AUTH_15": "Email or Password does not match",
+      "AUTH_16": "Phone is invalid format.",
+      "email": {
+        "required": "Email is required.",
+        "invalid": "Email is invalid.",
+        "used": "Email has been used.",
+        "not_found": "Email is not found."
+      },
+      "password": {
+        "required": "Password is required.",
+        "minlength": "Password is at least 6 characters.",
+        "invalid": "Email or Password does not match.",
+        "not_matched": "Password is not matched.",
+        "matched": "Cannot use old password."
+      },
+      "code": {
+        "required": "Code is required.",
+        "invalid": "Code is invalid or expired."
+      },
+      "must_login": "You must login to use this function.",
+      "register_successful": "Register successfully."
+    },
+    "PRODUCT": {
+      "PRODUCT_01": "You do not have permission to perform this action.",
+      "PRODUCT_02": "SKU already existed.",
+      "PRODUCT_03": "Visibility date must be after this current date.",
+      "PRODUCT_04": "Category does not exist.",
+      "PRODUCT_05": "Field max ticket  is greater than zero.",
+      "PRODUCT_06": "Tradability date must be after this Visibility date.",
+      "PRODUCT_07": "Draw date must be after this Tradability date.",
+      "PRODUCT_08": "Product does not exist.",
+      "PRODUCT_09": "Sold out.",
+      "PRODUCT_10": "You don't have enough money and ticket.",
+      "PRODUCT_11": "This product has no bets.",
+      "PRODUCT_12": "Attribute does not exist.",
+      "PRODUCT_13": "Image does not exist.",
+      "PRODUCT_14": "Variant does not exist.",
+      "added_to_cart": "Added 1 item to cart.",
+      "bet_successful": "Bet successful, your ticket is {{number}}",
+      "bet_error": "This product can't be bet now.",
+      "delete_successful": "Delete successful.",
+      "error": "Error."
+    },
+    "OTHER": {
+      "default_address": "Default address changed.",
+      "create_address": "Created new address successfully.",
+      "update_address": "Updated address successfully.",
+      "delete_address": "Deleted address successfully.",
+      "max_address": "You can have only 10 addresses.",
+      "top_up_success": "Topped up successfully.",
+      "top_up_fail": "Topped up failed.",
+      "edit_profile": "Profile updated.",
+      "edit_profile_failed": "Profile update failed.",
+      "change_password": "Password updated.",
+      "review": "Review success."
+    }
+  },
+  "CORE": {
+    "home": "Home",
+    "constructor": "Contractor",
+    "bookmark": "Bookmark",
+    "design": "Design",
+    "my_page": "My Page",
+    "currency": "đ",
+    "please_wait": "Please wait...",
+    "DELETE_CONFIRMATION": {
+      "message": "Are you sure you want to permanently delete this post from Interior Design?",
+      "header": "Delete {{name}}",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "LOGOUT_CONFIRMATION": {
+      "message": "Are you sure you want to log out?",
+      "logout": "Logout",
+      "cancel": "Cancel"
+    }
+  },
+
+  "DESIGN": {
+    "LISTING": {
+      "filter": "Filter",
+      "design_type": "Design Type",
+      "style": "Style",
+      "house_type": "House Type",
+      "room_type": "Room Type",
+      "area": "Size",
+      "price": "Price",
+      "design_price_range": "Design Price",
+      "construction_price_range": "Construction Price Range",
+      "price_range": "Price Range",
+      "area_range": "Size Range",
+      "sorry": "Sorry... There are no design matches your expectation.",
+      "loading": "Beautiful designs are coming...",
+      "reset": "Reset",
+      "review_on": "Reviewed on"
+    },
+    "FILTERS": {
+      "please_fill_in_your_infor": "Please fill in your information to submit Design Edit Request",
+      "contact_name": "Contact Name",
+      "email": "Email",
+      "phone": "Phone",
+      "all": "All",
+      "price_range": "Price Range",
+      "whole_unit": "Whole House",
+      "whole_house": "Whole House",
+      "room": "Room",
+      "apartment": "Apartment",
+      "penthouse": "Penthouse",
+      "villa": "Villa",
+      "minimalist": "Minimalist",
+      "modern": "Modern",
+      "contemporary": "Contemporary",
+      "rustic": "Rustic",
+      "apply_changes": "Apply Changes",
+
+      "ROOM_TYPE": {
+        "full_house": "Full House",
+        "living_room": "Living Room",
+        "bedroom": "Bedroom",
+        "master_bedroom": "Master Bedroom",
+        "kitchen": "Kitchen",
+        "bathroom": "Bathroom",
+        "dressing_room": "Dressing Room",
+        "home_office": "Home Office",
+        "other": "Other"
+      },
+
+      "STYLE": {
+        "modern": "Modern",
+        "classic": "Classic",
+        "luxury": "Luxury",
+        "industrial": "Industrial",
+        "scandinavian": "Scandinavian",
+        "other": "Other",
+        "others": "Others"
+      },
+
+      "HOUSE_TYPE": {
+        "studio": "Studio",
+        "duplex": "Duplex",
+        "villa": "Villa",
+        "penthouse": "Penthouse",
+        "one_bedroom": "1 Bedroom",
+        "two_bedroom": "2 Bedrooms",
+        "three_bedroom": "3 Bedrooms",
+        "four_bedroom": "4 Bedrooms"
+      }
+    },
+    "DETAIL": {
+      "likes": "likes",
+      "bookmarks": "bookmarks",
+      "design_price": "Design Price",
+      "estimated_construction_cost": "Estimated Construction Cost",
+      "project_description": "Project Description",
+      "details": "Details",
+      "policy_announce": "Policy & Announcement",
+      "refund_exchange": "Refund & Exchange Policy",
+      "other_service_ann": "Other Service Announcement",
+      "suggested_construction": "Suggested Construction",
+      "add_to_cart": "Add to Cart",
+      "design_edit_request": "Design Edit Request",
+      "request_constructor_quotation": "Request Contractor Quotation",
+      "q&a": "Q&A",
+      "estimated_guide": "This is a guide to reasonable construction cost range and is not an accurate final estimate. It may vary depending on the production & availability of materials.",
+      "information": "Information",
+      "suggested_area_size": "Suggested area size",
+      "plan_type": "Plan type",
+      "size": "Size",
+      "layout_plan": "Layout Plan",
+      "policy_announce_detail": "<strong>1. Mục đích và phạm vi thu thập</strong><br/>1. Việc thu thập dữ liệu chủ yếu trên Ứng dụng điện thoại di động Interior Design bao gồm: email, điện thoại, tên đăng nhập, mật khẩu đăng nhập, địa chỉ khách hàng (thành viên). Đây là các thông tin mà Interior Design cần thành viên cung cấp bắt buộc khi đăng ký sử dụng dịch vụ và để Interior Design liên hệ xác nhận khi khách hàng đăng ký sử dụng dịch vụ trên ứng dụng nhằm đảm bảo quyền lợi cho cho người tiêu dùng.<br/>2. Các thành viên sẽ tự chịu trách nhiệm về bảo mật và lưu giữ mọi hoạt động sử dụng dịch vụ dưới tên đăng ký, mật khẩu và hộp thư điện tử của mình. Ngoài ra, thành viên có trách nhiệm thông báo kịp thời cho Interior Design về những hành vi sử dụng trái phép, lạm dụng, vi phạm bảo mật, lưu giữ tên đăng ký và mật khẩu của bên thứ ba để có biện pháp giải quyết phù hợp.<br/><br/><strong>2. Phạm vi sử dụng thông tin thu thập</strong><br/>1. Gửi các thông báo về các hoạt động trao đổi thông tin giữa thành viên và Ứng dụng Interior Design hoặc cung cấp dịch vụ cho người dùng;<br/>2. Ngăn ngừa các hoạt động phá hủy tài khoản người dùng của thành viên hoặc các hoạt động giả mạo Thành viên;<br/>3. Liên lạc và giải quyết với thành viên trong những trường hợp đặc biệt.<br/>4. Không sử dụng thông tin cá nhân của thành viên ngoài mục đích xác nhận và liên hệ có liên quan đến giao dịch tại Interior Design.<br/>5. Trong trường hợp có yêu cầu của pháp luật: Ứng dụng điện thoại di động Interior Design có trách nhiệm hợp tác cung cấp thông tin cá nhân thành viên khi có yêu cầu từ cơ quan tư pháp. <br/><br/><strong>3. Thời gian lưu trữ thông tin</strong><br/>Dữ liệu cá nhân của Thành viên sẽ được lưu trữ cho đến khi có yêu cầu hủy bỏ hoặc tự thành viên đăng nhập và thực hiện hủy bỏ. Còn lại trong mọi trường hợp thông tin cá nhân thành viên sẽ được bảo mật trên máy chủ của Interior Design.<br/><br/><strong>4. Cam kết bảo mật thông tin cá nhân khách hàng</strong><br/>1. Thông tin cá nhân của thành viên trên Interior Design được Interior Design cam kết bảo mật tuyệt đối theo chính sách của Interior Design. Việc thu thập và sử dụng thông tin của mỗi thành viên chỉ được thực hiện khi có sự đồng ý của khách hàng đó trừ những trường hợp pháp luật có quy định khác.<br/>2. Không sử dụng, không chuyển giao, cung cấp hay tiết lộ cho Bên Thứ Ba nào về thông tin cá nhân của thành viên khi không có sự cho phép đồng ý từ thành viên.<br/>3. Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân thành viên, Interior Design sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng và thông báo cho thành viên được biết.<br/>4.Thành viên khi  mua hàng phải cung cấp đầy đủ thông tin cá nhân có liên quan như: Họ và tên, địa chỉ liên lạc, email, điện thoại, số tài khoản, số thẻ thanh toán …, và chịu trách nhiệm về tính pháp lý của những thông tin trên. Ban quản lý Interior Design không chịu trách nhiệm cũng như không giải quyết mọi khiếu nại có liên quan đến quyền lợi của Thành viên đó nếu xét thấy tất cả thông tin cá nhân của thành viên đó cung cấp khi đăng ký ban đầu là không chính xác. ",
+      "refund_exchange_detail": "<strong>1. Quy trình mua hàng</strong><br/>Bước 1: Khách hàng đăng nhập App Interior Design rồi chọn thiết kế và điền thông tin theo các trường tương ứng.<br/>Bước 2:  Chọn hình thức thanh toán và tiến hành thanh toán<br/>Bước 3 : Về nguyên tắc thì người mua hàng tải file ngay trên ứng dụng, Nhưng trong các trường hợp đặt biệt, Công ty có thể gửi gói thiết kế qua email của người mua hàng. Gói thiết kế bao gồm hình ảnh 3D, danh sách vật liệu (file excel), bản vẽ kỹ thuật (file CAD), dự toán (file excel)<br/><br/><strong>2. Quy trình đổi trả hàng và hoàn tiền cho các sản phẩm là bản thiết kế</strong><br/>Do các sản phẩm gói thiết kế nội thất do Interior Design  bán trên ứng dụng không phải là sản phẩm hữu hình mà là những tệp tin (file) gốc thiết kế nội thất nên sau khi người mua tải tệp tin về thì sẽ không được hoàn tiền.<br/><br/><strong>3. Phương thức thanh toán</strong><br/>1. Chuyển khoản qua ngân hàng cuả Interior Design<br/>2. Thanh toán bằng thẻ ATM/ Thẻ tín dụng<br/>3. Khách hàng có thể thanh toán trực tiếp  thông qua cổng thanh toán VNPay",
+      "other_service_ann_detail": "<strong>Điều khoản sử dụng dịch vụ Interior Design</strong><br/><br/><strong>Điều 1 : Mục đích</strong><br/>Điều khoản và Điều kiện Dịch vụ Interior Design (sau đây gọi là \"Điều khoản\") là các điều khoản và quy trình sử dụng dịch vụ giữa Interior Design CO., LTD (sau đây được gọi là \"Công ty\") và người dùng (hoặc thành viên) liên quan đến dịch vụ được cung cấp bởi Công ty, nhằm mục đích quy định quyền, nghĩa vụ, trách nhiệm giữa công ty với các thành viên và các vấn đề cần thiết khác.<br/><br/><strong>Điều 2 : Định nghĩa</strong><br/>Dưới đây là định nghĩa các thuật ngữ được sử dụng trong bản Điều khoản này, những thuật ngữ không được nêu trong các mục tương ứng dưới đây được hiểu theo nghĩa do quy định của pháp luật và theo các hướng dẫn cho từng loại dịch vụ. <br/>1. Dịch vụ Interior Design (sau đây gọi là \"Dịch vụ\"): Là các dịch vụ liên quan như SNS, dịch vụ thiết kế từ chuyên gia, các nội dung về nội thất và các dịch vụ liên quan khác do Công ty cung cấp để người dùng hoặc khách hàng có thể sử dụng được dịch vụ thông qua các thiết bị không dây như máy tính bảng, thiết bị di động, máy tính ,...<br/>2. Thành viên : Là những khách hàng truy cập vào Dịch vụ của Công ty, đồng ý các điều khoản trong bản điều khoản này, đăng ký và được cấp tài khoản, mật khẩu truy cập, từ đó bắt đầu sử dụng dịch vụ do công ty cung cấp . <br/>3. Đối tác (Partner) : Là các thành viên hoạt động trong lĩnh vực mua bán các loại dịch vụ hoặc sản phẩm liên quan đến nội thất và cung cấp thông tin , tư vấn dịch vụ, sản phẩm đó sau khi hoàn thành quy trình đăng ký và kiểm tra do công ty chỉ định. Nếu không đề cập quy định riêng cho Đối tác trong điều khoản này thì tất cả các điều khoản có trong bản Điều khoản này đều được áp dụng cho đối tác như với Thành viên.<br/>4. Thông tin Thành viên : Là những thông tin cá nhân được công khai trong Dịch vụ do Thành viên điền/ nhập vào bảng đăng ký thành viên ( sau đây được gọi là \" bản đăng ký\" ) do công ty yêu cầu để nhằm mục đích phân biệt giữa các thành viên và người sử dụng Dịch vụ.<br/>5. Thông tin Đối tác : Là thông tin của Đối tác do Đối tác cung cấp trong quá trình đăng ký và kiểm tra cho công ty chỉ định để nhằm mục đích trở thành Đối tác.<br/>6. ID ( Mã định danh) : Là tổ hợp các con số và chữ cái được đăng ký bởi Thành viên và phê duyệt bởi Công ty nhằm phân biệt các Thành viên và để Thành viên sử dụng Dịch vụ này. Trong Dịch vụ này, ID là địa chỉ email. <br/>7. Password (Mật khẩu ) : Là tổ hợp con số và chữ cái cho Thành viên định ra để nhằm bảo mật cho tài khoản của chính Thành viên đó.<br/>8. Bài đăng : Là toàn bộ  những thông tin do Thành viên đăng ký hoặc đăng tải trên Dịch vụ do Công ty cung cấp  như tệp tin (file), hình ảnh ( bao gồm ảnh), hình ảnh động ( bao gồm cả video), âm thanh, giọng nói, văn bản , đường dẫn (bao gồm URL),... <br/><br/><strong>Điều 3 : Hiệu lực / thay đổi điều khoản</strong><br/>① Điều khoản này có hiệu lực khi được hiển thị trên Dịch vụ hoặc thông qua màn hình kết nối hay qua việc thông báo cho các Thành viên theo các cách khác nhau để Thành viên có thể dễ dàng tiếp cận .<br/>② Công ty có thể sửa đổi điều khoản này trong phạm vi cho phép mà không vi phạm các quy định của pháp luật như các quy định về luật thông tin mạng, luật thông tin và truyền thông, luật bảo vệ thông tin cá nhân,...<br/>③ Trường hợp Công ty thay đổi điều khoản thì phải thể hiện rõ lý do thay đổi và ngày áp dụng thay đổi đồng thời hiển thị ngày áp dụng điều khoản mới trên bản điều khoản hiện hành trước 7 ngày  kể từ ngày áp dụng điều khoản mới như quy định tại khoản 1 điều 3.  Tuy nhiên, đối với những thay đổi quan trọng liên quan đến quyền lợi và nghĩa vụ của Thành viên, thì phải hiển thị tối thiểu trong vòng 30 ngày trước khi áp dụng và phải gửi thông báo nội dung thay đổi qua email mà Thành viên đã đăng ký trước đó cho Thành viên.<br/>④ Khi Công ty đã thông báo , hiển thị điều khoản sửa đổi như quy định tại Khoản 3 Điều 3  nhưng nếu Thành viên không thể hiện rõ ý định không đồng ý thì Thành viên đó sẽ được coi là đã đồng ý với các điều khoản sửa đổi.<br/>⑤ Nếu thành viên không đồng ý với các điều khoản sửa đổi, thành viên có thể ngừng sử dụng và chấm dứt hợp đồng sử dụng dịch vụ.<br/>⑥ Việc đồng ý với điều khoản này có nghĩa là Thành viên cũng đồng ý với việc truy cập định kỳ vào dịch vụ và kiểm tra nội dung điều khoản cũng như cập nhật thông tin khi có điều khoản thay đổi.  Công ty sẽ không chịu trách nhiệm khi có thiệt hại phát sinh do thành viên không cập nhật điều khoản sửa đổi.<br/><br/><strong>Điều 4 : Các quy định khác ngoài điều khoản</strong><br/>Những quy định khác không đề cập trong điều khoản này được thi hành theo quy định của các luật liên quan như luật thông tin mạng, luật thông tin và truyền thông, luật bảo vệ thông tin cá nhân ,... cũng như hướng dẫn chi tiết về việc sử dụng Dịch vụ do công ty quy định.<br/><br/><strong>Điều 5 : Xác lập hợp đồng sử dụng dịch vụ</strong><br/>① Hợp đồng sử dụng Dịch vụ được xác lập khi công ty duyệt đơn đăng ký thành viên do người đăng ký nhập thông tin thành viên (địa chỉ thư điện tử, mật khẩu, nickname, ...) <br/>② Nếu Thành viên làm ngành nghề mua bán các dịch vụ hoặc sản phẩm liên quan đến nội thất  muốn trở thành Đối tác, Thành viên nhập thông tin theo quy định Công ty và đăng ký chuyển đổi thành viên , khi công ty duyệt đơn đăng ký chuyển đổi đó, Thành viên có thể sử dụng dịch vụ với tư cách là Đối tác.<br/>③ Khi người đăng ký và gửi  thông tin để đăng ký thành viên, điều đó có nghĩa là người đăng ký đã hiểu rõ nội dung chính sách xử lý thông tin cá nhân và nội dung trong điều khoản này, đồng thời đồng ý tuân thủ các nội dung được thông báo/ hiển thị trên màn hình như các loại chính sách khác nhau ( chính sách về bản quyền, chính sách vận hành ,...)  được áp dụng để sử dụng dịch vụ.<br/><br/><strong>Điều 6 : Phê duyệt/ từ chối đơn đăng ký thành viên</strong><br/>① Công ty phê duyệt toàn bộ đơn đăng ký thành viên theo thứ tự đăng ký nếu không có trở ngại nào về mặt kỹ thuật và về nghiệp vụ. <br/>②Công ty có thể hủy bỏ hợp đồng sử dụng dịch vụ mà không cần báo trước đối với những  ID của Thành viên đăng ký thông tin thành viên với mục đích bất hợp pháp như đánh cắp thông tin cá nhân của người khác, đồng thời Thành viên đó có thể bị xử phạt theo quy định của pháp luật.<br/>③ Công ty không phê duyệt đơn đăng ký thành viên đối với những trường hợp dưới đây.<br/>1. Trường hợp không thể cung cấp dịch vụ do vấn đề liên quan đến kỹ thuật<br/>2. Trường hợp người đăng ký nhập thiếu hoặc sai thông tin vào đơn đăng ký thành viên <br/>3. Trường hợp đăng ký với mục đích gây ảnh hưởng xấu tới an ninh trật tự xã hội hoặc đi trái với thuần phong mỹ tục <br/>4. Trường hợp là đơn đăng ký của những thành viên đã bị hủy quyền thành viên trước đó vì những những lý do xuất phát từ thành viên. Tuy nhiên, đối với những trường hợp đăng ký lại từ 6 tháng trở lên kể từ khi bị hủy quyền thành viên, thì công ty vẫn duyệt đơn đăng ký thành viên như là trường hợp ngoại lệ. <br/>5. Các trường hợp khác không đủ điều kiện trở thành thành viên theo quy định của Công ty.<br/>④ Công ty có thể phân tách Thành viên theo từng cấp và  loại, đồng thời phân chia nhu cầu sử dụng dịch vụ qua việc  phân tích thời gian sử dụng, số lần sử dụng ,danh bạ sử dụng dịch vụ của Thành viên.<br/>⑤ Đối với đơn đăng ký chuyển đổi thành Đối tác của Thành viên, Công ty không thể duyệt đơn đăng ký khi có vấn đề liên quan đến chính sách vận hành dịch vụ hoặc về mặt kỹ thuật/ nghiệp vụ của công ty.  <br/><br/><strong>Điều 7 : Thay đổi thông tin Thành viên</strong><br/>① Thành viên có thể xem và sửa đổi thông tin cá nhân của mình bất cứ lúc nào.<br/>② Nếu có thay đổi trong quá trình sử dụng Dịch vụ, thành viên phải cập nhật thông tin thay đổi đó tại màn hình cài đặt thông tin cá nhân, hoặc thông báo cho công ty qua bộ phận chăm sóc khách hàng. .<br/>③ Thành viên chịu mọi trách nhiệm phát sinh do không thay đổi thông tin.<br/>④ Trường hợp Đối tác thay đổi thông tin mà trước đó đã cung cấp cho công ty , thì thông tin thay đổi chỉ được hiển thị trên Dịch vụ sau khi Công ty hoàn thành quá trình kiểm tra nội dung thay đổi đó.  <br/><br/><strong>Điều 8 : Sử dụng Dịch vụ</strong><br/>① Công ty bắt đầu cung cấp dịch vụ kể từ khi đơn đăng ký sử dụng của Thành viên được phê duyệt.<br/>② Trong trường hợp không thể cung cấp dịch vụ do trở ngại về mặt nghiệp vụ hoặc kỹ thuật của Công ty, Công ty sẽ hiển thị thông báo trên dịch vụ hoặc gửi thông báo cho Thành viên.<br/>③ Về nguyên tắc, thành viên có thể dụng Dịch vụ 24/24 tất cả các ngày trong năm. Tuy nhiên, Dịch vụ có thể bị tạm ngưng do chính sách vận hành Dịch vụ hoặc có vấn đề về kỹ thuật/ nghiệp vụ của Công ty. Trong trường hợp này, công ty sẽ thông báo trước hoặc sau cho thành viên.<br/>④ Công ty có thể chia tách Dịch vụ thành từng phạm vi nhất định và có thể cài đặt thời gian sử dụng cho từng phạm vi đó và trong trường hợp này, công ty sẽ thông báo nội dung liên quan cho Thành viên.<br/>⑤ Công ty có thể lập các Điều khoản riêng biệt cho các Dịch vụ riêng lẻ trong Dịch vụ và việc đồng ý với các điều khoản này sẽ trải qua một quy trình đồng ý riêng khi  thành viên sử dụng Dịch vụ riêng lẻ lần đầu.<br/><br/><strong>Điều 9 : Thay đổi và ngừng dịch vụ</strong><br/>① Nếu có lý do chính đáng để thay đổi Dịch vụ (bao gồm cả các dịch vụ riêng lẻ), công ty có thể thông báo cho thành viên về nội dung dịch vụ thay đổi và ngày cung cấp Dịch vụ thay đổi theo phương thức quy định tại Điều 15 và có thể tiến hành cung cấp dịch vụ thay đổi.<br/>② Công ty có thể hạn chế hoặc ngừng một phần hoặc toàn bộ Dịch vụ trong các trường hợp sau.<br/>1. Trường hợp không thể tránh khỏi do thi công như việc bảo trì thiết bị dùng để vận hành Dịch vụ <br/>2. Trường hợp Thành viên can thiệp vào hoạt động kinh doanh của Công ty<br/>3. Trường hợp Dịch vụ bán gián đoạn do những lý do khách quan như mất điện, hỏng thiết bị, thời lượng sử dụng tăng quá nhanh,...<br/>4. Trường hợp Công ty không thể tiếp tục duy trì Dịch vụ do nhiều lý do khác nhau như chấm dứt hơp đồng với công ty đối tác ( BP)<br/>5. Trường hợp bất khả kháng như có thiên tai, tình trạng khẩn cấp quốc gia,...<br/><br/><strong>Điều 10 : Cung cấp thông tin và hiển thị quảng cáo</strong><br/>① Công ty có thể cung cấp các loại thông tin khác nhau cho thành viên qua email, bưu phẩm, tin nhắn ( tin nhắn hình ảnh),... hoặc hiển trên màn hình trong Dịch vụ trong quá trình Thành viên sử dụng Dịch vụ.<br/>② Trong quá trình Thành viên sử dụng dịch vụ, Công ty có thể đăng hoặc các công ty đối tác có thể hiển thị quảng cáo trên màn hình của Dịch vụ hoặc hiển thị quảng cáo trong bài đăng hoặc gửi email,bưu phẩm, tin nhắn (tin nhắn hình ảnh) nếu nhận được sự đồng ý của Thành viên.<br/>③ Việc thành viên trao đổi hay giao dịch bằng các phương thức khác nhau như tham gia vào hoạt động quảng cáo của công ty quảng cáo trên Dịch vụ hay sử dụng dịch vụ của những  quảng cáo được đăng trên Dịch vụ, thì việc đó hoàn toàn là vấn đề giữa công ty quảng cáo và Thành viên. Thành viên và công ty quảng cáo phải tự giải quyết khi có vấn đề phát sinh, Công ty không chịu trách nhiệm về việc này. <br/>④ Công ty có thể gửi qua email mà không cần nhận được sự đồng ý của Thành viên.<br/>1. Trường hợp gửi email cho Thành viên để xác nhận quyền sở hữu địa chỉ email đã nhập trong đơn đăng ký sử dụng Dịch vụ <br/>2. Trường hợp thông tin Thành viên bị thay đổi và Công ty gửi email cho Thành viên  xác nhận thông tin.<br/>3. Trường hợp Công ty nhận thấy có thông tin quan trọng cần mà Thành viên cần phải biết trong quá trình sử dụng Dịch vụ.<br/><br/><strong>Điều 11 : Trách nhiệm về bài đăng</strong><br/>① Công ty có thể xóa bài đăng mà Thành viên đăng tải hoặc chia sẻ trong Dịch vụ mà không cần thông báo trước cho Thành viên và cũng không chịu trách nhiệm nếu xét thấy bài đăng đó thuộc bất cứ trường hợp nào trong những trường hợp sau đây.<br/>1. Trường hợp có nội dung phỉ báng, vu khống gây ảnh hưởng tới danh dự của công ty, các thành viên khác hoặc bên thứ ba ;<br/>2. Trường hợp có nội dung vi phạm đạo đức và trật tự công cộng;<br/>3. Trường hợp có nội dung bị công nhận là có liên quan đến hành vi phạm tội.;<br/>4. Trường hợp có nội dung gây ảnh hưởng đến quyền lợi của người khác , vi phạm bản quyền của bên thứ 3 hoặc của công ty; <br/>5. Trường hợp có nội dung trái với hướng dẫn sử dụng chi tiết cho từng dịch vụ riêng lẻ do công ty đưa ra;<br/>6. Trường hợp có nội không liên quan đến Dịch vụ mà Công ty cung cấp ;<br/>7. Trường hợp đăng tải tin khuyến mãi, quảng cáo không cần thiết hoặc trái phép;<br/>8.Trường hợp có nội dung được tại bằng cách sử dụng tên của người khác mà không được phép hoặc hoặc có nội dung cải biến.làm giả dựa trên những thông tin của người khác mà không xin phép;<br/>9. Trường hợp trái với mục đích của việc đăng tải như đăng trùng lặp nhiều lần với cùng một nội dung.<br/>10. Trường hợp đăng tải các thông tin thông tin đường dẫn thu thập được  ở các trang website cấm có quy định cấm  hành vi chia sẻ nội dung ra bên ngoài ;<br/>11. Trường hợp bị đánh giá là vi phạm quy định của các bộ luật liên quan và vi phạm hướng dẫn sử dụng chi tiết cho từng Dịch vụ riêng lẻ của Công ty.<br/>② Công ty có thể thiết lập và thi hành các hướng dẫn chi tiết riêng liên quan đến bài đăng cho các Dịch vụ riêng lẻ và Thành viên cần phải đăng bài (bao gồm cả việc chia sẻ giữa các Thành viên với nhau) theo các hướng dẫn đó.<br/>③ Trong trường hợp thành viên không phải là Đối tác nhưng hoạt động trong lĩnh vực liên quan đến nội thất và đăng bài có nội dung  dịch vụ và sản phẩm của Thành viên đó thì Công ty có thể xóa bài đăng đó mà không cần báo trước với Thành viên, đồng thời Công ty cũng không có trách nhiệm với Thành viên về bài đăng bị xóa.<br/><br/><strong>Điều 12 : Bản quyền bài đăng</strong><br/>① Các bài đăng của thành viên đăng tải trên Dịch vụ được bảo vệ theo các quy định của luật bản quyền, Các bài đăng của Công ty đăng tải thuộc quyền sở hữu của Công ty theo quy định của luật bản quyền và luật sở hữu trí tuệ.<br/>②  Thành viên cho phép Công ty sử dụng trong và ngoài nước các bài đăng mà Thành viên đăng tải trên Dịch vụ  cho các mục đích sau.<br/>1. Dùng để thay đổi hình thức như nhằm đơn giản hóa hoặc thay đổi kích thước bài đăng để có thể sử dụng bài đăng trong phạm vi Dịch vụ (bao gồm cả trường hợp dịch vụ được đưa và trong phạm vị là một phần của phương tiện truyền thông hoặc trang web nào đó do bên thứ 3 vận hành) <br/>2. Sao chép, chia sẻ và hiển thị các bài đăng trên Dịch vụ này và các dịch vụ liên kết do Công ty hoặc các công ty liên quan của Công ty hành vận hành. Tuy nhiên, điều này không được phép khi Thành viên gửi mail từ chối cho phép sao chép, chia sẻ, hiển thị bài đăng của họ với người quản lý của Công ty. <br/>3. Để các phương tiện truyền thông, các kênh tiếp thị kỹ thuật số bao gồm truyền thông xã hội và các công ty viễn thông đưa tin và phát sóng nội dung của bài đăng nhằm mục đích quảng bá Dịch vụ của công ty.<br/>③ Nếu Công ty cung cấp bài đăng cho bên thứ 3 với mục đích khác không bao gồm trong Khoản 2 Điều 12 trong bản Điều khoản này và nhận lại một phần thưởng bằng tiền thì công ty phải nhận được sự đồng ý của Thành viên qua điện thoại hoặc qua email. Trong trường hợp này, công ty cần trả một khoản bồi thường riêng cho Thành viên.<br/>④ Khi Thành viên đăng bài trên ứng dụng, có nghĩa là thành viên đó cho phép các thành viên khác có thể sử dụng bài đăng trong phạm vi Dịch vụ và Công ty sử dụng bài đăng đó để các thành viên khác có thể tìm kiếm. Đồng thời Thành viên cũng cho phép người dùng dịch vụ trên điện thoại thông minh, máy tính bảng (bao gồm cả những người truy cập dịch vụ mà không đăng ký thành viên trên ứng dụng hoặc trình duyệt) có thể lưu trữ bài đăng thông qua các tính năng của phần mềm ( ví dụ: ứng dụng, trình duyệt) hoặc phần cứng (ví dụ : điện thoại thông minh, máy tính bảng) và sử dụng bài đăng đó.<br/>⑤  Nếu hợp đồng sử dụng bị chấm dứt theo quy định tại  Điều 18, các bài viết do Thành viên bị chấm dứt hợp đồng đăng tải trên Dịch vụ sẽ bị xóa. Tuy nhiên, các bài đăng cần thiết để các thành viên khác có thể sử dụng Dịch vụ một cách bình thường, như các bài đăng và bình luận được đăng lại bởi các thành viên khác hoặc bên thứ ba thông qua các chức năng đánh dấu trang và chia sẻ, sẽ không bị xóa.<br/>⑥ Công ty có thể chia sẻ giữa các trang hoặc di chuyển, thay đổi vị trí hiển thị mà không làm thay đổi nội dung của bài đăng trong trường hợp Công ty gộp các trang đang vận hành lại với nhau hoặc theo chính sách vận hành dịch vụ của Công ty. Tuy nhiên, nếu chia sẻ, thay đổi hoặc di chuyển bài đăng thì sẽ thông báo trước cho Thành viên.  <br/><br/><strong>Điều 13 : Nghĩa vụ của Công ty</strong><br/>① Công ty không cung cấp thông tin của Thành viên mà Công ty biết được qua Dịch vụ cho bên thứ 3 nếu không có sự đồng ý của Thành viên đó. <br/>② Công ty xây dựng và vận hành hệ thống bảo mật nhằm bảo vệ thông tin của Thành viên, đồng thời thông báo và tuân thủ \"Chính sách xử lý thông tin cá nhân\". Ngoài ra, công ty thiết lập và vận hành các biện pháp kỹ thuật và quản lý cần thiết để đảm bảo sự ổn định trong việc xử lý thông tin thành viên theo \"Chính sách xử lý thông tin cá nhân\".<br/>③ Công ty có trách nhiệm giải quyết kịp thời các khiếu nại của Thành viên liên quan đến Dịch vụ. Trường hợp có khó khăn không thể xử lý kịp thời thì phải hiển thị lý do khó khăn đó và lịch trình xử lý trên màn hình Dịch vụ hoặc gửi email thông báo cho Thành viên .<br/>④ Trong trường hợp Thành viên bị thiệt hại do Dịch vụ của Công ty cung cấp, Công ty chỉ chịu trách nhiệm nếu thiệt hại đó gây ra do sự cố ý hoặc sơ suất của Công ty, và phạm vi trách nhiệm được giới hạn ở mức thiệt hại thông thường.<br/><br/><strong>Điều 14 : Nghĩa vụ của Thành viên</strong><br/>① Thành viên phải tuân thủ các quy định của các điều luật liên quan, điều khoản, hướng dẫn sử dụng Dịch vụ, thông báo đăng trên Dịch vụ, thông báo Công ty gửi đến Thành viên liên quan đến việc sử dụng Dịch vụ,... Và không tham gia vào các hành vi nào khác gây cản trở đến hoạt động kinh doanh của Công ty.<br/>② Thành viên không được sử dụng Dịch vụ để thực hiện các hoạt động bán hàng nếu không được Công ty chính thức công nhận, và đặc biệt, không được thực hiện các hành vi như hacking, thu lợi từ quảng cáo, hoạt động thương mại thông qua các trang mạng khiêu dâm, phân phối bất hợp pháp các phần mềm thương mại,....Công ty không chịu trách nhiệm nếu có hậu quả và thiệt hại về  hoạt động kinh doanh phát sinh cũng như những hậu quả về mặt pháp luật như bị bắt giữ bởi cơ quan pháp luật do Thành viên vi phạm , và đồng thời Thành viên phải chịu trách nhiệm bồi thường về những thiệt hại gây ra cho công ty khi vi phạm.  <br/>③ Thành viên không được chuyển nhượng, tặng quyền sử dụng Dịch vụ, hoặc các quyền khác được đề cập trong hợp đồng sử dụng Dịch vụ cho người khác và không được đem quyền sử dụng Dịch vụ ra làm tài sản thế chấp. <br/><br/><strong>Điều 15 : Thông báo cho Thành viên</strong><br/>① Công ty có thể thông báo quyền và nghĩa vụ cần thiết cho Thành viên trong quá trình sử dụng Dịch vụ qua email, tin nhắn SMS hoặc qua các phương tiện khác do Thành viên cung cấp và chỉ định.<br/>② Trong trường hợp thông báo cho nhiều thành viên không xác định đối tượng, Công ty có thể hiện thị thông báo lên Dịch vụ thay vì gửi thông báo cho từng cá nhân.<br/><br/><strong>Điều 16 : Trách nhiệm và nghĩa vụ về quản lý tên/mã đăng nhập và mật khẩu</strong><br/>① Thành viên phải quản lý triệt để tên/mã đăng nhập và mật khẩu của mình. Thành viên tự chịu trách nhiệm về mọi hậu quả phát sinh do việc sơ suất và sử dụng bất hợp pháp tên/mã đăng nhập , mật khẩu của mình.<br/>② Công ty có thể hạn chế  sử dụng tên/mã đăng nhập  nếu có nguy cơ rò rỉ tên/mã đăng nhập Thành viên, vi phạm đạo đức hoặc chống đối xã hội, hoặc gây hiểu nhầm về Công ty hoặc người điều hành Công ty.<br/>③ Thành viên không được cho  người khác sử dụng tên/mã đăng nhập và mật khẩu của mình, và nếu Thành viên nhận ra tên/mã đăng nhập và mật khẩu của mình bị người khác đánh cắp hoặc sử dụng, thì phải  thông báo ngay cho Công ty và làm theo hướng dẫn của Công ty.<br/><br/><strong>Điều 17 : Sử dụng và bảo mật thông tin thành viên</strong><br/>① Công ty thu thập thông tin thành viên theo chính sách xử lý thông tin cá nhân trong phạm vi tối thiểu cần thiết cho việc thiết lập và thực hiện hợp đồng sử dụng Dịch vụ bằng các biện pháp đảm bảo hợp pháp và công bằng.<br/>② Chính sách xử lý thông tin cá nhân của công ty không áp dụng cho các dịch vụ khác có liên kết với công ty (đề cập đến các dịch vụ không do công ty vận hành; sau đây gọi là dịch vụ tương tự).<br/>Công ty có thể cung cấp, gửi thông tin thành viên trong trường hợp do các cơ quan điều tra hay cơ quan hành chính yêu cầu theo quy định của các điều luật liên quan luật về bảo vệ thông tin cá nhân, luật thông tin và truyền thông, luật thông tin mạng.<br/>④ Công ty không chịu trách nhiệm về những trường hợp thông tin thành viên bị lộ lo các nguyên nhân xuất phát từ Thành viên. <br/>⑤ Về nguyên tắc, Công ty tự thực hiện các công việc như xử lý và quản lý thông tin thành viên,... nhưng trong trường hợp cần, Công ty có thể ủy thác một phần hoặc toàn bộ công việc đó cho công ty khác do Công ty lựa chọn và thông báo thông tin về nội dung liên quan đến việc ủy thác quản lý và xử lý thông tin thành viên trong Chính sách xử lý thông tin cá nhân. <br/><br/><strong>Điều 18 : Hủy bỏ hợp đồng và hạn chế sử dụng</strong><br/>① Nếu Thành viên muốn hủy hợp đồng sử dụng Dịch vụ thì phải đăng ký hủy trên mạng hoặc ứng dụng cung cấp dịch vụ. Nếu không thể hủy hợp đồng thông qua trang mạng hoặc ứng dụng, Thành viên có thể đăng ký hủy với công ty thông qua trang dịch vụ hoặc thư điện tử do công ty cung cấp. Khi nhận được yêu cầu từ Thành viên, Công ty sẽ kịp thời xử lý theo phương thức do Công ty thông báo riêng.<br/>② Khi Thành viên chấm dứt hợp đồng sử dụng, chỉ những bài đăng trên trang cá nhân của thành viên sẽ bị xóa theo quy định tại Khoản 5 Điều 12.<br/>③ Nếu Thành viên vi phạm quy định trong điều khoản sử dụng của từng dịch vụ riêng lẻ hoặc Điều khoản này hay làm hoặc làm cản trở các hoạt động của Dịch vụ thì công ty có thể hủy bỏ hợp đồng sử dụng hoặc hạn chế sử dụng dịch vụ theo từng mức độ như cảnh cáo, dừng tạm thời, dừng vĩnh viễn,...<br/>④ Thành viên có thể gửi ý kiến phản đối về việc hạn chế sử dụng liên quan đến việc sử dụng dịch vụ như ngừng sử dụng dịch vụ theo Khoản 3 Điều 18.Công ty sẽ ngay lập tức tiếp tục cung cấp dịch vụ cho Thành viên nếu xét thấy ý kiến phản đối của Thành viên là chính đáng.<br/>⑤ Nếu thành viên không đăng nhập liên tục trên 3 tháng, công ty có thể hạn chế sử dụng để bảo vệ thông tin thành viên và nâng cao hiệu quả hoạt động của Dịch vụ.<br/><br/><strong>Điều 19 : Đăng ký mua thiết kế.</strong><br/>① Thành viên đăng  ký mua hàng theo các phương thức tương tự hoặc giống như dưới đây theo quy định của Công ty và theo đúng quy định tại điều khoản này và Công ty có trách nhiệm cung cấp những thông tin sau một cách dễ hiểu cho người dùng không phải là thành viên của Dịch vụ trong quá trình đăng ký mua hàng. <br/>1. Tìm kiếm và lựa chọn hàng hóa;<br/>2. Nhập tên, địa chỉ, số điện thoại, địa chỉ email (hoặc số điện thoại di động),...của người nhận;<br/>3. Xác nhận các nội dung liên quan đến việc trả phí như phí vận chuyển, phí lắp đặt, dịch vụ có giới hạn quyền rút lại đăng ký , nội dung điều khoản <br/>4. Đăng ký mua hàng và đồng ý xác nhận của công ty hoặc xác nhận liên quan đến việc mua hàng. <br/>5. Lựa chọn phương thức thanh toán<br/><br/><strong>Điều 20 : Xác lập hợp đồng mua hàng</strong><br/>① Công ty có thể không chấp nhận đơn đăng ký mua hàng như trong Điều 19 nếu việc đăng ký mua hàng của thành viên thuộc bất kỳ điều nào trong số các điều dưới đây. Tuy nhiên, khi tiến hành hợp đồng với người chưa thành niên, Công ty phải thông báo cho người chưa thành niên hoặc người đại diện theo pháp luật rằng hợp đồng có thể bị hủy bỏ nếu không được sự đồng ý của người đại diện theo pháp luật.<br/>1. Trong trường hợp có  sai sót, thiếu sót hoặc  gian dối trong quá trình nhập thông tin đăng ký mua hàng;<br/>2. Khi trẻ vị thành niên mua hàng hóa và dịch vụ bị pháp luật cấm, chẳng hạn như thuốc lá và rượu<br/>3. Việc duyệt đơn đăng ký mua hàng được nhận định là gây trở ngại đáng kể về mặt kỹ thuật cho Công ty.<br/>② Hợp đồng được coi là đã ký kết thành công tại thời điểm Người dùng nhận được phản hồi phê duyệt đơn hàng gửi đến từ Công ty qua hình thức thông báo xác nhận mua hàng.<br/>③ Đơn duyệt mua hàng của công ty phải bao gồm những thông tin liên quan đến hủy bỏ, sửa đổi đơn hàng, có thể tiến hành mua hàng hay không và xác nhận đơn đặt hàng của người dùng,...  <br/><br/><strong>Điều 21 : Phương pháp thanh toán</strong><br/>① Khi mua hàng hóa hoặc dịch vụ của công ty, người dùng có thể thanh toán bằng bất kỳ phương thức nào sau đây. Tuy nhiên, công ty được thu bất kỳ khoản phí trên danh nghĩa nào ngoài giá hàng hóa, dịch vụ đối với phương thức thanh toán của người dùng.<br/>1. Các loại hình thức chuyển khoản như chuyển qua ngân hàng điện tử hoặc ứng dụng ngân hàng trên điện thoại di động <br/>2. Qua các loại thẻ khác nhau như thẻ trả trước, thẻ ghi nợ, thẻ tín dụng <br/>3. Gửi tiền trực tiếp trực tuyến<br/>4. Thanh toán qua điện thoại di động<br/>5. Phương thức thanh toán khác do các công ty chỉ định<br/>② Trong trường hợp có vấn đề liên quan đến pháp lý hoặc vấn đề kỹ thuật hay lỗi hệ thống mà Công ty không lường trước được (như lỗi mạng ngân hàng) trong quá trình Thành viên thanh toán , thì Công ty có thể yêu cầu Thành viên thay đổi phương thức thanh toán hoặc tạm ngừng hay từ chối thanh toán theo chính sách của Công ty. <br/>③ Thành viên chịu mọi trách về các thông tin mà thành viên cung cấp để nhằm thực hiện thanh toán. Sau khi lựa chọn và tiến hành thanh toán, nếu việc thanh toán không được thực hiện trong một khoảng thời gian hợp lý thì Công ty có thể hủy đơn hàng đó. ​<br/>④ Công ty có thể kiểm tra xem liệu người mua có quyền hợp pháp để sử dụng phương thức thanh toán hay không và nếu cần, Công ty có thể yêu cầu Thành viên tạm dừng giao dịch và gửi các tài liệu giải trình.<br/><br/><strong>Điều 22 : Thông báo xác nhận đơn hàng, thay đổi và hủy bỏ đăng ký mua hàng.</strong><br/>① Công ty gửi thông báo xác nhận đơn hàng cho người dùng khi nhận được đơn đăng ký mua hàng của người dùng. <br/>② Người dùng sau khi nhận thông báo xác nhận đơn hàng từ Công ty , nếu phát hiện có thông tin không chính xác thì có thể thay đổi/ hủy bỏ đơn hàng ngay lập tức, và Công ty có trách nhiệm xử lý kịp thời đơn hàng theo thông tin mà người dùng yêu cầu nếu đơn hàng đó chưa được gửi đi. Tuy nhiên, với những trường hợp đơn hàng đã được thanh toán, việc thay đổi/ hủy bỏ đơn hàng sẽ được áp dụng theo quy định tại Điều 25.<br/><br/><strong>Điều 23 : Cung cấp hàng hóa</strong><br/>① Trừ khi có thỏa thuận riêng với người dùng về thời hạn cung cấp hàng hóa,nếu không công ty tiến hành các công việc cần thiết  như đặt hàng sản xuất và đóng gói để hàng hóa có thể được giao trong vòng 7 ngày kể từ ngày người dùng đăng ký mua hàng. Tuy nhiên, nếu công ty đã nhận được một phần hoặc toàn bộ số  tiền thanh toán cho hàng hóa, công ty sẽ tiến hành trong vòng 3 ngày làm việc kể từ ngày nhận được một phần hoặc toàn bộ số tiền thanh toán. Trong trường hợp này, công ty thực hiện các biện pháp thích hợp để người dùng có thể kiểm tra các thủ tục cung cấp và tiến độ của hàng hóa. ​<br/>② Trong trường hợp bất khả kháng như ngày nghỉ lễ hay thiên tai, thì thời gian đó không được tính vào thời gian giao hàng.<br/><br/><strong>Điều 24 : Hoàn tiền</strong><br/>① Do các sản phẩm gói thiết kế nội thất do Công ty bán không phải là sản phẩm hữu hình mà là những tập tin (file) gốc thiết kế nội thất nên sau khi người mua tải tập tin về thì sẽ không được hoàn tiền.<br/>② Trường hợp hàng hóa, không phải là gói thiết kế nội thất, mà người dùng đặt mua đã hết hàng và công ty không thể cung cấp hoặc giao hàng hóa đó cho người dùng được thì phải thông báo ngay cho người dùng về lý do đó và nếu đơn hàng đã được thanh toán trước thì công ty cần hoàn tiền/ xử lý hoàn tiền cho người đặt hàng trong vòng 3 ngày làm việc. <br/><br/><strong>Điều 25 : Bồi thường thiệt hại</strong><br/>① 회원이 본 약관의 규정을 위반함으로 인하여 회사에 손해가 발생하게 되는 경우, 본 약관을 위반한 회원은 회사에 발생하는 모든 손해를 배상하여야 합니다.<br/>① Trong trường hợp Thành viên vi phạm các quy định của điều khoản này và gây thiệt hại cho Công ty thì Thành viên  phải bồi thường mọi thiệt hại phát sinh do hành vi đó cho Công ty<br/>② 회원이 서비스를 이용하는 과정에서 행한 불법행위나 본 약관 위반행위로 인하여 회사가 당해 회원 이외의 제3자로부터 손해배상 청구 또는 소송을 비롯한 각종 이의제기를 받는 경우 당해 회원은 자신의 책임과 비용으로 회사를 면책 시켜야 하며, 회사가 면책되지 못한 경우 당해 회원은 그로 인하여 회사에 발생한 모든 손해를 배상하여야 합니다.<br/>Trong trường hợp Công ty nhận được nhiều ý kiến phản hồi khác nhau bao gồm cả việc tố tụng hay yêu cầu bồi thường thiệt hại do những hành vi vi phạm điều khoản này hoặc các hành vi vi phạm pháp luật trong quá trình Thành viên sử dụng Dịch vụ từ bên thứ 3 mà không phải từ Thành viên đó, thì Thành viên đó phải miễn trách nhiệm cho Công ty và tự chịu trách nhiệm về phần chi phí phát sinh , nếu Công ty không được miễn trách nhiệm thì Thành viên phải bồi thường mọi thiệt hại cho Công ty do hành vi của Thành viên đó gây ra.<br/><br/><strong>Điều 26 : Các trường hợp miễn trách nhiệm</strong><br/>① Công ty được miễn trách nhiệm cung cấp Dịch vụ nếu không thể cung cấp dịch vụ do thiên tai, tấn công DDOS, lỗi IDC, lỗi đường truyền của các nhà khai thác viễn thông hoặc các trường hợp bất khả kháng tương tự khác.<br/>② Công ty không chịu trách nhiệm nếu có bất cứ trở ngại nào trong việc sử dụng Dịch vụ cho các nguyên nhân từ Thành viên . <br/>③ Công ty không chịu trách nhiệm về việc Thành viên không đạt doanh thu như kỳ vọng khi sử dụng Dịch vụ cũng như bất kỳ thiệt hại nào khác do dữ liệu thu được thông qua Dịch vụ . Công ty không chịu trách nhiệm về nội dung như tính chính xác của các bài đăng do Thành viên đăng tải trên trang của Công ty. <br/>④ Công ty không có nghĩa vụ phải can thiệp vào những tranh chấp phát sinh trên Dịch vụ giữa các thành viên với nhau hoặc giữ thành viên với bên thứ 3 và cũng không chịu trách nhiệm bồi thường thiệt hại do việc này gây ra.<br/>⑤ Công ty không chịu trách nhiệm về bất kỳ thiệt hại nào do Thành viên làm rò rỉ hoặc cung cấp thông tin cá nhân của mình cho người khác.<br/>⑥ Quan điểm của Thành viên được thể hiện hoặc biểu lộ qua bài đăng hoặc bình luận không liên quan đến quan điểm của Công ty, và Công ty không chịu bất kỳ trách nhiệm nào về bài viết hoặc bình luận do Thành viên cung cấp.<br/>⑦ Công ty không can thiệp vào các giao dịch được thực hiện giữa Thành viên và các công ty liên kết thông qua các đường dẫn ( link), biểu ngữ ( banner) ( Sau đây được gọi là công ty liên kết) và không chịu trách nhiệm về các giao dịch đó. <br/>⑧ Công ty không có nghĩa vụ kiểm tra trước nội bài đăng của Thành viên trước khi đăng tải cũng như kiểm tra hay xác nhận nội dung bài đăng đã đăng  của Thành viên , và công ty cũng không chịu trách nhiệm về kết quả của bài đăng . <br/>⑨ Công ty không chịu trách nhiệm về bất kỳ vấn đề nào phát sinh do vấn đề máy tính của Thành viên hoặc các vấn đề bảo mật không thuộc phạm vi quản lý của Công ty, cũng như các vấn đề xảy ra mà không thuộc trách nhiệm của công ty như đánh cắp thông tin mạng, khó bảo vệ với trình độ công nghệ bảo mật hiện nay,..<br/><br/><strong>Điều 27 : Giải quyết tranh chấp</strong><br/>① Trong trường hợp có tranh chấp  giữa Công ty và Thành viên liên quan đến việc sử dụng Dịch vụ, Công ty và Thành viên sẽ thảo luận tích cực và  nghiêm túc để giải quyết ​​tranh chấp.<br/>② Khi cả hai bên đã thảo luận như quy định tại Khoản 1 điều 31 nhưng vẫn không thể giải quyết được thì có thể tiến hành tố tụng theo quy định của pháp luật.<br/>③ Tố tụng giữa Công ty và người dùng sẽ được tiến hành theo quy định của Pháp luật Việt Nam .<br/>④ Bản điều khoản này được viết bằng tiếng Việt. Nếu bản dịch của bản Điều khoản này khác với bản gốc bằng tiếng Việt, thì khi có phát sinh tranh chấp, bản tiếng Việt sẽ được ưu tiên áp dụng. <br/>⑤ Trong trường hợp tranh chấp không được giải quyết qua thỏa thuận như quy định tại Khoản 1 Điều 31 mà cần sự can thiệp của các cơ quan có thẩm quyền thì tòa án thẩm quyền nơi \"Công ty\" đặt trụ sở chính sẽ là tòa án có thẩm quyền duy nhất<br/>Bản điều khoản này được ban hành vào ngày 7 tháng 6 năm 2021",
+      "do_you_want_this": "Do you want this design <br/> for your home's new look?",
+      "do_you_want_this_detail": "You can share with the company you know and also, the company in our Construction Directory. Through the shared link, they can help you to apply this design on your home easily and quickly.",
+      "share": "Share",
+      "QUOTATION": {
+        "request_notes": "Request Construction Estimate with this design.",
+        "option": "Option",
+        "how_it_works": "How it works:",
+        "construction_cost_range": "- <br>Construction cost range</br> is a cost guideline for customers' safe and reasonable choice on construction partners.",
+        "matching_service": "- Through our Matching Service, you will able to receive actual <br>Construction Estimate</br> options from 1~3 construction partners.",
+        "construction_estimate": "<small>* Construction Estimate might change based on your extra requirement or edit.</small>",
+        "do_you_want": "Do you want to <b>Request Matching</b> or <b>Choose by Yourself</b> from the list of construction partners?",
+        "request_matching": "Request Matching",
+        "choose_by_yourself": "Choose by yourself"
+      },
+      "REQUEST_DESIGN": {
+        "request_bigger_design_images": "Request Bigger Design Images",
+        "do_you_want_to_see_more_details": "Do you want to see details bigger?",
+        "you_can_receive_more_preview": "<b>Only the preview images of each room with a water mark will be provided via your email.</b> For you to check bigger image of the design in any device of yours.",
+        "you_can_receive_bigger_design": "You can receive bigger design Images via your email",
+        "email": "Email",
+        "submit": "Submit",
+        "your_request_has_been_success": "Your request has been successfully submitted",
+        "please_note_that_there_may_be": "Please note that there may be some delays as it will be sent in order of each submission.",
+        "continue": "Continue"
+      },
+      "COMMENT": {
+        "placeholder": "Write a comment",
+        "comment": "Comment",
+        "delete": "Delete",
+        "reply": "Reply",
+        "replying_to": "Replying to",
+        "cancel": "Cancel",
+        "tell_me_your_confusing": "Tell me your embarrassment...",
+        "view_previous_comment": "View previous comments...",
+        "view_more_replies": "View more replies...",
+        "hide_comments": "Hide comments",
+        "show_comments": "Show comments",
+        "see_more": "... see more"
+      },
+      "ZALO_SHARE": {
+        "title": "Share over Zalo",
+        "description": "Share these cool things with friends through ",
+        "message": "Direct message",
+        "post_to_wall": "Post your wall"
+      },
+      "ADD_TO_CART": {
+        "add_to_cart_successfully": "Design was added to your cart successfully.",
+        "go_to_cart": "Go to Cart",
+        "already_add": "It's already in the cart."
+      }
+    },
+    "FIND_CONSTRUCTOR_LISTING": {
+      "filter": "Filter",
+      "continue": "Continue",
+      "cancel": "Cancel"
+    }
+  },
+  "BOOKMARK": {
+    "title": "My Bookmark",
+    "title_tab_design": "Interior Design",
+    "tittle_tab_story": "Article",
+    "LIST": {
+      "title_list": "List bookmark",
+      "col_id": "ID",
+      "col_date": "Date",
+      "col_customer": "Customer",
+      "col_project_name": "Project name",
+      "filter_newest": "Newest",
+      "filter_oldest": "Oldest",
+      "all_bookmark": "All bookmark"
+    }
+  },
+  "QUESTION_ANSWER": {
+    "title": "My Q&A",
+    "title_tab_design": "Q&A design",
+    "title_tab_forum": "Q&A forum"
+  },
+  "PURCHASE_DESIGN": {
+    "title": "My purchased designs",
+    "btn_design_edit": "Design Edit Request",
+    "btn_find_company": "Find Contractor"
+  },
+  "QUOTATION_REQUEST": {
+    "title": "My quotation requests"
+  },
+  "FAQ": {
+    "title": "FAQ"
+  },
+  "SUPPORT_CONTACT": {
+    "title": "FAQ / Help",
+    "q1": "Interior Design cung cấp dịch vụ gì?",
+    "q1_a": "Là dịch vụ trung gian đưa ra các giải pháp thiết kế nội thất cho những khách hàng đang có nhu cầu tìm kiếm thiết kế nội thất mới.<br/>Interior Design cung cấp dịch vụ giúp khách hàng giảm thiểu đối đa thời gian và chi phí từ tư vấn, báo giá, ký hợp đồng để tạo ra thiết kế nội thất mới bằng cách cung cấp Ready- Made Interior design.<br/>Interior Design tập trung vào các thiết kế nội thất ready made và không trực tiếp thi công công trình.<br/>Nhưng Interior Design cung cấp danh sách nhà thầu thi công để khách hàng có thể nhanh chóng kết nối được với các công ty thi công nội thất.<br/>Interior Design chỉ giới thiệu cho khách hàng Danh sách nhà thầu thi công , không phải là công ty trung gian kết nối cũng như không quản lí nhà thầu thi công và khách hàng.<br/>Ngoài ra, Interior Design có các chức năng SNS như các bài báo liên quan đến phong cách sống và chia sẻ nội thất, vì vậy Interior Design là một dịch vụ mà tất cả những ai quan tâm đến nội thất đều có thể tận hưởng.",
+    "q2": "Làm thế nào để phân biệt thành viên thông thường và thành viên doanh nghiệp?",
+    "q2_a": "Các thành viên thông thường có thể tận hưởng các dịch vụ SNS như chia sẻ phong cách sống và nội thất, và nếu bạn trở thành thành viên doanh nghiệp, bạn có thể sử dụng các dịch vụ SNS theo cách giống như các thành viên chung và mua thiết kế.",
+    "q3": "Tôi có thể mua thiết kế nội thất không?",
+    "q3_a": "Nói chung, bất cứ thành viên nào cũng có thể mua thiết kế, mọi người đều có thể mua nó. Tuy nhiên, nếu là thành viên thông thường, bạn không thể mua trực tiếp mà có thể mua thiết kế thông qua công ty thi công.<br/>Còn nếu bạn là  thành viên doanh nghiệp thì mua thiết kế ngay . Các thành viên thông thường cũng có thể đăng ký làm thành viên kinh doanh nếu  muốn trực tiếp mua thiết kế.",
+    "q4": "Đối tác thiết kế nội thất là gì ? Đối tác thi công nội thất là gì?",
+    "q4_a": "Đối tác thiết kế là thành viên có quyền bán thiết kế nội thất trên ứng dụng Interior Design. Để trở thành đối tác thiết kế, bạn phải trải qua quá trình kiểm tra của Interior Design.<br/>Đối tác thi công có thể quảng bá công ty trong mục Danh sách Nhà thầu thi công của Interior Design. Vì lượng khách hàng của Interior Design là những khách hàng quan tâm đến nội thất nên việc quảng bá công ty của bạn sẽ hiệu quả hơn so với những trang mạng khác.",
+    "q5": "Làm thế nào để đăng ký trở thành đối tác thiết kế hoặc đối tác thi công?",
+    "q5_a": "Ở cuối màn hình chính, có một nút để đăng ký làm đối tác thiết kế và đối tác thi công. Bạn có thể tham gia bằng cách nhấp vào nút và trả lời các câu hỏi.<br/>Nếu bạn muốn thăng hạng bằng cách đăng ký trở thành công ty xây dựng, bạn phải nhập chính xác các thông tin như số đăng ký, mã số thuế, và thông tin liên hệ.<br/>Công ty không chịu trách nhiệm nếu có sai sót khi nhập thông tin.",
+    "q6": "Sự khác nhau giữa Freelancer, cá nhân, doanh nghiệp khi đăng nhập làm thành viên doanh nghiệp là gì?",
+    "q6_a": "Doanh nghiệp thì có thể vừa là công ty xây dựng vừa là đối tác thiết kế.<br/>Cá nhân chỉ có thể mua thiết kế.<br/>Freelancer có thể bán thiết kế với tư cách là đối tác thiết kế.",
+    "q7": "Có thể đổi / hoặc hoàn tiền khi đã hoàn thành xong quá trình mua thiết kế không?",
+    "q7_a": "Không thể. Vì thiết kế của Interior Design không phải là sản phẩm hiện vật nên không thể hoàn lại tiền sau khi thanh toán, vì vậy hãy lựa chọn cẩn thận trước khi mua.",
+    "q8": "Sau khi thanh toán xong thì trong vòng bao lâu sẽ nhận được bản thiết kế?",
+    "q8_a": "Sau khi thanh toán, bạn có thể tải tập tin (File) trên điện thoại di động hoặc e-mail của mình.<br/>Nếu bạn muốn nhận các file bằng email, bạn cần gửi yêu cầu riêng cho công ty và vì việc nhận tập tin (File) qua email có thể mất thời gian hơn vì  email được gửi theo thứ tự người mua hàng đăng ký.",
+    "q9": "Làm thế nào để nhận bản thiết kế sau khi thanh toán thành công?",
+    "q9_a": "Interior Design cung cấp dịch vụ tất cả trong một (All in one) bao gồm tất cả các dữ liệu để có thể bắt tay vào thi công ngay sau khi mua thiết kế.<br/>Hình ảnh thiết kế 3D<br/>Spec - Danh sách vật liệu<br/>Phát triển 2D (Bản vẽ kỹ thuật)<br/>Dự toán<br/><br/>Khi mua thiết kế bạn sẽ nhận được cả 4 tập tin này.",
+    "q10": "Làm thế nào để gửi bản thiết kế cho công ty thi công mà tôi thích?",
+    "q10_a": "Bạn có thể gửi email thiết kế mà bạn muốn thông qua danh bạ nhà thầu ở cuối trang chủ , và nếu bạn muốn gửi thiết kế đó cho một nhà thầu ở bên ngoài mà bạn biết thì chỉ cần chia sẻ trực tiếp thiết kế đó qua Zalo, Facebook ở ngay trên ứng dụng Interior Design.<br/>Nhà thầu bên ngoài được bạn gửi thiết kế có thể mua thiết kế sau khi đăng ký làm thành viên doanh nghiệp trên ứng dụng Interior Design.",
+    "q11": "Điểm khác biệt giữa Interior Design và các công ty nội thất khác là gì?",
+    "q11_a": "Một quy trình thiết kế nội thất điển hình bao gồm 7 bước và cần ít nhất 30 ngày thiết kế. Ngoài ra, trung bình chỉ được cung cấp 2 thiết kế.<br/>Tuy nhiên, trong ứng dụng Interior Design, bạn có thể xem trực các thiết kế nội thất khác nhau với độ phân giải chất lượng cao, mua hàng nhanh chóng để chuẩn bị ngay cho việc xây dựng",
+    "q12": "Interior Design giải quyết thế nào khi có vấn đề xảy ra trong quá trình thi công ?",
+    "q12_a": "Interior Design là một nền tảng đề xuất các giải pháp thiết kế nội thất và không can thiệp vào các vấn đề liên quan đến xây dựng.",
+    "q13": "Interior Design giải quyết thế nào khi có lỗi phát sinh sau khi đã thi công xong?",
+    "q13_a": "Interior Design là một nền tảng đề xuất các giải pháp thiết kế nội thất và không can thiệp vào các vấn đề liên quan đến xây dựng.",
+    "q14": "Làm thế nào để thêm / hoặc sử portfolio của nhà thầu thi công?",
+    "q14_a": "Bạn có thể chỉnh sửa , bổ sung theo đường dẫn sau :  Thông tin ->Quản lý Công ty Xây dựng -> Ứng dụng Web.",
+    "q15": "Sau khi đăng ký làm đối tác thi công thì lúc nào có thể nhận được câu trả lời đăng ký thành công?",
+    "q15_a": "Sau khi kiểm tra portfolio theo thứ tự đăng ký, người phụ trách tại Interior Design sẽ thông báo cho bạn qua e-mail trong thời gian sớm nhất.",
+    "q16": "Làm thế nào để xem lại những nội dung(bài viết/ hình ảnh,...) mà tôi đã thích ?",
+    "q16_a": "Bạn có thể xem lại các bài đăng mà bạn đã thích thông qua trang Thông tin -> Dấu trang.",
+    "another_support": "Any other support and inquiry"
+  },
+  "TITLES": {
+    "home": "Home",
+    "designs": "Designs",
+    "my_page": "My Page",
+    "my_bookmark": "My Bookmark",
+    "constructors": "Contractors",
+    "login": "Login",
+    "register": "Register",
+    "register_success": "Register Success",
+    "register_business": "Register Business",
+    "register_business_success": "Register Business Success",
+    "profile": "Profile",
+    "change_password": "Change Password",
+    "constructions": "Construction"
+  },
+  "CONSTRUCTION": {
+    "LISTING": {
+      "search_placeholder": "Enter a Construction Company"
+    },
+    "DETAIL": {
+      "reviews": "Reviews",
+      "hotline": "Hotline",
+      "phone": "Phone",
+      "email": "Email",
+      "website": "Website",
+      "address": "Address",
+      "portfolio": "Portfolio",
+      "not_defined": "Not Defined",
+      "call": "Call",
+      "send_email": "Send email",
+      "review": "Review",
+      "tax_code": "TAX Code",
+      "experience": "Experience",
+      "Introduction": "Introduction"
+    },
+    "PORTFOLIO_DETAIL": {
+      "title": "Contractor Portfolio",
+      "description": "Description",
+      "project_type": "Project Type",
+      "area_size": "Area Size",
+      "total_cost": "Construction Cost",
+      "period": "Construction Period",
+      "style": "Style",
+      "months": "Months"
+    }
+  },
+  "CONTENT_PAGE": {
+    "sorry": "Sorry... There are no event matches your expectation.",
+    "loading": "Loading..."
+  },
+  "LIFE_STYLE": {
+    "title": "Life Style",
+    "loading": "Life styles are comming",
+    "load_more": "Loading more data...",
+    "LISTING": {
+      "number_like": "Likes"
+    },
+    "DETAIL": {
+      "number_like": "Likes",
+      "share": "Share",
+      "people_like": "People likes"
+    }
+  },
+  "INTERIOR_SHARE": {
+    "title": "Interior Share",
+    "CREATE": {
+      "title": "Write a Post",
+      "btn_post": "Post",
+      "content": "Post content"
+    },
+    "UPDATE": {
+      "title": "Update a post"
+    },
+    "LISTING": {
+      "title_post": "My Post",
+      "search": "Search...",
+      "title_member": "Member",
+      "title_business": "Business Member",
+      "number_like": "Likes",
+      "share": "Share",
+      "people_like": "People likes",
+      "btn_update": "Edit",
+      "btn_delete": "Delete"
+    },
+    "DETAIL": {
+      "title_member": "Member",
+      "title_business": "Business Member",
+      "number_like": "Likes",
+      "share": "Share",
+      "people_like": "People likes",
+      "btn_update": "Edit",
+      "btn_delete": "Delete"
+    },
+    "MY_POST": {
+      "title_post": "My Post",
+      "search": "Search...",
+      "title_member": "Member",
+      "title_business": "Business Member",
+      "number_like": "Likes",
+      "share": "Share",
+      "people_like": "People likes",
+      "btn_update": "Edit",
+      "btn_delete": "Delete",
+      "my_bookmark": "My Bookmark",
+      "save_at": "Saved at"
+    }
+  },
+  "INTERIOR_DESIGN": {
+    "title": "MY Interior Design",
+    "title_share": "Designs Shared with Construction Company",
+    "title_purchase": "My Purchased Designs",
+    "PURCHASE_DESIGN": {
+      "title": "My Purchased Designs",
+      "purchase_date": "Purchased Date",
+      "btn_download": "Download File",
+      "contact_detail": "If you need any help about download file,<br/>Let us know the detail of your problem via our email."
+    },
+    "SHARE_DESIGN": {
+      "title": "Designs Shared with Construction Company",
+      "share_with": "Share with",
+      "btn_view": "View"
+    }
+  },
+  "CONSTRUCTION_REVIEW": {
+    "title": "Construction review",
+    "title_write_review": "Write a Review",
+    "my_review": "My review",
+    "btn_write_review": "Write a Review",
+    "WRITE_REVIEW": {
+      "modern": "Modern",
+      "luxury": "Luxury",
+      "industrial": "Industrial",
+      "scandinavian": "Scandinavian",
+      "classic": "Classic",
+      "other": "Other",
+      "btn_view_profile": "View Company Profile",
+      "phone": "Phone Number",
+      "err_phone": "Phone number is required",
+      "invalid_phone": "Phone number is invalid",
+      "construction_location": "Construction location",
+      "text_location": "Apartment / Villa / Building name",
+      "district": "District",
+      "err_location": "Location is required",
+      "err_district": "District is required",
+      "city": "City",
+      "err_city": "City is required",
+      "area_size": "Area Size",
+      "err_area_size": "Area size is required",
+      "invalid_area_size": "Area size is invalid",
+      "style": "Style",
+      "period": "Period",
+      "err_period": "Period is required",
+      "invalid_period": "Period is invalid",
+      "construction_cost": "Construction cost",
+      "cost_from": "From",
+      "cost_to": "To",
+      "err_cost_from": "Cost from is required",
+      "err_cost_to": "Cost to is required",
+      "invalid_cost_from": "Cost from is invalid",
+      "invalid_cost_to": "Cost to is invalid",
+      "review": "Review",
+      "err_review": "Review is required",
+      "btn_upload": "Upload"
+    },
+    "MY_REVIEW": {
+      "message_delete": "Are you sure you want to permanently delete?",
+      "construction_location": "Construction location",
+      "style": "Design style",
+      "area_size": "Area Size",
+      "period": "Construction period",
+      "cost": "Construction cost",
+      "month": "months",
+      "view_more": "View More",
+      "view_less": "View less"
+    }
+  },
+  "STYLE_HOUSE": {
+    "style": "Style",
+    "modern": "Modern",
+    "luxury": "Luxury",
+    "industrial": "Industrial",
+    "scandinavian": "Scandinavian",
+    "classic": "Classic",
+    "other": "Other"
+  },
+  "MY_BOOKMARK": {
+    "title_interior_design": "Interior Design",
+    "title_interior_share": "Interior Share",
+    "title_life_style": "Life Style"
+  }
+}

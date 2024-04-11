@@ -1,0 +1,27 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button size="small" (click)="back()">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <ng-content select="#start-button"></ng-content>
+  </ion-buttons>
+  <h4
+    class="my-0 ml-n4 text-center"
+    (click)="presentPopover($event, title)"
+    *ngIf="fullWidth; else notFullWidth"
+  >
+    <ion-text color="secondary">
+      <b [innerHTML]="title"></b>
+    </ion-text>
+  </h4>
+  <ng-template #notFullWidth>
+    <ion-title (click)="presentPopover($event, title)">
+      <h4 class="my-0">
+        <ion-text color="secondary">
+          <b [innerHTML]="title"></b>
+        </ion-text>
+      </h4>
+    </ion-title>
+  </ng-template>
+  <ng-content select="#end-buttons"></ng-content>
+</ion-toolbar>

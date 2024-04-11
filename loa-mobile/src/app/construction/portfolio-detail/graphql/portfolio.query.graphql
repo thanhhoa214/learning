@@ -1,0 +1,17 @@
+query GetPortfolio($id: String!) {
+  portfolio(id: $id) {
+    id
+    area
+    description
+    images {
+      image
+    }
+    location
+    period
+    projectName
+    projectType
+    style
+    totalCostFrom
+    totalCostTo
+  }
+}

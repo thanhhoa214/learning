@@ -1,0 +1,8 @@
+query GetContentPage($id: String!) {
+  contentPage(id: $id) {
+    id
+    description
+    file
+    name
+  }
+}

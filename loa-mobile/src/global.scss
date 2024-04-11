@@ -1,0 +1,128 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import '~@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+@import './shared';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/grid';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+/* For use in src/lib/core/theming/_palette.scss */
+$md-loa-purple: (
+  50: #f6f2f5,
+  100: #e8dfe5,
+  200: #fffeff,
+  300: #fffeff,
+  400: #a0c1c7,
+  500: #a0c1c7,
+  600: #a0c1c7,
+  700: #8daaaf,
+  800: #8daaaf,
+  900: #8daaaf,
+  A100: #fffeff,
+  A200: #aac7cd,
+  A400: #a0c1c7,
+  A700: #8daaaf,
+  contrast: (
+    50: #ffffff,
+    100: #ffffff,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #000000,
+    A100: #ffffff,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+$custom-typography: mat-typography-config(
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+);
+@include mat-core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$loa-mobile-primary: mat-palette($md-loa-purple, 900);
+$loa-mobile-accent: mat-palette($md-loa-purple, 900);
+
+// The warn palette is optional (defaults to red).
+$loa-mobile-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$loa-mobile-theme: mat-light-theme(
+  (
+    color: (
+      primary: $loa-mobile-primary,
+      accent: $loa-mobile-accent,
+      warn: $loa-mobile-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($loa-mobile-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+.bg-md-primary {
+  background-color: mat-color($loa-mobile-primary, 200) !important;
+}
+.text-md-primary {
+  color: mat-color($loa-mobile-primary);
+}
+.bg-md-accent {
+  background-color: mat-color($loa-mobile-accent, 200) !important;
+}
+.text-md-accent {
+  color: mat-color($loa-mobile-accent);
+}
+
+.mt-10 {
+  margin-top: 5rem;
+}

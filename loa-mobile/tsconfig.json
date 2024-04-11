@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": ["es2018", "dom", "esnext.asynciterable"],
+    "paths": {
+      "@loa-shared": ["src/app/shared/"],
+      "@loa-shared/*": ["src/app/shared/*"],
+      "@loa-mobile": ["src/app"],
+      "@loa-mobile/*": ["src/app/*"],
+      "crypto": ["../../node_modules/crypto-js"]
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true
+}
